@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"baseUrl": "./",
+		"paths": {
+			"@components/*": ["src/components/*"],
+			"@styles/*": ["src/shared/styles/*"],
+			"@story/*": ["src/stories/*"],
+			"@actions/*": ["src/shared/redux/actions/*"],
+			"@slices/*": ["src/shared/redux/slices/*"],
+			"@store/*": ["src/shared/store/*"],
+			"@fetch/*": ["src/shared/fetch/*"],
+			"@lib/*": ["src/shared/lib/*"],
+			"@hooks/*": ["src/shared/lib/hooks/*"],
+			"@router/*": ["src/router/*"],
+			"@pages/*": ["src/pages/*"]
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"extends": "./tsconfig.paths.json",
+	"ts-node": {
+		"compilerOptions": {
+			"module": "commonjs"
+		}
+	},
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ES2020",
+		"useDefineForClassFields": true,
+		"lib": ["DOM", "DOM.Iterable", "ESNext"],
+		"allowJs": false,
+		"skipLibCheck": false,
+		"esModuleInterop": false,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "Node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "react-jsx",
+		"noImplicitAny": true,
+		"noFallthroughCasesInSwitch": true,
+		"baseUrl": "./"
+	},
+	"include": ["./src", "@types"],
+	"exclude": ["node_modules"]
+}
