@@ -56,7 +56,11 @@ const LoginPage: React.FC<PageProps> = ({ title }) => {
 					name="basic"
 					labelCol={{ span: 8 }}
 					wrapperCol={{ span: 16 }}
-					initialValues={{ remember: true }}
+					initialValues={{
+						remember: true,
+						email: 'test@test.com',
+						password: '121212',
+					}}
 					onFinish={onFinish}
 					onFinishFailed={onFinishFailed}
 					autoComplete="off">

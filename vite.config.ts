@@ -1,23 +1,32 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
+
+// plugins
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import eslint from 'vite-plugin-eslint'
 import visualizer from 'rollup-plugin-visualizer'
 import legacy from '@vitejs/plugin-legacy'
 import babelImport from 'vite-plugin-babel-import'
+// import checker from 'vite-plugin-checker'
 
 /**
  * @see https://vitejs.dev/config/
  */
-export default defineConfig((env) => {
-	console.log(env)
+export default defineConfig(({ mode, command }) => {
+	const env = loadEnv(mode, process.cwd())
 	return {
+		server: {
+			port: parseInt(env.VITE_PORT),
+		},
 		plugins: [
 			react(),
 			tsconfigPaths({}),
 			eslint({
 				cache: false,
 			}),
+			// checker({
+			// 	typescript: true,
+			// }),
 			visualizer({
 				open: env.mode === 'development',
 			}),

@@ -1,13 +1,13 @@
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons'
-import { Anchor } from '@components/common'
+import React from 'react'
+import { MailOutlined } from '@ant-design/icons'
 import { Menu } from 'antd'
-import routes from '@router/routes'
+import { capitalize } from 'lodash-es'
+import { Anchor } from '@components/common'
+import { routeSidebar } from '@router/routes'
+
 import type { MenuClickEventHandler } from 'rc-menu/lib/interface'
 
-const { SubMenu, ItemGroup, Item } = Menu
-
-// interface Props {
-// }
+const { SubMenu, Item } = Menu
 
 export const Sidebar: React.FC = (props) => {
 	const onClickMenu: MenuClickEventHandler = (info) => {
@@ -21,75 +21,19 @@ export const Sidebar: React.FC = (props) => {
 			// defaultSelectedKeys={['1']}
 			defaultOpenKeys={['sub1']}
 			mode="inline">
-			{routes.map((route) => {
+			{routeSidebar.map(({ path, children }) => {
 				return (
-					<SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-						{/* children */}
-						{/* <ItemGroup key="g1" title="Examples">
-							<Item key="1">
-								<Anchor to="/example/counter">Counter</Anchor>
+					<SubMenu key={path} icon={<MailOutlined />} title={capitalize(path)}>
+						{children?.map((child) => (
+							<Item key={child.path}>
+								<Anchor to={`${path}/${child.path}`}>
+									{capitalize(child.path)}
+								</Anchor>
 							</Item>
-							<Item key="2">
-								<Anchor to="/example/signUp">signUp</Anchor>
-							</Item>
-							<Item key="3">
-								<Anchor to="/example/grid">Grid</Anchor>
-							</Item>
-							<Item key="4">
-								<Anchor to="/example/modal">modal</Anchor>
-							</Item>
-						</ItemGroup>
-						<ItemGroup key="g2" title="Item 2">
-							<Item key="g2-1">Option 3</Item>
-							<Item key="g2-2">Option 4</Item>
-						</ItemGroup> */}
+						))}
 					</SubMenu>
 				)
 			})}
-		</Menu>
-	)
-
-	return (
-		<Menu
-			onClick={onClickMenu}
-			style={{ width: 256 }}
-			defaultSelectedKeys={['1']}
-			defaultOpenKeys={['sub1']}
-			mode="inline">
-			<SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-				<ItemGroup key="g1" title="Examples">
-					<Item key="1">
-						<Anchor to="/example/counter">Counter</Anchor>
-					</Item>
-					<Item key="2">
-						<Anchor to="/example/signUp">signUp</Anchor>
-					</Item>
-					<Item key="3">
-						<Anchor to="/example/grid">Grid</Anchor>
-					</Item>
-					<Item key="4">
-						<Anchor to="/example/modal">modal</Anchor>
-					</Item>
-				</ItemGroup>
-				<ItemGroup key="g2" title="Item 2">
-					<Item key="g2-1">Option 3</Item>
-					<Item key="g2-2">Option 4</Item>
-				</ItemGroup>
-			</SubMenu>
-			<SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
-				<Item key="sub2-1">Option 5</Item>
-				<Item key="sub2-2">Option 6</Item>
-				<SubMenu key="sub3" title="Submenu">
-					<Item key="sub3-1">Option 7</Item>
-					<Item key="sub3-2">Option 8</Item>
-				</SubMenu>
-			</SubMenu>
-			<SubMenu key="sub4" icon={<SettingOutlined />} title="Navigation Three">
-				<Item key="sub4-1">Option 9</Item>
-				<Item key="sub4-2">Option 10</Item>
-				<Item key="sub4-3">Option 11</Item>
-				<Item key="sub4-4">Option 12</Item>
-			</SubMenu>
 		</Menu>
 	)
 }

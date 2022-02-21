@@ -1,6 +1,7 @@
 import { lazy } from '@loadable/component'
 import { AppLayout } from '@components/layout'
 import { RouterGuard } from '@components/layout'
+import KeepAlive from 'react-activation'
 import type { LoadableComponent } from '@loadable/component'
 import type { RouteObject } from 'react-router-dom'
 
@@ -8,19 +9,48 @@ export interface PageProps {
 	title?: string
 }
 
-interface PageGroup<P> {
-	[key: string]: LoadableComponent<P>
+export enum PageNames {
+	Home = 'index',
+	Login = 'Login',
+	NotFound = 'NotFound',
+	Counter = 'Counter',
+	Grid = 'Grid',
+	Modal = 'Modal',
+	Forms = 'Forms',
 }
 
-const Page: PageGroup<PageProps> = {
+const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps>> = {
 	Home: lazy((props) => import('@pages/Home')),
 	Login: lazy((props) => import('@pages/Login')),
 	NotFound: lazy((props) => import('@pages/NotFound')),
 	Counter: lazy((props) => import('@pages/example/Counter')),
 	Grid: lazy((props) => import('@pages/example/Grid')),
 	Modal: lazy((props) => import('@pages/example/Modal')),
-	SignUp: lazy((props) => import('@pages/example/SignUp')),
+	Forms: lazy((props) => import('@pages/example/Forms')),
 }
+
+/**
+ * @description
+ * <Sidebar/>에서 공통으로 사용하기 위해 path를 명확하게 같는 route 객체는 별도로 관리
+ */
+export const routeSidebar: RouteObject[] = [
+	{
+		path: 'example',
+		children: [
+			{
+				path: 'counter',
+				element: (
+					<KeepAlive name="counter">
+						<Page.Counter />
+					</KeepAlive>
+				),
+			},
+			{ path: 'grid', element: <Page.Grid /> },
+			{ path: 'modal', element: <Page.Modal /> },
+			{ path: 'forms', element: <Page.Forms /> },
+		],
+	},
+]
 
 /**
  * @description
@@ -43,16 +73,8 @@ const routes: RouteObject[] = [
 			{
 				element: <AppLayout />,
 				children: [
+					...routeSidebar,
 					{ path: 'home', element: <Page.Home /> },
-					{
-						path: 'example',
-						children: [
-							{ path: 'counter', element: <Page.Counter /> },
-							{ path: 'grid', element: <Page.Grid /> },
-							{ path: 'modal', element: <Page.Modal /> },
-							{ path: ' signUp', element: <Page.SignUp /> },
-						],
-					},
 					{ path: '*', element: <Page.NotFound /> },
 				],
 			},

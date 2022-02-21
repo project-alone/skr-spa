@@ -1,6 +1,7 @@
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
+import { DevTool } from '@hookform/devtools'
 import { omit } from 'lodash-es'
 import { signUpScheme } from '@lib/validate/signUp'
 import moment, { Moment } from 'moment'
@@ -31,7 +32,7 @@ const renderFormItemToArray = (
 	))
 }
 
-const SignUpPage: React.FC = () => {
+const FormsPage: React.FC = () => {
 	const [checkboxValues] = React.useState<FormItemData[]>([
 		{ label: '사과', value: 'apple' },
 		{ label: '오렌지', value: 'orange' },
@@ -153,8 +154,10 @@ const SignUpPage: React.FC = () => {
 					submit
 				</Button>
 			</div>
+
+			<DevTool control={control} />
 		</Form>
 	)
 }
 
-export default SignUpPage
+export default FormsPage
