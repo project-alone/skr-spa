@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { Home as Index } from '@styles/pages'
-import { useAppSelector } from '@lib/hooks'
+import { useAppSelector } from '@hooks/index'
 import { users } from '@store/slices/users'
 import { Layout, PageHeader, Button, Table } from 'antd'
 

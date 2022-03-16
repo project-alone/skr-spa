@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAppSelector, shallowEqual } from '@lib/hooks'
+import { useAppSelector, shallowEqual } from '@hooks/index'
 import { selectIsLogin } from '@store/slices/auth'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 

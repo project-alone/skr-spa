@@ -7,7 +7,7 @@ import eslint from 'vite-plugin-eslint'
 import visualizer from 'rollup-plugin-visualizer'
 import legacy from '@vitejs/plugin-legacy'
 import babelImport from 'vite-plugin-babel-import'
-// import checker from 'vite-plugin-checker'
+import checker from 'vite-plugin-checker'
 
 /**
  * @see https://vitejs.dev/config/
@@ -19,14 +19,19 @@ export default defineConfig(({ mode, command }) => {
 			port: parseInt(env.VITE_PORT),
 		},
 		plugins: [
+			/** React hot reload */
 			react(),
+			/** typescript paths alias */
 			tsconfigPaths({}),
+			/** eslint visualizer */
 			eslint({
 				cache: false,
 			}),
-			// checker({
-			// 	typescript: true,
-			// }),
+			//
+			checker({
+				typescript: true,
+			}),
+
 			visualizer({
 				open: env.mode === 'development',
 			}),

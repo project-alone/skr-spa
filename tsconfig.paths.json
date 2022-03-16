@@ -10,9 +10,11 @@
 			"@store/*": ["src/shared/store/*"],
 			"@fetch/*": ["src/shared/fetch/*"],
 			"@lib/*": ["src/shared/lib/*"],
-			"@hooks/*": ["src/shared/lib/hooks/*"],
+			"@hooks/*": ["src/shared/hooks/*"],
+			"@context/*": ["src/shared/context/*"],
 			"@router/*": ["src/router/*"],
-			"@pages/*": ["src/pages/*"]
+			"@pages/*": ["src/pages/*"],
+			"@theme/*": ["src/shared/styles/theme/*"]
 		}
 	}
 }

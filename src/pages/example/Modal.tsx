@@ -1,5 +1,5 @@
 import React from 'react'
-import { useModal } from '@lib/hooks'
+import { useModal } from '@hooks/index'
 import { modals } from '@components/modal'
 
 const PortalPage: React.FC = () => {

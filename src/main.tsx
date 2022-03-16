@@ -1,14 +1,18 @@
-import React, { Suspense } from 'react'
-import ReactDOM from 'react-dom'
+// external
+import React from 'react'
+import { render } from 'react-dom'
 import { Provider as ReduxProvider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { BrowserRouter } from 'react-router-dom'
+
+// internal
 import { store, createPersistor } from '@store/index'
 import { ModalProvider } from '@lib/modal'
+import { MaterialUIControllerProvider } from '@context/mui'
+
+// components
 import { Loading } from '@components/common'
 import App from './App'
-
-import 'antd/lib/style/default.css'
 
 // using env variables
 console.log(import.meta.env)
@@ -21,16 +25,16 @@ console.log(import.meta.env)
 
 const persistor = createPersistor(store)
 
-ReactDOM.render(
+render(
 	<React.StrictMode>
 		<ReduxProvider store={store}>
 			<PersistGate loading={<Loading />} persistor={persistor}>
 				<ModalProvider>
-					<Suspense fallback={<Loading />}>
-						<BrowserRouter>
+					<BrowserRouter>
+						<MaterialUIControllerProvider>
 							<App />
-						</BrowserRouter>
-					</Suspense>
+						</MaterialUIControllerProvider>
+					</BrowserRouter>
 				</ModalProvider>
 			</PersistGate>
 		</ReduxProvider>

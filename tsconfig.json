@@ -21,7 +21,9 @@
 		"isolatedModules": true,
 		"noEmit": true,
 		"jsx": "react-jsx",
+		"noImplicitThis": true,
 		"noImplicitAny": true,
+		"strictNullChecks": true,
 		"noFallthroughCasesInSwitch": true,
 		"baseUrl": "./"
 	},

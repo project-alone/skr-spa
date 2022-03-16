@@ -1,9 +1,22 @@
-import { lazy } from '@loadable/component'
-import { AppLayout } from '@components/layout'
-import { RouterGuard } from '@components/layout'
+import React from 'react'
+import loadable from '@loadable/component'
 import KeepAlive from 'react-activation'
+import { AppLayout, RouterGuard } from '@components/layout'
+import { Loading } from '@components/common'
+import type { DefaultComponent } from '@loadable/component'
 import type { LoadableComponent } from '@loadable/component'
 import type { RouteObject } from 'react-router-dom'
+
+/**
+ * @description
+ * 로딩 HOC
+ * loadable component 사용으로 suspense의 기능 대체
+ */
+function withLoading<Props>(loadFn: (props: Props) => Promise<DefaultComponent<Props>>) {
+	return loadable(loadFn, {
+		// fallback: <Loading />,
+	})
+}
 
 export interface PageProps {
 	title?: string
@@ -20,13 +33,13 @@ export enum PageNames {
 }
 
 const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps>> = {
-	Home: lazy((props) => import('@pages/Home')),
-	Login: lazy((props) => import('@pages/Login')),
-	NotFound: lazy((props) => import('@pages/NotFound')),
-	Counter: lazy((props) => import('@pages/example/Counter')),
-	Grid: lazy((props) => import('@pages/example/Grid')),
-	Modal: lazy((props) => import('@pages/example/Modal')),
-	Forms: lazy((props) => import('@pages/example/Forms')),
+	Home: withLoading((props) => import('@pages/Home')),
+	Login: withLoading((props) => import('@pages/Login')),
+	NotFound: withLoading((props) => import('@pages/NotFound')),
+	Counter: withLoading((props) => import('@pages/example/Counter')),
+	Grid: withLoading((props) => import('@pages/example/Grid')),
+	Modal: withLoading((props) => import('@pages/example/Modal')),
+	Forms: withLoading((props) => import('@pages/example/Forms')),
 }
 
 /**

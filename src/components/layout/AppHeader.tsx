@@ -2,7 +2,7 @@ import React from 'react'
 import { UserOutlined, LogoutOutlined } from '@ant-design/icons'
 import { Logo } from '@components/common'
 import { Layout, Row, Col, Avatar, Button } from 'antd'
-import { useAppDispatch } from '@lib/hooks'
+import { useAppDispatch } from '@hooks/index'
 import { fakeLogin } from '@store/slices/auth'
 
 const { Header } = Layout
