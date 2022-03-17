@@ -2,9 +2,13 @@ import React from 'react'
 import loadable from '@loadable/component'
 import KeepAlive from 'react-activation'
 import { AppLayout, RouterGuard } from '@components/layout'
+import { Navigate } from 'react-router-dom'
+import { BaseLayout, SidebarLayout } from '@components/layouts'
 import { Loading } from '@components/common'
+
 import type { DefaultComponent } from '@loadable/component'
 import type { LoadableComponent } from '@loadable/component'
+import type { PartialRouteObject } from 'react-router'
 import type { RouteObject } from 'react-router-dom'
 
 /**
