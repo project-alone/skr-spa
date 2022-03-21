@@ -1,5 +1,3 @@
-import { ReactNode } from 'react'
-
 import DesignServicesTwoToneIcon from '@mui/icons-material/DesignServicesTwoTone'
 import BrightnessLowTwoToneIcon from '@mui/icons-material/BrightnessLowTwoTone'
 import MmsTwoToneIcon from '@mui/icons-material/MmsTwoTone'
@@ -18,7 +16,7 @@ import VerifiedUserTwoToneIcon from '@mui/icons-material/VerifiedUserTwoTone'
 
 export interface MenuItem {
 	link?: string
-	icon?: ReactNode
+	icon?: React.ComponentType
 	badge?: string
 	items?: MenuItem[]
 	name: string

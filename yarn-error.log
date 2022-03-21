@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add react-custom-scrollbars-2
+  /usr/local/bin/node /usr/local/bin/yarn add react-chartjs-2
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
@@ -14,11 +14,8 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: self signed certificate in certificate chain
-      at TLSSocket.onConnectSecure (node:_tls_wrap:1530:34)
-      at TLSSocket.emit (node:events:390:28)
-      at TLSSocket._finishInit (node:_tls_wrap:944:8)
-      at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:725:12)
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)
 
 npm manifest: 
   {
@@ -37,6 +34,7 @@ npm manifest:
   		"@hookform/error-message": "^2.0.0",
   		"@hookform/resolvers": "^2.8.8",
   		"@loadable/component": "^5.15.2",
+  		"@mui/icons-material": "^5.5.1",
   		"@mui/lab": "^5.0.0-alpha.73",
   		"@mui/material": "^5.5.1",
   		"@mui/styles": "^5.5.1",
@@ -49,8 +47,10 @@ npm manifest:
   		"jspdf-autotable": "^3.5.23",
   		"lodash-es": "^4.17.21",
   		"moment": "^2.29.1",
+  		"nprogress": "^0.2.0",
   		"react": "^17.0.2",
   		"react-activation": "^0.9.9",
+  		"react-custom-scrollbars-2": "^4.4.0",
   		"react-data-grid": "^7.0.0-beta.8",
   		"react-dom": "^17.0.2",
   		"react-helmet": "^6.1.0",
@@ -81,6 +81,7 @@ npm manifest:
   		"@types/loadable__component": "^5.13.4",
   		"@types/lodash-es": "^4.17.5",
   		"@types/node": "^17.0.14",
+  		"@types/nprogress": "^0.2.0",
   		"@types/react": "^17.0.33",
   		"@types/react-dom": "^17.0.10",
   		"@types/react-helmet": "^6.1.5",
@@ -1814,6 +1815,13 @@ Lockfile:
       clsx "^1.1.1"
       prop-types "^15.7.2"
       react-is "^17.0.2"
+  
+  "@mui/icons-material@^5.5.1":
+    version "5.5.1"
+    resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.5.1.tgz#848a57972617411370775980cbc6990588d4aafb"
+    integrity sha512-40f68p5+Yhq3dCn3QYHqQt5RETPyR3AkDw+fma8PtcjqvZ+d+jF84kFmT6NqwA3he7TlwluEtkyAmPzUE4uPdA==
+    dependencies:
+      "@babel/runtime" "^7.17.2"
   
   "@mui/lab@^5.0.0-alpha.73":
     version "5.0.0-alpha.73"
@@ -3613,6 +3621,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/npmlog/-/npmlog-4.1.4.tgz#30eb872153c7ead3e8688c476054ddca004115f6"
     integrity sha512-WKG4gTr8przEZBiJ5r3s8ZIAoMXNbOgQ+j/d5O4X3x6kZJRLNvyUJuUK/KoG3+8BaOHPhp2m7WC6JKKeovDSzQ==
   
+  "@types/nprogress@^0.2.0":
+    version "0.2.0"
+    resolved "https://registry.yarnpkg.com/@types/nprogress/-/nprogress-0.2.0.tgz#86c593682d4199212a0509cc3c4d562bbbd6e45f"
+    integrity sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==
+  
   "@types/overlayscrollbars@^1.12.0":
     version "1.12.1"
     resolved "https://registry.yarnpkg.com/@types/overlayscrollbars/-/overlayscrollbars-1.12.1.tgz#fb637071b545834fb12aea94ee309a2ff4cdc0a8"
@@ -4220,6 +4233,11 @@ Lockfile:
     version "8.7.0"
     resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.0.tgz#90951fde0f8f09df93549481e5fc141445b791cf"
     integrity sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ==
+  
+  add-px-to-style@1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/add-px-to-style/-/add-px-to-style-1.0.0.tgz#d0c135441fa8014a8137904531096f67f28f263a"
+    integrity sha1-0ME1RB+oAUqBN5BFMQlvZ/KPJjo=
   
   address@^1.0.1:
     version "1.1.2"
@@ -6229,6 +6247,15 @@ Lockfile:
     integrity sha512-gd3ypIPfOMr9h5jIKq8E3sHOTCjeirnl0WK5ZdS1AW0Odt0b1PaWaHdJ4Qk4klv+YB9aJBS7mESXjFoDQPu6DA==
     dependencies:
       utila "~0.4"
+  
+  dom-css@^2.0.0:
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/dom-css/-/dom-css-2.1.0.tgz#fdbc2d5a015d0a3e1872e11472bbd0e7b9e6a202"
+    integrity sha1-/bwtWgFdCj4YcuEUcrvQ57nmogI=
+    dependencies:
+      add-px-to-style "1.0.0"
+      prefix-style "2.0.1"
+      to-camel-case "1.0.0"
   
   dom-helpers@^5.0.1:
     version "5.2.1"
@@ -9785,6 +9812,11 @@ Lockfile:
       gauge "^3.0.0"
       set-blocking "^2.0.0"
   
+  nprogress@^0.2.0:
+    version "0.2.0"
+    resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+    integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
+  
   nth-check@^2.0.1:
     version "2.0.1"
     resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-2.0.1.tgz#2efe162f5c3da06a28959fbd3db75dbeea9f0fc2"
@@ -10475,6 +10507,11 @@ Lockfile:
       picocolors "^1.0.0"
       source-map-js "^1.0.2"
   
+  prefix-style@2.0.1:
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/prefix-style/-/prefix-style-2.0.1.tgz#66bba9a870cfda308a5dc20e85e9120932c95a06"
+    integrity sha1-ZrupqHDP2jCKXcIOhekSCTLJWgY=
+  
   prelude-ls@^1.2.1:
     version "1.2.1"
     resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
@@ -10601,7 +10638,7 @@ Lockfile:
       kleur "^3.0.3"
       sisteransi "^1.0.5"
   
-  prop-types@^15.0.0, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
+  prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
     version "15.8.1"
     resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
     integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -10719,7 +10756,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
     integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
   
-  raf@^3.4.1:
+  raf@^3.1.0, raf@^3.4.1:
     version "3.4.1"
     resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
     integrity sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==
@@ -11152,6 +11189,15 @@ Lockfile:
     version "5.5.1"
     resolved "https://registry.yarnpkg.com/react-colorful/-/react-colorful-5.5.1.tgz#29d9c4e496f2ca784dd2bb5053a3a4340cfaf784"
     integrity sha512-M1TJH2X3RXEt12sWkpa6hLc/bbYS0H6F4rIqjQZ+RxNBstpY67d9TrFXtqdZwhpmBXcCwEi7stKqFue3ZRkiOg==
+  
+  react-custom-scrollbars-2@^4.4.0:
+    version "4.4.0"
+    resolved "https://registry.yarnpkg.com/react-custom-scrollbars-2/-/react-custom-scrollbars-2-4.4.0.tgz#6cc237abc18f5ab32b5392b336e6f072c2b4cfc1"
+    integrity sha512-I+oxZ9rfHfvYm85jdH2lQqpzwNr/ZAdYB8htm6R/hwRGoIEK31jq+YE6MmFwBzuO7C5zcAtH5HN9vwZxnW61NQ==
+    dependencies:
+      dom-css "^2.0.0"
+      prop-types "^15.5.10"
+      raf "^3.1.0"
   
   react-data-grid@^7.0.0-beta.8:
     version "7.0.0-beta.8"
@@ -12770,10 +12816,22 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/to-arraybuffer/-/to-arraybuffer-1.0.1.tgz#7d229b1fcc637e466ca081180836a7aabff83f43"
     integrity sha1-fSKbH8xjfkZsoIEYCDanqr/4P0M=
   
+  to-camel-case@1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/to-camel-case/-/to-camel-case-1.0.0.tgz#1a56054b2f9d696298ce66a60897322b6f423e46"
+    integrity sha1-GlYFSy+daWKYzmamCJcyK29CPkY=
+    dependencies:
+      to-space-case "^1.0.0"
+  
   to-fast-properties@^2.0.0:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
     integrity sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=
+  
+  to-no-case@^1.0.0:
+    version "1.0.2"
+    resolved "https://registry.yarnpkg.com/to-no-case/-/to-no-case-1.0.2.tgz#c722907164ef6b178132c8e69930212d1b4aa16a"
+    integrity sha1-xyKQcWTvaxeBMsjmmTAhLRtKoWo=
   
   to-object-path@^0.3.0:
     version "0.3.0"
@@ -12806,6 +12864,13 @@ Lockfile:
       extend-shallow "^3.0.2"
       regex-not "^1.0.2"
       safe-regex "^1.1.0"
+  
+  to-space-case@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/to-space-case/-/to-space-case-1.0.0.tgz#b052daafb1b2b29dc770cea0163e5ec0ebc9fc17"
+    integrity sha1-sFLar7Gysp3HcM6gFj5ewOvJ/Bc=
+    dependencies:
+      to-no-case "^1.0.0"
   
   toggle-selection@^1.0.6:
     version "1.0.6"

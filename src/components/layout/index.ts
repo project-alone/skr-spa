@@ -4,3 +4,5 @@
  */
 
 export * from '@components/layout/RouterGuard'
+export * from '@components/layout/SidebarLayout'
+export * from '@components/layout/BaseLayout'

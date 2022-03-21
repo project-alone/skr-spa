@@ -6,7 +6,7 @@ import { Logo } from '@components/common'
 import { Box, Drawer, Hidden } from '@mui/material'
 
 import { styled } from '@mui/material/styles'
-import SidebarMenu from './SidebarMenu'
+import { SidebarMenu } from './SidebarMenu'
 
 const SidebarWrapper = styled(Box)(
 	({ theme }) => `
@@ -35,7 +35,7 @@ const TopSection = styled(Box)(
 `,
 )
 
-function Sidebar() {
+export const Sidebar: React.FC = () => {
 	const { sidebarToggle, toggleSidebar } = useContext(SidebarContext)
 	const closeSidebar = () => toggleSidebar()
 

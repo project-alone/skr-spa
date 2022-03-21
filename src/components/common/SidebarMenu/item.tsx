@@ -19,7 +19,7 @@ interface SidebarMenuItemProps {
 }
 
 const RouterNavLink = React.forwardRef<
-	any,
+	HTMLAnchorElement,
 	NavLinkProps & { activeClassName: string | NavLinkProps['className'] }
 >((props, ref) => {
 	return (
@@ -66,9 +66,7 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
 	return (
 		<ListItem component="div" key={name} {...rest}>
 			<Button
-				activeClassName={({ isActive }: { isActive: string }) =>
-					isActive ? 'Mui-active' : undefined
-				}
+				activeClassName="Mui-active"
 				component={RouterNavLink}
 				onClick={toggleSidebar}
 				to={link || ''}

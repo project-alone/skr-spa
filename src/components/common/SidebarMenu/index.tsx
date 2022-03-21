@@ -124,27 +124,19 @@ const SubMenuWrapper = styled(List)(
 `,
 )
 
-const renderSidebarMenuItems = ({
-	items,
-	path,
-}: {
-	items: MenuItem[]
-	path: string
-}): JSX.Element => (
+interface RenderSidebarMenuItems {
+	({ items, path }: { items: MenuItem[]; path: string }): JSX.Element
+}
+const renderSidebarMenuItems: RenderSidebarMenuItems = ({ items, path }) => (
 	<SubMenuWrapper>
-		{items.reduce((ev, item) => reduceChildRoutes({ ev, item, path }), [])}
+		{items.reduce((ev, item) => reduceChildRoutes({ ev, item, path }), [] as JSX.Element[])}
 	</SubMenuWrapper>
 )
 
-const reduceChildRoutes = ({
-	ev,
-	path,
-	item,
-}: {
-	ev: JSX.Element[]
-	path: string
-	item: MenuItem
-}): Array<JSX.Element> => {
+interface ReduceChildRoutes {
+	({ ev, path, item }: { ev: JSX.Element[]; path: string; item: MenuItem }): Array<JSX.Element>
+}
+const reduceChildRoutes: ReduceChildRoutes = ({ ev, path, item }) => {
 	const key = item.name
 
 	const exactMatch = item.link
