@@ -29,7 +29,11 @@ export default defineConfig(({ mode, command }) => {
 			}),
 			//
 			checker({
-				typescript: true,
+				typescript: {
+					tsconfigPath: './tsconfig.json',
+					root: './',
+					buildMode: process.env.NODE_ENV === 'production',
+				},
 			}),
 
 			visualizer({
@@ -74,6 +78,7 @@ export default defineConfig(({ mode, command }) => {
 				output: {
 					manualChunks: {
 						vendor: ['lodash-es', 'moment', 'axios'],
+						chart: ['chart.js'],
 						'react-data-grid': ['react-data-grid'],
 					},
 				},

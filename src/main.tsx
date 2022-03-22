@@ -1,3 +1,6 @@
+// styles
+import 'nprogress/nprogress.css'
+
 // external
 import React from 'react'
 import { render } from 'react-dom'
@@ -15,8 +18,28 @@ import { SidebarProvider } from '@context/Sidebar'
 import { Loading } from '@components/common'
 import App from './App'
 
-// styles
-import 'nprogress/nprogress.css'
+import {
+	Chart as ChartJS,
+	CategoryScale,
+	LinearScale,
+	PointElement,
+	LineElement,
+	ArcElement,
+	Title,
+	Tooltip,
+	Legend,
+} from 'chart.js'
+
+ChartJS.register(
+	CategoryScale,
+	LinearScale,
+	PointElement,
+	LineElement,
+	Title,
+	Tooltip,
+	Legend,
+	ArcElement,
+)
 
 // using env variables
 console.log(import.meta.env)

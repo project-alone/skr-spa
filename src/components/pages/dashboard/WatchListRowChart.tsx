@@ -78,9 +78,9 @@ export const WatchListRowChart: React.FC<WatchListRowChartProps> = ({
 				title: () => {
 					/** nothing */
 				},
-				label: (tooltipItem: any) => {
-					return `Price: $${tooltipItem.yLabel}`
-				},
+				// label: (tooltipItem) => {
+				// 	return `Price: $${tooltipItem.yLabel}`
+				// },
 			},
 		},
 	}

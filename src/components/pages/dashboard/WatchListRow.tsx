@@ -19,12 +19,6 @@ const LabelWrapper = styled(Box)(
 `,
 )
 
-const WatchListRowChartWrapper = styled(WatchListRowChart)(
-	({ theme }) => `
-        height: 100px;
-`,
-)
-
 export const WatchListRow: React.FC = () => {
 	const price = {
 		week: {
@@ -71,7 +65,8 @@ export const WatchListRow: React.FC = () => {
 							</Text>
 						</Box>
 						<Box height={100} sx={{ ml: -1.5 }}>
-							<WatchListRowChartWrapper
+							{/* height: 100px; */}
+							<WatchListRowChart
 								data={price.week.bitcoin}
 								labels={price.week.labels}
 							/>
@@ -115,7 +110,8 @@ export const WatchListRow: React.FC = () => {
 							</Text>
 						</Box>
 						<Box height={100} sx={{ ml: -1.5 }}>
-							<WatchListRowChartWrapper
+							{/* height: 100px; */}
+							<WatchListRowChart
 								data={price.week.ethereum}
 								labels={price.week.labels}
 							/>
@@ -156,7 +152,7 @@ export const WatchListRow: React.FC = () => {
 							</Text>
 						</Box>
 						<Box height={100} sx={{ ml: -1.5 }}>
-							<WatchListRowChartWrapper
+							<WatchListRowChart
 								data={price.week.cardano}
 								labels={price.week.labels}
 							/>

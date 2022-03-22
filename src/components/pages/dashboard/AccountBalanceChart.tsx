@@ -4,11 +4,14 @@ import { useTheme } from '@mui/material'
 
 import type { ChartProps } from 'react-chartjs-2'
 
-interface Props {
+interface AccountBalanceChartProps {
 	data: ChartProps<'doughnut'>['data']
 }
 
-export const AccountBalanceChart: React.FC<Props> = ({ data: dataProp, ...rest }) => {
+export const AccountBalanceChart: React.FC<AccountBalanceChartProps> = ({
+	data: dataProp,
+	...rest
+}) => {
 	const theme = useTheme()
 
 	const data = {

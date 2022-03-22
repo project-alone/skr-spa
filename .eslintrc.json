@@ -56,6 +56,12 @@
 				"storybook/default-exports": "off",
 				"import/no-anonymous-default-export": "off"
 			}
+		},
+		{
+			"files": ["./src/shared/lib/utils/chart.ts"],
+			"rules": {
+				"@typescript-eslint/ban-ts-comment": "off"
+			}
 		}
 	]
 }

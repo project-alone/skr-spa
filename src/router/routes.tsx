@@ -1,13 +1,14 @@
-import React from 'react'
 import loadable from '@loadable/component'
 import { /* RouterGuard, */ SidebarLayout, BaseLayout } from '@components/layout'
-// import { SuspenseLoader } from '@components/common'
 import { Navigate } from 'react-router-dom'
 // import KeepAlive from 'react-activation'
+import { SuspenseLoader } from '@components/common'
 
 import type { DefaultComponent } from '@loadable/component'
 import type { LoadableComponent } from '@loadable/component'
 import type { RouteObject } from 'react-router-dom'
+
+import Crypto from '@pages/dashboard/Crypto'
 
 /**
  * @description
@@ -16,7 +17,7 @@ import type { RouteObject } from 'react-router-dom'
  */
 function withLoading<Props>(loadFn: (props: Props) => Promise<DefaultComponent<Props>>) {
 	return loadable(loadFn, {
-		// fallback: <Loading />,
+		fallback: <SuspenseLoader />,
 	})
 }
 
@@ -53,7 +54,7 @@ export enum PageNames {
 	StatusMaintenance = 'StatusMaintenance',
 }
 
-const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps>> = {
+const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps> | (() => JSX.Element)> = {
 	// antd example
 	Home: withLoading(() => import('@pages/Home')),
 	Login: withLoading(() => import('@pages/Login')),
@@ -66,7 +67,8 @@ const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps>> = {
 	Overview: withLoading(() => import('@pages/Overview')),
 
 	// Dashboards
-	Crypto: withLoading(() => import('@pages/dashboard/Crypto')),
+	Crypto: Crypto,
+	// withLoading(() => import('@pages/dashboard/Crypto')),
 
 	// Applications
 	// Messenger: withLoading(() => import('@pages/applications/Messenger')),
@@ -148,7 +150,7 @@ const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps>> = {
 
 const routes: RouteObject[] = [
 	{
-		path: '*',
+		path: '/',
 		element: <BaseLayout />,
 		children: [
 			{
@@ -163,7 +165,7 @@ const routes: RouteObject[] = [
 				path: 'status',
 				children: [
 					{
-						path: '/',
+						path: '',
 						element: <Navigate to="404" replace />,
 					},
 					{
@@ -195,7 +197,7 @@ const routes: RouteObject[] = [
 		element: <SidebarLayout />,
 		children: [
 			{
-				path: '/',
+				path: '',
 				element: <Navigate to="/dashboards/crypto" replace />,
 			},
 			{
@@ -213,7 +215,7 @@ const routes: RouteObject[] = [
 		element: <SidebarLayout />,
 		children: [
 			{
-				path: '/',
+				path: '',
 				element: <Navigate to="/management/transactions" replace />,
 			},
 			{
@@ -224,7 +226,7 @@ const routes: RouteObject[] = [
 				path: 'profile',
 				children: [
 					{
-						path: '/',
+						path: '',
 						element: <Navigate to="details" replace />,
 					},
 					{
@@ -244,7 +246,7 @@ const routes: RouteObject[] = [
 		element: <SidebarLayout />,
 		children: [
 			{
-				path: '/',
+				path: '',
 				element: <Navigate to="/components/buttons" replace />,
 			},
 			{

@@ -68,7 +68,7 @@ export const WatchListColumn3: React.FC = () => {
 				</Box>
 			</Box>
 			<Box height={130} sx={{ ml: -1.5 }}>
-				<WatchListColumn1ChartWrapper data={price.week.data} labels={price.week.labels} />
+				<WatchListColumn1Chart data={price.week.data} labels={price.week.labels} />
 			</Box>
 		</Card>
 	)

@@ -26,7 +26,7 @@ import {
 
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone'
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone'
-import { BulkActions } from '@components/pages/application'
+import { BulkActions } from '@components/pages/application/transactions'
 import { Label } from '@components/common'
 import { SelectChangeEvent, SelectInputProps } from '@mui/material/Select/SelectInput'
 
