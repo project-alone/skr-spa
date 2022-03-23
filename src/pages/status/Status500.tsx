@@ -1,10 +1,8 @@
 import React from 'react'
-import { Box, Typography, Hidden, Container, Button, Grid } from '@mui/material'
 import { Helmet } from 'react-helmet-async'
-import RefreshTwoToneIcon from '@mui/icons-material/RefreshTwoTone'
+import { Box, Typography, Hidden, Container, Button, Grid, styled } from '@mui/material'
+import { RefreshTwoTone as RefreshTwoToneIcon } from '@mui/icons-material'
 import LoadingButton from '@mui/lab/LoadingButton'
-
-import { styled } from '@mui/material/styles'
 
 const GridWrapper = styled(Grid)(
 	({ theme }) => `

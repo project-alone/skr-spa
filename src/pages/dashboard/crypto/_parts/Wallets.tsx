@@ -8,10 +8,9 @@ import {
 	Avatar,
 	Tooltip,
 	CardActionArea,
+	styled,
 } from '@mui/material'
-
-import { styled } from '@mui/material/styles'
-import AddTwoToneIcon from '@mui/icons-material/AddTwoTone'
+import { AddTwoTone as AddTwoToneIcon } from '@mui/icons-material'
 
 const AvatarWrapper = styled(Avatar)(
 	({ theme }) => `

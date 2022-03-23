@@ -1,8 +1,8 @@
 import { Box } from '@mui/material'
-import HeaderSearch from './Search'
-import HeaderNotifications from './Notifications'
+import HeaderSearch from '@components/layout/SidebarLayout/Header/Buttons/Search'
+import HeaderNotifications from '@components/layout/SidebarLayout/Header/Buttons/Notifications'
 
-function HeaderButtons() {
+const HeaderButtons: React.FC = () => {
 	return (
 		<Box sx={{ mr: 1 }}>
 			<HeaderSearch />

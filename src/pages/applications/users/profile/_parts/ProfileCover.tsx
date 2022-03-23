@@ -7,13 +7,14 @@ import {
 	CardMedia,
 	Button,
 	IconButton,
+	styled,
 } from '@mui/material'
-import { styled } from '@mui/material/styles'
-
-import ArrowBackTwoToneIcon from '@mui/icons-material/ArrowBackTwoTone'
-import ArrowForwardTwoToneIcon from '@mui/icons-material/ArrowForwardTwoTone'
-import UploadTwoToneIcon from '@mui/icons-material/UploadTwoTone'
-import MoreHorizTwoToneIcon from '@mui/icons-material/MoreHorizTwoTone'
+import {
+	ArrowBackTwoTone as ArrowBackTwoToneIcon,
+	ArrowForwardTwoTone as ArrowForwardTwoToneIcon,
+	UploadTwoTone as UploadTwoToneIcon,
+	MoreHorizTwoTone as MoreHorizTwoToneIcon,
+} from '@mui/icons-material'
 
 const Input = styled('input')({
 	display: 'none',

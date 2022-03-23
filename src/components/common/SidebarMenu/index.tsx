@@ -1,8 +1,8 @@
-import { ListSubheader, List } from '@mui/material'
+import { ListSubheader, List, styled } from '@mui/material'
 import { useLocation, matchPath } from 'react-router-dom'
-import SidebarMenuItem from './item'
-import menuItems, { MenuItem } from './items'
-import { styled } from '@mui/material/styles'
+import SidebarMenuItem from '@components/common/SidebarMenu/item'
+import menuItems from '@components/common/SidebarMenu/items'
+import type { MenuItem } from '@components/common/SidebarMenu/items'
 
 const MenuWrapper = styled(List)(
 	({ theme }) => `

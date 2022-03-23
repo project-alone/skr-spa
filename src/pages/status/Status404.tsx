@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import {
 	Box,
 	Card,
@@ -8,11 +9,9 @@ import {
 	FormControl,
 	OutlinedInput,
 	InputAdornment,
+	styled,
 } from '@mui/material'
-import { Helmet } from 'react-helmet-async'
-import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone'
-
-import { styled } from '@mui/material/styles'
+import { SearchTwoTone as SearchTwoToneIcon } from '@mui/icons-material'
 
 const MainContent = styled(Box)(
 	({ theme }) => `

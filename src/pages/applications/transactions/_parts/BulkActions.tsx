@@ -1,5 +1,4 @@
 import React from 'react'
-
 import {
 	Box,
 	Menu,
@@ -9,11 +8,12 @@ import {
 	ListItem,
 	List,
 	Typography,
+	styled,
 } from '@mui/material'
-import { styled } from '@mui/material/styles'
-
-import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone'
-import MoreVertTwoToneIcon from '@mui/icons-material/MoreVertTwoTone'
+import {
+	DeleteTwoTone as DeleteTwoToneIcon,
+	MoreVertTwoTone as MoreVertTwoToneIcon,
+} from '@mui/icons-material'
 
 const ButtonError = styled(Button)(
 	({ theme }) => `

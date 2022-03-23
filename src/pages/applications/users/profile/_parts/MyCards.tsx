@@ -14,10 +14,12 @@ import {
 	Tooltip,
 	IconButton,
 	Avatar,
+	styled,
 } from '@mui/material'
-import { styled } from '@mui/material/styles'
-import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone'
-import AddTwoToneIcon from '@mui/icons-material/AddTwoTone'
+import {
+	DeleteTwoTone as DeleteTwoToneIcon,
+	AddTwoTone as AddTwoToneIcon,
+} from '@mui/icons-material'
 
 const AvatarAddWrapper = styled(Avatar)(
 	({ theme }) => `

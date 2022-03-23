@@ -1,9 +1,9 @@
-import { Box, Typography, Card, CardHeader, Divider, Avatar, useTheme } from '@mui/material'
-import { styled } from '@mui/material/styles'
-
-import ShoppingBagTwoToneIcon from '@mui/icons-material/ShoppingBagTwoTone'
-import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone'
-import StarTwoToneIcon from '@mui/icons-material/StarTwoTone'
+import { Box, Typography, Card, CardHeader, Divider, Avatar, useTheme, styled } from '@mui/material'
+import {
+	ShoppingBagTwoTone as ShoppingBagTwoToneIcon,
+	FavoriteTwoTone as FavoriteTwoToneIcon,
+	StarTwoTone as StarTwoToneIcon,
+} from '@mui/icons-material'
 
 const AvatarPrimary = styled(Avatar)(
 	({ theme }) => `

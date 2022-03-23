@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from '@mui/material'
-import { themeCreator } from './base'
+import { themeCreator } from '@styles/theme/base'
 import { StylesProvider } from '@mui/styles'
 
 export const ThemeContext = React.createContext((themeName: string): void => {

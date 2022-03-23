@@ -1,7 +1,6 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
-import { Box } from '@mui/material'
 import { Outlet } from 'react-router-dom'
+import { Box, styled } from '@mui/material'
 
 import { Sidebar } from '@components/layout/SidebarLayout/Sidebar'
 import { Header } from '@components/layout/SidebarLayout/Header'

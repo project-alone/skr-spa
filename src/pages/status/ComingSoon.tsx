@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 import {
 	Box,
 	Typography,
@@ -11,13 +12,14 @@ import {
 	InputAdornment,
 	Button,
 	FormHelperText,
+	styled,
 } from '@mui/material'
-import { Helmet } from 'react-helmet-async'
-import { styled } from '@mui/material/styles'
-import FacebookIcon from '@mui/icons-material/Facebook'
-import TwitterIcon from '@mui/icons-material/Twitter'
-import InstagramIcon from '@mui/icons-material/Instagram'
-import MailTwoToneIcon from '@mui/icons-material/MailTwoTone'
+import {
+	Facebook as FacebookIcon,
+	Twitter as TwitterIcon,
+	Instagram as InstagramIcon,
+	MailTwoTone as MailTwoToneIcon,
+} from '@mui/icons-material'
 import { LogoSign } from '@components/common'
 
 const MainContent = styled(Box)(

@@ -10,8 +10,8 @@ import {
 	ListItemText,
 	Avatar,
 	useTheme,
+	styled,
 } from '@mui/material'
-import { styled } from '@mui/material/styles'
 
 const ListWrapper = styled(List)(
 	() => `

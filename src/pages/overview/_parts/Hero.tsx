@@ -1,8 +1,5 @@
-import { Box, Button, Container, Grid, Typography } from '@mui/material'
-
+import { Box, Button, Container, Grid, Typography, styled } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
-
-import { styled } from '@mui/material/styles'
 
 const TypographyH1 = styled(Typography)(
 	({ theme }) => `

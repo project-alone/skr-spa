@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { NavLink } from 'react-router-dom'
-
 import {
 	Avatar,
 	Box,
@@ -14,14 +12,15 @@ import {
 	ListItemText,
 	Popover,
 	Typography,
+	styled,
 } from '@mui/material'
-
-import InboxTwoToneIcon from '@mui/icons-material/InboxTwoTone'
-import { styled } from '@mui/material/styles'
-import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone'
-import AccountBoxTwoToneIcon from '@mui/icons-material/AccountBoxTwoTone'
-import LockOpenTwoToneIcon from '@mui/icons-material/LockOpenTwoTone'
-import AccountTreeTwoToneIcon from '@mui/icons-material/AccountTreeTwoTone'
+import {
+	InboxTwoTone as InboxTwoToneIcon,
+	ExpandMoreTwoTone as ExpandMoreTwoToneIcon,
+	AccountBoxTwoTone as AccountBoxTwoToneIcon,
+	LockOpenTwoTone as LockOpenTwoToneIcon,
+	AccountTreeTwoTone as AccountTreeTwoToneIcon,
+} from '@mui/icons-material'
 
 const UserBoxButton = styled(Button)(
 	({ theme }) => `

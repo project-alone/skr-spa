@@ -1,12 +1,9 @@
 import React from 'react'
 import { Scrollbars } from 'react-custom-scrollbars-2'
+import { Box, Drawer, Hidden, styled } from '@mui/material'
 import { SidebarContext } from '@context/Sidebar'
 import { Logo } from '@components/common'
-
-import { Box, Drawer, Hidden } from '@mui/material'
-
-import { styled } from '@mui/material/styles'
-import SidebarMenu from './SidebarMenu'
+import SidebarMenu from '@components/layout/SidebarLayout/Sidebar/SidebarMenu'
 
 const SidebarWrapper = styled(Box)(
 	({ theme }) => `

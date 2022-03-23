@@ -1,10 +1,10 @@
-import { Box, Typography, Container, Divider, IconButton, Tooltip } from '@mui/material'
 import { Helmet } from 'react-helmet-async'
-
-import { styled } from '@mui/material/styles'
-import FacebookIcon from '@mui/icons-material/Facebook'
-import TwitterIcon from '@mui/icons-material/Twitter'
-import InstagramIcon from '@mui/icons-material/Instagram'
+import { Box, Typography, Container, Divider, IconButton, Tooltip, styled } from '@mui/material'
+import {
+	Facebook as FacebookIcon,
+	Twitter as TwitterIcon,
+	Instagram as InstagramIcon,
+} from '@mui/icons-material'
 import { LogoSign } from '@components/common'
 
 const MainContent = styled(Box)(

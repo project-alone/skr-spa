@@ -1,6 +1,14 @@
-import { Button, Card, Box, CardActions, Grid, Typography, Avatar, Divider } from '@mui/material'
-
-import { styled } from '@mui/material/styles'
+import {
+	Button,
+	Card,
+	Box,
+	CardActions,
+	Grid,
+	Typography,
+	Avatar,
+	Divider,
+	styled,
+} from '@mui/material'
 import { Label, Text } from '@components/common'
 import { WatchListRowChart } from '@pages/dashboard/crypto/_parts/WatchListRowChart'
 

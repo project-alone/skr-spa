@@ -9,12 +9,13 @@ import {
 	Switch,
 	ListItemAvatar,
 	Avatar,
+	styled,
 } from '@mui/material'
-
-import { styled } from '@mui/material/styles'
-import LockTwoToneIcon from '@mui/icons-material/LockTwoTone'
-import PhoneLockedTwoToneIcon from '@mui/icons-material/PhoneLockedTwoTone'
-import EmailTwoToneIcon from '@mui/icons-material/EmailTwoTone'
+import {
+	LockTwoTone as LockTwoToneIcon,
+	PhoneLockedTwoTone as PhoneLockedTwoToneIcon,
+	EmailTwoTone as EmailTwoToneIcon,
+} from '@mui/icons-material'
 import { Text } from '@components/common'
 
 const AvatarWrapperError = styled(Avatar)(

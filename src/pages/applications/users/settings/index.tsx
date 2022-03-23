@@ -1,8 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Container, Tabs, Tab, Grid } from '@mui/material'
-import { styled } from '@mui/material/styles'
-
+import { Container, Tabs, Tab, Grid, styled } from '@mui/material'
 import { PageTitleWrapper, Footer, PageHeader } from '@components/common'
 import { ActivityTab } from '@pages/applications/users/settings/_parts/ActivityTab'
 import { EditProfileTab } from '@pages/applications/users/settings/_parts/EditProfileTab'

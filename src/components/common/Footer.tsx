@@ -1,5 +1,4 @@
-import { Box, Container, Link, Typography } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import { Box, Container, Link, Typography, styled } from '@mui/material'
 
 const FooterWrapper = styled(Box)(
 	({ theme }) => `

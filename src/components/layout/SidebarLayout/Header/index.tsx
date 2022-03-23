@@ -1,14 +1,13 @@
 import React from 'react'
-
-import { Box, Hidden, IconButton, Tooltip } from '@mui/material'
-import { styled } from '@mui/material/styles'
-import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone'
+import { Box, Hidden, IconButton, Tooltip, styled } from '@mui/material'
+import {
+	MenuTwoTone as MenuTwoToneIcon,
+	CloseTwoTone as CloseTwoToneIcon,
+} from '@mui/icons-material'
 import { SidebarContext } from '@context/Sidebar'
-import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone'
-
-import HeaderMenu from './Menu'
-import HeaderButtons from './Buttons'
-import HeaderUserbox from './Userbox'
+import HeaderMenu from '@components/layout/SidebarLayout/Header/Menu'
+import HeaderButtons from '@components/layout/SidebarLayout/Header/Buttons'
+import HeaderUserbox from '@components/layout/SidebarLayout/Header/Userbox'
 import { Logo } from '@components/common'
 
 const HeaderWrapper = styled(Box)(

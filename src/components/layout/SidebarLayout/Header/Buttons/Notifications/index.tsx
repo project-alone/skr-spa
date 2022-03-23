@@ -10,9 +10,9 @@ import {
 	Popover,
 	Tooltip,
 	Typography,
+	styled,
 } from '@mui/material'
-import NotificationsActiveTwoToneIcon from '@mui/icons-material/NotificationsActiveTwoTone'
-import { styled } from '@mui/material/styles'
+import { NotificationsActiveTwoTone as NotificationsActiveTwoToneIcon } from '@mui/icons-material'
 
 import { formatDistance, subDays } from 'date-fns'
 

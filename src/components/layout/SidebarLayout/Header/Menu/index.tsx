@@ -1,8 +1,7 @@
 import React from 'react'
-import { Box, List, ListItem, ListItemText, Menu, MenuItem } from '@mui/material'
+import { Box, List, ListItem, ListItemText, Menu, MenuItem, styled } from '@mui/material'
 import { NavLink } from 'react-router-dom'
-import { styled } from '@mui/material/styles'
-import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone'
+import { ExpandMoreTwoTone as ExpandMoreTwoToneIcon } from '@mui/icons-material'
 
 const ListWrapper = styled(Box)(
 	({ theme }) => `

@@ -20,13 +20,14 @@ import {
 	DialogTitle,
 	Slide,
 	Hidden,
+	styled,
 } from '@mui/material'
-import { styled } from '@mui/material/styles'
 import { TransitionProps } from '@mui/material/transitions'
-import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone'
-import FindInPageTwoToneIcon from '@mui/icons-material/FindInPageTwoTone'
-
-import ChevronRightTwoToneIcon from '@mui/icons-material/ChevronRightTwoTone'
+import {
+	SearchTwoTone as SearchTwoToneIcon,
+	FindInPageTwoTone as FindInPageTwoToneIcon,
+	ChevronRightTwoTone as ChevronRightTwoToneIcon,
+} from '@mui/icons-material'
 
 const Transition = React.forwardRef<
 	HTMLDivElement,
