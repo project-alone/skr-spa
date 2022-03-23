@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import React from 'react'
 import { styled } from '@mui/material/styles'
 import { Box } from '@mui/material'
 import { Outlet } from 'react-router-dom'
@@ -6,9 +6,8 @@ import { Outlet } from 'react-router-dom'
 import { Sidebar } from '@components/layout/SidebarLayout/Sidebar'
 import { Header } from '@components/layout/SidebarLayout/Header'
 
-interface SidebarLayoutProps {
-	children?: ReactNode
-}
+// interface SidebarLayoutProps {
+// }
 
 const MainWrapper = styled(Box)(
 	({ theme }) => `
@@ -30,7 +29,7 @@ const MainContent = styled(Box)(
 `,
 )
 
-export const SidebarLayout: FC<SidebarLayoutProps> = () => {
+export const SidebarLayout: React.FC = () => {
 	return (
 		<>
 			<Sidebar />

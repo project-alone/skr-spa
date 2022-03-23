@@ -1,8 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { Grid, Container } from '@mui/material'
 
-import { PageTitleWrapper, Footer } from '@components/common'
-import { PageHeader } from '@pages/dashboard/crypto/_parts/PageHeader'
+import { PageTitleWrapper, Footer, PageHeader } from '@components/common'
 import { AccountBalance } from '@pages/dashboard/crypto/_parts/AccountBalance'
 import { Wallets } from '@pages/dashboard/crypto/_parts/Wallets'
 import { AccountSecurity } from '@pages/dashboard/crypto/_parts/AccountSecurity'
@@ -15,7 +14,11 @@ const DashboardCrypto = () => {
 				<title>Crypto Dashboard</title>
 			</Helmet>
 			<PageTitleWrapper>
-				<PageHeader />
+				<PageHeader
+					avatar="/static/images/avatars/1.jpg"
+					title="Welcome, Catherine Pike!"
+					subtitle="Today is a good day to start trading crypto assets!"
+				/>
 			</PageTitleWrapper>
 			<Container maxWidth="lg">
 				<Grid

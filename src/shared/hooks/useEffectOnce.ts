@@ -1,8 +1,8 @@
-import { EffectCallback, useEffect } from 'react'
+import React from 'react'
 
-const useEffectOnce = (effect: EffectCallback) => {
+const useEffectOnce = (effect: React.EffectCallback) => {
 	// eslint-disable-next-line
-	useEffect(effect, [])
+	React.useEffect(effect, [])
 }
 
 export default useEffectOnce

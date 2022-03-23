@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import React from 'react'
 
 import {
 	Box,
@@ -27,8 +27,8 @@ const ButtonError = styled(Button)(
 )
 
 export const BulkActions: React.FC = () => {
-	const [onMenuOpen, menuOpen] = useState<boolean>(false)
-	const moreRef = useRef<HTMLButtonElement | null>(null)
+	const [onMenuOpen, menuOpen] = React.useState<boolean>(false)
+	const moreRef = React.useRef<HTMLButtonElement | null>(null)
 
 	const openMenu = (): void => {
 		menuOpen(true)

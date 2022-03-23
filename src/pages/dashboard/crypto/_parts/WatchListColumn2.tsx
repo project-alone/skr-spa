@@ -11,6 +11,12 @@ const AvatarWrapper = styled(Avatar)(
 `,
 )
 
+const WatchListColumn1ChartWrapper = styled(WatchListColumn1Chart)(
+	() => `
+          height: 130px;
+  `,
+)
+
 export const WatchListColumn2: React.FC = () => {
 	const price = {
 		week: {
@@ -63,7 +69,7 @@ export const WatchListColumn2: React.FC = () => {
 			</Box>
 			<Box height={130} sx={{ ml: -1.5 }}>
 				{/* height: 130px; */}
-				<WatchListColumn1Chart data={price.week.data} labels={price.week.labels} />
+				<WatchListColumn1ChartWrapper data={price.week.data} labels={price.week.labels} />
 			</Box>
 		</Card>
 	)

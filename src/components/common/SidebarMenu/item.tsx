@@ -5,8 +5,10 @@ import { SidebarContext } from '@context/Sidebar'
 
 import { Button, Badge, Collapse, ListItem } from '@mui/material'
 
-import ExpandLessTwoToneIcon from '@mui/icons-material/ExpandLessTwoTone'
-import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone'
+import {
+	ExpandLessTwoTone as ExpandLessTwoToneIcon,
+	ExpandMoreTwoTone as ExpandMoreTwoToneIcon,
+} from '@mui/icons-material'
 
 interface SidebarMenuItemProps {
 	children?: React.ReactNode

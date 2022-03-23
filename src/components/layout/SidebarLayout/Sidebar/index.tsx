@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import React from 'react'
 import { Scrollbars } from 'react-custom-scrollbars-2'
 import { SidebarContext } from '@context/Sidebar'
 import { Logo } from '@components/common'
@@ -36,7 +36,7 @@ const TopSection = styled(Box)(
 )
 
 export const Sidebar: React.FC = () => {
-	const { sidebarToggle, toggleSidebar } = useContext(SidebarContext)
+	const { sidebarToggle, toggleSidebar } = React.useContext(SidebarContext)
 	const closeSidebar = () => toggleSidebar()
 
 	return (

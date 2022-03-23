@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react'
+import React from 'react'
 import {
 	Box,
 	Typography,
@@ -12,14 +12,14 @@ import {
 } from '@mui/material'
 
 export const NotificationsTab: React.FC = () => {
-	const [state, setState] = useState({
+	const [state, setState] = React.useState({
 		checkedA: true,
 		checkedB: false,
 		checkedC: true,
 		checkedD: false,
 	})
 
-	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setState({
 			...state,
 			[event.target.name]: event.target.checked,

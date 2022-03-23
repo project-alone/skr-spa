@@ -4,7 +4,6 @@
  */
 
 export * from '@components/common/Logo'
-export * from '@components/common/Anchor'
 export * from '@components/common/Loading'
 export * from '@components/common/SuspenseLoader'
 export * from '@components/common/LogSign'
@@ -13,3 +12,4 @@ export * from '@components/common/Footer'
 export * from '@components/common/Text'
 export * from '@components/common/Label'
 export * from '@components/common/PageTitle'
+export * from '@components/common/PageHeader'

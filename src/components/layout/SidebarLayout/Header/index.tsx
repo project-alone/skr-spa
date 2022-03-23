@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import React from 'react'
 
 import { Box, Hidden, IconButton, Tooltip } from '@mui/material'
 import { styled } from '@mui/material/styles'
@@ -31,7 +31,7 @@ const HeaderWrapper = styled(Box)(
 )
 
 export const Header: React.FC = () => {
-	const { sidebarToggle, toggleSidebar } = useContext(SidebarContext)
+	const { sidebarToggle, toggleSidebar } = React.useContext(SidebarContext)
 
 	return (
 		<HeaderWrapper display="flex" alignItems="center">

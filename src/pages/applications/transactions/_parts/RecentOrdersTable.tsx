@@ -1,4 +1,4 @@
-import { FC, ChangeEvent, useState } from 'react'
+import React from 'react'
 import { format } from 'date-fns'
 import numeral from 'numeral'
 import {
@@ -105,12 +105,12 @@ const applyPagination = (
 	return cryptoOrders.slice(page * limit, page * limit + limit)
 }
 
-export const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders = [] }) => {
-	const [selectedCryptoOrders, setSelectedCryptoOrders] = useState<string[]>([])
+export const RecentOrdersTable: React.FC<RecentOrdersTableProps> = ({ cryptoOrders = [] }) => {
+	const [selectedCryptoOrders, setSelectedCryptoOrders] = React.useState<string[]>([])
 	const selectedBulkActions = selectedCryptoOrders.length > 0
-	const [page, setPage] = useState<number>(0)
-	const [limit, setLimit] = useState<number>(5)
-	const [filters, setFilters] = useState<Filters>({
+	const [page, setPage] = React.useState<number>(0)
+	const [limit, setLimit] = React.useState<number>(5)
+	const [filters, setFilters] = React.useState<Filters>({
 		status: undefined,
 	})
 
@@ -134,14 +134,14 @@ export const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders = [
 		}))
 	}
 
-	const handleSelectAllCryptoOrders = (event: ChangeEvent<HTMLInputElement>): void => {
+	const handleSelectAllCryptoOrders = (event: React.ChangeEvent<HTMLInputElement>): void => {
 		setSelectedCryptoOrders(
 			event.target.checked ? cryptoOrders.map((cryptoOrder) => cryptoOrder.id) : [],
 		)
 	}
 
 	const handleSelectOneCryptoOrder = (
-		event: ChangeEvent<HTMLInputElement>,
+		event: React.ChangeEvent<HTMLInputElement>,
 		cryptoOrderId: string,
 	): void => {
 		if (!selectedCryptoOrders.includes(cryptoOrderId)) {
@@ -163,7 +163,7 @@ export const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders = [
 		setPage(newPage)
 	}
 
-	const handleLimitChange = (event: ChangeEvent<HTMLInputElement>): void => {
+	const handleLimitChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
 		setLimit(parseInt(event.target.value))
 	}
 
@@ -239,9 +239,9 @@ export const RecentOrdersTable: FC<RecentOrdersTableProps> = ({ cryptoOrders = [
 										<Checkbox
 											color="primary"
 											checked={isCryptoOrderSelected}
-											onChange={(event: ChangeEvent<HTMLInputElement>) =>
-												handleSelectOneCryptoOrder(event, cryptoOrder.id)
-											}
+											onChange={(
+												event: React.ChangeEvent<HTMLInputElement>,
+											) => handleSelectOneCryptoOrder(event, cryptoOrder.id)}
 											value={isCryptoOrderSelected}
 										/>
 									</TableCell>

@@ -3,8 +3,7 @@ import { Helmet } from 'react-helmet-async'
 import { Container, Tabs, Tab, Grid } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-import { PageTitleWrapper, Footer } from '@components/common'
-import { PageHeader } from '@pages/applications/users/settings/_parts/PageHeader'
+import { PageTitleWrapper, Footer, PageHeader } from '@components/common'
 import { ActivityTab } from '@pages/applications/users/settings/_parts/ActivityTab'
 import { EditProfileTab } from '@pages/applications/users/settings/_parts/EditProfileTab'
 import { NotificationsTab } from '@pages/applications/users/settings/_parts/NotificationsTab'
@@ -38,7 +37,11 @@ const ManagementUserSettings: React.FC = () => {
 				<title>User Settings - Applications</title>
 			</Helmet>
 			<PageTitleWrapper>
-				<PageHeader />
+				<PageHeader
+					title="User Settings"
+					subtitle="Catherine Pike, this could be your user settings panel."
+					avatar="/static/images/avatars/1.jpg"
+				/>
 			</PageTitleWrapper>
 			<Container maxWidth="lg">
 				<Grid

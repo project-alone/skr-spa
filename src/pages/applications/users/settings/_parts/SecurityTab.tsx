@@ -1,4 +1,4 @@
-import { useState, MouseEvent, ChangeEvent } from 'react'
+import React from 'react'
 import {
 	Box,
 	Typography,
@@ -23,11 +23,12 @@ import {
 	TableRow,
 	TableContainer,
 	useTheme,
+	styled,
 } from '@mui/material'
-import { styled } from '@mui/material/styles'
-
-import DoneTwoToneIcon from '@mui/icons-material/DoneTwoTone'
-import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone'
+import {
+	DoneTwoTone as DoneTwoToneIcon,
+	DeleteTwoTone as DeleteTwoToneIcon,
+} from '@mui/icons-material'
 import { format, subHours, subWeeks, subDays } from 'date-fns'
 
 const ButtonError = styled(Button)(
@@ -59,15 +60,18 @@ const AvatarWrapper = styled(Avatar)(
 export const SecurityTab: React.FC = () => {
 	const theme = useTheme()
 
-	const [page, setPage] = useState(2)
-	const [rowsPerPage, setRowsPerPage] = useState(10)
+	const [page, setPage] = React.useState(2)
+	const [rowsPerPage, setRowsPerPage] = React.useState(10)
 
-	const handleChangePage = (event: MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+	const handleChangePage = (
+		event: React.MouseEvent<HTMLButtonElement> | null,
+		newPage: number,
+	) => {
 		setPage(newPage)
 	}
 
 	const handleChangeRowsPerPage = (
-		event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => {
 		setRowsPerPage(parseInt(event.target.value, 10))
 		setPage(0)

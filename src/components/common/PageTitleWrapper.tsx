@@ -1,8 +1,7 @@
 import React from 'react'
-import { Box, Container } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import { Box, Container, styled } from '@mui/material'
 
-const PageTitle = styled(Box)(
+const StyledWrapper = styled(Box)(
 	({ theme }) => `
         padding: ${theme.spacing(4, 0)};
 `,
@@ -15,9 +14,9 @@ const PageTitle = styled(Box)(
 export const PageTitleWrapper: React.FC = ({ children }) => {
 	return (
 		<>
-			<PageTitle>
+			<StyledWrapper>
 				<Container maxWidth="lg">{children}</Container>
-			</PageTitle>
+			</StyledWrapper>
 		</>
 	)
 }

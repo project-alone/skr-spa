@@ -1,14 +1,13 @@
-import { cloneElement } from 'react'
+import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { faker } from '@faker-js/faker'
 import { utils, writeFile } from 'xlsx'
 import { jsPDF } from 'jspdf'
 import autoTable from 'jspdf-autotable'
-import type { ReactElement } from 'react'
 import type { DataGridProps } from 'react-data-grid'
 
 export async function exportToCsv<R, SR>(
-	gridElement: ReactElement<DataGridProps<R, SR>>,
+	gridElement: React.ReactElement<DataGridProps<R, SR>>,
 	fileName: string,
 ) {
 	const { head, body, foot } = await getGridContent(gridElement)
@@ -20,7 +19,7 @@ export async function exportToCsv<R, SR>(
 }
 
 export function exportToXlsx<R, SR>(
-	gridElement: ReactElement<DataGridProps<R, SR>>,
+	gridElement: React.ReactElement<DataGridProps<R, SR>>,
 	fileName: string,
 ) {
 	const { head, body, foot } = getGridContent(gridElement)
@@ -31,7 +30,7 @@ export function exportToXlsx<R, SR>(
 }
 
 export async function exportToPdf<R, SR>(
-	gridElement: ReactElement<DataGridProps<R, SR>>,
+	gridElement: React.ReactElement<DataGridProps<R, SR>>,
 	fileName: string,
 ) {
 	const { head, body, foot } = getGridContent(gridElement)
@@ -51,10 +50,10 @@ export async function exportToPdf<R, SR>(
 	doc.save(fileName)
 }
 
-function getGridContent<R, SR>(gridElement: ReactElement<DataGridProps<R, SR>>) {
+function getGridContent<R, SR>(gridElement: React.ReactElement<DataGridProps<R, SR>>) {
 	const grid = document.createElement('div')
 	grid.innerHTML = renderToStaticMarkup(
-		cloneElement(gridElement, {
+		React.cloneElement(gridElement, {
 			enableVirtualization: false,
 		}),
 	)
