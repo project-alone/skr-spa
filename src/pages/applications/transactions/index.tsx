@@ -1,21 +1,15 @@
 import { Helmet } from 'react-helmet-async'
 import { Grid, Container } from '@mui/material'
-
 import { PageTitleWrapper, Footer } from '@components/common'
 
-import {
-	PageHeader,
-	AccountBalance,
-	Wallets,
-	AccountSecurity,
-	WatchList,
-} from '@components/pages/dashboard'
+import { PageHeader } from '@pages/applications/transactions/_parts/PageHeader'
+import { RecentOrders } from '@pages/applications/transactions/_parts/RecentOrders'
 
-const DashboardCrypto = () => {
+const ApplicationsTransactions: React.FC = () => {
 	return (
 		<>
 			<Helmet>
-				<title>Crypto Dashboard</title>
+				<title>Transactions - Applications</title>
 			</Helmet>
 			<PageTitleWrapper>
 				<PageHeader />
@@ -28,16 +22,7 @@ const DashboardCrypto = () => {
 					alignItems="stretch"
 					spacing={3}>
 					<Grid item xs={12}>
-						<AccountBalance />
-					</Grid>
-					<Grid item lg={8} xs={12}>
-						<Wallets />
-					</Grid>
-					<Grid item lg={4} xs={12}>
-						<AccountSecurity />
-					</Grid>
-					<Grid item xs={12}>
-						<WatchList />
+						<RecentOrders />
 					</Grid>
 				</Grid>
 			</Container>
@@ -46,4 +31,4 @@ const DashboardCrypto = () => {
 	)
 }
 
-export default DashboardCrypto
+export default ApplicationsTransactions

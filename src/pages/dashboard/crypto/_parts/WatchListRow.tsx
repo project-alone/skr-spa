@@ -2,7 +2,7 @@ import { Button, Card, Box, CardActions, Grid, Typography, Avatar, Divider } fro
 
 import { styled } from '@mui/material/styles'
 import { Label, Text } from '@components/common'
-import { WatchListRowChart } from '@components/pages/dashboard'
+import { WatchListRowChart } from '@pages/dashboard/crypto/_parts/WatchListRowChart'
 
 const AvatarWrapper = styled(Avatar)(
 	({ theme }) => `

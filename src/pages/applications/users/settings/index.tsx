@@ -4,13 +4,11 @@ import { Container, Tabs, Tab, Grid } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 import { PageTitleWrapper, Footer } from '@components/common'
-import {
-	PageHeader,
-	ActivityTab,
-	EditProfileTab,
-	NotificationsTab,
-	SecurityTab,
-} from '@components/pages/application/users/settings'
+import { PageHeader } from '@pages/applications/users/settings/_parts/PageHeader'
+import { ActivityTab } from '@pages/applications/users/settings/_parts/ActivityTab'
+import { EditProfileTab } from '@pages/applications/users/settings/_parts/EditProfileTab'
+import { NotificationsTab } from '@pages/applications/users/settings/_parts/NotificationsTab'
+import { SecurityTab } from '@pages/applications/users/settings/_parts/SecurityTab'
 
 const TabsWrapper = styled(Tabs)(
 	() => `

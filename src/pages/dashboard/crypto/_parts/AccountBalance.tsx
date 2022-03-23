@@ -11,11 +11,10 @@ import {
 	ListItemText,
 	List,
 	ListItemAvatar,
+	styled,
 } from '@mui/material'
-
-import { styled } from '@mui/material/styles'
-import TrendingUp from '@mui/icons-material/TrendingUp'
-import { AccountBalanceChart } from '@components/pages/dashboard'
+import { TrendingUp } from '@mui/icons-material'
+import { AccountBalanceChart } from '@pages/dashboard/crypto/_parts/AccountBalanceChart'
 import { Text } from '@components/common'
 
 const AccountBalanceChartWrapper = styled(AccountBalanceChart)(

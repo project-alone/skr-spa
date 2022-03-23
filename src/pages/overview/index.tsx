@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async'
 
 import { styled } from '@mui/material/styles'
 import { LogoSign } from '@components/common'
-import { Hero } from '@components/pages/overview'
+import { Hero } from '@pages/overview/_parts/Hero'
 
 const OverviewWrapper = styled(Box)(
 	() => `

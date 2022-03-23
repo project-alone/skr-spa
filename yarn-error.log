@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add react-chartjs-2
+  /usr/local/bin/node /usr/local/bin/yarn add react-use
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
@@ -14,8 +14,11 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
-      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)
+  Error: self signed certificate in certificate chain
+      at TLSSocket.onConnectSecure (node:_tls_wrap:1530:34)
+      at TLSSocket.emit (node:events:390:28)
+      at TLSSocket._finishInit (node:_tls_wrap:944:8)
+      at TLSWrap.ssl.onhandshakedone (node:_tls_wrap:725:12)
 
 npm manifest: 
   {
@@ -48,8 +51,10 @@ npm manifest:
   		"lodash-es": "^4.17.21",
   		"moment": "^2.29.1",
   		"nprogress": "^0.2.0",
+  		"numeral": "^2.0.6",
   		"react": "^17.0.2",
   		"react-activation": "^0.9.9",
+  		"react-chartjs-2": "^4.0.1",
   		"react-custom-scrollbars-2": "^4.4.0",
   		"react-data-grid": "^7.0.0-beta.8",
   		"react-dom": "^17.0.2",
@@ -82,6 +87,7 @@ npm manifest:
   		"@types/lodash-es": "^4.17.5",
   		"@types/node": "^17.0.14",
   		"@types/nprogress": "^0.2.0",
+  		"@types/numeral": "^2.0.2",
   		"@types/react": "^17.0.33",
   		"@types/react-dom": "^17.0.10",
   		"@types/react-helmet": "^6.1.5",
@@ -3625,6 +3631,11 @@ Lockfile:
     version "0.2.0"
     resolved "https://registry.yarnpkg.com/@types/nprogress/-/nprogress-0.2.0.tgz#86c593682d4199212a0509cc3c4d562bbbd6e45f"
     integrity sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==
+  
+  "@types/numeral@^2.0.2":
+    version "2.0.2"
+    resolved "https://registry.yarnpkg.com/@types/numeral/-/numeral-2.0.2.tgz#8ea2c4f4e64c0cc948ad7da375f6f827778a7912"
+    integrity sha512-A8F30k2gYJ/6e07spSCPpkuZu79LCnkPTvqmIWQzNGcrzwFKpVOydG41lNt5wZXjSI149qjyzC2L1+F2PD/NUA==
   
   "@types/overlayscrollbars@^1.12.0":
     version "1.12.1"
@@ -9829,6 +9840,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
     integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
   
+  numeral@^2.0.6:
+    version "2.0.6"
+    resolved "https://registry.yarnpkg.com/numeral/-/numeral-2.0.6.tgz#4ad080936d443c2561aed9f2197efffe25f4e506"
+    integrity sha1-StCAk21EPCVhrtnyGX7//iX05QY=
+  
   object-assign@^4.0.1, object-assign@^4.1.1:
     version "4.1.1"
     resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
@@ -11184,6 +11200,11 @@ Lockfile:
       hoist-non-react-statics "^3.3.0"
       react-node-key "^0.3.1"
       szfe-tools "^0.0.0-beta.7"
+  
+  react-chartjs-2@^4.0.1:
+    version "4.0.1"
+    resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-4.0.1.tgz#38ed1d5b6e2f789408450c981e9e8e1d78b2e015"
+    integrity sha512-q8bgWzKoFvBvD7YcjT/hXG8jt55TaMAuJ1dmI3tKFJ7CijUWYz4pIfOhkTI6PBTwqu/pmeWsClBRd/7HiWzN1g==
   
   react-colorful@^5.1.2:
     version "5.5.1"

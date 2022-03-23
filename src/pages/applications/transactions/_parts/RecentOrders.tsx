@@ -1,7 +1,7 @@
 import { Card } from '@mui/material'
 import { subDays } from 'date-fns'
-import { RecentOrdersTable } from '@components/pages/application/transactions'
-import type { CryptoOrder } from '@components/pages/application/transactions'
+import { RecentOrdersTable } from '@pages/applications/transactions/_parts/RecentOrdersTable'
+import type { CryptoOrder } from '@pages/applications/transactions/_parts/RecentOrdersTable'
 
 export const RecentOrders: React.FC = () => {
 	const cryptoOrders: CryptoOrder[] = [

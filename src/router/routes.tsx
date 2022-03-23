@@ -8,7 +8,7 @@ import type { DefaultComponent } from '@loadable/component'
 import type { LoadableComponent } from '@loadable/component'
 import type { RouteObject } from 'react-router-dom'
 
-import Crypto from '@pages/dashboard/Crypto'
+import Crypto from '@pages/dashboard/crypto'
 
 /**
  * @description
@@ -64,7 +64,7 @@ const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps> | (() =>
 	Modal: withLoading(() => import('@pages/example/Modal')),
 	// Forms: withLoading(() => import('@pages/example/Forms')),
 	// Pages
-	Overview: withLoading(() => import('@pages/Overview')),
+	Overview: withLoading(() => import('@pages/overview')),
 
 	// Dashboards
 	Crypto: Crypto,
@@ -72,9 +72,9 @@ const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps> | (() =>
 
 	// Applications
 	// Messenger: withLoading(() => import('@pages/applications/Messenger')),
-	Transactions: withLoading(() => import('@pages/applications/Transactions')),
-	UserProfile: withLoading(() => import('@pages/applications/users/Profile')),
-	UserSettings: withLoading(() => import('@pages/applications/users/Settings')),
+	Transactions: withLoading(() => import('@pages/applications/transactions')),
+	UserProfile: withLoading(() => import('@pages/applications/users/profile')),
+	UserSettings: withLoading(() => import('@pages/applications/users/settings')),
 
 	// Components
 	Buttons: withLoading(() => import('@pages/components/Buttons')),

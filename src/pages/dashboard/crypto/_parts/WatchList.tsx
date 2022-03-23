@@ -5,12 +5,16 @@ import { styled } from '@mui/material/styles'
 import ViewWeekTwoToneIcon from '@mui/icons-material/ViewWeekTwoTone'
 import TableRowsTwoToneIcon from '@mui/icons-material/TableRowsTwoTone'
 
-import {
-	WatchListColumn1,
-	WatchListColumn2,
-	WatchListColumn3,
-	WatchListRow,
-} from '@components/pages/dashboard'
+// import {
+// 	WatchListColumn1,
+// 	WatchListColumn2,
+// 	WatchListColumn3,
+// 	WatchListRow,
+// } from '@components/pages/dashboard'
+import { WatchListColumn1 } from '@pages/dashboard/crypto/_parts/WatchListColumn1'
+import { WatchListColumn2 } from '@pages/dashboard/crypto/_parts/WatchListColumn2'
+import { WatchListColumn3 } from '@pages/dashboard/crypto/_parts/WatchListColumn3'
+import { WatchListRow } from '@pages/dashboard/crypto/_parts/WatchListRow'
 
 const EmptyResultsWrapper = styled('img')(
 	({ theme }) => `

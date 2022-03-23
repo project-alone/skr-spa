@@ -13,41 +13,23 @@ import { HelmetProvider } from 'react-helmet-async'
 import { store, createPersistor } from '@store/index'
 import { ModalProvider } from '@lib/modal'
 import { SidebarProvider } from '@context/Sidebar'
+import '@lib/utils/chart'
 
 // components
 import { Loading } from '@components/common'
+
 import App from './App'
-
-import {
-	Chart as ChartJS,
-	CategoryScale,
-	LinearScale,
-	PointElement,
-	LineElement,
-	ArcElement,
-	Title,
-	Tooltip,
-	Legend,
-} from 'chart.js'
-
-ChartJS.register(
-	CategoryScale,
-	LinearScale,
-	PointElement,
-	LineElement,
-	Title,
-	Tooltip,
-	Legend,
-	ArcElement,
-)
 
 // using env variables
 console.log(import.meta.env)
 
 /**
+ * HelmetProvider: head 영역의 정보 관리 및 적용 범위
  * ReduxProvider: redux store 사용 가능 범위
- * PersistGate: redux-persist
+ * PersistGate: redux-persist(localStorage)
  * ModalProvider: modal 사용 가능 범위
+ * SibebarProvider: Sidebar context의 사용 가능 범위
+ * TODO: ErrorBoundary - react component 범위에서의 오류 체크
  */
 
 const persistor = createPersistor(store)

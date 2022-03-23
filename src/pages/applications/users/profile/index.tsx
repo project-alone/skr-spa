@@ -1,14 +1,12 @@
 import { Helmet } from 'react-helmet-async'
 import { Grid, Container } from '@mui/material'
 import { Footer } from '@components/common'
-import {
-	ProfileCover,
-	RecentActivity,
-	Feed,
-	PopularTags,
-	MyCards,
-	Addresses,
-} from '@components/pages/application/users/profile'
+import { ProfileCover } from '@pages/applications/users/profile/_parts/ProfileCover'
+import { RecentActivity } from '@pages/applications/users/profile/_parts/RecentActivity'
+import { Feed } from '@pages/applications/users/profile/_parts/Feed'
+import { PopularTags } from '@pages/applications/users/profile/_parts/PopularTags'
+import { MyCards } from '@pages/applications/users/profile/_parts/MyCards'
+import { Addresses } from '@pages/applications/users/profile/_parts/Addresses'
 
 const ManagementUserProfile: React.FC = () => {
 	const user = {

@@ -1,5 +1,0 @@
-export * from '@components/pages/application/users/settings/ActivityTab'
-export * from '@components/pages/application/users/settings/EditProfileTab'
-export * from '@components/pages/application/users/settings/NotificationsTab'
-export * from '@components/pages/application/users/settings/PageHeader'
-export * from '@components/pages/application/users/settings/SecurityTab'
