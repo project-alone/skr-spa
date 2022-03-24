@@ -6,14 +6,10 @@ interface WatchListRowChartProps {
 	labels: string[]
 }
 
-export const WatchListRowChart: React.FC<WatchListRowChartProps> = ({
-	data: dataProp,
-	labels,
-	...rest
-}) => {
+export const RowChart: React.FC<WatchListRowChartProps> = ({ data: dataProp, labels, ...rest }) => {
 	const theme = useTheme()
 
-	const data = {
+	const data: ReactChartJS.Props.line['data'] = {
 		datasets: [
 			{
 				data: dataProp,
@@ -28,59 +24,58 @@ export const WatchListRowChart: React.FC<WatchListRowChartProps> = ({
 		labels,
 	}
 
-	const options = {
+	const options: ReactChartJS.Options.line = {
 		responsive: true,
 		maintainAspectRatio: false,
-		legend: {
-			display: false,
+		plugins: {
+			legend: {
+				display: false,
+			},
+			tooltip: {
+				enabled: true,
+				mode: 'nearest',
+				intersect: false,
+				caretSize: 6,
+				displayColors: false,
+				padding: {
+					top: 8,
+					bottom: 8,
+					left: 16,
+					right: 16,
+				},
+				borderWidth: 4,
+				borderColor: theme.palette.common.black,
+				backgroundColor: theme.palette.common.black,
+				titleColor: theme.palette.common.white,
+				bodyColor: theme.palette.common.white,
+				footerColor: theme.palette.common.white,
+				callbacks: {
+					label: (tooltipItem) => {
+						return `Price: $${tooltipItem.label}`
+					},
+				},
+			},
 		},
 		layout: {
 			padding: 5,
 		},
-		// scales: {
-		// 	xAxes: [
-		// 		{
-		// 			gridLines: {
-		// 				display: false,
-		// 				drawBorder: false,
-		// 			},
-		// 			ticks: {
-		// 				display: false,
-		// 			},
-		// 		},
-		// 	],
-		// 	yAxes: [
-		// 		{
-		// 			gridLines: {
-		// 				display: false,
-		// 			},
-		// 			ticks: {
-		// 				display: false,
-		// 			},
-		// 		},
-		// 	],
-		// },
-		tooltips: {
-			enabled: true,
-			mode: 'nearest',
-			intersect: false,
-			caretSize: 6,
-			displayColors: false,
-			yPadding: 8,
-			xPadding: 16,
-			borderWidth: 4,
-			borderColor: theme.palette.common.black,
-			backgroundColor: theme.palette.common.black,
-			titleFontColor: theme.palette.common.white,
-			bodyFontColor: theme.palette.common.white,
-			footerFontColor: theme.palette.common.white,
-			callbacks: {
-				title: () => {
-					/** nothing */
+		scales: {
+			xAxes: {
+				grid: {
+					display: false,
+					drawBorder: false,
 				},
-				// label: (tooltipItem) => {
-				// 	return `Price: $${tooltipItem.yLabel}`
-				// },
+				ticks: {
+					display: false,
+				},
+			},
+			yAxes: {
+				grid: {
+					display: false,
+				},
+				ticks: {
+					display: false,
+				},
 			},
 		},
 	}

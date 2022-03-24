@@ -10,7 +10,7 @@ import {
 	styled,
 } from '@mui/material'
 import { Label, Text } from '@components/common'
-import { WatchListRowChart } from '@pages/dashboard/crypto/_parts/WatchListRowChart'
+import { RowChart } from '@pages/dashboard/crypto/_parts/WatchListRowChart'
 
 const AvatarWrapper = styled(Avatar)(
 	({ theme }) => `
@@ -74,10 +74,7 @@ export const WatchListRow: React.FC = () => {
 						</Box>
 						<Box height={100} sx={{ ml: -1.5 }}>
 							{/* height: 100px; */}
-							<WatchListRowChart
-								data={price.week.bitcoin}
-								labels={price.week.labels}
-							/>
+							<RowChart data={price.week.bitcoin} labels={price.week.labels} />
 						</Box>
 					</Box>
 				</Grid>
@@ -119,10 +116,7 @@ export const WatchListRow: React.FC = () => {
 						</Box>
 						<Box height={100} sx={{ ml: -1.5 }}>
 							{/* height: 100px; */}
-							<WatchListRowChart
-								data={price.week.ethereum}
-								labels={price.week.labels}
-							/>
+							<RowChart data={price.week.ethereum} labels={price.week.labels} />
 						</Box>
 					</Box>
 				</Grid>
@@ -160,10 +154,7 @@ export const WatchListRow: React.FC = () => {
 							</Text>
 						</Box>
 						<Box height={100} sx={{ ml: -1.5 }}>
-							<WatchListRowChart
-								data={price.week.cardano}
-								labels={price.week.labels}
-							/>
+							<RowChart data={price.week.cardano} labels={price.week.labels} />
 						</Box>
 					</Box>
 				</Grid>

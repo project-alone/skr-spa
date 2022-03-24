@@ -13,9 +13,8 @@ import {
 	ViewWeekTwoTone as ViewWeekTwoToneIcon,
 	TableRowsTwoTone as TableRowsTwoToneIcon,
 } from '@mui/icons-material'
-import { WatchListColumn1 } from '@pages/dashboard/crypto/_parts/WatchListColumn1'
-import { WatchListColumn2 } from '@pages/dashboard/crypto/_parts/WatchListColumn2'
-import { WatchListColumn3 } from '@pages/dashboard/crypto/_parts/WatchListColumn3'
+import { WatchItem } from '@pages/dashboard/crypto/_parts/WatchItem'
+import type { WachItemProps } from '@pages/dashboard/crypto/_parts/WatchItem'
 import { WatchListRow } from '@pages/dashboard/crypto/_parts/WatchListRow'
 
 const EmptyResultsWrapper = styled('img')(
@@ -28,6 +27,26 @@ const EmptyResultsWrapper = styled('img')(
 
 export const WatchList: React.FC = () => {
 	const [tabs, setTab] = React.useState<string | null>('watch_list_columns')
+	const watchData: WachItemProps[] = [
+		{
+			name: 'BTC',
+			currentValue: { value: 3586.22, percentage: 12.5 },
+			incValue: 500,
+			weekData: [55.701, 57.598, 48.607, 46.439, 58.755, 46.978, 58.16],
+		},
+		{
+			name: 'ETH',
+			currentValue: { value: 1968, percentage: -3.24 },
+			incValue: -90,
+			weekData: [1.854, 1.773, 2.092, 2.009, 1.909, 1.842, 1.884],
+		},
+		{
+			name: 'ADA',
+			currentValue: { value: 23, percentage: -0.33 },
+			incValue: -5,
+			weekData: [13, 16, 14, 21, 8, 11, 20],
+		},
+	]
 
 	const handleViewOrientation = (
 		event: React.MouseEvent<HTMLElement>,
@@ -57,15 +76,11 @@ export const WatchList: React.FC = () => {
 				spacing={3}>
 				{tabs === 'watch_list_columns' && (
 					<>
-						<Grid item lg={4} xs={12}>
-							<WatchListColumn1 />
-						</Grid>
-						<Grid item lg={4} xs={12}>
-							<WatchListColumn2 />
-						</Grid>
-						<Grid item lg={4} xs={12}>
-							<WatchListColumn3 />
-						</Grid>
+						{watchData.map((props) => (
+							<Grid key={props.name} item lg={4} xs={12}>
+								<WatchItem {...props} />
+							</Grid>
+						))}
 					</>
 				)}
 
@@ -79,7 +94,6 @@ export const WatchList: React.FC = () => {
 					<Grid item xs={12}>
 						<Card sx={{ textAlign: 'center', p: 3 }}>
 							<EmptyResultsWrapper src="/static/images/placeholders/illustrations/1.svg" />
-
 							<Typography
 								align="center"
 								variant="h2"

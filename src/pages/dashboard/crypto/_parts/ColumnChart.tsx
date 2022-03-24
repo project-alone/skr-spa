@@ -3,7 +3,6 @@ import { Line } from 'react-chartjs-2'
 import { alpha, useTheme } from '@mui/material'
 import { Chart } from 'chart.js'
 import useEffectOnce from '@hooks/useEffectOnce'
-import { Input } from 'antd'
 
 interface WatchListColumn1ChartProps {
 	data: number[]
