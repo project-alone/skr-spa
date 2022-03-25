@@ -1,14 +1,12 @@
 import loadable from '@loadable/component'
 import { /* RouterGuard, */ SidebarLayout, BaseLayout } from '@components/layout'
 import { Navigate } from 'react-router-dom'
-// import KeepAlive from 'react-activation'
+import KeepAlive from 'react-activation'
 import { SuspenseLoader } from '@components/common'
 
 import type { DefaultComponent } from '@loadable/component'
 import type { LoadableComponent } from '@loadable/component'
 import type { RouteObject } from 'react-router-dom'
-
-import Crypto from '@pages/dashboard/crypto'
 
 /**
  * @description
@@ -52,6 +50,7 @@ export enum PageNames {
 	Status500 = 'Status500',
 	StatusComingSoon = 'StatusComingSoon',
 	StatusMaintenance = 'StatusMaintenance',
+	FormWithHookform = 'FormWithHookform',
 }
 
 const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps> | (() => JSX.Element)> = {
@@ -62,13 +61,13 @@ const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps> | (() =>
 	Counter: withLoading(() => import('@pages/example/Counter')),
 	Grid: withLoading(() => import('@pages/example/Grid')),
 	Modal: withLoading(() => import('@pages/example/Modal')),
-	// Forms: withLoading(() => import('@pages/example/Forms')),
+	FormWithHookform: withLoading(() => import('@pages/example/Forms')),
+
 	// Pages
 	Overview: withLoading(() => import('@pages/overview')),
 
 	// Dashboards
-	Crypto: Crypto,
-	// withLoading(() => import('@pages/dashboard/Crypto')),
+	Crypto: withLoading(() => import('@pages/dashboard/crypto')),
 
 	// Applications
 	// Messenger: withLoading(() => import('@pages/applications/Messenger')),
@@ -99,24 +98,27 @@ const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps> | (() =>
  * <Sidebar/>에서 공통으로 사용하기 위해 path를 명확하게 같는 route 객체는 별도로 관리
  */
 
-// export const routeSidebar: RouteObject[] = [
-// 	{
-// 		path: 'example',
-// 		children: [
-// 			{
-// 				path: 'counter',
-// 				element: (
-// 					<KeepAlive name="counter">
-// 						<Page.Counter />
-// 					</KeepAlive>
-// 				),
-// 			},
-// 			{ path: 'grid', element: <Page.Grid /> },
-// 			{ path: 'modal', element: <Page.Modal /> },
-// 			{ path: 'forms', element: <Page.Forms /> },
-// 		],
-// 	},
-// ]
+export const exampleRoutes: RouteObject[] = [
+	{
+		path: 'example',
+		element: <SidebarLayout />,
+		children: [
+			{ path: 'home', element: <Page.Home /> },
+			{ path: 'login', element: <Page.Login /> },
+			{
+				path: 'counter',
+				element: (
+					<KeepAlive name="counter">
+						<Page.Counter />
+					</KeepAlive>
+				),
+			},
+			{ path: 'grid', element: <Page.Grid /> },
+			{ path: 'modal', element: <Page.Modal /> },
+			{ path: 'formwithhookform', element: <Page.FormWithHookform /> },
+		],
+	},
+]
 
 /**
  * @description
@@ -192,6 +194,7 @@ const routes: RouteObject[] = [
 			},
 		],
 	},
+	...exampleRoutes,
 	{
 		path: 'dashboards',
 		element: <SidebarLayout />,

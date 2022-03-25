@@ -124,18 +124,6 @@ const SubMenuWrapper = styled(List)(
 `,
 )
 
-const renderSidebarMenuItems = ({
-	items,
-	path,
-}: {
-	items: MenuItem[]
-	path: string
-}): JSX.Element => (
-	<SubMenuWrapper>
-		{items.reduce((ev, item) => reduceChildRoutes({ ev, item, path }), [] as JSX.Element[])}
-	</SubMenuWrapper>
-)
-
 const reduceChildRoutes = ({
 	ev,
 	path,
@@ -177,10 +165,12 @@ const reduceChildRoutes = ({
 				icon={item.icon}
 				link={item.link}
 				badge={item.badge}>
-				{renderSidebarMenuItems({
-					path,
-					items: item.items,
-				})}
+				<SubMenuWrapper>
+					{item.items.reduce(
+						(ev, mitem) => reduceChildRoutes({ ev, item: mitem, path }),
+						[] as JSX.Element[],
+					)}
+				</SubMenuWrapper>
 			</SidebarMenuItem>,
 		)
 	} else {
@@ -212,10 +202,13 @@ export const SidebarMenu: React.FC = () => {
 							{section.heading}
 						</ListSubheader>
 					}>
-					{renderSidebarMenuItems({
-						items: section.items,
-						path: location.pathname,
-					})}
+					<SubMenuWrapper>
+						{section.items.reduce(
+							(ev, mitem) =>
+								reduceChildRoutes({ ev, item: mitem, path: location.pathname }),
+							[] as JSX.Element[],
+						)}
+					</SubMenuWrapper>
 				</MenuWrapper>
 			))}
 		</>

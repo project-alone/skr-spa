@@ -1,11 +1,22 @@
-import Helmet from 'react-helmet'
-import { Form, Input, Checkbox, Button, Layout } from 'antd'
+import { Helmet } from 'react-helmet-async'
 import { get } from 'lodash-es'
 import { Navigate, useLocation } from 'react-router-dom'
 import { shallowEqual, useAppDispatch, useAppSelector } from '@hooks/index'
 import { fakeLogin, selectIsLogin } from '@store/slices/auth'
-import type { FormProps } from 'antd/lib/form'
-import type { PageProps } from '@router/routes'
+
+// import { Form, Input, Checkbox, Button, Layout } from 'antd'
+// import type { FormProps } from 'antd/lib/form'
+import {
+	Avatar,
+	Button,
+	Checkbox,
+	FormControlLabel,
+	Grid,
+	Paper,
+	TextField,
+	Typography,
+} from '@mui/material'
+import { Link, LockOutlined } from '@mui/icons-material'
 
 interface LoginFormValues {
 	email: string
@@ -13,7 +24,7 @@ interface LoginFormValues {
 	remember: boolean
 }
 
-const LoginPage: React.FC<PageProps> = ({ title }) => {
+const LoginPage: React.FC = ({}) => {
 	const isLogin = useAppSelector(selectIsLogin, shallowEqual)
 	const dispatch = useAppDispatch()
 	const location = useLocation()
@@ -35,73 +46,63 @@ const LoginPage: React.FC<PageProps> = ({ title }) => {
 		dispatch(fakeLogin(true))
 	}
 
-	const onFinishFailed: FormProps['onFinishFailed'] = (errorInfo) => {
-		console.log('Failed:', errorInfo)
-	}
+	// const onFinishFailed = (errorInfo) => {
+	// 	console.log('Failed:', errorInfo)
+	// }
 
-	if (isLogin) {
-		return <Navigate replace to={from} />
-	}
+	// if (isLogin) {
+	// 	return <Navigate replace to={from} />
+	// }
 
 	return (
 		<>
-			<Helmet>{title && <title>{title}</title>}</Helmet>
-			<Layout.Content
-				style={{
-					padding: '50px',
-					backgroundColor: '#fff',
-					minHeight: '100%',
-				}}>
-				<Form
-					name="basic"
-					labelCol={{ span: 8 }}
-					wrapperCol={{ span: 16 }}
-					initialValues={{
-						remember: true,
-						email: 'test@test.com',
-						password: '121212',
-					}}
-					onFinish={onFinish}
-					onFinishFailed={onFinishFailed}
-					autoComplete="off">
-					<Form.Item
-						label="이메일"
-						name="email"
-						rules={[
-							{
-								required: true,
-								message: '이메일을 입력해주세요!',
-							},
-						]}>
-						<Input placeholder="test@test.com" />
-					</Form.Item>
-
-					<Form.Item
-						label="비밀번호"
-						name="password"
-						rules={[
-							{
-								required: true,
-								message: '비밀번호를 입력해주세요!',
-							},
-						]}>
-						<Input.Password />
-					</Form.Item>
-
-					<Form.Item
-						name="remember"
-						valuePropName="checked"
-						wrapperCol={{ offset: 8, span: 16 }}>
-						<Checkbox>기억하기</Checkbox>
-					</Form.Item>
-
-					<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-						<Button type="primary" htmlType="submit">
-							로그인
-						</Button>
-					</Form.Item>
-				</Form>
-			</Layout.Content>
+			<Helmet>
+				<title>Login Form</title>
+			</Helmet>
+			<Grid>
+				<Paper
+					elevation={10}
+					style={{
+						padding: 20,
+						height: '70vh',
+						width: 280,
+						margin: '20px auto',
+					}}>
+					<Grid justifyContent="center">
+						<Avatar style={{ backgroundColor: '#1bbd7e' }}>
+							<LockOutlined />
+						</Avatar>
+						<h2>Sign In</h2>
+					</Grid>
+					<TextField label="Username" placeholder="Enter username" fullWidth required />
+					<TextField
+						label="Password"
+						placeholder="Enter password"
+						type="password"
+						fullWidth
+						required
+					/>
+					<FormControlLabel
+						control={<Checkbox name="checkedB" color="primary" />}
+						label="Remember me"
+					/>
+					<Button
+						type="submit"
+						color="primary"
+						variant="contained"
+						style={{ margin: '8px 0' }}
+						fullWidth>
+						Sign in
+					</Button>
+					<Typography>
+						<Link href="#">Forgot password ?</Link>
+					</Typography>
+					<Typography>
+						{' '}
+						Do you have an account ?<Link href="#">Sign Up</Link>
+					</Typography>
+				</Paper>
+			</Grid>
 		</>
 	)
 }

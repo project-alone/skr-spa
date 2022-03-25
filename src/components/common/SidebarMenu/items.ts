@@ -1,20 +1,22 @@
 import React from 'react'
 
-import DesignServicesTwoToneIcon from '@mui/icons-material/DesignServicesTwoTone'
-import BrightnessLowTwoToneIcon from '@mui/icons-material/BrightnessLowTwoTone'
-import MmsTwoToneIcon from '@mui/icons-material/MmsTwoTone'
-import TableChartTwoToneIcon from '@mui/icons-material/TableChartTwoTone'
-import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone'
-import BallotTwoToneIcon from '@mui/icons-material/BallotTwoTone'
-import BeachAccessTwoToneIcon from '@mui/icons-material/BeachAccessTwoTone'
-import EmojiEventsTwoToneIcon from '@mui/icons-material/EmojiEventsTwoTone'
-import FilterVintageTwoToneIcon from '@mui/icons-material/FilterVintageTwoTone'
-import HowToVoteTwoToneIcon from '@mui/icons-material/HowToVoteTwoTone'
-import LocalPharmacyTwoToneIcon from '@mui/icons-material/LocalPharmacyTwoTone'
-import RedeemTwoToneIcon from '@mui/icons-material/RedeemTwoTone'
-import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone'
-import TrafficTwoToneIcon from '@mui/icons-material/TrafficTwoTone'
-import VerifiedUserTwoToneIcon from '@mui/icons-material/VerifiedUserTwoTone'
+import {
+	DesignServicesTwoTone as DesignServicesTwoToneIcon,
+	BrightnessLowTwoTone as BrightnessLowTwoToneIcon,
+	MmsTwoTone as MmsTwoToneIcon,
+	TableChartTwoTone as TableChartTwoToneIcon,
+	AccountCircleTwoTone as AccountCircleTwoToneIcon,
+	BallotTwoTone as BallotTwoToneIcon,
+	BeachAccessTwoTone as BeachAccessTwoToneIcon,
+	EmojiEventsTwoTone as EmojiEventsTwoToneIcon,
+	FilterVintageTwoTone as FilterVintageTwoToneIcon,
+	HowToVoteTwoTone as HowToVoteTwoToneIcon,
+	LocalPharmacyTwoTone as LocalPharmacyTwoToneIcon,
+	RedeemTwoTone as RedeemTwoToneIcon,
+	SettingsTwoTone as SettingsTwoToneIcon,
+	TrafficTwoTone as TrafficTwoToneIcon,
+	VerifiedUserTwoTone as VerifiedUserTwoToneIcon,
+} from '@mui/icons-material'
 
 export interface MenuItem {
 	link?: string
@@ -37,6 +39,35 @@ const menuItems: MenuItems[] = [
 				name: 'Overview',
 				link: '/overview',
 				icon: DesignServicesTwoToneIcon,
+			},
+		],
+	},
+	{
+		heading: 'Examples',
+		items: [
+			{
+				name: 'Home',
+				link: '/example/home',
+			},
+			{
+				name: 'Login form',
+				link: '/example/login',
+			},
+			{
+				name: 'Counter',
+				link: '/example/counter',
+			},
+			{
+				name: 'Grid',
+				link: '/example/grid',
+			},
+			{
+				name: 'Modal',
+				link: '/example/Modal',
+			},
+			{
+				name: 'forms',
+				link: '/example/formwithhookform',
 			},
 		],
 	},

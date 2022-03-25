@@ -17,6 +17,18 @@ export default defineConfig(({ mode, command }) => {
 	return {
 		server: {
 			port: parseInt(env.VITE_PORT),
+			// force pre-bundling
+			force: true,
+			// 프록시 인스턴스 사용
+			proxy: {
+				'/api': {
+					target: 'http://jsonplaceholder.typicode.com',
+					changeOrigin: true,
+					configure: (proxy, options) => {
+						// proxy 변수에는 'http-proxy'의 인스턴스가 전달됩니다
+					},
+				},
+			},
 		},
 		plugins: [
 			/** React hot reload */
@@ -24,10 +36,8 @@ export default defineConfig(({ mode, command }) => {
 			/** typescript paths alias */
 			tsconfigPaths({}),
 			/** eslint visualizer */
-			eslint({
-				cache: false,
-			}),
-			//
+			eslint({ cache: false }),
+			// visualize for typescript check
 			checker({
 				typescript: {
 					tsconfigPath: './tsconfig.json',
@@ -35,7 +45,7 @@ export default defineConfig(({ mode, command }) => {
 					buildMode: process.env.NODE_ENV === 'production',
 				},
 			}),
-
+			// like webpack analizer
 			visualizer({
 				open: env.mode === 'development',
 			}),
