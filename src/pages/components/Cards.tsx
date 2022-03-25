@@ -16,8 +16,8 @@ import {
 	Typography,
 	CardActions,
 	styled,
+	colors,
 } from '@mui/material'
-import { red } from '@mui/material/colors'
 import {
 	Favorite as FavoriteIcon,
 	Share as ShareIcon,
@@ -114,7 +114,9 @@ const Cards: React.FC = () => {
 								<Card sx={{ maxWidth: 345 }}>
 									<CardHeader
 										avatar={
-											<Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+											<Avatar
+												sx={{ bgcolor: colors.red[500] }}
+												aria-label="recipe">
 												R
 											</Avatar>
 										}

@@ -10,7 +10,7 @@ import {
 	styled,
 } from '@mui/material'
 import { Label, Text } from '@components/common'
-import { RowChart } from '@pages/dashboard/crypto/_parts/WatchListRowChart'
+import { RowChart } from '@pages/dashboard/crypto/_parts/RowChart'
 
 const AvatarWrapper = styled(Avatar)(
 	({ theme }) => `

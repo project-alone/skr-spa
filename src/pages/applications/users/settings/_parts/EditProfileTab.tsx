@@ -1,7 +1,5 @@
 import { Grid, Typography, CardContent, Card, Box, Divider, Button } from '@mui/material'
-
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone'
-import DoneTwoToneIcon from '@mui/icons-material/DoneTwoTone'
+import { EditTwoTone as EditTwoToneIcon, DoneTwoTone as DoneTwoToneIcon } from '@mui/icons-material'
 import { Text, Label } from '@components/common'
 
 export const EditProfileTab: React.FC = () => {

@@ -1,19 +1,8 @@
+import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Container, Grid, Card, CardHeader, CardContent, Divider } from '@mui/material'
-import React from 'react'
-
-import ButtonGroup from '@mui/material/ButtonGroup'
-import Button from '@mui/material/Button'
-import AddIcon from '@mui/icons-material/Add'
-import RemoveIcon from '@mui/icons-material/Remove'
-import MailIcon from '@mui/icons-material/Mail'
-import Switch from '@mui/material/Switch'
-import FormControlLabel from '@mui/material/FormControlLabel'
-
-import Box from '@mui/material/Box'
-import Stack from '@mui/material/Stack'
-import Badge from '@mui/material/Badge'
-
+import { ButtonGroup, Button, Switch, FormControlLabel, Box, Stack, Badge } from '@mui/material'
+import { Add as AddIcon, Remove as RemoveIcon, Mail as MailIcon } from '@mui/icons-material'
 import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
 
 const shapeStyles = { bgcolor: 'primary.main', width: 40, height: 40 }

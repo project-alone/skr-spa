@@ -22,12 +22,12 @@ import {
 	Hidden,
 	styled,
 } from '@mui/material'
-import { TransitionProps } from '@mui/material/transitions'
 import {
 	SearchTwoTone as SearchTwoToneIcon,
 	FindInPageTwoTone as FindInPageTwoToneIcon,
 	ChevronRightTwoTone as ChevronRightTwoToneIcon,
 } from '@mui/icons-material'
+import type { TransitionProps } from '@mui/material/transitions'
 
 const Transition = React.forwardRef<
 	HTMLDivElement,

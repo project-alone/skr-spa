@@ -1,21 +1,27 @@
 import { Helmet } from 'react-helmet-async'
 import React from 'react'
-import { Container, Grid, Card, CardHeader, CardContent, Divider } from '@mui/material'
-import Box from '@mui/material/Box'
-import TextField from '@mui/material/TextField'
-import MenuItem from '@mui/material/MenuItem'
-import { pink } from '@mui/material/colors'
-import Checkbox from '@mui/material/Checkbox'
-import Radio from '@mui/material/Radio'
-import RadioGroup from '@mui/material/RadioGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import FormControl from '@mui/material/FormControl'
-import FormLabel from '@mui/material/FormLabel'
-import Stack from '@mui/material/Stack'
-import Slider from '@mui/material/Slider'
-import VolumeDown from '@mui/icons-material/VolumeDown'
-import VolumeUp from '@mui/icons-material/VolumeUp'
-import Switch from '@mui/material/Switch'
+import {
+	Container,
+	Grid,
+	Card,
+	CardHeader,
+	CardContent,
+	Divider,
+	Box,
+	TextField,
+	MenuItem,
+	Checkbox,
+	Radio,
+	RadioGroup,
+	FormControlLabel,
+	FormControl,
+	FormLabel,
+	Stack,
+	Slider,
+	Switch,
+	colors,
+} from '@mui/material'
+import { VolumeDown as VolumeDownIcon, VolumeUp as VolumeUpIcon } from '@mui/icons-material'
 import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
 
 import type { OutlinedInputProps } from '@mui/material'
@@ -382,9 +388,9 @@ const Forms: React.FC = () => {
 									{...label}
 									defaultChecked
 									sx={{
-										color: pink[800],
+										color: colors.pink[800],
 										'&.Mui-checked': {
-											color: pink[600],
+											color: colors.pink[600],
 										},
 									}}
 								/>
@@ -432,13 +438,13 @@ const Forms: React.FC = () => {
 										direction="row"
 										sx={{ mb: 1 }}
 										alignItems="center">
-										<VolumeDown />
+										<VolumeDownIcon />
 										<Slider
 											aria-label="Volume"
 											value={value}
 											onChange={handleChange2}
 										/>
-										<VolumeUp />
+										<VolumeUpIcon />
 									</Stack>
 									<Slider
 										disabled

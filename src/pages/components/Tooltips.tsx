@@ -1,8 +1,15 @@
 import { Helmet } from 'react-helmet-async'
-import { Container, Grid, Card, CardHeader, CardContent, Divider } from '@mui/material'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Tooltip from '@mui/material/Tooltip'
+import {
+	Container,
+	Grid,
+	Card,
+	CardHeader,
+	CardContent,
+	Divider,
+	Box,
+	Button,
+	Tooltip,
+} from '@mui/material'
 import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
 
 const Tooltips: React.FC = () => {

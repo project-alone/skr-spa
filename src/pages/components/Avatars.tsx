@@ -1,11 +1,11 @@
 import { Helmet } from 'react-helmet-async'
 import { Container, Grid, Card, CardHeader, CardContent, Divider } from '@mui/material'
-import Avatar from '@mui/material/Avatar'
-import Stack from '@mui/material/Stack'
-import { deepOrange, deepPurple, green, pink } from '@mui/material/colors'
-import FolderIcon from '@mui/icons-material/Folder'
-import PageviewIcon from '@mui/icons-material/Pageview'
-import AssignmentIcon from '@mui/icons-material/Assignment'
+import { Avatar, Stack, colors } from '@mui/material'
+import {
+	Folder as FolderIcon,
+	Pageview as PageviewIcon,
+	Assignment as AssignmentIcon,
+} from '@mui/icons-material'
 import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
 
 const stringToColor = (string: string) => {
@@ -80,8 +80,8 @@ const Avatars: React.FC = () => {
 							<CardContent>
 								<Stack direction="row" spacing={2}>
 									<Avatar>H</Avatar>
-									<Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
-									<Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>
+									<Avatar sx={{ bgcolor: colors.deepOrange[500] }}>N</Avatar>
+									<Avatar sx={{ bgcolor: colors.deepPurple[500] }}>OP</Avatar>
 								</Stack>
 								<Divider sx={{ my: 5 }} />
 								<Stack direction="row" spacing={2}>
@@ -122,19 +122,21 @@ const Avatars: React.FC = () => {
 									<Avatar>
 										<FolderIcon />
 									</Avatar>
-									<Avatar sx={{ bgcolor: pink[500] }}>
+									<Avatar sx={{ bgcolor: colors.pink[500] }}>
 										<PageviewIcon />
 									</Avatar>
-									<Avatar sx={{ bgcolor: green[500] }}>
+									<Avatar sx={{ bgcolor: colors.green[500] }}>
 										<AssignmentIcon />
 									</Avatar>
 								</Stack>
 								<Divider sx={{ my: 5 }} />
 								<Stack direction="row" spacing={2}>
-									<Avatar sx={{ bgcolor: deepOrange[500] }} variant="square">
+									<Avatar
+										sx={{ bgcolor: colors.deepOrange[500] }}
+										variant="square">
 										N
 									</Avatar>
-									<Avatar sx={{ bgcolor: green[500] }} variant="rounded">
+									<Avatar sx={{ bgcolor: colors.green[500] }} variant="rounded">
 										<AssignmentIcon />
 									</Avatar>
 								</Stack>

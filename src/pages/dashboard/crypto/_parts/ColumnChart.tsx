@@ -48,12 +48,14 @@ export const WatchListColumn1Chart: React.FC<WatchListColumn1ChartProps> = ({
 					pointBorderWidth: 0,
 					pointRadius: 0,
 					pointHoverRadius: 0,
+					fill: true,
+					tension: 0.5,
 				},
 			],
 			labels,
 		})
 
-		chart.update()
+		chart.update('reset')
 	}, [
 		dataProp,
 		labels,
@@ -106,7 +108,7 @@ export const WatchListColumn1Chart: React.FC<WatchListColumn1ChartProps> = ({
 					padding: 0,
 				},
 				scales: {
-					xAxes: {
+					x: {
 						grid: {
 							display: false,
 							drawBorder: false,
@@ -115,7 +117,7 @@ export const WatchListColumn1Chart: React.FC<WatchListColumn1ChartProps> = ({
 							display: false,
 						},
 					},
-					yAxes: {
+					y: {
 						grid: {
 							display: false,
 						},

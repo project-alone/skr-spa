@@ -1,11 +1,17 @@
 import { Helmet } from 'react-helmet-async'
-
-import { Container, Grid, Card, CardHeader, CardContent, Divider } from '@mui/material'
-import Accordion from '@mui/material/Accordion'
-import AccordionSummary from '@mui/material/AccordionSummary'
-import AccordionDetails from '@mui/material/AccordionDetails'
-import Typography from '@mui/material/Typography'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import {
+	Container,
+	Grid,
+	Card,
+	CardHeader,
+	CardContent,
+	Divider,
+	Accordion,
+	AccordionSummary,
+	AccordionDetails,
+	Typography,
+} from '@mui/material'
+import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material'
 import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
 
 const Accordions: React.FC = () => {

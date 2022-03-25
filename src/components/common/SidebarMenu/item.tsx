@@ -2,16 +2,29 @@ import React from 'react'
 import { NavLink, NavLinkProps } from 'react-router-dom'
 import clsx from 'clsx'
 import { SidebarContext } from '@context/Sidebar'
-
 import { Button, Badge, Collapse, ListItem } from '@mui/material'
-
 import {
 	ExpandLessTwoTone as ExpandLessTwoToneIcon,
 	ExpandMoreTwoTone as ExpandMoreTwoToneIcon,
 } from '@mui/icons-material'
 
+const RouterLink = React.forwardRef<
+	HTMLAnchorElement,
+	NavLinkProps & { activeLinkClassName: string }
+>(({ activeLinkClassName, className, ...props }, ref) => {
+	return (
+		<NavLink
+			ref={ref}
+			className={({ isActive }) =>
+				`${clsx({ [activeLinkClassName]: isActive })} ${className}`
+			}
+			{...props}
+		/>
+	)
+})
+RouterLink.displayName = 'RouterLink'
+
 interface SidebarMenuItemProps {
-	children?: React.ReactNode
 	link?: string
 	icon?: React.ComponentType
 	badge?: string
@@ -20,34 +33,22 @@ interface SidebarMenuItemProps {
 	name: string
 }
 
-const RouterNavLink = React.forwardRef<
-	HTMLAnchorElement,
-	NavLinkProps & { activeClassName: string | NavLinkProps['className'] }
->((props, ref) => {
-	return (
-		<NavLink ref={ref} {...props} className={props.activeClassName}>
-			{props.children}
-		</NavLink>
-	)
-})
-RouterNavLink.displayName = 'NavLink'
-
 const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
-	open: openParent = false,
-	active = false,
 	children,
-	link,
+	link = '',
 	icon: Icon,
 	badge,
+	open: openParent = false,
+	active,
 	name,
 	...rest
 }) => {
-	const [menuToggle, setMenuToggle] = React.useState<boolean>(!!openParent)
+	const [menuToggle, setMenuToggle] = React.useState<boolean>(openParent)
 
 	const { toggleSidebar } = React.useContext(SidebarContext)
 
 	const toggleMenu = (): void => {
-		setMenuToggle((Open) => !Open)
+		setMenuToggle((open) => !open)
 	}
 
 	if (children) {
@@ -68,10 +69,10 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
 	return (
 		<ListItem component="div" key={name} {...rest}>
 			<Button
-				activeClassName="Mui-active"
-				component={RouterNavLink}
+				activeLinkClassName="Mui-active"
+				component={RouterLink}
 				onClick={toggleSidebar}
-				to={link || ''}
+				to={link}
 				startIcon={Icon && <Icon />}>
 				{name}
 				{badge && <Badge badgeContent={badge} />}

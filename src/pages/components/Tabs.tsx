@@ -1,11 +1,17 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Container, Grid, Card, CardHeader, CardContent, Divider } from '@mui/material'
-
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
-import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
+import {
+	Container,
+	Grid,
+	Card,
+	CardHeader,
+	CardContent,
+	Divider,
+	Tabs,
+	Tab,
+	Typography,
+	Box,
+} from '@mui/material'
 import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
 
 interface TabPanelProps {

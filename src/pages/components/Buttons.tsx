@@ -9,8 +9,7 @@ import {
 	CardContent,
 	Divider,
 } from '@mui/material'
-import DeleteIcon from '@mui/icons-material/Delete'
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
+import { Delete as DeleteIcon, ArrowDownward as ArrowDownwardIcon } from '@mui/icons-material'
 import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
 
 const Buttons: React.FC = () => {

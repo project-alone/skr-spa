@@ -23,12 +23,13 @@ import {
 	useTheme,
 	CardHeader,
 } from '@mui/material'
-
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone'
-import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone'
-import { SelectChangeEvent, SelectInputProps } from '@mui/material/Select/SelectInput'
+import {
+	EditTwoTone as EditTwoToneIcon,
+	DeleteTwoTone as DeleteTwoToneIcon,
+} from '@mui/icons-material'
 import { Label } from '@components/common'
 import { BulkActions } from '@pages/applications/transactions/_parts/BulkActions'
+import type { SelectChangeEvent, SelectInputProps } from '@mui/material/Select/SelectInput'
 
 export type CryptoOrderStatus = 'completed' | 'pending' | 'failed'
 

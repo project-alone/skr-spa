@@ -1,5 +1,5 @@
 import { Box, Typography, Card, CardHeader, Divider, Avatar, Grid, Button } from '@mui/material'
-import AddTwoToneIcon from '@mui/icons-material/AddTwoTone'
+import { AddTwoTone as AddTwoToneIcon } from '@mui/icons-material'
 
 export const Feed: React.FC = () => {
 	const feed = [

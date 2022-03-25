@@ -1,8 +1,8 @@
 import { ListSubheader, List, styled } from '@mui/material'
 import { useLocation, matchPath } from 'react-router-dom'
-import SidebarMenuItem from '@components/common/SidebarMenu/item'
-import menuItems from '@components/common/SidebarMenu/items'
-import type { MenuItem } from '@components/common/SidebarMenu/items'
+import SidebarMenuItem from './item'
+import menuItems from './items'
+import type { MenuItem } from './items'
 
 const MenuWrapper = styled(List)(
 	({ theme }) => `
@@ -124,19 +124,27 @@ const SubMenuWrapper = styled(List)(
 `,
 )
 
-interface RenderSidebarMenuItems {
-	({ items, path }: { items: MenuItem[]; path: string }): JSX.Element
-}
-const renderSidebarMenuItems: RenderSidebarMenuItems = ({ items, path }) => (
+const renderSidebarMenuItems = ({
+	items,
+	path,
+}: {
+	items: MenuItem[]
+	path: string
+}): JSX.Element => (
 	<SubMenuWrapper>
 		{items.reduce((ev, item) => reduceChildRoutes({ ev, item, path }), [] as JSX.Element[])}
 	</SubMenuWrapper>
 )
 
-interface ReduceChildRoutes {
-	({ ev, path, item }: { ev: JSX.Element[]; path: string; item: MenuItem }): Array<JSX.Element>
-}
-const reduceChildRoutes: ReduceChildRoutes = ({ ev, path, item }) => {
+const reduceChildRoutes = ({
+	ev,
+	path,
+	item,
+}: {
+	ev: JSX.Element[]
+	path: string
+	item: MenuItem
+}): Array<JSX.Element> => {
 	const key = item.name
 
 	const exactMatch = item.link
