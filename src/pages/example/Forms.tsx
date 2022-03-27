@@ -5,7 +5,22 @@ import { DevTool } from '@hookform/devtools'
 import { omit } from 'lodash-es'
 import { signUpScheme } from '@lib/validate/signUp'
 import moment, { Moment } from 'moment'
-import { Button, Checkbox, Input, Form, Select, Radio, DatePicker } from 'antd'
+import {
+	Box,
+	Button,
+	Checkbox,
+	Divider,
+	FormControlLabel,
+	FormGroup,
+	Input,
+	Select,
+	TextField,
+} from '@mui/material'
+import { DatePicker } from '@mui/lab'
+import { CheckboxGroup } from '@components/form'
+import type { ControllerRenderProps } from 'react-hook-form'
+
+import type { FormItemData } from '@components/form'
 
 type SignUpFormData = {
 	userId: string
@@ -16,21 +31,20 @@ type SignUpFormData = {
 	alphabet: string
 	date: string | null
 }
-type FormItemData = { label: string; value: string }
 
 const Message: React.FC<{ message: string }> = ({ message }) => {
 	return <strong style={{ color: 'red' }}>{message}</strong>
 }
-const renderFormItemToArray = (
-	list: FormItemData[],
-	Component: typeof Select.Option | typeof Radio,
-) => {
-	return list.map(({ value, label }, index) => (
-		<Component key={`${value}-${index}`} value={value}>
-			{label}
-		</Component>
-	))
-}
+// const renderFormItemToArray = (
+// 	list: FormItemData[],
+// 	Component: typeof Select.Option | typeof Radio,
+// ) => {
+// 	return list.map(({ value, label }, index) => (
+// 		<Component key={`${value}-${index}`} value={value}>
+// 			{label}
+// 		</Component>
+// 	))
+// }
 
 const FormsPage: React.FC = () => {
 	const [checkboxValues] = React.useState<FormItemData[]>([
@@ -63,50 +77,80 @@ const FormsPage: React.FC = () => {
 		resolver: signUpScheme,
 		defaultValues: {
 			term: false,
+			fruits: [],
+			userId: '',
+			password: '',
+			animals: '',
+			alphabet: '',
+			date: '',
 		},
 	})
 
-	const onSubmit = handleSubmit((data) => {
+	const onSubmit: React.FormEventHandler = handleSubmit((data) => {
 		console.log('submit data : ', data)
 	})
 
 	console.log('values', getValues())
 
-	return (
-		<Form onFinish={onSubmit}>
-			<Controller
-				control={control}
-				name="userId"
-				render={({ field }) => <Input placeholder="이메일" type="text" {...field} />}
-			/>
-			<ErrorMessage errors={errors} name="userId" render={Message} />
+	const handleCheck = (field: ControllerRenderProps<SignUpFormData, 'fruits'>, value: string) => {
+		const newIds = field.value?.includes(value)
+			? field.value?.filter((id) => id !== value)
+			: [...(field.value ?? []), value]
+		field.onChange(newIds)
+	}
 
-			<Controller
-				control={control}
-				name="password"
-				render={({ field }) => <Input placeholder="비밀번호" type="password" {...field} />}
-			/>
-			<ErrorMessage errors={errors} name="password" render={Message} />
-			<div>
-				<span>저장 여부</span>
+	return (
+		<Box component="form" onSubmit={onSubmit}>
+			<FormGroup>
+				<Controller
+					control={control}
+					name="userId"
+					render={({ field }) => <Input placeholder="이메일" type="text" {...field} />}
+				/>
+				<ErrorMessage errors={errors} name="userId" render={Message} />
+			</FormGroup>
+			<Divider />
+			<FormGroup>
+				<Controller
+					control={control}
+					name="password"
+					render={({ field }) => (
+						<Input placeholder="비밀번호" type="password" {...field} />
+					)}
+				/>
+				<ErrorMessage errors={errors} name="password" render={Message} />
+			</FormGroup>
+			<Divider />
+			<FormGroup>
 				<Controller
 					control={control}
 					name="term"
 					render={({ field }) => (
-						<Checkbox checked={field.value} {...omit(field, 'value')} />
+						<FormControlLabel label="저장여부" control={<Checkbox {...field} />} />
 					)}
 				/>
-			</div>
-			<div>
+			</FormGroup>
+			<FormGroup>
 				<Controller
 					control={control}
 					name="fruits"
-					render={({ field }) => <Checkbox.Group {...field} options={checkboxValues} />}
+					render={({ field }) => (
+						<>
+							{checkboxValues.map((item, index) => (
+								<FormControlLabel
+									key={`fruits${index}`}
+									label={item.label}
+									onChange={() => handleCheck(field, item.value)}
+									control={<Checkbox />}
+								/>
+							))}
+						</>
+					)}
 				/>
 				<ErrorMessage errors={errors} name="fruits" render={Message} />
-			</div>
+			</FormGroup>
 
-			<div>
+			{/* <div>
 				<Controller
 					control={control}
 					name="animals"
@@ -117,9 +161,9 @@ const FormsPage: React.FC = () => {
 					)}
 				/>
 				<ErrorMessage errors={errors} name="animals" render={Message} />
-			</div>
+			</div> */}
 
-			<div>
+			{/* <div>
 				<Controller
 					control={control}
 					name="alphabet"
@@ -130,33 +174,29 @@ const FormsPage: React.FC = () => {
 					)}
 				/>
 				<ErrorMessage errors={errors} name="alphabet" render={Message} />
-			</div>
+			</div> */}
 
-			<div>
+			<FormGroup>
 				<Controller
 					control={control}
 					name="date"
 					render={({ field }) => (
 						<DatePicker
-							{...omit(field, ['value', 'onChange'])}
-							value={moment(field.value)}
-							onChange={(date) =>
-								field.onChange((date as Moment).format('YYYY/MM/DD'))
-							}
-							picker="date"
+							{...field}
+							renderInput={(params) => <TextField {...params} />}
 						/>
 					)}
 				/>
-			</div>
+			</FormGroup>
 
 			<div style={{ marginTop: '50px' }}>
-				<Button type="primary" htmlType="submit">
+				<Button variant="contained" type="submit">
 					submit
 				</Button>
 			</div>
 
 			<DevTool control={control} />
-		</Form>
+		</Box>
 	)
 }
 

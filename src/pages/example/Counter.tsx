@@ -9,10 +9,7 @@ import {
 	incrementIfOdd,
 	incrementByAmount,
 } from '@store/slices/counter'
-
-import { Layout, Button, Input } from 'antd'
-
-const { Content } = Layout
+import { Button, Input, Paper } from '@mui/material'
 
 const CounterPage: React.FC = () => {
 	const count = useAppSelector(selectCount)
@@ -24,23 +21,15 @@ const CounterPage: React.FC = () => {
 	}
 
 	return (
-		<Content>
-			<Button aria-label="Decrement value" onClick={() => dispatch(decrement())}>
-				-
-			</Button>
+		<Paper>
+			<Button onClick={() => dispatch(decrement())}>-</Button>
 			<span>{count}</span>
-			<Button aria-label="Increment value" onClick={() => dispatch(increment())}>
-				+
-			</Button>
-			<Input
-				aria-label="Set increment amount"
-				value={incrementAmount}
-				onChange={onChangeAmount}
-			/>
+			<Button onClick={() => dispatch(increment())}>+</Button>
+			<Input value={incrementAmount} onChange={onChangeAmount} />
 			<Button onClick={() => dispatch(incrementByAmount(incrementAmount))}>Add Amount</Button>
 			<Button onClick={() => dispatch(incrementAsync(incrementAmount))}>Add Async</Button>
 			<Button onClick={() => dispatch(incrementIfOdd(incrementAmount))}>Add If Odd</Button>
-		</Content>
+		</Paper>
 	)
 }
 

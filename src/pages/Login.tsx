@@ -1,22 +1,21 @@
+import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { get } from 'lodash-es'
 import { Navigate, useLocation } from 'react-router-dom'
 import { shallowEqual, useAppDispatch, useAppSelector } from '@hooks/index'
 import { fakeLogin, selectIsLogin } from '@store/slices/auth'
-
-// import { Form, Input, Checkbox, Button, Layout } from 'antd'
-// import type { FormProps } from 'antd/lib/form'
 import {
 	Avatar,
+	Box,
 	Button,
 	Checkbox,
 	FormControlLabel,
 	Grid,
-	Paper,
+	Link,
 	TextField,
 	Typography,
 } from '@mui/material'
-import { Link, LockOutlined } from '@mui/icons-material'
+import { LockOutlined as LockOutlinedIcon } from '@mui/icons-material'
 
 interface LoginFormValues {
 	email: string
@@ -46,9 +45,9 @@ const LoginPage: React.FC = ({}) => {
 		dispatch(fakeLogin(true))
 	}
 
-	// const onFinishFailed = (errorInfo) => {
-	// 	console.log('Failed:', errorInfo)
-	// }
+	const onFinishFailed: React.FormEventHandler = (errorInfo) => {
+		console.log('Failed:', errorInfo)
+	}
 
 	// if (isLogin) {
 	// 	return <Navigate replace to={from} />
@@ -59,50 +58,61 @@ const LoginPage: React.FC = ({}) => {
 			<Helmet>
 				<title>Login Form</title>
 			</Helmet>
-			<Grid>
-				<Paper
-					elevation={10}
-					style={{
-						padding: 20,
-						height: '70vh',
-						width: 280,
-						margin: '20px auto',
-					}}>
-					<Grid justifyContent="center">
-						<Avatar style={{ backgroundColor: '#1bbd7e' }}>
-							<LockOutlined />
-						</Avatar>
-						<h2>Sign In</h2>
-					</Grid>
-					<TextField label="Username" placeholder="Enter username" fullWidth required />
+			<Box
+				sx={{
+					marginTop: 8,
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'center',
+				}}>
+				<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+					<LockOutlinedIcon />
+				</Avatar>
+				<Typography component="h1" variant="h5">
+					Sign in
+				</Typography>
+				<Box component="form" onSubmit={onFinishFailed} noValidate sx={{ mt: 1 }}>
 					<TextField
-						label="Password"
-						placeholder="Enter password"
-						type="password"
-						fullWidth
+						margin="normal"
 						required
+						fullWidth
+						id="email"
+						label="Email Address"
+						name="email"
+						autoComplete="email"
+						autoFocus
+					/>
+					<TextField
+						margin="normal"
+						required
+						fullWidth
+						name="password"
+						label="Password"
+						type="password"
+						id="password"
+						autoComplete="current-password"
 					/>
 					<FormControlLabel
-						control={<Checkbox name="checkedB" color="primary" />}
+						control={<Checkbox value="remember" color="primary" />}
 						label="Remember me"
 					/>
-					<Button
-						type="submit"
-						color="primary"
-						variant="contained"
-						style={{ margin: '8px 0' }}
-						fullWidth>
-						Sign in
+					<Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+						Sign In
 					</Button>
-					<Typography>
-						<Link href="#">Forgot password ?</Link>
-					</Typography>
-					<Typography>
-						{' '}
-						Do you have an account ?<Link href="#">Sign Up</Link>
-					</Typography>
-				</Paper>
-			</Grid>
+					<Grid container>
+						<Grid item xs>
+							<Link href="#" variant="body2">
+								Forgot password?
+							</Link>
+						</Grid>
+						<Grid item>
+							<Link href="#" variant="body2">
+								Don't have an account? Sign Up
+							</Link>
+						</Grid>
+					</Grid>
+				</Box>
+			</Box>
 		</>
 	)
 }
