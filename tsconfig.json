@@ -27,6 +27,6 @@
 		"noFallthroughCasesInSwitch": true,
 		"baseUrl": "./"
 	},
-	"include": ["./src", "@types"],
+	"include": ["./src", "./@types"],
 	"exclude": ["node_modules"]
 }

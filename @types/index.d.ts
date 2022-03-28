@@ -24,3 +24,12 @@ declare module 'faker' {
 	const _default: any
 	export default _default
 }
+
+/**
+ * @description
+ * form 관련 타입정의
+ */
+type FormItem = {
+	label: string
+	value: string
+}

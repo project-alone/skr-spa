@@ -1,27 +1,35 @@
-import { Checkbox, FormControlLabel, FormGroup } from '@mui/material'
-import { Controller } from 'react-hook-form'
-
-export type FormItemData = { label: string; value: string }
+import React from 'react'
+import { Checkbox, FormControlLabel } from '@mui/material'
 
 interface CheckboxGroupProps {
-	options: FormItemData[]
-	name: string
+	options: FormItem[]
+	name?: string
+	value: string[]
+	onChange: (...args: unknown[]) => void
 }
 
-export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ options, ...rest }) => {
-	return (
-		<div></div>
-		// <FormGroup>
-		// 	{options.map((item) => (
-		// 		<Controller
-		// 			key={`form-group-checkbox-${item.label}`}
-		// 			control={control}
-		// 			type="checkbox"
-		// 			name={`form-group-checkbox-${item.label}`}
-		//             render=({fiel})
-		//         />
-		// 			<FormControlLabel control={<Checkbox />} label={item.label} />
-		// 	))}
-		// </FormGroup>
-	)
-}
+export const CheckboxGroup = React.forwardRef<JSX.Element, CheckboxGroupProps>(
+	({ options, onChange, value, ...rest }, ref) => {
+		const handleCheck = (checkedValue: string) => {
+			const newList = value.includes(checkedValue)
+				? value.filter((item: string) => item !== checkedValue)
+				: [...(value ?? []), checkedValue]
+			onChange(newList)
+		}
+
+		return (
+			<>
+				{options.map((item, index) => (
+					<FormControlLabel
+						ref={ref}
+						key={`fruits${index}`}
+						label={item.label}
+						onChange={() => handleCheck(item.value)}
+						control={<Checkbox />}
+					/>
+				))}
+			</>
+		)
+	},
+)
+CheckboxGroup.displayName = 'CheckboxGroup'

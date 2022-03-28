@@ -1,26 +1,28 @@
 import React from 'react'
-import { Controller, useForm } from 'react-hook-form'
+import { Helmet } from 'react-helmet-async'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import { DevTool } from '@hookform/devtools'
-import { omit } from 'lodash-es'
 import { signUpScheme } from '@lib/validate/signUp'
-import moment, { Moment } from 'moment'
 import {
 	Box,
 	Button,
+	Card,
+	CardContent,
 	Checkbox,
+	Container,
 	Divider,
 	FormControlLabel,
 	FormGroup,
+	FormHelperText,
+	Grid,
 	Input,
-	Select,
 	TextField,
 } from '@mui/material'
+import { AddTwoTone as AddTwoToneIcon } from '@mui/icons-material'
 import { DatePicker } from '@mui/lab'
-import { CheckboxGroup } from '@components/form'
-import type { ControllerRenderProps } from 'react-hook-form'
-
-import type { FormItemData } from '@components/form'
+import { CheckboxGroup, RadioButtons, SelectBox } from '@components/form'
+import { PageHeader, PageTitleWrapper } from '@components/common'
 
 type SignUpFormData = {
 	userId: string
@@ -32,35 +34,21 @@ type SignUpFormData = {
 	date: string | null
 }
 
-const Message: React.FC<{ message: string }> = ({ message }) => {
-	return <strong style={{ color: 'red' }}>{message}</strong>
-}
-// const renderFormItemToArray = (
-// 	list: FormItemData[],
-// 	Component: typeof Select.Option | typeof Radio,
-// ) => {
-// 	return list.map(({ value, label }, index) => (
-// 		<Component key={`${value}-${index}`} value={value}>
-// 			{label}
-// 		</Component>
-// 	))
-// }
-
 const FormsPage: React.FC = () => {
-	const [checkboxValues] = React.useState<FormItemData[]>([
+	const [checkboxValues] = React.useState<FormItem[]>([
 		{ label: '사과', value: 'apple' },
 		{ label: '오렌지', value: 'orange' },
 		{ label: '바나나', value: 'banana' },
 		{ label: '딸기', value: 'strawberry' },
 	])
-	const [selectOptions] = React.useState<FormItemData[]>([
+	const [selectOptions] = React.useState<FormItem[]>([
 		{ value: 'lion', label: '사자' },
 		{ value: 'rabbit', label: '토끼' },
 		{ value: 'monkey', label: '원숭이' },
 		{ value: 'cow', label: '젖소' },
 		{ value: 'tiger', label: '호랑이' },
 	])
-	const [radioGroup] = React.useState<FormItemData[]>([
+	const [radioGroup] = React.useState<FormItem[]>([
 		{ label: 'a', value: 'a' },
 		{ label: 'b', value: 'b' },
 		{ label: 'c', value: 'c' },
@@ -71,9 +59,11 @@ const FormsPage: React.FC = () => {
 		handleSubmit,
 		formState: { errors },
 		control,
-		getValues,
 	} = useForm<SignUpFormData>({
-		mode: 'onBlur',
+		/** submit 하기전 유효성 검사를 실행하는 시점, default: 'onSubmit'  */
+		mode: 'onTouched',
+		/** submit 이후 오류가 있는 항목에 대해서 다시 휴효성 검사할 경우에 대한 시점, default: 'onChange' */
+		reValidateMode: 'onChange',
 		resolver: signUpScheme,
 		defaultValues: {
 			term: false,
@@ -86,117 +76,120 @@ const FormsPage: React.FC = () => {
 		},
 	})
 
-	const onSubmit: React.FormEventHandler = handleSubmit((data) => {
+	const onSubmit: SubmitHandler<SignUpFormData> = (data) => {
 		console.log('submit data : ', data)
-	})
-
-	console.log('values', getValues())
-
-	const handleCheck = (field: ControllerRenderProps<SignUpFormData, 'fruits'>, value: string) => {
-		const newIds = field.value?.includes(value)
-			? field.value?.filter((id) => id !== value)
-			: [...(field.value ?? []), value]
-		field.onChange(newIds)
 	}
 
 	return (
-		<Box component="form" onSubmit={onSubmit}>
-			<FormGroup>
-				<Controller
-					control={control}
-					name="userId"
-					render={({ field }) => <Input placeholder="이메일" type="text" {...field} />}
-				/>
-				<ErrorMessage errors={errors} name="userId" render={Message} />
-			</FormGroup>
-			<Divider />
-			<FormGroup>
-				<Controller
-					control={control}
-					name="password"
-					render={({ field }) => (
-						<Input placeholder="비밀번호" type="password" {...field} />
-					)}
-				/>
-				<ErrorMessage errors={errors} name="password" render={Message} />
-			</FormGroup>
-			<Divider />
-			<FormGroup>
-				<Controller
-					control={control}
-					name="term"
-					render={({ field }) => (
-						<FormControlLabel label="저장여부" control={<Checkbox {...field} />} />
-					)}
-				/>
-			</FormGroup>
-			<FormGroup>
-				<Controller
-					control={control}
-					name="fruits"
-					render={({ field }) => (
-						<>
-							{checkboxValues.map((item, index) => (
-								<FormControlLabel
-									key={`fruits${index}`}
-									label={item.label}
-									onChange={() => handleCheck(field, item.value)}
-									control={<Checkbox />}
-								/>
-							))}
-						</>
-					)}
-				/>
-				<ErrorMessage errors={errors} name="fruits" render={Message} />
-			</FormGroup>
+		<>
+			<Helmet>
+				<title>Form example - Examples</title>
+			</Helmet>
+			<PageTitleWrapper>
+				<PageHeader title="Form example" subtitle="This is the Form Example" />
+			</PageTitleWrapper>
+			<Container maxWidth="lg">
+				<CardContent>
+					<Box component="form" onSubmit={handleSubmit(onSubmit)}>
+						<FormGroup>
+							<Controller
+								control={control}
+								name="userId"
+								render={({ field }) => (
+									<TextField
+										{...field}
+										placeholder="이메일"
+										error={!!errors.userId?.message}
+										helperText={errors.userId?.message || ' '}
+									/>
+								)}
+							/>
+						</FormGroup>
+						<FormGroup>
+							<Controller
+								control={control}
+								name="password"
+								render={({ field }) => (
+									<TextField
+										{...field}
+										placeholder="비밀번호"
+										type="password"
+										error={!!errors.password?.message}
+										helperText={errors.password?.message || ' '}
+									/>
+								)}
+							/>
+						</FormGroup>
+						<Divider />
+						<FormGroup>
+							<Controller
+								control={control}
+								name="term"
+								render={({ field }) => (
+									<FormControlLabel
+										label="저장여부"
+										control={<Checkbox {...field} />}
+									/>
+								)}
+							/>
+							<FormHelperText error={!!errors.term?.message} variant="filled">
+								{errors.term?.message || ''}
+							</FormHelperText>
+						</FormGroup>
+						<FormGroup row>
+							<Controller
+								control={control}
+								name="fruits"
+								render={({ field }) => (
+									<CheckboxGroup options={checkboxValues} {...field} />
+								)}
+							/>
+							{/* <FormHelperText errors={errors.fruits.length} /> */}
+						</FormGroup>
+						<FormGroup>
+							<Controller
+								control={control}
+								name="animals"
+								render={({ field }) => (
+									<SelectBox label="animals" options={selectOptions} {...field} />
+								)}
+							/>
+							{/* <ErrorMessage errors={errors} name="animals" render={Message} /> */}
+						</FormGroup>
+						<FormGroup>
+							<Controller
+								control={control}
+								name="alphabet"
+								render={({ field }) => (
+									<RadioButtons row options={radioGroup} {...field} />
+								)}
+							/>
+							{/* <ErrorMessage errors={errors} name="alphabet" render={Message} /> */}
+						</FormGroup>
 
-			{/* <div>
-				<Controller
-					control={control}
-					name="animals"
-					render={({ field }) => (
-						<Select placeholder="동물 선택" {...field}>
-							{renderFormItemToArray(selectOptions, Select.Option)}
-						</Select>
-					)}
-				/>
-				<ErrorMessage errors={errors} name="animals" render={Message} />
-			</div> */}
+						<FormGroup>
+							<Controller
+								control={control}
+								name="date"
+								render={({ field }) => (
+									<DatePicker
+										{...field}
+										renderInput={(props) => <TextField {...props} />}
+									/>
+								)}
+							/>
+						</FormGroup>
 
-			{/* <div>
-				<Controller
-					control={control}
-					name="alphabet"
-					render={({ field }) => (
-						<Radio.Group {...field}>
-							{renderFormItemToArray(radioGroup, Radio)}
-						</Radio.Group>
-					)}
-				/>
-				<ErrorMessage errors={errors} name="alphabet" render={Message} />
-			</div> */}
-
-			<FormGroup>
-				<Controller
-					control={control}
-					name="date"
-					render={({ field }) => (
-						<DatePicker
-							{...field}
-							renderInput={(params) => <TextField {...params} />}
-						/>
-					)}
-				/>
-			</FormGroup>
-
-			<div style={{ marginTop: '50px' }}>
-				<Button variant="contained" type="submit">
-					submit
-				</Button>
-			</div>
-
-			<DevTool control={control} />
-		</Box>
+						<div style={{ marginTop: '50px' }}>
+							<Button variant="contained" type="submit">
+								submit
+							</Button>
+						</div>
+					</Box>
+				</CardContent>
+				<DevTool control={control} />
+			</Container>
+		</>
 	)
 }
 

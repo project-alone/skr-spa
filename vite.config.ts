@@ -53,33 +53,27 @@ export default defineConfig(({ mode, command }) => {
 				ignoreBrowserslistConfig: true,
 			}),
 			babelImport([
-				{
-					libraryName: 'antd',
-					libraryDirectory: 'lib',
-					style: (name) => {
-						if (['col', 'row'].some((item) => item === name)) {
-							return 'antd/lib/grid/style/index.css'
-						} else {
-							return `antd/lib/${name}/style/index.css`
-						}
-					},
-					ignoreStyles: [],
-				},
+				/** example */
+				// {
+				// 	libraryName: 'antd',
+				// 	libraryDirectory: 'lib',
+				// 	style: (name) => {
+				// 		if (['col', 'row'].some((item) => item === name)) {
+				// 			return 'antd/lib/grid/style/index.css'
+				// 		} else {
+				// 			return `antd/lib/${name}/style/index.css`
+				// 		}
+				// 	},
+				// 	ignoreStyles: [],
+				// },
 			]),
 		],
+
+		// 모듈 최적화
 		optimizeDeps: {
 			include: [
+				// 포함될 리스트
 				'antd/lib/layout',
-				'antd/lib/menu',
-				'antd/lib/row',
-				'antd/lib/col',
-				'antd/lib/avatar',
-				'antd/lib/button',
-				'antd/lib/page-header',
-				'antd/lib/table',
-				'antd/lib/form',
-				'antd/lib/input',
-				'antd/lib/checkbox',
 			],
 		},
 		build: {
