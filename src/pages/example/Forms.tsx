@@ -1,13 +1,11 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import { ErrorMessage } from '@hookform/error-message'
 import { DevTool } from '@hookform/devtools'
-import { signUpScheme } from '@lib/validate/signUp'
+import { exampleScheme } from '@lib/validate/example'
 import {
 	Box,
 	Button,
-	Card,
 	CardContent,
 	Checkbox,
 	Container,
@@ -15,16 +13,14 @@ import {
 	FormControlLabel,
 	FormGroup,
 	FormHelperText,
-	Grid,
-	Input,
 	TextField,
 } from '@mui/material'
-import { AddTwoTone as AddTwoToneIcon } from '@mui/icons-material'
 import { DatePicker } from '@mui/lab'
 import { CheckboxGroup, RadioButtons, SelectBox } from '@components/form'
 import { PageHeader, PageTitleWrapper } from '@components/common'
+import { get } from 'lodash-es'
 
-type SignUpFormData = {
+interface ExampleFormData {
 	userId: string
 	password: string
 	term: boolean
@@ -34,37 +30,38 @@ type SignUpFormData = {
 	date: string | null
 }
 
+const checkboxValues: FormItem[] = [
+	{ label: '사과', value: 'apple' },
+	{ label: '오렌지', value: 'orange' },
+	{ label: '바나나', value: 'banana' },
+	{ label: '딸기', value: 'strawberry' },
+]
+const selectOptions: FormItem[] = [
+	{ value: 'lion', label: '사자' },
+	{ value: 'rabbit', label: '토끼' },
+	{ value: 'monkey', label: '원숭이' },
+	{ value: 'cow', label: '젖소' },
+	{ value: 'tiger', label: '호랑이' },
+]
+const radioGroup: FormItem[] = [
+	{ label: 'a', value: 'a' },
+	{ label: 'b', value: 'b' },
+	{ label: 'c', value: 'c' },
+	{ label: 'd', value: 'd' },
+	{ label: 'e', value: 'e' },
+]
+
 const FormsPage: React.FC = () => {
-	const [checkboxValues] = React.useState<FormItem[]>([
-		{ label: '사과', value: 'apple' },
-		{ label: '오렌지', value: 'orange' },
-		{ label: '바나나', value: 'banana' },
-		{ label: '딸기', value: 'strawberry' },
-	])
-	const [selectOptions] = React.useState<FormItem[]>([
-		{ value: 'lion', label: '사자' },
-		{ value: 'rabbit', label: '토끼' },
-		{ value: 'monkey', label: '원숭이' },
-		{ value: 'cow', label: '젖소' },
-		{ value: 'tiger', label: '호랑이' },
-	])
-	const [radioGroup] = React.useState<FormItem[]>([
-		{ label: 'a', value: 'a' },
-		{ label: 'b', value: 'b' },
-		{ label: 'c', value: 'c' },
-		{ label: 'd', value: 'd' },
-		{ label: 'e', value: 'e' },
-	])
 	const {
 		handleSubmit,
 		formState: { errors },
 		control,
-	} = useForm<SignUpFormData>({
+	} = useForm<ExampleFormData>({
 		/** submit 하기전 유효성 검사를 실행하는 시점, default: 'onSubmit'  */
 		mode: 'onTouched',
 		/** submit 이후 오류가 있는 항목에 대해서 다시 휴효성 검사할 경우에 대한 시점, default: 'onChange' */
 		reValidateMode: 'onChange',
-		resolver: signUpScheme,
+		resolver: exampleScheme,
 		defaultValues: {
 			term: false,
 			fruits: [],
@@ -76,9 +73,11 @@ const FormsPage: React.FC = () => {
 		},
 	})
 
-	const onSubmit: SubmitHandler<SignUpFormData> = (data) => {
+	const onSubmit: SubmitHandler<ExampleFormData> = React.useCallback((data) => {
 		console.log('submit data : ', data)
-	}
+	}, [])
+
+	console.log(errors)
 
 	return (
 		<>
@@ -132,7 +131,7 @@ const FormsPage: React.FC = () => {
 									/>
 								)}
 							/>
-							<FormHelperText error={!!errors.term?.message} variant="filled">
+							<FormHelperText error={!!errors.term?.message} filled variant="filled">
 								{errors.term?.message || ''}
 							</FormHelperText>
 						</FormGroup>
@@ -144,7 +143,12 @@ const FormsPage: React.FC = () => {
 									<CheckboxGroup options={checkboxValues} {...field} />
 								)}
 							/>
-							{/* <FormHelperText errors={errors.fruits.length} /> */}
+							<FormHelperText
+								error={!!get(errors.fruits, 'message', '')}
+								filled
+								variant="filled">
+								{get(errors.fruits, 'message', '')}
+							</FormHelperText>
 						</FormGroup>
 						<FormGroup>
 							<Controller
@@ -154,7 +158,12 @@ const FormsPage: React.FC = () => {
 									<SelectBox label="animals" options={selectOptions} {...field} />
 								)}
 							/>
-							{/* <ErrorMessage errors={errors} name="animals" render={Message} /> */}
+							<FormHelperText
+								error={!!errors.animals?.message}
+								filled
+								variant="filled">
+								{errors.animals?.message || ''}
+							</FormHelperText>
 						</FormGroup>
 						<FormGroup>
 							<Controller
@@ -164,7 +173,12 @@ const FormsPage: React.FC = () => {
 									<RadioButtons row options={radioGroup} {...field} />
 								)}
 							/>
-							{/* <ErrorMessage errors={errors} name="alphabet" render={Message} /> */}
+							<FormHelperText
+								error={!!errors.alphabet?.message}
+								filled
+								variant="filled">
+								{errors.alphabet?.message || ''}
+							</FormHelperText>
 						</FormGroup>
 
 						<FormGroup>
@@ -178,6 +192,9 @@ const FormsPage: React.FC = () => {
 									/>
 								)}
 							/>
+							<FormHelperText error={!!errors.date?.message} filled variant="filled">
+								{errors.date?.message || ''}
+							</FormHelperText>
 						</FormGroup>
 
 						<div style={{ marginTop: '50px' }}>

@@ -69,6 +69,10 @@ const menuItems: MenuItems[] = [
 				name: 'forms',
 				link: '/example/formwithhookform',
 			},
+			{
+				name: 'signup',
+				link: '/example/signup',
+			},
 		],
 	},
 	{

@@ -30,6 +30,7 @@ export enum PageNames {
 	Counter = 'Counter',
 	Grid = 'Grid',
 	Modal = 'Modal',
+	SignUp = 'SignUp',
 	// Forms = 'Forms',
 	Overview = 'Overview',
 	Crypto = 'Crypto',
@@ -62,6 +63,7 @@ const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps> | (() =>
 	Grid: withLoading(() => import('@pages/example/Grid')),
 	Modal: withLoading(() => import('@pages/example/Modal')),
 	FormWithHookform: withLoading(() => import('@pages/example/Forms')),
+	SignUp: withLoading(() => import('@pages/example/signup')),
 
 	// Pages
 	Overview: withLoading(() => import('@pages/overview')),
@@ -116,6 +118,7 @@ export const exampleRoutes: RouteObject[] = [
 			{ path: 'grid', element: <Page.Grid /> },
 			{ path: 'modal', element: <Page.Modal /> },
 			{ path: 'formwithhookform', element: <Page.FormWithHookform /> },
+			{ path: 'signup', element: <Page.SignUp /> },
 		],
 	},
 ]

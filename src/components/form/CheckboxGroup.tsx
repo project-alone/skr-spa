@@ -3,16 +3,17 @@ import { Checkbox, FormControlLabel } from '@mui/material'
 
 interface CheckboxGroupProps {
 	options: FormItem[]
-	name?: string
+	name: string
 	value: string[]
 	onChange: (...args: unknown[]) => void
 }
 
 export const CheckboxGroup = React.forwardRef<JSX.Element, CheckboxGroupProps>(
-	({ options, onChange, value, ...rest }, ref) => {
+	({ options, onChange, value, name, ...rest }, ref) => {
+		console.log('CheckboxGroup', rest)
 		const handleCheck = (checkedValue: string) => {
-			const newList = value.includes(checkedValue)
-				? value.filter((item: string) => item !== checkedValue)
+			const newList = value.some((item) => item === checkedValue)
+				? value.filter((item) => item !== checkedValue)
 				: [...(value ?? []), checkedValue]
 			onChange(newList)
 		}
@@ -22,8 +23,10 @@ export const CheckboxGroup = React.forwardRef<JSX.Element, CheckboxGroupProps>(
 				{options.map((item, index) => (
 					<FormControlLabel
 						ref={ref}
-						key={`fruits${index}`}
+						key={`${name}${index}`}
+						name={`${name}[${index}]`}
 						label={item.label}
+						value={item.value}
 						onChange={() => handleCheck(item.value)}
 						control={<Checkbox />}
 					/>

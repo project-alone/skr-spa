@@ -18,4 +18,4 @@ const scheme = yup.object({
 	alphabet: yup.string().required('알파벳을 선택해주세요'),
 })
 
-export const signUpScheme = yupResolver(scheme)
+export const exampleScheme = yupResolver(scheme)

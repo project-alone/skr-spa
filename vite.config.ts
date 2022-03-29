@@ -71,9 +71,9 @@ export default defineConfig(({ mode, command }) => {
 
 		// 모듈 최적화
 		optimizeDeps: {
+			// 포함될 리스트
 			include: [
-				// 포함될 리스트
-				'antd/lib/layout',
+				// 'antd/lib/layout',
 			],
 		},
 		build: {
