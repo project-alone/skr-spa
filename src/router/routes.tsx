@@ -52,6 +52,7 @@ export enum PageNames {
 	StatusComingSoon = 'StatusComingSoon',
 	StatusMaintenance = 'StatusMaintenance',
 	FormWithHookform = 'FormWithHookform',
+	TabNavigation = 'TabNavigation',
 }
 
 const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps> | (() => JSX.Element)> = {
@@ -64,6 +65,7 @@ const Page: Record<keyof typeof PageNames, LoadableComponent<PageProps> | (() =>
 	Modal: withLoading(() => import('@pages/example/Modal')),
 	FormWithHookform: withLoading(() => import('@pages/example/Forms')),
 	SignUp: withLoading(() => import('@pages/example/signup')),
+	TabNavigation: withLoading(() => import('@pages/example/tabnavigation')),
 
 	// Pages
 	Overview: withLoading(() => import('@pages/overview')),
@@ -119,6 +121,7 @@ export const exampleRoutes: RouteObject[] = [
 			{ path: 'modal', element: <Page.Modal /> },
 			{ path: 'formwithhookform', element: <Page.FormWithHookform /> },
 			{ path: 'signup', element: <Page.SignUp /> },
+			{ path: 'tabnavigation', element: <Page.TabNavigation /> },
 		],
 	},
 ]

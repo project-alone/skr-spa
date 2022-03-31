@@ -73,6 +73,10 @@ const menuItems: MenuItems[] = [
 				name: 'signup',
 				link: '/example/signup',
 			},
+			{
+				name: 'tabnavigation',
+				link: '/example/tabnavigation',
+			},
 		],
 	},
 	{
