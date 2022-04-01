@@ -1,11 +1,23 @@
 import React from 'react'
 import KeepAlive from 'react-activation'
-import { Box, MenuItem, MenuList, Toolbar, Typography } from '@mui/material'
+import {
+	Box,
+	Button,
+	Container,
+	Grid,
+	IconButton,
+	MenuItem,
+	MenuList,
+	Tab,
+	Tabs,
+	Typography,
+} from '@mui/material'
+import { Close as CloseIcon } from '@mui/icons-material'
 
 const Paragraph: React.FC<{ title: string }> = ({ title, children }) => {
 	return (
 		<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-			<Typography variant="h1">메뉴</Typography>
+			<Typography variant="h1">{title}</Typography>
 			{children}
 			<Typography paragraph>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -76,11 +88,11 @@ const Pages: { [key: string]: React.FC } = {
 
 interface TabState {
 	tabs: string[]
-	components: JSX.Element | null
+	components: React.FC | null
 	// { [key: string]: JSX.Element }[]
 }
 type TabAction =
-	| { type: 'add'; name: string; component: JSX.Element }
+	| { type: 'add'; name: string; component: React.FC }
 	| { type: 'remove'; name: string }
 
 const tabInitialState: TabState = {
@@ -93,6 +105,7 @@ const tabReducer: React.Reducer<TabState, TabAction> = (prevState, action) => {
 
 	switch (action.type) {
 		case 'add': {
+			console.log('add reducer')
 			state = {
 				tabs: [...state.tabs, action.name],
 				components: action.component,
@@ -112,29 +125,122 @@ const tabReducer: React.Reducer<TabState, TabAction> = (prevState, action) => {
 	}
 }
 
-const TabNavigationExample: React.FC = () => {
+/**
+ * @description
+ * hooks
+ */
+const useTabNavigation = () => {
 	const [state, dispatch] = React.useReducer(tabReducer, tabInitialState)
 
-	const addTab = React.useCallback((name: string) => {
-		dispatch({ type: 'add', name })
+	const add = React.useCallback((name: string) => {
+		dispatch({ type: 'add', name, component: Pages[name] })
+	}, [])
+
+	const remove = React.useCallback((name: string) => {
+		dispatch({ type: 'remove', name })
+	}, [])
+
+	return { add, remove, ...state }
+}
+
+const TabList: React.FC<{ tabs: string[] }> = ({ tabs }) => {
+	const [tabValue, setTabValue] = React.useState('0')
+
+	const handleTab = React.useCallback((event: React.SyntheticEvent, newValue: string) => {
+		setTabValue(newValue)
+	}, [])
+
+	const handleClose = React.useCallback((event: React.MouseEvent, index: number) => {
+		event.stopPropagation()
+		console.log(index)
 	}, [])
 
 	return (
-		<Box sx={{ display: 'flex', position: 'relative' }}>
-			<MenuList>
-				<MenuItem onClick={addTab('One')}>One</MenuItem>
-				<MenuItem onClick={}>Two</MenuItem>
-				<MenuItem onClick={}>Three</MenuItem>
-				<MenuItem onClick={}>Four</MenuItem>
-				<MenuItem onClick={}>Five</MenuItem>
-				<MenuItem onClick={}>Six</MenuItem>
-				<MenuItem onClick={}>Seven</MenuItem>
-				<MenuItem onClick={}>Eight</MenuItem>
-				<MenuItem onClick={}>Nine</MenuItem>
-				<MenuItem onClick={}>Ten</MenuItem>
-			</MenuList>
-			{state.components}
+		<Box width="100%">
+			<Tabs value={tabValue} variant="scrollable" scrollButtons onChange={handleTab}>
+				{tabs.map((tabName, index) => (
+					<Tab
+						key={`tab-list-${index}`}
+						iconPosition="end"
+						label={
+							<>
+								{tabName}
+								<IconButton
+									onClick={(event: React.MouseEvent) => handleClose(event, index)}
+									component={CloseIcon}
+								/>
+							</>
+						}
+					/>
+				))}
+			</Tabs>
 		</Box>
+	)
+}
+
+const MenuButton: React.FC<{ name: string; onClick: (name: string) => void }> = ({
+	children,
+	name,
+	onClick,
+}) => {
+	const handleClick = React.useCallback(() => {
+		onClick(name)
+	}, [name, onClick])
+
+	return (
+		<MenuItem component={Button} color="secondary" onClick={handleClick}>
+			{children}
+		</MenuItem>
+	)
+}
+
+const TabNavigationExample: React.FC = () => {
+	const { add, components: Page, tabs } = useTabNavigation()
+
+	const addTab = React.useCallback(
+		(name: string) => {
+			add(name)
+		},
+		[add],
+	)
+
+	React.useEffect(() => {
+		console.log(tabs)
+	}, [tabs])
+
+	return (
+		<Container maxWidth="lg" sx={{ mt: 3 }}>
+			<Grid container direction="row">
+				{/* Page link list */}
+				<Grid item md={2}>
+					<MenuList>
+						{[
+							'One',
+							'Two',
+							'Three',
+							'Four',
+							'Five',
+							'Six',
+							'Seven',
+							'Eight',
+							'Nine',
+							'Ten',
+						].map((item, index) => (
+							<MenuButton key={`menu-button-${index}`} name={item} onClick={addTab}>
+								{item}
+							</MenuButton>
+						))}
+					</MenuList>
+				</Grid>
+				{/* Tab UI area */}
+				<Grid item md={10} width="100%">
+					{/* Tab button list */}
+					<TabList tabs={tabs} />
+					{/* Page view */}
+					{Page && <Page />}
+				</Grid>
+			</Grid>
+		</Container>
 	)
 }
 
