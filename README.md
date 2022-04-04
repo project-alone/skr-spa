@@ -56,3 +56,9 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 -   md, medium: 900px
 -   lg, large: 1200px
 -   xl, extra-large: 1536px
+
+## Specification
+
+-   JS: typescript + Redux(toolkit) + MUI
+-   CI: vite(rollup)
+-   DS: storybook(typescript), MDX or TSX, webpack5
