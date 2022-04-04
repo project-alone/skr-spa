@@ -721,9 +721,6 @@ export const PureLightTheme = createTheme({
 					borderRadius: 6,
 					border: `1px solid ${colors.primary.dark}`,
 				},
-				scrollableX: {
-					overflow: 'visible !important',
-				},
 			},
 		},
 		MuiTab: {
