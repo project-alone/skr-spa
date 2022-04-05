@@ -1,18 +1,31 @@
 import React from 'react'
-import {
-	Box,
-	Button,
-	Container,
-	Grid,
-	IconButton,
-	MenuItem,
-	MenuList,
-	Tab,
-	Tabs,
-} from '@mui/material'
+import { Box, Button, Container, Grid, IconButton, Tab, Tabs } from '@mui/material'
 import { Close as CloseIcon } from '@mui/icons-material'
-import { useAliveController } from 'react-activation'
+import KeepAlive, { useAliveController } from 'react-activation'
+import { useLabelState } from '@hooks/useLabelState'
 import { useTabNavigation } from '@pages/example/tabnavigation/_parts/useTabNavigation'
+import { Pages } from '@pages/example/tabnavigation/_parts/Pages'
+import Menu from '@pages/example/tabnavigation/_parts/Menu'
+
+interface TabPanelProps {
+	activeIndex: number
+	tabs: string[]
+}
+
+const TabPanels: React.FC<TabPanelProps> = ({ children, activeIndex }) => {
+	return (
+		<React.Fragment>
+			{Object.entries(Pages).map(
+				([name, Component], index) =>
+					activeIndex === index && (
+						<KeepAlive key={`tabnavigation-panels-${index}`} name={name}>
+							<Component />
+						</KeepAlive>
+					),
+			)}
+		</React.Fragment>
+	)
+}
 
 interface TabListProps {
 	tabs: string[]
@@ -20,6 +33,11 @@ interface TabListProps {
 	onActive(index: number): void
 	onClose(name: string): void
 }
+
+/**
+ * @title TabList
+ * @description 탭 버튼의 리스트롤 출력하는 컴포넌트
+ */
 const TabList: React.FC<TabListProps> = ({ tabs, value, onActive, onClose }) => {
 	const handleTab = React.useCallback(
 		(event: React.SyntheticEvent, index: number) => {
@@ -37,7 +55,7 @@ const TabList: React.FC<TabListProps> = ({ tabs, value, onActive, onClose }) => 
 		[onClose],
 	)
 
-	return (
+	return value < 0 ? null : (
 		<Box width="100%">
 			<Tabs value={value} variant="scrollable" scrollButtons="auto" onChange={handleTab}>
 				{tabs.map((tabName, index) => (
@@ -64,90 +82,42 @@ const TabList: React.FC<TabListProps> = ({ tabs, value, onActive, onClose }) => 
 	)
 }
 
-const MenuButton: React.FC<{ name: string; onClick: (name: string) => void }> = ({
-	children,
-	name,
-	onClick,
-}) => {
-	const handleClick = React.useCallback(() => {
-		onClick(name)
-	}, [name, onClick])
-
-	return (
-		<MenuItem component={Button} color="secondary" onClick={handleClick}>
-			{children}
-		</MenuItem>
-	)
-}
-
 const TabNavigationExample: React.FC = () => {
-	const { add, components: Page, tabs, active, remove } = useTabNavigation()
-	const { drop, dropScope, clear, refresh, refreshScope, getCachingNodes } = useAliveController()
-	const [activeTab, setActiveTab] = React.useState(0)
-
-	const addTab = React.useCallback(
-		(name: string) => {
-			add(name)
-			setActiveTab(tabs.length)
-		},
-		[add, tabs.length],
-	)
-
-	const onActive = React.useCallback(
-		(index: number) => {
-			setActiveTab(index)
-			active(index)
-		},
-		[active],
-	)
+	const { add, state, active, remove } = useTabNavigation()
+	const { drop, getCachingNodes } = useAliveController()
 
 	const onClose = React.useCallback(
 		(name: string) => {
-			remove(name)
-			setActiveTab(tabs.length - 2)
+			console.log('onClose', name)
 			drop(name)
+			remove(name)
+			active(state.tabs.length - 2)
 		},
-		[drop, remove, tabs.length],
+		[active, drop, remove, state.tabs.length],
 	)
+
+	React.useEffect(() => {
+		console.log('getCachingNodes', getCachingNodes())
+	}, [])
 
 	return (
 		<Container maxWidth="lg" sx={{ mt: 3 }}>
-			{console.log('getCachingNodes', getCachingNodes())}
-			<Grid item>
-				<Button onClick={() => drop('One')}>drop One</Button>
-			</Grid>
 			<Grid container direction="row">
 				{/* Page link list */}
-				<Grid item md={2}>
-					<MenuList>
-						{[
-							'One',
-							'Two',
-							'Three',
-							'Four',
-							'Five',
-							'Six',
-							'Seven',
-							'Eight',
-							'Nine',
-							'Ten',
-						].map((item, index) => (
-							<MenuButton key={`menu-button-${index}`} name={item} onClick={addTab}>
-								{item}
-							</MenuButton>
-						))}
-					</MenuList>
-				</Grid>
+				<Menu onAdd={add} />
 				{/* Tab UI area */}
 				<Grid item md={10} width="100%">
-					{/* Tab button list */}
-					<TabList tabs={tabs} value={activeTab} onActive={onActive} onClose={onClose} />
-					{/* Page view */}
-					{Page && <Page />}
+					<TabList
+						tabs={state.tabs}
+						value={state.index}
+						onActive={active}
+						onClose={onClose}
+					/>
+					<TabPanels tabs={state.tabs} activeIndex={state.index} />
 				</Grid>
 			</Grid>
 		</Container>
 	)
 }
 
-export default TabNavigationExample
+export default React.memo(TabNavigationExample)

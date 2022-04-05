@@ -1,18 +1,19 @@
 import React from 'react'
-import { Pages } from '@pages/example/tabnavigation/_parts/Pages'
+// import { Pages } from '@pages/example/tabnavigation/_parts/Pages'
 
 interface TabState {
 	tabs: string[]
-	components: React.FC | null
+	currentName: string
+	index: number
 }
 type TabAction =
-	| { type: 'add'; name: string; component: TabState['components'] }
-	| { type: 'remove'; name: string }
-	| { type: 'active'; component: TabState['components'] }
+	| { type: 'add' | 'remove'; name: string }
+	| { type: 'active'; name: string; index: number }
 
 const tabInitialState: TabState = {
 	tabs: [],
-	components: null,
+	currentName: '',
+	index: -1,
 }
 
 const tabReducer: React.Reducer<TabState, TabAction> = (prevState, action) => {
@@ -20,24 +21,28 @@ const tabReducer: React.Reducer<TabState, TabAction> = (prevState, action) => {
 
 	switch (action.type) {
 		case 'add': {
-			console.log('add reducer')
+			const tabs = [...state.tabs, action.name]
 			state = {
-				tabs: [...state.tabs, action.name],
-				components: action.component,
+				tabs,
+				currentName: action.name,
+				index: tabs.length - 1,
 			}
 			return state
 		}
 		case 'remove': {
+			const tabs = state.tabs.filter((item) => item !== action.name)
 			state = {
-				...state,
-				tabs: state.tabs.filter((item) => item !== action.name),
+				tabs,
+				currentName: action.name,
+				index: tabs.length - 1,
 			}
 			return state
 		}
 		case 'active': {
 			state = {
 				...state,
-				components: action.component,
+				currentName: action.name,
+				index: action.index,
 			}
 			return state
 		}
@@ -55,7 +60,7 @@ export const useTabNavigation = () => {
 	const [state, dispatch] = React.useReducer(tabReducer, tabInitialState)
 
 	const add = React.useCallback((name: string) => {
-		dispatch({ type: 'add', name, component: Pages[name] })
+		dispatch({ type: 'add', name })
 	}, [])
 
 	const remove = React.useCallback((name: string) => {
@@ -64,10 +69,11 @@ export const useTabNavigation = () => {
 
 	const active = React.useCallback(
 		(index: number) => {
-			dispatch({ type: 'active', component: Pages[state.tabs[index]] })
+			const name = state.tabs[index]
+			dispatch({ type: 'active', name, index })
 		},
 		[state.tabs],
 	)
 
-	return { add, remove, active, ...state }
+	return { add, remove, active, state }
 }

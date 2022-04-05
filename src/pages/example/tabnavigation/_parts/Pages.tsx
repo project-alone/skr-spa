@@ -1,26 +1,14 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
-import KeepAlive, { useActivate, useUnactivate } from 'react-activation'
-
-const createCachedComponent = (component: React.FC<{ title: string }>, name: string) => {
-	const Component = component
-	const CachedComponent: React.FC = () => {
-		return (
-			<KeepAlive name={name}>
-				<Component title={name} />
-			</KeepAlive>
-		)
-	}
-	return CachedComponent
-}
+import { Box, Button, Typography } from '@mui/material'
+import { useActivate, useUnactivate } from 'react-activation'
 
 const Paragraph: React.FC<{ title: string }> = ({ title, children }) => {
 	useActivate(() => {
-		console.log(`${title} :::: TestFunction: didActivate`)
+		console.log(`TestFunction: didActivate :::: ${title}`)
 	})
 
 	useUnactivate(() => {
-		console.log(`${title} :::: TestFunction: willUnactivate`)
+		console.log(`TestFunction: willUnactivate :::: ${title}`)
 	})
 
 	return (
@@ -62,14 +50,23 @@ const Paragraph: React.FC<{ title: string }> = ({ title, children }) => {
 }
 
 export const Pages: { [key: string]: React.FC } = {
-	One: createCachedComponent(Paragraph, 'One'),
-	Two: createCachedComponent(Paragraph, 'Two'),
-	Three: createCachedComponent(Paragraph, 'Three'),
-	Four: createCachedComponent(Paragraph, 'Four'),
-	Five: createCachedComponent(Paragraph, 'Five'),
-	Six: createCachedComponent(Paragraph, 'Six'),
-	Seven: createCachedComponent(Paragraph, 'Seven'),
-	Eight: createCachedComponent(Paragraph, 'Eight'),
-	Nine: createCachedComponent(Paragraph, 'Nine'),
-	Ten: createCachedComponent(Paragraph, 'Ten'),
+	One: () => <Paragraph title="One" />,
+	Two: () => {
+		return (
+			<Paragraph title="Two">
+				<Box>
+					<Button>+</Button>
+					<Button>-</Button>
+				</Box>
+			</Paragraph>
+		)
+	},
+	Three: () => <Paragraph title="Three" />,
+	Four: () => <Paragraph title="Four" />,
+	Five: () => <Paragraph title="Five" />,
+	Six: () => <Paragraph title="Six" />,
+	Seven: () => <Paragraph title="Seven" />,
+	Eight: () => <Paragraph title="Eight" />,
+	Nine: () => <Paragraph title="Nine" />,
+	Ten: () => <Paragraph title="Ten" />,
 }
