@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Grid, MenuItem, MenuList } from '@mui/material'
+import { useAliveController } from 'react-activation'
 
 /**
  * @deprecated
@@ -25,6 +26,7 @@ const MenuButtonItem = React.memo(MenuButton)
  * @deprecated
  */
 const Menu: React.FC<{ onAdd: (name: string) => void }> = ({ onAdd }) => {
+	// const { getCachingNodes } = useAliveController()
 	const [pageList] = React.useState([
 		'One',
 		'Two',
@@ -37,6 +39,7 @@ const Menu: React.FC<{ onAdd: (name: string) => void }> = ({ onAdd }) => {
 		'Nine',
 		'Ten',
 	])
+
 	const addTab = React.useCallback(
 		(name: string) => {
 			onAdd(name)

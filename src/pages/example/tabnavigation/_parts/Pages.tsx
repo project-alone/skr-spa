@@ -1,10 +1,55 @@
 import React from 'react'
-import { Box, Button, Typography } from '@mui/material'
-import { useActivate, useUnactivate } from 'react-activation'
+import { Box, Button, Grid, Typography } from '@mui/material'
+import { useActivate, useAliveController, useUnactivate } from 'react-activation'
+import { useAppSelector } from '@hooks/useAppSelector'
+import { shallowEqual, useDispatch } from 'react-redux'
+import { calculate } from '@store/slices/tabs'
+
+const Counter: React.FC = () => {
+	const { value } = useAppSelector(
+		(state) => ({
+			value: state.tabs.value,
+		}),
+		shallowEqual,
+	)
+	const dispatch = useDispatch()
+
+	const initialize = React.useCallback(() => {
+		dispatch(calculate(-value))
+	}, [dispatch, value])
+
+	const sum = React.useCallback(() => {
+		dispatch(calculate(1))
+	}, [dispatch])
+
+	const subtract = React.useCallback(() => {
+		dispatch(calculate(-1))
+	}, [dispatch])
+
+	return (
+		<Box>
+			<Grid container direction="row">
+				<Grid item>
+					<Button onClick={sum}>+</Button>
+				</Grid>
+				<Grid item alignSelf="center">
+					<Typography>{value}</Typography>
+				</Grid>
+				<Grid item>
+					<Button onClick={subtract}>-</Button>
+				</Grid>
+				<Grid item>
+					<Button onClick={initialize}>initialize</Button>
+				</Grid>
+			</Grid>
+		</Box>
+	)
+}
 
 const Paragraph: React.FC<{ title: string }> = ({ title, children }) => {
+	const { getCachingNodes } = useAliveController()
 	useActivate(() => {
-		console.log(`TestFunction: didActivate :::: ${title}`)
+		console.log(`TestFunction: didActivate :::: ${title}`, getCachingNodes())
 	})
 
 	useUnactivate(() => {
@@ -49,24 +94,31 @@ const Paragraph: React.FC<{ title: string }> = ({ title, children }) => {
 	)
 }
 
+const DataShared: React.FC = () => {
+	const { value } = useAppSelector(
+		(state) => ({
+			value: state.tabs.value,
+		}),
+		shallowEqual,
+	)
+	return <Paragraph title="Four">{value}</Paragraph>
+}
+
 export const Pages: { [key: string]: React.FC } = {
-	One: () => <Paragraph title="One" />,
-	Two: () => {
+	One: React.memo(() => <Paragraph title="One" />),
+	Two: React.memo(() => {
 		return (
 			<Paragraph title="Two">
-				<Box>
-					<Button>+</Button>
-					<Button>-</Button>
-				</Box>
+				<Counter />
 			</Paragraph>
 		)
-	},
-	Three: () => <Paragraph title="Three" />,
-	Four: () => <Paragraph title="Four" />,
-	Five: () => <Paragraph title="Five" />,
-	Six: () => <Paragraph title="Six" />,
-	Seven: () => <Paragraph title="Seven" />,
-	Eight: () => <Paragraph title="Eight" />,
-	Nine: () => <Paragraph title="Nine" />,
-	Ten: () => <Paragraph title="Ten" />,
+	}),
+	Three: React.memo(() => <Paragraph title="Three" />),
+	Four: React.memo(DataShared),
+	Five: React.memo(() => <Paragraph title="Five" />),
+	Six: React.memo(() => <Paragraph title="Six" />),
+	Seven: React.memo(() => <Paragraph title="Seven" />),
+	Eight: React.memo(() => <Paragraph title="Eight" />),
+	Nine: React.memo(() => <Paragraph title="Nine" />),
+	Ten: React.memo(() => <Paragraph title="Ten" />),
 }

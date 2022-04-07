@@ -1,4 +1,5 @@
 import React from 'react'
+
 type SidebarContextType = { sidebarToggle: boolean; toggleSidebar: () => void }
 
 export const SidebarContext = React.createContext<SidebarContextType>({} as SidebarContextType)
