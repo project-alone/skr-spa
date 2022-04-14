@@ -1,13 +1,15 @@
 import React from 'react'
-import type { LoadableComponent } from '@loadable/component'
+import modal from '@components/modal'
+
+type ComponentType = typeof modal[keyof typeof modal]
 
 export type ModalDispatch = {
-	open(Component: ModalState['Component'], props: ModalState['props']): void
-	close(Component: ModalState['Component']): void
+	open(Component: ComponentType, props: ModalState['props']): void
+	close(Component: ComponentType): void
 }
 
 export interface ModalState {
-	Component: LoadableComponent<{ [key: string]: unknown }>
+	Component: ComponentType
 	props: { [key: string]: unknown }
 }
 

@@ -49,11 +49,11 @@ const Counter: React.FC = () => {
 const Paragraph: React.FC<{ title: string }> = ({ title, children }) => {
 	const { getCachingNodes } = useAliveController()
 	useActivate(() => {
-		console.log(`TestFunction: didActivate :::: ${title}`, getCachingNodes())
+		// console.log(`TestFunction: didActivate :::: ${title}`, getCachingNodes())
 	})
 
 	useUnactivate(() => {
-		console.log(`TestFunction: willUnactivate :::: ${title}`)
+		// console.log(`TestFunction: willUnactivate :::: ${title}`)
 	})
 
 	return (
@@ -105,20 +105,25 @@ const DataShared: React.FC = () => {
 }
 
 export const Pages: { [key: string]: React.FC } = {
-	One: React.memo(() => <Paragraph title="One" />),
-	Two: React.memo(() => {
+	One: () => {
+		useActivate(() => {
+			console.log('One activate')
+		})
+		return <Paragraph title="One" />
+	},
+	Two: () => {
 		return (
 			<Paragraph title="Two">
 				<Counter />
 			</Paragraph>
 		)
-	}),
-	Three: React.memo(() => <Paragraph title="Three" />),
-	Four: React.memo(DataShared),
-	Five: React.memo(() => <Paragraph title="Five" />),
-	Six: React.memo(() => <Paragraph title="Six" />),
-	Seven: React.memo(() => <Paragraph title="Seven" />),
-	Eight: React.memo(() => <Paragraph title="Eight" />),
-	Nine: React.memo(() => <Paragraph title="Nine" />),
-	Ten: React.memo(() => <Paragraph title="Ten" />),
+	},
+	Three: () => <Paragraph title="Three" />,
+	Four: DataShared,
+	Five: () => <Paragraph title="Five" />,
+	Six: () => <Paragraph title="Six" />,
+	Seven: () => <Paragraph title="Seven" />,
+	Eight: () => <Paragraph title="Eight" />,
+	Nine: () => <Paragraph title="Nine" />,
+	Ten: () => <Paragraph title="Ten" />,
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 // styles
 import 'nprogress/nprogress.css'
 
@@ -8,11 +9,16 @@ import { Provider as ReduxProvider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
+import AdapterDateFns from '@mui/lab/AdapterDateFns'
+import LocalizationProvider from '@mui/lab/LocalizationProvider'
+import ThemeProvider from '@theme/ThemeProvider'
+import { CssBaseline } from '@mui/material'
 
 // internal
 import { store, createPersistor } from '@store/index'
 import { ModalProvider } from '@lib/modal'
 import { SidebarProvider } from '@context/Sidebar'
+import { ComposeProvider } from '@lib/utils'
 import '@lib/utils/chart'
 
 // components
@@ -33,22 +39,22 @@ console.log(import.meta.env)
  */
 
 const persistor = createPersistor(store)
+const providers = [
+	<React.StrictMode />,
+	<HelmetProvider />,
+	<ReduxProvider store={store} />,
+	<PersistGate loading={<Loading />} persistor={persistor} />,
+	<ThemeProvider />,
+	<LocalizationProvider dateAdapter={AdapterDateFns} />,
+	<SidebarProvider />,
+	<ModalProvider />,
+	<BrowserRouter />,
+]
 
 render(
-	<React.StrictMode>
-		<HelmetProvider>
-			<ReduxProvider store={store}>
-				<PersistGate loading={<Loading />} persistor={persistor}>
-					<ModalProvider>
-						<SidebarProvider>
-							<BrowserRouter>
-								<App />
-							</BrowserRouter>
-						</SidebarProvider>
-					</ModalProvider>
-				</PersistGate>
-			</ReduxProvider>
-		</HelmetProvider>
-	</React.StrictMode>,
+	<ComposeProvider providers={providers}>
+		<CssBaseline />
+		<App />
+	</ComposeProvider>,
 	document.getElementById('root'),
 )

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Grid, MenuItem, MenuList } from '@mui/material'
-import { useAliveController } from 'react-activation'
+import { useTabControl } from '@lib/tabNavigation'
 
 /**
  * @deprecated
@@ -25,8 +25,9 @@ const MenuButtonItem = React.memo(MenuButton)
 /**
  * @deprecated
  */
-const Menu: React.FC<{ onAdd: (name: string) => void }> = ({ onAdd }) => {
+const MenuBase: React.FC = () => {
 	// const { getCachingNodes } = useAliveController()
+	const { add } = useTabControl()
 	const [pageList] = React.useState([
 		'One',
 		'Two',
@@ -40,18 +41,11 @@ const Menu: React.FC<{ onAdd: (name: string) => void }> = ({ onAdd }) => {
 		'Ten',
 	])
 
-	const addTab = React.useCallback(
-		(name: string) => {
-			onAdd(name)
-		},
-		[onAdd],
-	)
-
 	return (
 		<Grid item md={2}>
 			<MenuList>
 				{pageList.map((item, index) => (
-					<MenuButtonItem key={`menu-button-${index}`} name={item} onClick={addTab}>
+					<MenuButtonItem key={`menu-button-${index}`} name={item} onClick={add}>
 						{item}
 					</MenuButtonItem>
 				))}
@@ -59,6 +53,6 @@ const Menu: React.FC<{ onAdd: (name: string) => void }> = ({ onAdd }) => {
 		</Grid>
 	)
 }
-const MenuExample = React.memo(Menu)
+const Menu = React.memo(MenuBase)
 
-export default MenuExample
+export default Menu

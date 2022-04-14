@@ -1,21 +1,19 @@
 import React from 'react'
 import KeepAlive from 'react-activation'
+import { TNStateContext } from '@lib/tabNavigation/context'
 
-type Pages = { [key: string]: React.FC }
+export type Pages = { [key: string]: React.FC }
 
-const pages: Pages = {}
+export const TabPanelsBase: React.FC<{ pages: Pages }> = ({ pages }) => {
+	const { currentName } = React.useContext(TNStateContext)
 
-interface TabPanelProps {
-	activeIndex: string
-	tabs: string[]
-}
+	console.log('TabPanels', currentName)
 
-const TabPanels: React.FC<TabPanelProps> = ({ children, activeIndex }) => {
 	return (
 		<React.Fragment>
 			{Object.entries(pages).map(
 				([name, Component]) =>
-					activeIndex === name && (
+					currentName === name && (
 						<KeepAlive key={`tabnavigation-panels-${name}`} name={name}>
 							<Component />
 						</KeepAlive>
@@ -25,7 +23,4 @@ const TabPanels: React.FC<TabPanelProps> = ({ children, activeIndex }) => {
 	)
 }
 
-export const createPanels = (recievedPages: Pages) => {
-	// pages = recievedPages
-	return { TabPanels }
-}
+export const TabPanels = React.memo(TabPanelsBase)

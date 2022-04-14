@@ -5,7 +5,9 @@ import loadable from '@loadable/component'
  * `modal` 모달 컴포넌트
  */
 
-export const modals = {
-	/** sample modal */
-	Sample: loadable(() => import('@components/modal/Sample')),
+/** sample modal */
+const modal = {
+	Simple: loadable(() => import('@components/modal/SimpleModal')),
 }
+
+export default modal

@@ -29,11 +29,16 @@ const initialState: CounterState = {
  */
 export const incrementAsync = createAsyncThunk<number, number>(
 	'counter/fetchCount',
-	async (amount) => {
-		const response = await getCount({ amount })
-
-		// return 값이 제대로 넘어 갔다면 action payload는 'fullfilled'가 됩니다.
-		return response.data
+	async (amount, thunkAPI) => {
+		try {
+			const response = await getCount({ amount })
+			// return 값이 제대로 넘어 갔다면 action payload는 'fullfilled'가 됩니다.
+			return response.data
+		} catch (e) {
+			return thunkAPI.rejectWithValue({
+				error: 'error',
+			})
+		}
 	},
 )
 

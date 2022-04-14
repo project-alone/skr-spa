@@ -8,77 +8,17 @@ import {
 	CardContent,
 	Divider,
 	Button,
-	Avatar,
-	List,
-	ListItem,
-	ListItemAvatar,
-	ListItemText,
-	DialogTitle,
-	Dialog,
 	Typography,
-	colors,
 } from '@mui/material'
-import { Person as PersonIcon, Add as AddIcon } from '@mui/icons-material'
 import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
-
-const emails = ['username@gmail.com', 'user02@gmail.com']
-
-interface SimpleDialogProps {
-	onClose: (value: string) => void
-	open: boolean
-	selectedValue: string
-}
-
-const SimpleDialog: React.FC<SimpleDialogProps> = (props) => {
-	const { onClose, selectedValue, open } = props
-
-	const handleClose = () => {
-		onClose(selectedValue)
-	}
-
-	const handleListItemClick = (value: string) => {
-		onClose(value)
-	}
-
-	return (
-		<Dialog onClose={handleClose} open={open}>
-			<DialogTitle>Set backup account</DialogTitle>
-			<List sx={{ pt: 0 }}>
-				{emails.map((email) => (
-					<ListItem button onClick={() => handleListItemClick(email)} key={email}>
-						<ListItemAvatar>
-							<Avatar sx={{ bgcolor: colors.blue[100], color: colors.blue[600] }}>
-								<PersonIcon />
-							</Avatar>
-						</ListItemAvatar>
-						<ListItemText primary={email} />
-					</ListItem>
-				))}
-
-				<ListItem autoFocus button onClick={() => handleListItemClick('addAccount')}>
-					<ListItemAvatar>
-						<Avatar>
-							<AddIcon />
-						</Avatar>
-					</ListItemAvatar>
-					<ListItemText primary="Add account" />
-				</ListItem>
-			</List>
-		</Dialog>
-	)
-}
+import { useModal } from '@hooks/useModal'
+import modal from '@components/modal'
 
 const Modals: React.FC = () => {
-	const [open, setOpen] = React.useState(false)
-	const [selectedValue, setSelectedValue] = React.useState(emails[1])
+	const { openModal } = useModal()
 
-	const handleClickOpen = () => {
-		setOpen(true)
-	}
-
-	const handleClose = (value: string) => {
-		setOpen(false)
-		setSelectedValue(value)
+	const handleClick = () => {
+		openModal(modal.Simple, { open: true })
 	}
 
 	return (
@@ -106,17 +46,12 @@ const Modals: React.FC = () => {
 							<Divider />
 							<CardContent>
 								<Typography variant="subtitle1" component="div">
-									Selected: {selectedValue}
+									{/* Selected: {selectedValue} */}
 								</Typography>
 								<br />
-								<Button variant="outlined" onClick={handleClickOpen}>
+								<Button variant="outlined" onClick={handleClick}>
 									Open simple dialog
 								</Button>
-								<SimpleDialog
-									selectedValue={selectedValue}
-									open={open}
-									onClose={handleClose}
-								/>
 							</CardContent>
 						</Card>
 					</Grid>

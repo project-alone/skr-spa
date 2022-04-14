@@ -3,9 +3,9 @@ import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 import DataGrid, { SelectColumn, TextEditor, SelectCellFormatter } from 'react-data-grid'
 import {
-	exportToCsv,
-	exportToXlsx,
-	exportToPdf,
+	exportToCSV,
+	exportToXLSX,
+	exportToPDF,
 	createRows,
 	dateFormatter,
 	currencyFormatter,
@@ -324,14 +324,14 @@ export default function CommonFeatures() {
 	return (
 		<>
 			<Toolbar>
-				<ExportButton onExport={() => exportToCsv(gridElement, 'CommonFeatures.csv')}>
+				<ExportButton onExport={() => exportToCSV(gridElement, 'CommonFeatures.csv')}>
 					Export to CSV
 				</ExportButton>
 				<ExportButton
-					onExport={async () => exportToXlsx(gridElement, 'CommonFeatures.xlsx')}>
+					onExport={async () => exportToXLSX(gridElement, 'CommonFeatures.xlsx')}>
 					Export to XSLX
 				</ExportButton>
-				<ExportButton onExport={() => exportToPdf(gridElement, 'CommonFeatures.pdf')}>
+				<ExportButton onExport={() => exportToPDF(gridElement, 'CommonFeatures.pdf')}>
 					Export to PDF
 				</ExportButton>
 			</Toolbar>

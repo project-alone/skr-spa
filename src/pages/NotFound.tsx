@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import type { PageProps } from '@router/routes'
+import type { PageProps } from '@router/pages'
 
 const NotFoundPage: React.FC<PageProps> = ({ title }) => {
 	return (

@@ -1,24 +1,13 @@
 import React from 'react'
 import { useModal } from '@hooks/index'
-import { modals } from '@components/modal'
+import modal from '@components/modal'
 
 const PortalPage: React.FC = () => {
 	const { openModal } = useModal()
 
 	const handleClick = () => {
-		openModal(modals.Sample, {
+		openModal(modal.Simple, {
 			open: true,
-			children: (
-				<div>
-					<h1>modal sample</h1>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem veritatis
-						itaque assumenda quia enim, iste totam iure! Impedit exercitationem rerum
-						repudiandae. Ex laboriosam incidunt assumenda ipsa, sunt provident possimus
-						dolorem.
-					</p>
-				</div>
-			),
 		})
 	}
 

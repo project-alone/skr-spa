@@ -6,7 +6,7 @@ import { jsPDF } from 'jspdf'
 import autoTable from 'jspdf-autotable'
 import type { DataGridProps } from 'react-data-grid'
 
-export async function exportToCsv<R, SR>(
+export async function exportToCSV<R, SR>(
 	gridElement: React.ReactElement<DataGridProps<R, SR>>,
 	fileName: string,
 ) {
@@ -18,7 +18,7 @@ export async function exportToCsv<R, SR>(
 	downloadFile(fileName, new Blob([content], { type: 'text/csv;charset=utf-8;' }))
 }
 
-export function exportToXlsx<R, SR>(
+export function exportToXLSX<R, SR>(
 	gridElement: React.ReactElement<DataGridProps<R, SR>>,
 	fileName: string,
 ) {
@@ -29,7 +29,7 @@ export function exportToXlsx<R, SR>(
 	writeFile(wb, fileName)
 }
 
-export async function exportToPdf<R, SR>(
+export async function exportToPDF<R, SR>(
 	gridElement: React.ReactElement<DataGridProps<R, SR>>,
 	fileName: string,
 ) {
@@ -156,7 +156,7 @@ export function createRows(): readonly Row[] {
 	const now = Date.now()
 	const rows: Row[] = []
 
-	for (let i = 0; i < 1000; i++) {
+	for (let i = 0; i < 10000; i++) {
 		rows.push({
 			id: i,
 			title: `Task #${i + 1}`,

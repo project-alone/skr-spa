@@ -3,7 +3,16 @@ import ReactDOM from 'react-dom'
 import { ModalDispatchContext, ModalStateContext } from '@lib/modal/context'
 import { disableScroll } from '@lib/utils'
 
-export const Modals: React.FC<{ selector?: string }> = ({ selector = '#modal-container' }) => {
+export interface ModalProps {
+	onClose?(): void
+	onSubmit?(): Promise<void>
+}
+
+interface ModalsProps {
+	selector?: string
+}
+
+export const Modals: React.FC<ModalsProps> = ({ selector = '#modal-container' }) => {
 	const openedModals = React.useContext(ModalStateContext)
 	const { close } = React.useContext(ModalDispatchContext)
 	const element = document.querySelector(selector) as HTMLDivElement
@@ -18,8 +27,7 @@ export const Modals: React.FC<{ selector?: string }> = ({ selector = '#modal-con
 
 	return (
 		<>
-			{openedModals.map((modal, index) => {
-				const { Component, props } = modal
+			{openedModals.map(({ Component, props }, index) => {
 				const { onSubmit, ...restProps } = props
 				const onClose = () => {
 					close(Component)
@@ -28,15 +36,15 @@ export const Modals: React.FC<{ selector?: string }> = ({ selector = '#modal-con
 					typeof onSubmit === 'function' && (await onSubmit())
 				}
 
+				const componentProps = {
+					onClose: onClose,
+					onSubmit: handleSubmit,
+				}
+
 				return (
 					element &&
 					ReactDOM.createPortal(
-						<Component
-							{...restProps}
-							key={index}
-							onClose={onClose}
-							onSubmit={handleSubmit}
-						/>,
+						<Component key={index} {...restProps} {...componentProps} />,
 						element,
 					)
 				)
