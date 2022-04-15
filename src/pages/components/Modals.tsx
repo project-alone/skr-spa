@@ -11,7 +11,7 @@ import {
 	Typography,
 } from '@mui/material'
 import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
-import { useModal } from '@hooks/useModal'
+import { useModal } from '@lib/modal'
 import modal from '@components/modal'
 
 const Modals: React.FC = () => {

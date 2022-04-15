@@ -25,7 +25,6 @@ export const exampleRoutes: RouteObject[] = [
 				),
 			},
 			{ path: 'grid', element: <Page.Grid /> },
-			{ path: 'modal', element: <Page.Modal /> },
 			{ path: 'formwithhookform', element: <Page.FormWithHookform /> },
 			{ path: 'signup', element: <Page.SignUp /> },
 			{ path: 'tabnavigation', element: <Page.TabNavigation /> },
