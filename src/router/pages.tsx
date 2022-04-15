@@ -26,6 +26,7 @@ export enum PageNames {
 	Counter = 'Counter',
 	Grid = 'Grid',
 	SignUp = 'SignUp',
+	Notification = 'Notification',
 	Overview = 'Overview',
 	Crypto = 'Crypto',
 	Transactions = 'Transactions',
@@ -61,6 +62,7 @@ export const Pages: Record<
 	FormWithHookform: withLoading(() => import('@pages/example/Forms')),
 	SignUp: withLoading(() => import('@pages/example/signup')),
 	TabNavigation: withLoading(() => import('@pages/example/tabnavigation')),
+	Notification: withLoading(() => import('@pages/example/notification')),
 
 	// Pages
 	Overview: withLoading(() => import('@pages/overview')),

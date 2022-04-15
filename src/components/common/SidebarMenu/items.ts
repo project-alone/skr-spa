@@ -66,16 +66,20 @@ const menuItems: MenuItems[] = [
 				link: '/example/Modal',
 			},
 			{
-				name: 'forms',
+				name: 'Forms',
 				link: '/example/formwithhookform',
 			},
 			{
-				name: 'signup',
+				name: 'Sign Up',
 				link: '/example/signup',
 			},
 			{
-				name: 'tabnavigation',
+				name: 'Tabnavigation',
 				link: '/example/tabnavigation',
+			},
+			{
+				name: 'Notification',
+				link: '/example/notification',
 			},
 		],
 	},

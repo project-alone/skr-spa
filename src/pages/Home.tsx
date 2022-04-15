@@ -5,7 +5,7 @@ import { users } from '@store/slices/users'
 
 import { Button, Container, Grid } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
-import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@components/common'
 
 import type { GridColumns } from '@mui/x-data-grid'
 
@@ -60,7 +60,6 @@ const HomePage: React.FC = () => {
 					<DataGrid columns={columns} rows={userList} />
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }

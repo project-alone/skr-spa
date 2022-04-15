@@ -4,6 +4,7 @@ import { Box, styled } from '@mui/material'
 
 import { Sidebar } from '@components/layout/SidebarLayout/Sidebar'
 import { Header } from '@components/layout/SidebarLayout/Header'
+import { Footer } from '@root/components/common'
 
 // interface SidebarLayoutProps {
 // }
@@ -37,6 +38,7 @@ export const SidebarLayout: React.FC = () => {
 				<MainContent>
 					<Outlet />
 				</MainContent>
+				<Footer />
 			</MainWrapper>
 		</>
 	)

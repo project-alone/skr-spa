@@ -28,6 +28,7 @@ export const exampleRoutes: RouteObject[] = [
 			{ path: 'formwithhookform', element: <Page.FormWithHookform /> },
 			{ path: 'signup', element: <Page.SignUp /> },
 			{ path: 'tabnavigation', element: <Page.TabNavigation /> },
+			{ path: 'notification', element: <Page.Notification /> },
 		],
 	},
 ]
