@@ -1,11 +1,14 @@
 /* eslint-disable react/jsx-key */
-import React from 'react'
 
-// for router
+// core
+import React from 'react'
 import { useLocation, useRoutes } from 'react-router-dom'
 import { AliveScope } from 'react-activation'
 import routes from '@router/routes'
 import { ErrorBoundary } from 'react-error-boundary'
+
+// @mui style
+import { CssBaseline } from '@mui/material'
 
 // for test
 import { ErrorFallbackComponent, ErrorTest as ErrorOccurrence } from '@components/example/ErrorTest'
@@ -32,6 +35,7 @@ const App: React.FC = () => {
 	return (
 		<ErrorBoundary FallbackComponent={ErrorFallbackComponent} onReset={handleReset}>
 			<ErrorTest error={error} onRefresh={setError as () => void} />
+			<CssBaseline />
 			<AliveScope>{content}</AliveScope>
 		</ErrorBoundary>
 	)
