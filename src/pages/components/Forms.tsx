@@ -22,7 +22,7 @@ import {
 	colors,
 } from '@mui/material'
 import { VolumeDown as VolumeDownIcon, VolumeUp as VolumeUpIcon } from '@mui/icons-material'
-import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@components/common'
 
 import type { OutlinedInputProps } from '@mui/material'
 import type { SliderProps } from '@mui/material/Slider'
@@ -457,7 +457,6 @@ const Forms: React.FC = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }

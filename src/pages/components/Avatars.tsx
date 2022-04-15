@@ -6,7 +6,7 @@ import {
 	Pageview as PageviewIcon,
 	Assignment as AssignmentIcon,
 } from '@mui/icons-material'
-import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@components/common'
 
 const stringToColor = (string: string) => {
 	let hash = 0
@@ -145,7 +145,6 @@ const Avatars: React.FC = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }

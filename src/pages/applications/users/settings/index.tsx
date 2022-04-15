@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Container, Tabs, Tab, Grid, styled } from '@mui/material'
-import { PageTitleWrapper, Footer, PageHeader } from '@components/common'
+import { PageTitleWrapper, PageHeader } from '@components/common'
 import { ActivityTab } from '@pages/applications/users/settings/_parts/ActivityTab'
 import { EditProfileTab } from '@pages/applications/users/settings/_parts/EditProfileTab'
 import { NotificationsTab } from '@pages/applications/users/settings/_parts/NotificationsTab'
@@ -69,7 +69,6 @@ const ManagementUserSettings: React.FC = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }

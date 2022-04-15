@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { Grid, Container } from '@mui/material'
 
-import { PageTitleWrapper, Footer, PageHeader } from '@components/common'
+import { PageTitleWrapper, PageHeader } from '@components/common'
 import { AccountBalance } from '@pages/dashboard/crypto/_parts/AccountBalance'
 import { Wallets } from '@pages/dashboard/crypto/_parts/Wallets'
 import { AccountSecurity } from '@pages/dashboard/crypto/_parts/AccountSecurity'
@@ -41,7 +41,6 @@ const DashboardCrypto = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }

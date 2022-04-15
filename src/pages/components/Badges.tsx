@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async'
 import { Container, Grid, Card, CardHeader, CardContent, Divider } from '@mui/material'
 import { ButtonGroup, Button, Switch, FormControlLabel, Box, Stack, Badge } from '@mui/material'
 import { Add as AddIcon, Remove as RemoveIcon, Mail as MailIcon } from '@mui/icons-material'
-import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@components/common'
 
 const shapeStyles = { bgcolor: 'primary.main', width: 40, height: 40 }
 const shapeCircleStyles = { borderRadius: '50%' }
@@ -141,7 +141,6 @@ const Badges: React.FC = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }

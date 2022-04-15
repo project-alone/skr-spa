@@ -10,7 +10,7 @@ import {
 	Button,
 	Tooltip,
 } from '@mui/material'
-import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@components/common'
 
 const Tooltips: React.FC = () => {
 	return (
@@ -107,7 +107,6 @@ const Tooltips: React.FC = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }

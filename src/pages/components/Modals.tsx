@@ -10,11 +10,11 @@ import {
 	Button,
 	Typography,
 } from '@mui/material'
-import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@components/common'
 import { useModal } from '@lib/modal'
 import modal from '@components/modal'
 
-const Modals: React.FC = () => {
+const ModalsPage: React.FC = () => {
 	const { openModal } = useModal()
 
 	const handleClick = () => {
@@ -57,9 +57,8 @@ const Modals: React.FC = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }
 
-export default Modals
+export default ModalsPage

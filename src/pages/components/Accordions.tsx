@@ -12,7 +12,7 @@ import {
 	Typography,
 } from '@mui/material'
 import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material'
-import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@components/common'
 
 const Accordions: React.FC = () => {
 	return (
@@ -82,7 +82,6 @@ const Accordions: React.FC = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }

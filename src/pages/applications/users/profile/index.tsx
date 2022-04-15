@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async'
 import { Grid, Container } from '@mui/material'
-import { Footer } from '@components/common'
 import { ProfileCover } from '@pages/applications/users/profile/_parts/ProfileCover'
 import { RecentActivity } from '@pages/applications/users/profile/_parts/RecentActivity'
 import { Feed } from '@pages/applications/users/profile/_parts/Feed'
@@ -53,7 +52,6 @@ const ManagementUserProfile: React.FC = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }

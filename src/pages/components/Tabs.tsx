@@ -12,7 +12,7 @@ import {
 	Typography,
 	Box,
 } from '@mui/material'
-import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@components/common'
 
 interface TabPanelProps {
 	index: number
@@ -102,7 +102,6 @@ const TabsDemo: React.FC = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }

@@ -24,7 +24,7 @@ import {
 	ExpandMore as ExpandMoreIcon,
 	MoreVert as MoreVertIcon,
 } from '@mui/icons-material'
-import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@components/common'
 import type { IconButtonProps } from '@mui/material'
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -229,7 +229,6 @@ const Cards: React.FC = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }

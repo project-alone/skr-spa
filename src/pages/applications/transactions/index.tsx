@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { Grid, Container, Button } from '@mui/material'
 import { AddTwoTone as AddTwoToneIcon } from '@mui/icons-material'
-import { PageHeader, PageTitleWrapper, Footer } from '@components/common'
+import { PageHeader, PageTitleWrapper } from '@components/common'
 import { RecentOrders } from '@pages/applications/transactions/_parts/RecentOrders'
 
 const ApplicationsTransactions: React.FC = () => {
@@ -37,7 +37,6 @@ const ApplicationsTransactions: React.FC = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }

@@ -10,7 +10,7 @@ import {
 	Divider,
 } from '@mui/material'
 import { Delete as DeleteIcon, ArrowDownward as ArrowDownwardIcon } from '@mui/icons-material'
-import { PageTitle, PageTitleWrapper, Footer } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@components/common'
 
 const Buttons: React.FC = () => {
 	return (
@@ -193,7 +193,6 @@ const Buttons: React.FC = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<Footer />
 		</>
 	)
 }
