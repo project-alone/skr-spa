@@ -81,7 +81,7 @@ export default defineConfig(({ mode, command }) => {
 			rollupOptions: {
 				output: {
 					manualChunks: {
-						vendor: ['lodash-es', 'moment', 'axios'],
+						vendor: ['lodash-es', 'moment', 'axios', 'notistack'],
 						chart: ['chart.js'],
 						'react-data-grid': ['react-data-grid'],
 					},
