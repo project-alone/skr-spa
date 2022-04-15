@@ -5,9 +5,12 @@ import loadable from '@loadable/component'
  * `modal` 모달 컴포넌트
  */
 
-/** sample modal */
 const modal = {
+	/** sample modal */
 	Simple: loadable(() => import('@components/modal/SimpleModal')),
+
+	/** useAlert */
+	AlertModal: loadable(() => import('@components/modal/AlertModal')),
 }
 
 export default modal

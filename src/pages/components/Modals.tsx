@@ -12,14 +12,28 @@ import {
 } from '@mui/material'
 import { PageTitle, PageTitleWrapper } from '@components/common'
 import { useModal } from '@lib/modal'
+import { useAlert } from '@hooks/useAlert'
 import modal from '@components/modal'
 
 const ModalsPage: React.FC = () => {
 	const { openModal } = useModal()
+	const { alert, confirm } = useAlert()
+	const [confirmCheck, setConfirmCheck] = React.useState('')
 
 	const handleClick = () => {
 		openModal(modal.Simple, { open: true })
 	}
+
+	const handleClickAlert = React.useCallback(() => {
+		alert('안녕하세요~~~~')
+	}, [alert])
+
+	const handleClickConfirm = React.useCallback(() => {
+		const onVerify = () => {
+			setConfirmCheck('확인을 눌렀습니다.')
+		}
+		confirm('확인을 누르시겠습니까?', onVerify)
+	}, [confirm])
 
 	return (
 		<>
@@ -42,7 +56,7 @@ const ModalsPage: React.FC = () => {
 					spacing={3}>
 					<Grid item xs={12}>
 						<Card>
-							<CardHeader title="Basic Dialog" />
+							<CardHeader title="Basic Modal" />
 							<Divider />
 							<CardContent>
 								<Typography variant="subtitle1" component="div">
@@ -51,6 +65,20 @@ const ModalsPage: React.FC = () => {
 								<br />
 								<Button variant="outlined" onClick={handleClick}>
 									Open simple dialog
+								</Button>
+							</CardContent>
+						</Card>
+					</Grid>
+					<Grid item xs={12}>
+						<Card>
+							<CardHeader title="Alert" />
+							<Divider />
+							<CardContent>
+								<Button variant="outlined" onClick={handleClickAlert}>
+									Open Alert
+								</Button>
+								<Button variant="outlined" onClick={handleClickConfirm}>
+									Open Confirm {confirmCheck}
 								</Button>
 							</CardContent>
 						</Card>

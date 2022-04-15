@@ -10,7 +10,7 @@ import {
 	Grid,
 	Typography,
 } from '@mui/material'
-import { PageHeader, PageTitleWrapper } from '@root/components/common'
+import { PageHeader, PageTitleWrapper } from '@components/common'
 import { useNotification } from '@hooks/index'
 
 const NotificationPage: React.FC = () => {
@@ -33,13 +33,8 @@ const NotificationPage: React.FC = () => {
 			<PageTitleWrapper>
 				<PageHeader title="Notification" subtitle="How to use Notification" />
 			</PageTitleWrapper>
-			<Container maxWidth="lg">
-				<Grid
-					container
-					direction="row"
-					justifyContent="center"
-					alignItems="stretch"
-					spacing={3}>
+			<Container>
+				<Grid container direction="row" justifyContent="left" alignItems="stretch">
 					<Grid item xs={12}>
 						<Card>
 							<CardHeader title="Basic Notification" />
