@@ -38,8 +38,8 @@ export const SidebarLayout: React.FC = () => {
 				<MainContent>
 					<Outlet />
 				</MainContent>
-				<Footer />
 			</MainWrapper>
+			<Footer />
 		</>
 	)
 }

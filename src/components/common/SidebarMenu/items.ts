@@ -62,10 +62,6 @@ const menuItems: MenuItems[] = [
 				link: '/example/grid',
 			},
 			{
-				name: 'Modal',
-				link: '/example/Modal',
-			},
-			{
 				name: 'Forms',
 				link: '/example/formwithhookform',
 			},
