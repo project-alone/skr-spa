@@ -46,9 +46,9 @@ const providers = [
 	<PersistGate loading={<Loading />} persistor={persistor} />,
 	<ThemeProvider />,
 	<LocalizationProvider dateAdapter={AdapterDateFns} />,
+	<BrowserRouter />,
 	<SidebarProvider />,
 	<ModalProvider />,
-	<BrowserRouter />,
 ]
 
 const container =

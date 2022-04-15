@@ -29,11 +29,21 @@ const ModalsPage: React.FC = () => {
 	}, [alert])
 
 	const handleClickConfirm = React.useCallback(() => {
-		const onVerify = () => {
-			setConfirmCheck('확인을 눌렀습니다.')
-		}
-		confirm('확인을 누르시겠습니까?', onVerify)
+		confirm('확인을 누르시겠습니까?', {
+			onVerify() {
+				setConfirmCheck('확인을 눌렀습니다.')
+				window.setTimeout(() => {
+					setConfirmCheck('')
+				}, 3000)
+			},
+		})
 	}, [confirm])
+
+	const handleClickAlertWithTitle = React.useCallback(() => {
+		alert('안녕하세요~~~~', {
+			title: '인사드립니다.',
+		})
+	}, [alert])
 
 	return (
 		<>
@@ -71,7 +81,7 @@ const ModalsPage: React.FC = () => {
 					</Grid>
 					<Grid item xs={12}>
 						<Card>
-							<CardHeader title="Alert" />
+							<CardHeader title="Alert & Confirm" />
 							<Divider />
 							<CardContent>
 								<Button variant="outlined" onClick={handleClickAlert}>
@@ -79,6 +89,9 @@ const ModalsPage: React.FC = () => {
 								</Button>
 								<Button variant="outlined" onClick={handleClickConfirm}>
 									Open Confirm {confirmCheck}
+								</Button>
+								<Button variant="outlined" onClick={handleClickAlertWithTitle}>
+									Open Alert with TITLE
 								</Button>
 							</CardContent>
 						</Card>

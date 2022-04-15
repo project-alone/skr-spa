@@ -16,11 +16,29 @@ interface AlertModalProps extends ModalProps {
 	title?: string
 }
 
-const AlertModal: React.FC<AlertModalProps> = ({ onClose, message, title, onVerify }) => {
+const AlertModal: React.FC<AlertModalProps> = ({
+	onClose = () => {
+		/** nothing */
+	},
+	message,
+	title,
+	onVerify,
+}) => {
 	const handleVerifyWithClose = React.useCallback(() => {
 		typeof onVerify === 'function' && onVerify()
-		typeof onClose === 'function' && onClose()
+		onClose()
 	}, [onClose, onVerify])
+
+	React.useEffect(() => {
+		const popStateCallback = () => {
+			onClose()
+		}
+		window.addEventListener('popstate', popStateCallback)
+
+		return () => {
+			window.removeEventListener('popstate', popStateCallback)
+		}
+	}, [onClose])
 
 	return (
 		<Dialog
