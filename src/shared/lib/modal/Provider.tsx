@@ -4,15 +4,14 @@ import { Modals } from '@lib/modal/Modal'
 import type { ModalState, ModalDispatch } from '@lib/modal/context'
 
 export const ModalProvider: React.FC = ({ children }) => {
-	// state
 	const [openModals, setOpenModals] = React.useState<ModalState[]>([])
 
-	// methods
 	const open = React.useCallback<ModalDispatch['open']>((Component, props) => {
 		setOpenModals((modals) => {
 			return [...modals, { Component, props }]
 		})
 	}, [])
+
 	const close = React.useCallback<ModalDispatch['close']>((Component) => {
 		setOpenModals((modals) => {
 			return modals.filter((modal) => {
@@ -20,11 +19,10 @@ export const ModalProvider: React.FC = ({ children }) => {
 			})
 		})
 	}, [])
-	const dispatch = { open, close }
 
 	return (
 		<ModalStateContext.Provider value={openModals}>
-			<ModalDispatchContext.Provider value={dispatch}>
+			<ModalDispatchContext.Provider value={{ open, close }}>
 				{children}
 				<Modals />
 			</ModalDispatchContext.Provider>

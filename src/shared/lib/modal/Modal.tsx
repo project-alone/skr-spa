@@ -28,25 +28,24 @@ export const Modals: React.FC<ModalsProps> = ({ selector = '#modal-container' })
 	return (
 		<>
 			{openedModals.map(({ Component, props }, index) => {
-				const { onSubmit, ...restProps } = props
 				const onClose = () => {
 					close(Component)
 				}
 				const handleSubmit = async () => {
-					typeof onSubmit === 'function' && (await onSubmit())
+					if (props) {
+						typeof props.onSubmit === 'function' && (await props.onSubmit())
+					}
 				}
 
-				const componentProps = {
+				const restProps = {
+					open: true,
 					onClose: onClose,
 					onSubmit: handleSubmit,
 				}
 
 				return (
 					element &&
-					ReactDOM.createPortal(
-						<Component key={index} {...restProps} {...componentProps} />,
-						element,
-					)
+					ReactDOM.createPortal(<Component key={index} {...restProps} />, element)
 				)
 			})}
 		</>
