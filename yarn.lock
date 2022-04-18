@@ -10608,6 +10608,11 @@ react-chartjs-2@^4.0.1:
   resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-4.0.1.tgz#38ed1d5b6e2f789408450c981e9e8e1d78b2e015"
   integrity sha512-q8bgWzKoFvBvD7YcjT/hXG8jt55TaMAuJ1dmI3tKFJ7CijUWYz4pIfOhkTI6PBTwqu/pmeWsClBRd/7HiWzN1g==
 
+react-collate@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-collate/-/react-collate-1.0.1.tgz#832829b0cce5aed78b28e3d2f632b8b680b0de4e"
+  integrity sha512-VdCm2PmTOmEZTiLthM43bfc4ApQc0fpaRrx9jfD8N0/TzwrdWOmac6k0OCSqnIEPXRtNRs1uq+1hOQq4igMa9g==
+
 react-colorful@^5.1.2:
   version "5.5.1"
   resolved "https://registry.yarnpkg.com/react-colorful/-/react-colorful-5.5.1.tgz#29d9c4e496f2ca784dd2bb5053a3a4340cfaf784"

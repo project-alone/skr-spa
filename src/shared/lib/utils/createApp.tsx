@@ -3,6 +3,7 @@
 // core
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { collate } from 'react-collate'
 
 // providers
 import { Provider as ReduxProvider } from 'react-redux'
@@ -12,19 +13,28 @@ import { BrowserRouter } from 'react-router-dom'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import ThemeProvider from '@theme/ThemeProvider'
 import { ModalProvider } from '@lib/modal'
-import { ComposeProvider } from '@lib/utils'
 import { SidebarProvider } from '@context/Sidebar'
 /** @see https://iamhosseindhv.com/notistack/api */
 import { SnackbarProvider } from 'notistack'
 
 // date util
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
-
+import { ko } from 'date-fns/locale'
 // store
 import { store, createPersistor } from '@store/index'
 
 // loading indecator
 import { Loading } from '@components/common'
+
+const persistor = createPersistor(store)
+
+interface ProviderProps {
+	store: typeof store
+	loading: JSX.Element
+	persistor: typeof persistor
+	dateAdapter: AdapterDateFns
+	maxSnack: number
+}
 
 /**
  * StrictMode: 'react'의 잠재적 문재점 확인
@@ -37,19 +47,26 @@ import { Loading } from '@components/common'
  * SibebarProvider: 'Sidebar context'의 사용 가능 범위
  * ErrorBoundary - 'react' component 범위에서의 오류 체크
  */
-
-const persistor = createPersistor(store)
-const providers = [
-	<React.StrictMode />,
-	<HelmetProvider />,
-	<ReduxProvider store={store} />,
-	<PersistGate loading={<Loading />} persistor={persistor} />,
-	<ThemeProvider />,
-	<LocalizationProvider dateAdapter={AdapterDateFns} />,
-	<BrowserRouter />,
-	<SidebarProvider />,
-	<ModalProvider />,
-]
+export const Provider = collate<ProviderProps>()
+	.add(({ children }) => <React.StrictMode>{children}</React.StrictMode>)
+	.add(({ children }) => <HelmetProvider>{children}</HelmetProvider>)
+	.add(({ store, children }) => <ReduxProvider store={store}>{children}</ReduxProvider>)
+	.add(({ loading, persistor, children }) => (
+		<PersistGate loading={loading} persistor={persistor}>
+			{children}
+		</PersistGate>
+	))
+	.add(({ children }) => <ThemeProvider>{children}</ThemeProvider>)
+	.add(({ children }) => (
+		<LocalizationProvider dateAdapter={AdapterDateFns}>{children}</LocalizationProvider>
+	))
+	.add(({ children }) => <BrowserRouter>{children}</BrowserRouter>)
+	.add(({ children }) => <SidebarProvider>{children}</SidebarProvider>)
+	.add(({ children }) => <ModalProvider>{children}</ModalProvider>)
+	.add(({ maxSnack, children }) => (
+		<SnackbarProvider maxSnack={maxSnack}>{children}</SnackbarProvider>
+	))
+	.build()
 
 const container =
 	document.getElementById('root') ??
@@ -62,9 +79,14 @@ const container =
 
 export const createApp = (element: React.ReactElement) => {
 	ReactDOM.render(
-		<ComposeProvider providers={providers}>
-			<SnackbarProvider maxSnack={10}>{element}</SnackbarProvider>
-		</ComposeProvider>,
+		<Provider
+			store={store}
+			loading={<Loading />}
+			persistor={persistor}
+			dateAdapter={new AdapterDateFns({ locale: ko })}
+			maxSnack={10}>
+			{element}
+		</Provider>,
 		container,
 	)
 }
