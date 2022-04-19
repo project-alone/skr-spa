@@ -2,9 +2,10 @@ import React from 'react'
 import { Scrollbars } from 'react-custom-scrollbars-2'
 import { Box, Drawer, Hidden, styled } from '@mui/material'
 import { SidebarContext } from '@context/Sidebar'
-import { Logo, SidebarMenu } from '@components/common'
+import { Logo } from '@components/common'
+import { SidebarMenu } from '@components/layout/SidebarLayout/SidebarMenu'
 
-const SidebarWrapper = styled(Box)(
+const StyledBox = styled(Box)(
 	({ theme }) => `
         width: ${theme.sidebar.width};
         color: ${theme.sidebar.textColor};
@@ -31,21 +32,27 @@ const TopSection = styled(Box)(
 `,
 )
 
+const ScrollableSidebarMenu: React.FC = () => {
+	return (
+		<StyledBox>
+			<Scrollbars autoHide>
+				<TopSection>
+					<Logo />
+				</TopSection>
+				<SidebarMenu />
+			</Scrollbars>
+		</StyledBox>
+	)
+}
+
 export const Sidebar: React.FC = () => {
 	const { sidebarToggle, toggleSidebar } = React.useContext(SidebarContext)
-	const closeSidebar = () => toggleSidebar()
+	const closeSidebar = React.useCallback(() => toggleSidebar(), [toggleSidebar])
 
 	return (
 		<>
 			<Hidden lgDown>
-				<SidebarWrapper>
-					<Scrollbars autoHide>
-						<TopSection>
-							<Logo />
-						</TopSection>
-						<SidebarMenu />
-					</Scrollbars>
-				</SidebarWrapper>
+				<ScrollableSidebarMenu />
 			</Hidden>
 			<Hidden lgUp>
 				<Drawer
@@ -54,14 +61,7 @@ export const Sidebar: React.FC = () => {
 					onClose={closeSidebar}
 					variant="temporary"
 					elevation={9}>
-					<SidebarWrapper>
-						<Scrollbars autoHide>
-							<TopSection>
-								<Logo />
-							</TopSection>
-							<SidebarMenu />
-						</Scrollbars>
-					</SidebarWrapper>
+					<ScrollableSidebarMenu />
 				</Drawer>
 			</Hidden>
 		</>

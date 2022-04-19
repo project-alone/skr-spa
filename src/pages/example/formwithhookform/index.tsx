@@ -51,7 +51,7 @@ const radioGroup: FormItem[] = [
 	{ label: 'e', value: 'e' },
 ]
 
-const FormsPage: React.FC = () => {
+const FormWithHookformPage: React.FC = () => {
 	const {
 		handleSubmit,
 		formState: { errors },
@@ -210,4 +210,4 @@ const FormsPage: React.FC = () => {
 	)
 }
 
-export default FormsPage
+export default FormWithHookformPage

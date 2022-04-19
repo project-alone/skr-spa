@@ -77,6 +77,10 @@ const menuItems: MenuItems[] = [
 				name: 'Notification',
 				link: '/example/notification',
 			},
+			{
+				name: 'Board',
+				link: '/example/board',
+			},
 		],
 	},
 	{

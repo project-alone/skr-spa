@@ -27,6 +27,7 @@ export enum PageNames {
 	Grid = 'Grid',
 	SignUp = 'SignUp',
 	Notification = 'Notification',
+	Board = 'Board',
 	Overview = 'Overview',
 	Crypto = 'Crypto',
 	Transactions = 'Transactions',
@@ -55,14 +56,15 @@ export const Pages: Record<
 > = {
 	// antd example
 	Home: withLoading(() => import('@pages/Home')),
-	Login: withLoading(() => import('@pages/Login')),
+	Login: withLoading(() => import('@pages/example/login')),
 	NotFound: withLoading(() => import('@pages/NotFound')),
-	Counter: withLoading(() => import('@pages/example/Counter')),
-	Grid: withLoading(() => import('@pages/example/Grid')),
-	FormWithHookform: withLoading(() => import('@pages/example/Forms')),
+	Counter: withLoading(() => import('@pages/example/counter')),
+	Grid: withLoading(() => import('@pages/example/grid')),
+	FormWithHookform: withLoading(() => import('@pages/example/formwithhookform')),
 	SignUp: withLoading(() => import('@pages/example/signup')),
 	TabNavigation: withLoading(() => import('@pages/example/tabnavigation')),
 	Notification: withLoading(() => import('@pages/example/notification')),
+	Board: withLoading(() => import('@pages/example/board')),
 
 	// Pages
 	Overview: withLoading(() => import('@pages/overview')),

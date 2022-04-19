@@ -29,6 +29,7 @@ export const exampleRoutes: RouteObject[] = [
 			{ path: 'signup', element: <Page.SignUp /> },
 			{ path: 'tabnavigation', element: <Page.TabNavigation /> },
 			{ path: 'notification', element: <Page.Notification /> },
+			{ path: 'board', element: <Page.Board /> },
 		],
 	},
 ]
