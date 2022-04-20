@@ -1,10 +1,11 @@
 import { Helmet } from 'react-helmet-async'
-import type { PageProps } from '@router/pages'
 
-const NotFoundPage: React.FC<PageProps> = ({ title }) => {
+const NotFoundPage: React.FC = () => {
 	return (
 		<>
-			<Helmet>{title && <title>{title}</title>}</Helmet>
+			<Helmet>
+				<title>Not Found Page</title>
+			</Helmet>
 			<h1>404: 존재하지 않는 페이지입니다!</h1>
 		</>
 	)

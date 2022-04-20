@@ -4,7 +4,7 @@
 import React from 'react'
 import { useLocation, useRoutes } from 'react-router-dom'
 import { AliveScope } from 'react-activation'
-import routes from '@router/routes'
+import routes from '@root/router'
 import { ErrorBoundary } from 'react-error-boundary'
 
 // @mui style

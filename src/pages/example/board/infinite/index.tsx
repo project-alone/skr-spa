@@ -34,7 +34,7 @@ const columns: GridColumns = [
 const HomePage: React.FC = () => {
 	const [pagePrepare, setPagePrepare] = React.useState<PagePrepare>({
 		page: 0,
-		size: 10,
+		size: 20,
 		rowCount: 0,
 	})
 	const { loading, value, error } = useAsync(async () => {
@@ -67,21 +67,6 @@ const HomePage: React.FC = () => {
 					justifyContent="center"
 					alignItems="stretch"
 					spacing={3}>
-					<Grid item width="100%">
-						<CustomDataGrid
-							pagination
-							columns={columns}
-							loading={loading}
-							page={pagePrepare.page}
-							pageSize={pagePrepare.size}
-							rowCount={pagePrepare.rowCount}
-							rows={value?.list || []}
-							onPageChange={handlePageChange}
-							onChangePagination={(page) =>
-								setPagePrepare((state) => ({ ...state, page }))
-							}
-						/>
-					</Grid>
 					<Grid item width="100%">
 						<CustomDataGrid
 							columns={columns}

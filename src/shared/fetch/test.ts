@@ -1,5 +1,5 @@
 import http from '@fetch/http'
-import { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { AxiosResponse } from 'axios'
 
 declare global {
 	namespace SetTest {
@@ -16,7 +16,7 @@ declare global {
 		 * @description
 		 * setTest의 응답 결과
 		 */
-		interface _Res {
+		type Res = AxiosResponse<{
 			data: {
 				airline: {
 					country: string
@@ -35,9 +35,7 @@ declare global {
 			}[]
 			totalPages: number
 			totalPassengers: number
-		}
-
-		type Res = AxiosResponse<_Res>
+		}>
 	}
 }
 

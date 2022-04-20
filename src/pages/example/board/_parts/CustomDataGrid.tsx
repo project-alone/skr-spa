@@ -12,16 +12,6 @@ import type { DataGridProProps } from '@mui/x-data-grid-pro'
 
 type DataGridDefaultProps = Omit<DataGridProProps, 'rows' | 'columns'>
 
-export function computeProps(): DataGridDefaultProps {
-	const props: DataGridDefaultProps = {
-		autoHeight: true,
-		localeText: koKR.components.MuiDataGrid.defaultProps.localeText,
-		rowsPerPageOptions: [10],
-		paginationMode: 'server',
-	}
-	return props
-}
-
 export type ComputedDataGridProps = Omit<
 	DataGridProProps,
 	| 'components'
@@ -52,8 +42,15 @@ export const CustomDataGrid: React.FC<ComputedDataGridProps> = ({
 	const combinedProps = React.useMemo(() => {
 		const count = Math.ceil((restProps.rowCount as number) / (restProps.pageSize as number))
 
+		const computeProps: DataGridDefaultProps = {
+			localeText: koKR.components.MuiDataGrid.defaultProps.localeText,
+			rowsPerPageOptions: [10, 25, 50, 100],
+			paginationMode: 'server',
+		}
+
 		const paginationProps = pagination
 			? {
+					autoHeight: true,
 					pagination,
 					components: {
 						Pagination: Pagination,
@@ -73,14 +70,14 @@ export const CustomDataGrid: React.FC<ComputedDataGridProps> = ({
 			  }
 
 		return {
-			...computeProps(),
+			...computeProps,
 			...restProps,
 			...paginationProps,
 		}
-	}, [onChangePagination, pagination, restProps])
+	}, [onChangePagination, onRowsScrollEnd, pagination, restProps])
 
 	return (
-		<Box sx={{ width: '100%', minHeight: 550, position: 'relative' }}>
+		<Box style={{ width: '100%', height: 550, position: 'relative' }}>
 			<GridLoading loading={!!restProps.loading} />
 			<DataGridPro {...combinedProps} />
 		</Box>

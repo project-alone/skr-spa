@@ -1,11 +1,6 @@
 import React from 'react'
 
 import {
-	DesignServicesTwoTone as DesignServicesTwoToneIcon,
-	BrightnessLowTwoTone as BrightnessLowTwoToneIcon,
-	MmsTwoTone as MmsTwoToneIcon,
-	TableChartTwoTone as TableChartTwoToneIcon,
-	AccountCircleTwoTone as AccountCircleTwoToneIcon,
 	BallotTwoTone as BallotTwoToneIcon,
 	BeachAccessTwoTone as BeachAccessTwoToneIcon,
 	EmojiEventsTwoTone as EmojiEventsTwoToneIcon,
@@ -33,16 +28,6 @@ export interface MenuItems {
 
 const menuItems: MenuItems[] = [
 	{
-		heading: '',
-		items: [
-			{
-				name: 'Overview',
-				link: '/overview',
-				icon: DesignServicesTwoToneIcon,
-			},
-		],
-	},
-	{
 		heading: 'Examples',
 		items: [
 			{
@@ -56,10 +41,6 @@ const menuItems: MenuItems[] = [
 			{
 				name: 'Counter',
 				link: '/example/counter',
-			},
-			{
-				name: 'Grid',
-				link: '/example/grid',
 			},
 			{
 				name: 'Forms',
@@ -80,44 +61,14 @@ const menuItems: MenuItems[] = [
 			{
 				name: 'Board',
 				link: '/example/board',
-			},
-		],
-	},
-	{
-		heading: 'Dashboards',
-		items: [
-			{
-				name: 'Crypto',
-				link: '/dashboards/crypto',
-				icon: BrightnessLowTwoToneIcon,
-			},
-			{
-				name: 'Messenger',
-				icon: MmsTwoToneIcon,
-				link: '/dashboards/messenger',
-			},
-		],
-	},
-	{
-		heading: 'Management',
-		items: [
-			{
-				name: 'Transactions',
-				icon: TableChartTwoToneIcon,
-				link: '/management/transactions',
-			},
-			{
-				name: 'User Profile',
-				icon: AccountCircleTwoToneIcon,
-				link: '/management/profile',
 				items: [
 					{
-						name: 'Profile Details',
-						link: '/management/profile/details',
+						name: 'Pagination',
+						link: '/example/board/pagination',
 					},
 					{
-						name: 'User Settings',
-						link: '/management/profile/settings',
+						name: 'Infinite',
+						link: '/example/board/infinite',
 					},
 				],
 			},
@@ -192,10 +143,6 @@ const menuItems: MenuItems[] = [
 					{
 						name: 'Maintenance',
 						link: '/status/maintenance',
-					},
-					{
-						name: 'Coming Soon',
-						link: '/status/coming-soon',
 					},
 				],
 			},
