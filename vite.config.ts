@@ -23,7 +23,17 @@ export default defineConfig(({ mode, command }) => {
 			force: true,
 			// 프록시 인스턴스 사용
 			proxy: {
+				// 테스트 용
 				'/v1': {
+					target: env.VITE_PUBLIC_API_URL,
+					changeOrigin: true,
+					configure: (proxy, options) => {
+						// proxy 변수에는 'http-proxy'의 인스턴스가 전달됩니다
+					},
+				},
+
+				// 실제 사용시
+				[env.VITE_API_REPLACE_KEY]: {
 					target: env.VITE_PUBLIC_API_URL,
 					changeOrigin: true,
 					configure: (proxy, options) => {
