@@ -3,6 +3,8 @@ import { useLocation, matchPath } from 'react-router-dom'
 import SidebarMenuItem from './item'
 import menuItems from './items'
 import type { MenuItem } from './items'
+import { omit } from 'lodash-es'
+import React from 'react'
 
 const MenuWrapper = styled(List)(
 	({ theme }) => `
@@ -124,93 +126,65 @@ const SubMenuWrapper = styled(List)(
 `,
 )
 
-const reduceChildRoutes = ({
-	ev,
-	path,
-	item,
-}: {
-	ev: JSX.Element[]
-	path: string
-	item: MenuItem
-}): Array<JSX.Element> => {
+const checkMatchPath = (link: string | undefined, path: string, partial: boolean) => {
+	return link ? !!matchPath({ path: link, end: !partial }, path) : false
+}
+
+interface ReduceChildRoutes {
+	(args: { menus: JSX.Element[]; path: string; item: MenuItem }): Array<JSX.Element>
+}
+const reduceChildRoutes: ReduceChildRoutes = ({ menus, path, item }) => {
 	const key = item.name
-
-	const exactMatch = item.link
-		? !!matchPath(
-				{
-					path: item.link,
-					end: true,
-				},
-				path,
-		  )
-		: false
-
-	if (item.items) {
-		const partialMatch = item.link
-			? !!matchPath(
-					{
-						path: item.link,
-						end: false,
-					},
-					path,
-			  )
-			: false
-
-		ev.push(
-			<SidebarMenuItem
-				key={key}
-				active={partialMatch}
-				open={partialMatch}
-				name={item.name}
-				icon={item.icon}
-				link={item.link}
-				badge={item.badge}>
-				<SubMenuWrapper>
-					{item.items.reduce(
-						(ev, mitem) => reduceChildRoutes({ ev, item: mitem, path }),
-						[] as JSX.Element[],
-					)}
-				</SubMenuWrapper>
-			</SidebarMenuItem>,
-		)
-	} else {
-		ev.push(
-			<SidebarMenuItem
-				key={key}
-				active={exactMatch}
-				name={item.name}
-				link={item.link}
-				badge={item.badge}
-				icon={item.icon}
-			/>,
-		)
+	const exactMatch = checkMatchPath(item.link, path, false)
+	const partialMatch = checkMatchPath(item.link, path, true)
+	const items = [] as JSX.Element[]
+	const props = {
+		...omit(item, 'items'),
+		key,
+		active: item.items ? partialMatch : exactMatch,
+		open: item.items ? partialMatch : false,
 	}
 
-	return ev
+	console.log({ link: item.link, exactMatch, partialMatch })
+
+	menus.push(
+		<SidebarMenuItem {...props}>
+			{item.items ? (
+				<SubMenuWrapper>
+					{item.items.reduce(
+						(subMenus, subItem) =>
+							reduceChildRoutes({ menus: subMenus, item: subItem, path }),
+						items,
+					)}
+				</SubMenuWrapper>
+			) : null}
+		</SidebarMenuItem>,
+	)
+
+	return menus
 }
 
 export const SidebarMenu: React.FC = () => {
 	const location = useLocation()
-
 	return (
-		<>
-			{menuItems.map((section) => (
+		<React.Fragment>
+			{menuItems.map(({ heading, items }) => (
 				<MenuWrapper
-					key={section.heading}
+					key={heading}
 					subheader={
 						<ListSubheader component="div" disableSticky>
-							{section.heading}
+							{heading}
 						</ListSubheader>
 					}>
 					<SubMenuWrapper>
-						{section.items.reduce(
-							(ev, mitem) =>
-								reduceChildRoutes({ ev, item: mitem, path: location.pathname }),
-							[] as JSX.Element[],
+						{items.reduce<JSX.Element[]>(
+							(menus, item) =>
+								reduceChildRoutes({ menus, item, path: location.pathname }),
+							[],
 						)}
 					</SubMenuWrapper>
 				</MenuWrapper>
 			))}
-		</>
+		</React.Fragment>
 	)
 }

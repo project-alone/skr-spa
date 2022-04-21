@@ -7,6 +7,7 @@ import {
 	ExpandLessTwoTone as ExpandLessTwoToneIcon,
 	ExpandMoreTwoTone as ExpandMoreTwoToneIcon,
 } from '@mui/icons-material'
+import { merge } from 'lodash-es'
 
 const RouterLink = React.forwardRef<
 	HTMLAnchorElement,
@@ -41,42 +42,37 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
 	open: openParent = false,
 	active,
 	name,
-	...rest
 }) => {
 	const [menuToggle, setMenuToggle] = React.useState<boolean>(openParent)
-
 	const { toggleSidebar } = React.useContext(SidebarContext)
-
-	const toggleMenu = (): void => {
+	const toggleMenu = React.useCallback(() => {
 		setMenuToggle((open) => !open)
-	}
+	}, [])
 
-	if (children) {
-		return (
-			<ListItem component="div" className="Mui-children" key={name} {...rest}>
-				<Button
-					className={clsx({ 'Mui-active': menuToggle })}
-					startIcon={Icon && <Icon />}
-					endIcon={menuToggle ? <ExpandLessTwoToneIcon /> : <ExpandMoreTwoToneIcon />}
-					onClick={toggleMenu}>
-					{name}
-				</Button>
-				<Collapse in={menuToggle}>{children}</Collapse>
-			</ListItem>
-		)
-	}
+	const buttonProps = React.useMemo(() => {
+		const toggleMenuProps = {
+			onClick: toggleMenu,
+			endIcon: menuToggle ? <ExpandLessTwoToneIcon /> : <ExpandMoreTwoToneIcon />,
+			className: clsx({ 'Mui-active': menuToggle }),
+		}
+		const linkMenuProps = {
+			activeLinkClassName: 'Mui-active',
+			component: RouterLink,
+			onClick: toggleSidebar,
+			to: link,
+		}
+		const defaultProps = {
+			children: [name, badge && <Badge badgeContent={badge} />],
+			startIcon: Icon && <Icon />,
+		}
+
+		return merge(defaultProps, children ? toggleMenuProps : linkMenuProps)
+	}, [Icon, badge, children, link, menuToggle, name, toggleMenu, toggleSidebar])
 
 	return (
-		<ListItem component="div" key={name} {...rest}>
-			<Button
-				activeLinkClassName="Mui-active"
-				component={RouterLink}
-				onClick={toggleSidebar}
-				to={link}
-				startIcon={Icon && <Icon />}>
-				{name}
-				{badge && <Badge badgeContent={badge} />}
-			</Button>
+		<ListItem component="div" className={clsx({ 'Mui-children': !!children })} key={name}>
+			<Button {...buttonProps} />
+			{children && <Collapse in={menuToggle}>{children}</Collapse>}
 		</ListItem>
 	)
 }
