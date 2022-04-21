@@ -1,5 +1,5 @@
 import { defineConfig, loadEnv } from 'vite'
-
+import path from 'path'
 // plugins
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
@@ -13,8 +13,12 @@ import checker from 'vite-plugin-checker'
  * @see https://vitejs.dev/config/
  */
 export default defineConfig(({ mode, command }) => {
-	const env = { ...process.env, ...loadEnv(mode, process.cwd()) }
-	console.log('@@@@@', env)
+	const envDir = path.resolve(process.cwd(), './config/env/')
+	const env = {
+		...process.env,
+		...loadEnv(mode, envDir),
+	}
+	console.log(env)
 	return {
 		server: {
 			cors: true,
@@ -49,8 +53,8 @@ export default defineConfig(({ mode, command }) => {
 			tsconfigPaths({}),
 			/** eslint visualizer */
 			eslint({ cache: false }),
-			// visualize for typescript check
 			checker({
+				// typescript visualizer
 				typescript: {
 					tsconfigPath: './tsconfig.json',
 					root: './',
@@ -100,5 +104,10 @@ export default defineConfig(({ mode, command }) => {
 				},
 			},
 		},
+
+		// 환경변수 경로
+		envDir,
+		// 환경변수 접두사
+		envPrefix: 'VITE_',
 	}
 })
