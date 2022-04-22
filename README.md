@@ -1,26 +1,26 @@
 # SKR Front-end Boilerplate
 
-## chart.js 수정
-
--   components/pages/dashboard 에 있는 chart 사용 컴포넌트 수정하기
-
-## @mui - breakpoint
-
--   xs, extra-small: 0px
--   sm, small: 600px
--   md, medium: 900px
--   lg, large: 1200px
--   xl, extra-large: 1536px
-
 ## Specification
 
--   JS: typescript + Redux(toolkit) + MUI
--   CI: vite(rollup)
--   DS: storybook(typescript), MDX or TSX, webpack5
+-   Base: `Typescript` + `redux-toolkit` + `MUI`
+-   Build: `vite`(rollup)
+-   Design System: Storybook(with typescript), MDX(Markdown with JSX) or TSX, webpack5(Migration: https://github.com/storybookjs/builder-vite)
+
+### Storybook(추후 builder Migration 필요)
+
+> reference: https://github.com/storybookjs/builder-vite
+> 현재 storybook 빌드 도구가 webpack5로 지정되어 있지만 추후 vite(rollup)을 지원할 것이기 때문에 추후에 안정화 버전 출시에 맞춰 migration이 필요합니다.
+> 따라서 위 참고 사이트에 설명대로 추후 변경해야 합니다.
+
+## Install VSCode Extsions
+
+1. 좌측 하단 > 설정(톱니바퀴 모양 > Command Pallete... Click, 또는 `Ctrl` + `Shift` + `P` 또는 한글 버전으로 변경한 경우(좌측하단 > 설정 > 명령 팔레트, Click)
+2. Install from VSIX 검색 > Click(or Enter)
+3. 원하는 vsix 파일(확장 프로그램 설치 파일, \*.visx) 선택
 
 ## Enviroment Variables
 
-> https://velog.io/@katanazero86/Typescript-%EC%97%90%EC%84%9C-import.meta-%EC%82%AC%EC%9A%A9%EB%B2%95
+> reference: https://velog.io/@katanazero86/Typescript-%EC%97%90%EC%84%9C-import.meta-%EC%82%AC%EC%9A%A9%EB%B2%95
 
 ```sh
 # .env.production

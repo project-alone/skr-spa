@@ -18,7 +18,7 @@ export default defineConfig(({ mode, command }) => {
 		...process.env,
 		...loadEnv(mode, envDir),
 	}
-	console.log(env)
+
 	return {
 		server: {
 			cors: true,
