@@ -26,9 +26,9 @@ const ListWrapper = styled(Box)(
                             position: absolute;
                             bottom: -10px;
                             transition: all .2s;
-                            border-radius: ${theme.general.borderRadiusLg};
+                            border-radius: 10px;
                             content: "";
-                            background: ${theme.colors.primary.main};
+                            background: #5569ff;
                         }
                     }
                 }

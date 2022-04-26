@@ -15,15 +15,15 @@ const MainWrapper = styled(Box)(
         display: flex;
         height: 100%;
         
-        @media (min-width: ${theme.breakpoints.values.lg}px) {
-            padding-left: ${theme.sidebar.width};
+        @media (min-width: 1280px) {
+            padding-left: 280px;
         }
 `,
 )
 
 const MainContent = styled(Box)(
 	({ theme }) => `
-        margin-top: ${theme.header.height};
+        margin-top: 88px;
         flex: 1 1 auto;
         overflow: auto;
 `,

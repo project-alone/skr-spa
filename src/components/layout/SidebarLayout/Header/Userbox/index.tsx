@@ -13,6 +13,7 @@ import {
 	Popover,
 	Typography,
 	styled,
+	alpha,
 } from '@mui/material'
 import {
 	InboxTwoTone as InboxTwoToneIcon,
@@ -31,7 +32,7 @@ const UserBoxButton = styled(Button)(
 
 const MenuUserBox = styled(Box)(
 	({ theme }) => `
-        background: ${theme.colors.alpha.black[5]};
+        background: ${alpha('#223354', 0.02)};
         padding: ${theme.spacing(2)};
 `,
 )

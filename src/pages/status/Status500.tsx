@@ -1,12 +1,12 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Box, Typography, Hidden, Container, Button, Grid, styled } from '@mui/material'
+import { Box, Typography, Hidden, Container, Button, Grid, styled, alpha } from '@mui/material'
 import { RefreshTwoTone as RefreshTwoToneIcon } from '@mui/icons-material'
 import LoadingButton from '@mui/lab/LoadingButton'
 
 const GridWrapper = styled(Grid)(
 	({ theme }) => `
-    background: ${theme.colors.gradients.black1};
+    background: linear-gradient(100.66deg, #434343 6.56%, #000000 93.57%);
 `,
 )
 
@@ -24,13 +24,13 @@ const MainContent = styled(Box)(
 
 const TypographyPrimary = styled(Typography)(
 	({ theme }) => `
-      color: ${theme.colors.alpha.white[100]};
+      color: #fff;
 `,
 )
 
 const TypographySecondary = styled(Typography)(
 	({ theme }) => `
-      color: ${theme.colors.alpha.white[70]};
+      color: ${alpha('#fff', 0.7)};
 `,
 )
 
@@ -46,7 +46,12 @@ const Status500: React.FC = () => {
 				<title>Status - 500</title>
 			</Helmet>
 			<MainContent>
-				<Grid container sx={{ height: '100%' }} alignItems="stretch" spacing={0}>
+				<Grid
+					container
+					sx={{ height: '100%' }}
+					justifyContent="center"
+					alignItems="stretch"
+					spacing={0}>
 					<Grid
 						xs={12}
 						md={6}
@@ -82,34 +87,6 @@ const Status500: React.FC = () => {
 							</Box>
 						</Container>
 					</Grid>
-					<Hidden mdDown>
-						<GridWrapper
-							xs={12}
-							md={6}
-							alignItems="center"
-							display="flex"
-							justifyContent="center"
-							item>
-							<Container maxWidth="sm">
-								<Box textAlign="center">
-									<TypographyPrimary variant="h1" sx={{ my: 2 }}>
-										Tokyo Free White React Admin Dashboard
-									</TypographyPrimary>
-									<TypographySecondary
-										variant="h4"
-										fontWeight="normal"
-										sx={{ mb: 4 }}>
-										High performance React template built with lots of powerful
-										Material-UI components across multiple product niches for
-										fast &amp; perfect apps development processes.
-									</TypographySecondary>
-									<Button href="/overview" size="large" variant="contained">
-										Overview
-									</Button>
-								</Box>
-							</Container>
-						</GridWrapper>
-					</Hidden>
 				</Grid>
 			</MainContent>
 		</>

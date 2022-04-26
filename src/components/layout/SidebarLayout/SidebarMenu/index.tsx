@@ -1,4 +1,4 @@
-import { ListSubheader, List, styled } from '@mui/material'
+import { ListSubheader, List, styled, darken, lighten } from '@mui/material'
 import { useLocation, matchPath } from 'react-router-dom'
 import SidebarMenuItem from './item'
 import menuItems from './items'
@@ -19,7 +19,7 @@ const MenuWrapper = styled(List)(
       text-transform: uppercase;
       font-weight: bold;
       font-size: ${theme.typography.pxToRem(12)};
-      color: ${theme.sidebar.menuItemHeadingColor};
+      color: ${darken('#6E759F', 0.3)};
       padding: ${theme.spacing(0.8, 2)};
       line-height: 1.4;
     }
@@ -40,8 +40,8 @@ const SubMenuWrapper = styled(List)(
     
         .MuiButton-root {
           display: flex;
-          color: ${theme.sidebar.menuItemColor};
-          background-color: ${theme.sidebar.menuItemBg};
+          color: #242E6F;
+          background-color: transparent;
           width: 100%;
           justify-content: flex-start;
           font-size: ${theme.typography.pxToRem(13)};
@@ -54,11 +54,10 @@ const SubMenuWrapper = styled(List)(
             right: ${theme.spacing(4)};
 
             .MuiBadge-standard {
-              background: ${theme.colors.primary.main};
+              background: #5569ff;
               font-size: ${theme.typography.pxToRem(9)};
               font-weight: bold;
               text-transform: uppercase;
-              color: ${theme.palette.primary.contrastText};
             }
           }
     
@@ -75,7 +74,7 @@ const SubMenuWrapper = styled(List)(
           .MuiButton-startIcon {
             font-size: ${theme.typography.pxToRem(26)};
             margin-right: ${theme.spacing(1.5)};
-            color: ${theme.sidebar.menuItemIconColor};
+            color: ${lighten('#6E759F', 0.3)};
           }
           
           .MuiButton-endIcon {
@@ -85,12 +84,12 @@ const SubMenuWrapper = styled(List)(
 
           &.Mui-active,
           &:hover {
-            background-color: ${theme.sidebar.menuItemBgActive};
-            color: ${theme.sidebar.menuItemColorActive};
+            background-color: #f2f5f9;
+            color: #5569ff;
 
             .MuiButton-startIcon,
             .MuiButton-endIcon {
-                color: ${theme.sidebar.menuItemIconColorActive};
+                color: #5569ff;
             }
           }
         }
@@ -116,7 +115,7 @@ const SubMenuWrapper = styled(List)(
 
               &.Mui-active,
               &:hover {
-                background-color: ${theme.sidebar.menuItemBg};
+                background-color: transparent;
               }
             }
           }

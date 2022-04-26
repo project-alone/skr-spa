@@ -7,17 +7,17 @@ import { SidebarMenu } from '@components/layout/SidebarLayout/SidebarMenu'
 
 const StyledBox = styled(Box)(
 	({ theme }) => `
-        width: ${theme.sidebar.width};
-        color: ${theme.sidebar.textColor};
-        background: ${theme.sidebar.background};
-        box-shadow: ${theme.sidebar.boxShadow};
+        width: 280px;
+        color: #6E759F;
+        background: #fff;
+        box-shadow: 2px 0 3px rgba(159, 162, 191, 0.18), 1px 0 1px rgba(159, 162, 191, 0.32);
         height: 100%;
         
-        @media (min-width: ${theme.breakpoints.values.lg}px) {
+        @media (min-width: 1280px) {
             position: fixed;
             z-index: 10;
-            border-top-right-radius: ${theme.general.borderRadius};
-            border-bottom-right-radius: ${theme.general.borderRadius};
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
         }
 `,
 )
@@ -28,7 +28,7 @@ const TopSection = styled(Box)(
         height: 88px;
         align-items: center;
         margin: 0 ${theme.spacing(2)} ${theme.spacing(2)};
-        border-bottom: ${theme.sidebar.dividerBg} solid 1px;
+        border-bottom: #f2f5f9 solid 1px;
 `,
 )
 

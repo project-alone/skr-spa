@@ -3,7 +3,7 @@ import { Box, Hidden, Tooltip, styled } from '@mui/material'
 
 const LogoWrapper = styled(Link)(
 	({ theme }) => `
-        color: ${theme.palette.text.primary};
+        color: #223354;
         padding: ${theme.spacing(0, 1, 0, 0)};
         display: flex;
         text-decoration: none;
@@ -35,7 +35,7 @@ const VersionBadge = styled(Box)(
         background: ${theme.palette.success.main};
         color: ${theme.palette.success.contrastText};
         padding: ${theme.spacing(0.4, 1)};
-        border-radius: ${theme.general.borderRadiusSm};
+        border-radius: 4px;
         text-align: center;
         display: inline-block;
         line-height: 1;

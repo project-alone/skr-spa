@@ -27,7 +27,7 @@ const MainContent = styled(Box)(
 
 const OutlinedInputWrapper = styled(OutlinedInput)(
 	({ theme }) => `
-      background-color: ${theme.colors.alpha.white[100]};
+      background-color: #fff;
   `,
 )
 

@@ -21,6 +21,7 @@ import {
 	Slide,
 	Hidden,
 	styled,
+	alpha,
 } from '@mui/material'
 import {
 	SearchTwoTone as SearchTwoToneIcon,
@@ -51,7 +52,7 @@ const DialogWrapper = styled(Dialog)(
 
 const SearchInputWrapper = styled(TextField)(
 	({ theme }) => `
-    background: ${theme.colors.alpha.white[100]};
+    background: #fff;
 
     .MuiInputBase-input {
         font-size: ${theme.typography.pxToRem(17)};
@@ -61,7 +62,7 @@ const SearchInputWrapper = styled(TextField)(
 
 const DialogTitleWrapper = styled(DialogTitle)(
 	({ theme }) => `
-    background: ${theme.colors.alpha.black[5]};
+    background: ${alpha('#223354', 0.02)};
     padding: ${theme.spacing(3)}
 `,
 )
