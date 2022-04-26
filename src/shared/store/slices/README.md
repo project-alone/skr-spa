@@ -35,7 +35,7 @@ export const exampleSlice = createSlice({
 	name: 'example',
 	initialState,
 	reducers: {
-		// 가격 입력하기
+		// 가격 입력하기 reducer 함수
 		inputPrice(state, action: PayloadAction<{ name: string; price: number }>) {
 			if (state[name]) {
 				alert('해당 과일이 존재하지 않습니다.')
