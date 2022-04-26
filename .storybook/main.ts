@@ -41,7 +41,6 @@ const config: StorybookConfig = {
 	// 			'redux-logger',
 	// 			'jest-mock',
 	// 		]
-	// 		console.log(config.optimizeDeps.include)
 	// 	}
 
 	// 	config.define = {

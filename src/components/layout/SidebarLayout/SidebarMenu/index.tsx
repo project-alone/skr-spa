@@ -145,8 +145,6 @@ const reduceChildRoutes: ReduceChildRoutes = ({ menus, path, item }) => {
 		open: item.items ? partialMatch : false,
 	}
 
-	console.log({ link: item.link, exactMatch, partialMatch })
-
 	menus.push(
 		<SidebarMenuItem {...props}>
 			{item.items ? (

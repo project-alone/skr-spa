@@ -74,10 +74,8 @@ const FormWithHookformPage: React.FC = () => {
 	})
 
 	const onSubmit: SubmitHandler<ExampleFormData> = React.useCallback((data) => {
-		console.log('submit data : ', data)
+		console.log('전송 정보 확인 : ', data)
 	}, [])
-
-	console.log(errors)
 
 	return (
 		<>

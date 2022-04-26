@@ -77,7 +77,7 @@ const HomePage: React.FC = () => {
 							rows={value?.list || []}
 							onPageChange={handlePageChange}
 							onRowsScrollEnd={(params) => {
-								console.log(params)
+								console.log('스크롤 테스트', params)
 							}}
 						/>
 					</Grid>

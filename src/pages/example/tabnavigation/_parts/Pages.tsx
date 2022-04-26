@@ -49,11 +49,11 @@ const Counter: React.FC = () => {
 const Paragraph: React.FC<{ title: string }> = ({ title, children }) => {
 	const { getCachingNodes } = useAliveController()
 	useActivate(() => {
-		// console.log(`TestFunction: didActivate :::: ${title}`, getCachingNodes())
+		console.log(`TestFunction: didActivate :::: ${title}`, getCachingNodes())
 	})
 
 	useUnactivate(() => {
-		// console.log(`TestFunction: willUnactivate :::: ${title}`)
+		console.log(`TestFunction: willUnactivate :::: ${title}`)
 	})
 
 	return (

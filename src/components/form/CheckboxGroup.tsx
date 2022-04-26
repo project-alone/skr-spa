@@ -10,7 +10,6 @@ interface CheckboxGroupProps {
 
 export const CheckboxGroup = React.forwardRef<JSX.Element, CheckboxGroupProps>(
 	({ options, onChange, value, name, ...rest }, ref) => {
-		console.log('CheckboxGroup', rest)
 		const handleCheck = (checkedValue: string) => {
 			const newList = value.some((item) => item === checkedValue)
 				? value.filter((item) => item !== checkedValue)

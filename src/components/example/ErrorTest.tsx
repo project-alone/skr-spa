@@ -1,3 +1,4 @@
+import React from 'react'
 import type { FallbackProps } from 'react-error-boundary'
 
 export const ErrorTest: React.FC = () => {
@@ -6,17 +7,16 @@ export const ErrorTest: React.FC = () => {
 }
 
 export const ErrorFallbackComponent: React.FC<FallbackProps> = ({ error, resetErrorBoundary }) => {
-	console.log(error)
+	const handleResetError = React.useCallback(() => {
+		resetErrorBoundary()
+	}, [])
+
 	return (
 		<div>
 			에러가 발생했습니다.
 			<br />
-			<p></p>
-			<button
-				type="button"
-				onClick={() => {
-					resetErrorBoundary()
-				}}>
+			<p>{JSON.stringify(error)}</p>
+			<button type="button" onClick={handleResetError}>
 				refresh
 			</button>
 		</div>

@@ -17,7 +17,6 @@ const columns: GridColumns = [
 		field: 'logo',
 		flex: 1,
 		renderCell(logo) {
-			console.log(logo)
 			return <img alt={logo.row.name} style={{ width: '100px' }} src={logo.value} />
 		},
 	},
@@ -45,7 +44,11 @@ const HomePage: React.FC = () => {
 	}, [pagePrepare.page, pagePrepare.size])
 
 	const handlePageChange = React.useCallback((page: number, details: GridCallbackDetails) => {
-		setPagePrepare((state) => ({ ...state, page: page + 1 }))
+		setPagePrepare((state) => ({ ...state, page: page }))
+	}, [])
+
+	const handlePageSizeChange = React.useCallback((size) => {
+		setPagePrepare((state) => ({ ...state, size }))
 	}, [])
 
 	return (
@@ -76,10 +79,9 @@ const HomePage: React.FC = () => {
 							pageSize={pagePrepare.size}
 							rowCount={pagePrepare.rowCount}
 							rows={value?.list || []}
+							rowsPerPageOptions={[10, 25, 50]}
 							onPageChange={handlePageChange}
-							onChangePagination={(page) =>
-								setPagePrepare((state) => ({ ...state, page }))
-							}
+							onPageSizeChange={handlePageSizeChange}
 						/>
 					</Grid>
 				</Grid>

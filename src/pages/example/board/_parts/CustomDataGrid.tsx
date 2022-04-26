@@ -1,4 +1,5 @@
-import { Box, Pagination } from '@mui/material'
+import React from 'react'
+import { Box } from '@mui/material'
 import {
 	DataGridPro,
 	GridCallbackDetails,
@@ -6,8 +7,11 @@ import {
 	koKR,
 	MuiEvent,
 } from '@mui/x-data-grid-pro'
+import { omit } from 'lodash-es'
 import { GridLoading } from '@pages/example/board/_parts/GridLoading'
-import React from 'react'
+import { CustomPagination } from '@root/pages/example/board/_parts/CustomPagination'
+
+// types
 import type { DataGridProProps } from '@mui/x-data-grid-pro'
 
 type DataGridDefaultProps = Omit<DataGridProProps, 'rows' | 'columns'>
@@ -18,10 +22,10 @@ export type ComputedDataGridProps = Omit<
 	| 'componentsProps'
 	| 'autoHeight'
 	| 'localeText'
-	| 'rowsPerPageOptions'
+	// TODO: 공통이면 포함시켜야 함
+	// | 'rowsPerPageOptions'
 	| 'paginationMode'
 > & {
-	onChangePagination?: (page: number) => void
 	onRowsScrollEnd?: (
 		params: GridRowScrollEndParams,
 		event: MuiEvent<Record<string, unknown>>,
@@ -30,9 +34,6 @@ export type ComputedDataGridProps = Omit<
 }
 
 export const CustomDataGrid: React.FC<ComputedDataGridProps> = ({
-	onChangePagination = () => {
-		/** nothing */
-	},
 	onRowsScrollEnd = () => {
 		/** nothing */
 	},
@@ -40,28 +41,21 @@ export const CustomDataGrid: React.FC<ComputedDataGridProps> = ({
 	...restProps
 }) => {
 	const combinedProps = React.useMemo(() => {
-		const count = Math.ceil((restProps.rowCount as number) / (restProps.pageSize as number))
-
 		const computeProps: DataGridDefaultProps = {
 			localeText: koKR.components.MuiDataGrid.defaultProps.localeText,
-			rowsPerPageOptions: [10, 25, 50, 100],
 			paginationMode: 'server',
 		}
 
-		const paginationProps = pagination
+		const paginationProps: Partial<DataGridDefaultProps> = pagination
 			? {
 					autoHeight: true,
 					pagination,
 					components: {
-						Pagination: Pagination,
+						Pagination: CustomPagination,
 					},
 					componentsProps: {
 						pagination: {
-							count,
-							page: restProps.page,
-							onChange: (event: React.ChangeEvent<unknown>, changedPage: number) => {
-								onChangePagination(changedPage)
-							},
+							rowsPerPageOptions: restProps.rowsPerPageOptions,
 						},
 					},
 			  }
@@ -74,12 +68,12 @@ export const CustomDataGrid: React.FC<ComputedDataGridProps> = ({
 			...restProps,
 			...paginationProps,
 		}
-	}, [onChangePagination, onRowsScrollEnd, pagination, restProps])
+	}, [onRowsScrollEnd, pagination, restProps])
 
 	return (
 		<Box style={{ width: '100%', height: 550, position: 'relative' }}>
 			<GridLoading loading={!!restProps.loading} />
-			<DataGridPro {...combinedProps} />
+			<DataGridPro {...omit(combinedProps, 'loading')} />
 		</Box>
 	)
 }

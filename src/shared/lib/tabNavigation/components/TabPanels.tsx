@@ -7,8 +7,6 @@ export type Pages = { [key: string]: React.FC }
 export const TabPanelsBase: React.FC<{ pages: Pages }> = ({ pages }) => {
 	const { currentName } = React.useContext(TNStateContext)
 
-	console.log('TabPanels', currentName)
-
 	return (
 		<React.Fragment>
 			{Object.entries(pages).map(
