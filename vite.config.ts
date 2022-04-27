@@ -44,6 +44,12 @@ export default defineConfig(({ mode, command }) => {
 						// proxy 변수에는 'http-proxy'의 인스턴스가 전달됩니다
 					},
 				},
+
+				// FIXME: CRUD Test
+				'/user': {
+					target: env.VITE_TEST_API_URL,
+					changeOrigin: true,
+				},
 			},
 		},
 		plugins: [

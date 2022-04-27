@@ -1,4 +1,3 @@
-import { useAppSelector } from './useAppSelector'
 import { DependencyList, useEffect } from 'react'
 import useAsyncFn from '@hooks/useAsyncFn'
 import { FunctionReturningPromise } from './misc/types'

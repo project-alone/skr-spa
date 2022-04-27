@@ -3,13 +3,14 @@ import { Box } from '@mui/material'
 import {
 	DataGridPro,
 	GridCallbackDetails,
+	GridColumns,
 	GridRowScrollEndParams,
 	koKR,
 	MuiEvent,
 } from '@mui/x-data-grid-pro'
 import { omit } from 'lodash-es'
-import { GridLoading } from '@pages/example/board/_parts/GridLoading'
-import { CustomPagination } from '@root/pages/example/board/_parts/CustomPagination'
+import { GridLoading } from '@components/common/DataGrid/GridLoading'
+import { CustomPagination } from '@components/common/DataGrid/CustomPagination'
 
 // types
 import type { DataGridProProps } from '@mui/x-data-grid-pro'
@@ -76,4 +77,8 @@ export const CustomDataGrid: React.FC<ComputedDataGridProps> = ({
 			<DataGridPro {...omit(combinedProps, 'loading')} />
 		</Box>
 	)
+}
+
+export const createDataGridColumns = (columns: GridColumns): GridColumns => {
+	return columns
 }

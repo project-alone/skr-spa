@@ -20,9 +20,9 @@ const ModalsPage: React.FC = () => {
 	const { alert, confirm } = useAlert()
 	const [confirmCheck, setConfirmCheck] = React.useState('')
 
-	const handleClick = () => {
-		openModal(modal.Simple, { open: true })
-	}
+	const handleClick = React.useCallback(() => {
+		openModal(modal.Simple)
+	}, [openModal])
 
 	const handleClickAlert = React.useCallback(() => {
 		alert('안녕하세요~~~~')

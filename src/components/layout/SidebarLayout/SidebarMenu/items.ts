@@ -72,6 +72,10 @@ const menuItems: MenuItems[] = [
 					},
 				],
 			},
+			{
+				name: 'CRUD Test',
+				link: '/example/crud',
+			},
 		],
 	},
 	{

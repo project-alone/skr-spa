@@ -38,3 +38,7 @@ console.log(myEnv)
 > reference: https://github.com/storybookjs/builder-vite
 > 현재 storybook 빌드 도구가 webpack5로 지정되어 있지만 추후 vite(rollup)을 지원할 것이기 때문에 추후에 안정화 버전 출시에 맞춰 migration이 필요합니다.
 > 따라서 위 참고 사이트에 설명대로 추후 변경해야 합니다.
+
+## TODO
+
+[ ] Window, Mac 개행문자 오류 (git, autocrlf)

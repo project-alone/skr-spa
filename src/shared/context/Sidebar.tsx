@@ -6,9 +6,10 @@ export const SidebarContext = React.createContext<SidebarContextType>({} as Side
 
 export const SidebarProvider: React.FC = ({ children }) => {
 	const [sidebarToggle, setSidebarToggle] = React.useState(false)
-	const toggleSidebar = () => {
+
+	const toggleSidebar = React.useCallback(() => {
 		setSidebarToggle(!sidebarToggle)
-	}
+	}, [sidebarToggle])
 
 	return (
 		<SidebarContext.Provider value={{ sidebarToggle, toggleSidebar }}>

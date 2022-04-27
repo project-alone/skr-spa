@@ -1,10 +1,11 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Container, Grid } from '@mui/material'
-import { PageTitle, PageTitleWrapper } from '@components/common'
+import { PageTitle, PageTitleWrapper, CustomDataGrid } from '@components/common'
 import useAsync from '@hooks/useAsync'
 import { setTest } from '@fetch/test'
-import { CustomDataGrid } from '@pages/example/board/_parts/CustomDataGrid'
+
+// types
 import type { GridCallbackDetails, GridColumns } from '@mui/x-data-grid-pro'
 
 type PagePrepare = Record<'page' | 'size' | 'rowCount', number>
@@ -37,7 +38,7 @@ const HomePage: React.FC = () => {
 		size: 20,
 		rowCount: 0,
 	})
-	const { loading, value, error } = useAsync(async () => {
+	const { loading, value /* error */ } = useAsync(async () => {
 		const res = await setTest({ page: pagePrepare.page + 1, size: pagePrepare.size })
 		setPagePrepare((state) => ({ ...state, rowCount: res.rowCount }))
 
