@@ -7,90 +7,135 @@ import {
 	PageTitleWrapper,
 	createDataGridColumns,
 } from '@components/common'
-import useAsync from '@hooks/useAsync'
+import { useAsyncFn } from '@hooks/index'
 import { useModal } from '@lib/modal'
 import modal from '@components/modal'
 
-// typs
-import type { GridCallbackDetails } from '@mui/x-data-grid-pro'
-
 // fetch
-import {
-	getUserList,
-	// getUserDetail,
-	// createUser,
-	deleteUserDetail,
-	// setUserDetailUpdate,
-} from '@fetch/crud'
+import { getUserList, createUser, deleteUserDetail, setUserDetailUpdate } from '@fetch/crud'
 
-const columns = createDataGridColumns([
-	{ field: '_id', hide: true },
-	{ field: 'id', headerName: '아이디', width: 120 },
-	{ field: 'name', headerName: '성명', flex: 1 },
-	{
-		field: 'tel',
-		headerName: '휴대폰번호',
-		flex: 1,
-	},
-	{ field: 'etc', headerName: '직업', flex: 1 },
-	{
-		field: 'crd',
-		headerName: '생성일자',
-		flex: 1,
-	},
-	{
-		field: 'delete',
-		headerName: '삭제',
-		renderCell(deleteRow) {
-			const handleDelete = async () => {
-				await deleteUserDetail({ userPrivateId: deleteRow.row._id })
-			}
+// typs
+import type { GridCallbackDetails, GridCellParams } from '@mui/x-data-grid-pro'
 
-			return (
-				<Button variant="contained" onClick={handleDelete}>
-					삭제
-				</Button>
-			)
-		},
-	},
-])
+type CrudFetchActions =
+	| {
+			type: 'USER_LIST'
+	  }
+	| {
+			type: 'DELETE_USER_DETAIL'
+			userPrivateId: string
+	  }
 
 type PagePrepare = Record<'page' | 'size' | 'rowCount', number>
 
 const CrudPage: React.FC = () => {
+	const { openModal } = useModal()
 	const [pagePrepare, setPagePrepare] = React.useState<PagePrepare>({
 		page: 1,
 		size: 10,
 		rowCount: 0,
 	})
-	const { openModal } = useModal()
+	// const [selectedRows, setSelectedRows] = React.useState<GridRowId[]>([])
 
-	const { loading, value /* error */ } = useAsync(async () => {
-		const res = await getUserList()
-		setPagePrepare((state) => ({ ...state, rowCount: res.length }))
-		return res
-	}, [pagePrepare.page, pagePrepare.size])
+	const [{ loading, value /* error */ }, fetch] = useAsyncFn(
+		async (action: CrudFetchActions) => {
+			if (action.type === 'DELETE_USER_DETAIL') {
+				await deleteUserDetail({ userPrivateId: action.userPrivateId })
+			}
+			// case 'USER_LIST'
+			const res = await getUserList()
+			setPagePrepare((state) => ({ ...state, rowCount: res.length }))
+			console.log(res)
+			return res
+		},
+		[pagePrepare.page, pagePrepare.size],
+	)
 
-	/**
-	 * @title 페이지 전환 시 실행
-	 */
+	/** @method handlePageChange - 페이지전환 시 실행 */
 	const handlePageChange = React.useCallback((page: number, details: GridCallbackDetails) => {
 		// setPagePrepare((state) => ({ ...state, page: page }))
 	}, [])
 
 	/**
-	 * @title pageSize(설정된 페이지 당 row 갯수) 변경 시 실행
+	 * @method handlePageSizeChange - pageSize (설정된 페이지 당 row 갯수) 변경 시 실행
 	 */
 	const handlePageSizeChange = React.useCallback((size) => {
 		// setPagePrepare((state) => ({ ...state, size }))
 	}, [])
 
 	/**
-	 * @title 사용자 추가하기
+	 * @method handleAddUser 사용자 추가하기
 	 */
 	const handleAddUser = React.useCallback(() => {
-		openModal(modal.AddUser)
-	}, [openModal])
+		openModal(modal.AddUser, {
+			onSubmit: async (params: CreateUser.Params) => {
+				await createUser(params)
+				await fetch({ type: 'USER_LIST' })
+			},
+		})
+	}, [fetch, openModal])
+
+	/**
+	 * @method handleCellDoubleClick cell을 double click 했을 떄 동작(사용자 상세보기 및 수정)
+	 */
+	const handleCellDoubleClick = React.useCallback(
+		(params: GridCellParams) => {
+			openModal(modal.UserDetails, {
+				userPrivateId: params.row._id,
+				onSubmit: async (param: SetUserDetailUpdate.Params) => {
+					await setUserDetailUpdate(param)
+					await fetch({ type: 'USER_LIST' })
+				},
+			})
+		},
+		[fetch, openModal],
+	)
+
+	const columns = React.useMemo(
+		() =>
+			createDataGridColumns([
+				{ field: '_id', hide: true },
+				{ field: 'id', headerName: '아이디', width: 120 },
+				{ field: 'name', headerName: '성명', flex: 1 },
+				{
+					field: 'tel',
+					headerName: '휴대폰번호',
+					flex: 1,
+				},
+				{ field: 'etc', headerName: '직업', flex: 1 },
+				{
+					field: 'crd',
+					headerName: '생성일자',
+					flex: 1,
+				},
+				{
+					field: 'delete',
+					headerName: '삭제',
+					renderCell(cell) {
+						return (
+							<Button
+								variant="contained"
+								onClick={() =>
+									fetch({
+										type: 'DELETE_USER_DETAIL',
+										userPrivateId: cell.row._id,
+									})
+								}>
+								삭제
+							</Button>
+						)
+					},
+				},
+			]),
+		[fetch],
+	)
+
+	/**
+	 * @title Effects
+	 */
+	React.useEffect(() => {
+		fetch({ type: 'USER_LIST' })
+	}, [fetch])
 
 	return (
 		<>
@@ -113,20 +158,19 @@ const CrudPage: React.FC = () => {
 						</Button>
 					</Grid>
 					<Grid item xs={12}>
-						{value && !!value.length && (
-							<CustomDataGrid
-								pagination
-								columns={columns}
-								loading={loading}
-								page={pagePrepare.page}
-								pageSize={pagePrepare.size}
-								rowCount={pagePrepare.rowCount}
-								rows={value}
-								rowsPerPageOptions={[10, 25, 50]}
-								onPageChange={handlePageChange}
-								onPageSizeChange={handlePageSizeChange}
-							/>
-						)}
+						<CustomDataGrid
+							pagination
+							columns={columns}
+							loading={loading}
+							page={pagePrepare.page}
+							pageSize={pagePrepare.size}
+							rowCount={pagePrepare.rowCount}
+							rows={value ?? []}
+							rowsPerPageOptions={[10, 25, 50]}
+							onPageChange={handlePageChange}
+							onPageSizeChange={handlePageSizeChange}
+							onCellDoubleClick={handleCellDoubleClick}
+						/>
 					</Grid>
 				</Grid>
 			</Container>

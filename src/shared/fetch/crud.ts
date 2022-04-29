@@ -66,7 +66,8 @@ declare global {
  * @return {Promise<AxiosResponse<CreateUser.Res, any>>}
  */
 export async function createUser(data: CreateUser.Params) {
-	return await http.post<CreateUser.Params, CreateUser.Res>('/', { data })
+	console.log('data', data)
+	return await http.post<CreateUser.Params, CreateUser.Res>('/user', { ...data })
 }
 
 /**
@@ -80,14 +81,14 @@ declare global {
 			userPrivateId: string
 		}
 
-		interface Res {
+		type Res = AxiosResponse<{
 			_id: string
 			id: string
 			name: string
 			tel: string
 			etc: string
 			crd: string
-		}
+		}>
 	}
 }
 
@@ -97,7 +98,8 @@ declare global {
  * @return {Promise<AxiosResponse<CreateUser.Res, any>>}
  */
 export async function getUserDetail(params: GetUserDetail.Params) {
-	return await http.get<null, GetUserDetail.Res>(`/user/${params.userPrivateId}`)
+	const res = await http.get<null, GetUserDetail.Res>(`/user/${params.userPrivateId}`)
+	return res.data
 }
 
 /**

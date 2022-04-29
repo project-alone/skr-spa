@@ -6,7 +6,7 @@ import { merge } from 'lodash-es'
 
 export interface ModalProps {
 	onClose?(): void
-	onSubmit?(): Promise<void>
+	onSubmit?(...args: unknown[]): Promise<void>
 }
 
 interface ModalsProps {
@@ -32,23 +32,24 @@ export const Modals: React.FC<ModalsProps> = ({ selector = '#modal-container' })
 				const onClose = () => {
 					close(Component)
 				}
-				const handleSubmit = async () => {
+				const handleSubmit = async (...args: unknown[]) => {
 					if (props) {
-						typeof props.onSubmit === 'function' && (await props.onSubmit())
+						typeof props.onSubmit === 'function' && (await props.onSubmit(...args))
+						onClose()
 					}
 				}
 
-				const restProps = merge(
-					{
-						open: true,
-						onClose: onClose,
-						onSubmit: handleSubmit,
-					},
-					props ?? props,
-				)
+				const restProps = {
+					open: true,
+					onClose: onClose,
+					onSubmit: handleSubmit,
+					userPrivateId: props?.userPrivateId || '',
+				}
 
 				return (
 					element &&
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
 					ReactDOM.createPortal(<Component key={index} {...restProps} />, element)
 				)
 			})}

@@ -7,7 +7,7 @@ import {
 	CustomDataGrid,
 	createDataGridColumns,
 } from '@components/common'
-import useAsync from '@hooks/useAsync'
+import { useAsync } from '@hooks/index'
 import { setTest } from '@fetch/test'
 import type { GridCallbackDetails, GridColumns } from '@mui/x-data-grid-pro'
 

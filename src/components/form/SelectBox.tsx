@@ -1,26 +1,32 @@
 import React from 'react'
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
+import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material'
 
-interface SelectBoxProps {
+// types
+import type { SelectProps } from '@mui/material'
+
+interface SelectBoxProps extends SelectProps {
 	options: FormItem[]
 	label: string
 	name?: string
 	value: string
+	error?: boolean
+	errorMessage?: string
 	onChange: (...args: unknown[]) => void
 }
 
 export const SelectBox = React.forwardRef<JSX.Element, SelectBoxProps>(
-	({ options, name, label, ...rest }, ref) => {
+	({ options, name, label, error = false, errorMessage, ...rest }, ref) => {
 		return (
-			<FormControl>
-				<InputLabel>{label}</InputLabel>
+			<FormControl error={!!error} fullWidth={rest.fullWidth}>
+				<InputLabel id={rest.labelId}>{label}</InputLabel>
 				<Select {...rest} label={label} ref={ref}>
 					{options.map((item, index) => (
-						<MenuItem key={`animals-${index}`} value={item.value}>
+						<MenuItem key={`${rest.id}-key-${index}`} value={item.value}>
 							{item.label}
 						</MenuItem>
 					))}
 				</Select>
+				<FormHelperText>{errorMessage}</FormHelperText>
 			</FormControl>
 		)
 	},

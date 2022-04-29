@@ -33,11 +33,11 @@ export type AsyncFnReturn<T extends FunctionReturningPromise = FunctionReturning
 	T,
 ]
 
-export default function useAsyncFn<T extends FunctionReturningPromise>(
+export const useAsyncFn = <T extends FunctionReturningPromise>(
 	fn: T,
 	deps: DependencyList = [],
 	initialState: StateFromFunctionReturningPromise<T> = { loading: false },
-): AsyncFnReturn<T> {
+): AsyncFnReturn<T> => {
 	const lastCallId = useRef(0)
 	const isMounted = useMountedState()
 	const [state, set] = useState<StateFromFunctionReturningPromise<T>>(initialState)
