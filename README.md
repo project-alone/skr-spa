@@ -15,6 +15,16 @@
 
 > 프로젝트 내 extension 설치파일 경로(`/.vscode/extensions`)
 
+## git 개행문자 오류 해결
+
+```sh
+# window
+git config --global core.autocrlf true
+
+# Mac os
+git config --global core.autocrlf input
+```
+
 ## Enviroment Variables
 
 > reference: https://velog.io/@katanazero86/Typescript-%EC%97%90%EC%84%9C-import.meta-%EC%82%AC%EC%9A%A9%EB%B2%95  
