@@ -17,8 +17,8 @@ const BoardPagination = withLoading(() => import('@pages/example/board/paginatio
 const BoardInfinite = withLoading(() => import('@pages/example/board/infinite'))
 
 // CRUD Sample
-const CrudRead = withLoading(() => import('@pages/example/crud'))
-// const CrudReadDetail = withLoading(() => import('@pages/example/crud/detail'))
+const Crud = withLoading(() => import('@pages/example/crud'))
+const CrudSlice = withLoading(() => import('@pages/example/crudslice'))
 
 export const exampleRoutes: RouteObject = {
 	path: 'example',
@@ -40,13 +40,11 @@ export const exampleRoutes: RouteObject = {
 		},
 		{
 			path: 'crud',
-			children: [
-				{
-					path: 'read',
-					element: createElement(CrudRead),
-					// children: [{ path: ':dtailId', element: createElement(CrudReadDetail) }],
-				},
-			],
+			element: createElement(Crud),
+		},
+		{
+			path: 'crudslice',
+			element: createElement(CrudSlice),
 		},
 	],
 }

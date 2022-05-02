@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { ModalDispatchContext, ModalStateContext } from '@lib/modal/context'
 import { disableScroll } from '@lib/utils'
-import { merge } from 'lodash-es'
+import { omit } from 'lodash-es'
 
 export interface ModalProps {
 	onClose?(): void
@@ -43,7 +43,7 @@ export const Modals: React.FC<ModalsProps> = ({ selector = '#modal-container' })
 					open: true,
 					onClose: onClose,
 					onSubmit: handleSubmit,
-					userPrivateId: props?.userPrivateId || '',
+					...omit(props, 'onSubmit'),
 				}
 
 				return (

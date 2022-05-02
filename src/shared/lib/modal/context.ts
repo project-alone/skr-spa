@@ -3,14 +3,14 @@ import modal from '@components/modal'
 
 type ComponentType = typeof modal[keyof typeof modal]
 
-export type ModalDispatch = {
-	open(Component: ComponentType, props?: ModalState['props']): void
-	close(Component: ComponentType): void
+export type ModalState = {
+	Component: ComponentType
+	props?: React.ComponentProps<ComponentType>
 }
 
-export interface ModalState {
-	Component: ComponentType
-	props?: { [key: string]: unknown }
+export type ModalDispatch = {
+	open(Component: ComponentType, props?: React.ComponentProps<ComponentType>): void
+	close(Component: ComponentType): void
 }
 
 export const ModalDispatchContext = React.createContext<ModalDispatch>({

@@ -1,10 +1,11 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { Box, styled } from '@mui/material'
+import { Backdrop, Box, CircularProgress, styled } from '@mui/material'
 
 import { Sidebar } from '@components/layout/SidebarLayout/Sidebar'
 import { Header } from '@components/layout/SidebarLayout/Header'
 import { Footer } from '@root/components/common'
+import { shallowEqual, useAppSelector } from '@hooks/index'
 
 // interface SidebarLayoutProps {
 // }
@@ -30,6 +31,13 @@ const MainContent = styled(Box)(
 )
 
 export const SidebarLayout: React.FC = () => {
+	const { loading } = useAppSelector(
+		(state) => ({
+			loading: state.ui.loading,
+		}),
+		shallowEqual,
+	)
+
 	return (
 		<>
 			<Sidebar />
@@ -40,6 +48,9 @@ export const SidebarLayout: React.FC = () => {
 				</MainContent>
 			</MainWrapper>
 			<Footer />
+			<Backdrop open={loading} sx={{ position: 'absolute', top: 0, left: 0, zIndex: 10 }}>
+				<CircularProgress color="inherit" />
+			</Backdrop>
 		</>
 	)
 }

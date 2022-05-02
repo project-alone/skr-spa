@@ -7,7 +7,7 @@ import {
 	PageTitleWrapper,
 	createDataGridColumns,
 } from '@components/common'
-import { useAppDispatch, useAsyncFn } from '@hooks/index'
+import { shallowEqual, useAppDispatch, useAppSelector, useAsyncFn } from '@hooks/index'
 import { useModal } from '@lib/modal'
 import modal from '@components/modal'
 import { setLoading } from '@store/slices/ui'
@@ -17,6 +17,7 @@ import CrudAPI from '@fetch/crud'
 
 // typs
 import type { GridCallbackDetails, GridCellParams } from '@mui/x-data-grid-pro'
+import { getUserList } from '@root/shared/store/slices/crud'
 
 type CrudFetchActions =
 	| {
@@ -31,26 +32,19 @@ type PagePrepare = Record<'page' | 'size' | 'rowCount', number>
 
 const CrudPage: React.FC = () => {
 	const dispatch = useAppDispatch()
+	const { userList, pendingList } = useAppSelector(
+		(state) => ({
+			userList: state.crud.userList,
+			pendingList: state.crud.status === 'pending',
+		}),
+		shallowEqual,
+	)
 	const { openModal } = useModal()
-	const [pagePrepare, setPagePrepare] = React.useState<PagePrepare>({
+	const [pagePrepare /* setPagePrepare */] = React.useState<PagePrepare>({
 		page: 1,
 		size: 10,
 		rowCount: 0,
 	})
-
-	const [{ loading, value /* error */ }, fetch] = useAsyncFn(
-		async (action: CrudFetchActions) => {
-			if (action.type === 'DELETE_USER_DETAIL') {
-				await CrudAPI.deleteUserDetail({ userPrivateId: action.userPrivateId })
-			}
-
-			const res = await CrudAPI.getUserList()
-			setPagePrepare((state) => ({ ...state, rowCount: res.length }))
-
-			return res
-		},
-		[pagePrepare.page, pagePrepare.size],
-	)
 
 	/** @method handlePageChange - 페이지전환 시 실행 */
 	const handlePageChange = React.useCallback((page: number, details: GridCallbackDetails) => {
@@ -71,7 +65,7 @@ const CrudPage: React.FC = () => {
 		openModal(modal.AddUser, {
 			onSubmit: async (params: CreateUser.Params) => {
 				await CrudAPI.createUser(params)
-				await fetch({ type: 'USER_LIST' })
+				// await fetch({ type: 'USER_LIST' })
 			},
 		})
 	}, [fetch, openModal])
@@ -88,7 +82,7 @@ const CrudPage: React.FC = () => {
 				openModal(modal.UserDetails, {
 					onSubmit: async (param: SetUserDetailUpdate.Params) => {
 						await CrudAPI.setUserDetailUpdate(param)
-						await fetch({ type: 'USER_LIST' })
+						// await fetch({ type: 'USER_LIST' })
 					},
 					userInfo: detail,
 				})
@@ -124,12 +118,12 @@ const CrudPage: React.FC = () => {
 						return (
 							<Button
 								variant="contained"
-								onClick={() =>
-									fetch({
-										type: 'DELETE_USER_DETAIL',
-										userPrivateId: cell.row._id,
-									})
-								}>
+								onClick={() => {
+									// fetch({
+									// 	type: 'DELETE_USER_DETAIL',
+									// 	userPrivateId: cell.row._id,
+									// })
+								}}>
 								삭제
 							</Button>
 						)
@@ -143,8 +137,8 @@ const CrudPage: React.FC = () => {
 	 * @title Effects
 	 */
 	React.useEffect(() => {
-		fetch({ type: 'USER_LIST' })
-	}, [fetch])
+		dispatch(getUserList())
+	}, [dispatch])
 
 	return (
 		<>
@@ -170,11 +164,11 @@ const CrudPage: React.FC = () => {
 						<CustomDataGrid
 							pagination
 							columns={columns}
-							loading={loading}
+							loading={pendingList}
 							page={pagePrepare.page}
 							pageSize={pagePrepare.size}
 							rowCount={pagePrepare.rowCount}
-							rows={value ?? []}
+							rows={userList ?? []}
 							rowsPerPageOptions={[10, 25, 50]}
 							onPageChange={handlePageChange}
 							onPageSizeChange={handlePageSizeChange}

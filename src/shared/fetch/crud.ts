@@ -1,5 +1,4 @@
 import http from '@fetch/http'
-import type { AxiosResponse } from 'axios'
 
 /**
  * @description
@@ -8,29 +7,19 @@ import type { AxiosResponse } from 'axios'
 
 declare global {
 	namespace GetUserList {
-		type Res = Promise<
-			AxiosResponse<
-				{
-					_id: string
-					id: string
-					name: string
-					tel: string
-					etc: string
-					crd: string
-				}[],
-				undefined
-			>
-		>
+		type Res = {
+			_id: string
+			id: string
+			name: string
+			tel: string
+			etc: string
+			crd: string
+		}[]
 	}
 }
 
-/**
- *
- * @param { GetUserList.Params } params
- * @return { Promise<AxiosResponse<SetLogin.Res, any>> }
- */
-export async function getUserList() {
-	const res = await http.get<null, GetUserList.Res>('/user')
+async function getUserList() {
+	const res = await http.get<GetUserList.Res>('/user')
 	return res.data
 }
 
@@ -65,9 +54,9 @@ declare global {
  * @param { CreateUser.Params } data
  * @return {Promise<AxiosResponse<CreateUser.Res, any>>}
  */
-export async function createUser(data: CreateUser.Params) {
-	console.log('data', data)
-	return await http.post<CreateUser.Params, CreateUser.Res>('/user', { ...data })
+async function createUser(data: CreateUser.Params) {
+	const res = await http.post<CreateUser.Res>('/user', { ...data })
+	return res.data
 }
 
 /**
@@ -77,28 +66,28 @@ export async function createUser(data: CreateUser.Params) {
 
 declare global {
 	namespace GetUserDetail {
-		interface Params {
-			userPrivateId: string
-		}
+		type Params = string
 
-		type Res = AxiosResponse<{
+		interface Res {
 			_id: string
 			id: string
 			name: string
 			tel: string
 			etc: string
 			crd: string
-		}>
+		}
 	}
 }
 
 /**
  *
  * @param { GetUserDetail.Params } params
- * @return {Promise<AxiosResponse<CreateUser.Res, any>>}
+ * @return { CreateUser.Res }
  */
-export async function getUserDetail(params: GetUserDetail.Params) {
-	const res = await http.get<null, GetUserDetail.Res>(`/user/${params.userPrivateId}`)
+async function getUserDetail(params: GetUserDetail.Params) {
+	console.log(params)
+	const res = await http.get<GetUserDetail.Res>(`/user/${params}`)
+	console.log(res.data)
 	return res.data
 }
 
@@ -120,20 +109,20 @@ declare global {
 			}
 		}
 
-		type Res = undefined
+		type Res = Record<string, unknown>
 	}
 }
 
 /**
  *
  * @param { SetUserDetailUpdate.Params } params
- * @return {Promise<AxiosResponse<CreateUser.Res, any>>}
+ * @return { CreateUser.Res }
  */
-export async function setUserDetailUpdate(params: SetUserDetailUpdate.Params) {
-	return await http.put<SetUserDetailUpdate.Params, SetUserDetailUpdate.Res>(
-		`/user/${params.userPrivateId}`,
-		{ data: params.data },
-	)
+async function setUserDetailUpdate(params: SetUserDetailUpdate.Params) {
+	const res = await http.put<SetUserDetailUpdate.Res>(`/user/${params.userPrivateId}`, {
+		data: params.data,
+	})
+	return res.data
 }
 
 /**
@@ -147,17 +136,26 @@ declare global {
 			userPrivateId: string
 		}
 
-		type Res = undefined
+		type Res = Record<string, unknown>
 	}
 }
 
 /**
  *
  * @param { DeleteUserDetail.Params } params
- * @return {Promise<AxiosResponse<DeleteUserDetail.Res, any>>}
+ * @return { DeleteUserDetail.Res }
  */
-export async function deleteUserDetail(params: DeleteUserDetail.Params) {
-	return await http.delete<DeleteUserDetail.Params, DeleteUserDetail.Res>(
-		`/user/${params.userPrivateId}`,
-	)
+async function deleteUserDetail(params: DeleteUserDetail.Params) {
+	const res = await http.delete<DeleteUserDetail.Res>(`/user/${params.userPrivateId}`)
+	return res.data
 }
+
+const CrudAPI = {
+	getUserList,
+	getUserDetail,
+	setUserDetailUpdate,
+	createUser,
+	deleteUserDetail,
+}
+
+export default CrudAPI

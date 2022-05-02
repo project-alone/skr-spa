@@ -16,9 +16,6 @@ import {
 // types
 import type { ModalProps } from '@lib/modal'
 import type { SubmitHandler } from 'react-hook-form'
-import { useAsync } from '@hooks/index'
-import { getUserDetail } from '@fetch/crud'
-import { omit } from 'lodash-es'
 
 const AddUserModalScheme = yup.object({
 	id: yup.string().required('아이디를 입력해주세요.'),
@@ -29,7 +26,7 @@ const AddUserModalScheme = yup.object({
 })
 
 interface UserDetailsModalProps extends ModalProps {
-	userPrivateId: string
+	userInfo: GetUserDetail.Res
 }
 interface AddUserFormData {
 	id: string
@@ -39,31 +36,16 @@ interface AddUserFormData {
 	crd: string
 }
 
-const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
-	onClose,
-	onSubmit,
-	userPrivateId,
-}) => {
-	const { loading, value /* error */ } = useAsync(async () => {
-		const res = await getUserDetail({ userPrivateId })
-		return omit(res, '_id')
-	}, [userPrivateId])
+const UserDetailsModal: React.FC<UserDetailsModalProps> = ({ onClose, onSubmit, userInfo }) => {
 	const {
 		handleSubmit,
 		formState: { errors },
 		control,
-		reset,
 	} = useForm<AddUserFormData>({
 		mode: 'onTouched',
 		reValidateMode: 'onChange',
 		resolver: yupResolver(AddUserModalScheme),
-		defaultValues: {
-			id: '',
-			crd: '',
-			name: '',
-			etc: '',
-			tel: '',
-		},
+		defaultValues: userInfo,
 	})
 
 	const handleSubmitFn: SubmitHandler<AddUserFormData> = React.useCallback(
@@ -72,10 +54,6 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({
 		},
 		[onSubmit],
 	)
-
-	React.useEffect(() => {
-		reset(value)
-	}, [reset, value])
 
 	return (
 		<Dialog onClose={onClose} open>

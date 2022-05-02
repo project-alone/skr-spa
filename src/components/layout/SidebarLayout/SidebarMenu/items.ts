@@ -76,6 +76,10 @@ const menuItems: MenuItems[] = [
 				name: 'CRUD Test',
 				link: '/example/crud',
 			},
+			{
+				name: 'CRUD Test(using Slice)',
+				link: '/example/crudslice',
+			},
 		],
 	},
 	{
