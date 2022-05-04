@@ -4,20 +4,13 @@ import CrudAPI from '@fetch/crud'
 export interface CrudState {
 	status: 'pending' | 'fulfilled' | 'rejected'
 	userList: GetUserList.Res
-	userDetail: GetUserDetail.Res
+	userDetail: GetUserDetail.Res | null
 }
 
 const initialState: CrudState = {
 	status: 'pending',
 	userList: [],
-	userDetail: {
-		_id: '',
-		id: '',
-		name: '',
-		etc: '',
-		tel: '',
-		crd: '',
-	},
+	userDetail: null,
 }
 
 /** @description 사용자 정보 리스트 */
