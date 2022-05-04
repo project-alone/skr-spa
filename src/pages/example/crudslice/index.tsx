@@ -85,10 +85,16 @@ const CrudPage: React.FC = () => {
 	const handleCellDoubleClick = React.useCallback(
 		async (params: GridCellParams) => {
 			await getUserDetail(params.row._id)
-			console.log('##### 2222', JSON.stringify(userDetail))
 			openModal(modal.UserDetails, {
 				onSubmit: handleUserDetailUpdate,
-				userInfo: userDetail,
+				userInfo: userDetail ?? {
+					id: '',
+					name: '',
+					crd: '',
+					etc: '',
+					_id: '',
+					tel: '',
+				},
 			})
 		},
 		[getUserDetail, handleUserDetailUpdate, openModal, userDetail],
