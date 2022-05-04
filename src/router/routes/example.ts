@@ -3,7 +3,7 @@ import { SidebarLayout } from '@components/layout'
 import { withLoading } from '@lib/utils'
 
 // types
-import { Navigate, RouteObject } from 'react-router-dom'
+import { RouteObject } from 'react-router-dom'
 
 // antd example
 const Home = withLoading(() => import('@pages/Home'))

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import CrudAPI from '@fetch/crud'
 
 export interface CrudState {
@@ -44,11 +44,11 @@ export const getUserDetail = createAsyncThunk<GetUserDetail.Res, GetUserDetail.P
 	},
 )
 
-/** @description 사용자 상세 정보를 갱신 */
+/** @description 사용자 상세 정보 갱신 */
 export const setUserDetailUpdate = createAsyncThunk<
 	SetUserDetailUpdate.Res,
 	SetUserDetailUpdate.Params
->('crud/userdetail', async (params, thunkAPI) => {
+>('crud/userdetailupdate', async (params, thunkAPI) => {
 	try {
 		return await CrudAPI.setUserDetailUpdate(params)
 	} catch (error) {
@@ -58,7 +58,7 @@ export const setUserDetailUpdate = createAsyncThunk<
 
 /** @description 사용자 생성 */
 export const createUser = createAsyncThunk<CreateUser.Res, CreateUser.Params>(
-	'crud/userdetail',
+	'crud/createuser',
 	async (params, thunkAPI) => {
 		try {
 			return await CrudAPI.createUser(params)
@@ -70,7 +70,7 @@ export const createUser = createAsyncThunk<CreateUser.Res, CreateUser.Params>(
 
 /** @description 사용자 삭제 */
 export const deleteUserDetail = createAsyncThunk<DeleteUserDetail.Res, DeleteUserDetail.Params>(
-	'crud/userdetail',
+	'crud/deleteuserdetail',
 	async (params, thunkAPI) => {
 		try {
 			return await CrudAPI.deleteUserDetail(params)
@@ -84,11 +84,13 @@ export const crudSlice = createSlice({
 	name: 'crud',
 	initialState,
 	reducers: {
-		// reducerFn(state, action: PayloadAction<boolean>) {
+		userDetailInitialize(state, action: PayloadAction<void>) {
+			state.userDetail = null
+		},
 	},
 	extraReducers: (builder) => {
 		builder
-			// 사용자 리스트
+			/** @description 사용자 리스트 */
 			.addCase(getUserList.pending, (state) => {
 				state.status = 'pending'
 			})
@@ -99,7 +101,8 @@ export const crudSlice = createSlice({
 			.addCase(getUserList.rejected, (state) => {
 				state.status = 'rejected'
 			})
-			// 사용자 상세 정보
+
+			/** @description  사용자 상세 정보 */
 			.addCase(getUserDetail.pending, (state) => {
 				state.status = 'pending'
 			})
@@ -110,6 +113,39 @@ export const crudSlice = createSlice({
 			.addCase(getUserDetail.rejected, (state) => {
 				state.status = 'rejected'
 			})
+
+			/** @description 사용자 상세 정보 갱신 */
+			.addCase(setUserDetailUpdate.pending, (state) => {
+				state.status = 'pending'
+			})
+			.addCase(setUserDetailUpdate.fulfilled, (state, action) => {
+				state.status = 'fulfilled'
+			})
+			.addCase(setUserDetailUpdate.rejected, (state) => {
+				state.status = 'rejected'
+			})
+
+			/** @description 사용자 생성 */
+			.addCase(createUser.pending, (state) => {
+				state.status = 'pending'
+			})
+			.addCase(createUser.fulfilled, (state) => {
+				state.status = 'fulfilled'
+			})
+			.addCase(createUser.rejected, (state) => {
+				state.status = 'rejected'
+			})
+
+			/** @description 사용자 삭제 */
+			.addCase(deleteUserDetail.pending, (state) => {
+				state.status = 'pending'
+			})
+			.addCase(deleteUserDetail.fulfilled, (state) => {
+				state.status = 'fulfilled'
+			})
+			.addCase(deleteUserDetail.rejected, (state) => {
+				state.status = 'rejected'
+			})
 	},
 })
 
@@ -117,5 +153,7 @@ export const actions = {
 	getUserList,
 	getUserDetail,
 }
+
+export const { userDetailInitialize } = crudSlice.actions
 
 export default crudSlice.reducer

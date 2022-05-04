@@ -25,7 +25,7 @@ export const componentRoutes: RouteObject = {
 			element: React.createElement(Navigate, { to: '/components/buttons', replace: true }),
 		},
 		{ path: 'buttons', element: React.createElement(Buttons) },
-		{ path: 'modal s', element: React.createElement(Modals) },
+		{ path: 'modals', element: React.createElement(Modals) },
 		{ path: 'accordions', element: React.createElement(Accordions) },
 		{ path: 'tabs', element: React.createElement(Tabs) },
 		{ path: 'badges', element: React.createElement(Badges) },

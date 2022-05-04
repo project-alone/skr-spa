@@ -1,4 +1,5 @@
 import http from '@fetch/http'
+import { omit } from 'lodash-es'
 
 /**
  * @description
@@ -85,9 +86,7 @@ declare global {
  * @return { CreateUser.Res }
  */
 async function getUserDetail(params: GetUserDetail.Params) {
-	console.log(params)
 	const res = await http.get<GetUserDetail.Res>(`/user/${params}`)
-	console.log(res.data)
 	return res.data
 }
 
@@ -99,14 +98,12 @@ async function getUserDetail(params: GetUserDetail.Params) {
 declare global {
 	namespace SetUserDetailUpdate {
 		interface Params {
-			userPrivateId: string
-			data: {
-				id: string
-				name: string
-				tel: string
-				etc: string
-				crd: string
-			}
+			_id: string
+			id: string
+			name: string
+			tel: string
+			etc: string
+			crd: string
 		}
 
 		type Res = Record<string, unknown>
@@ -119,8 +116,8 @@ declare global {
  * @return { CreateUser.Res }
  */
 async function setUserDetailUpdate(params: SetUserDetailUpdate.Params) {
-	const res = await http.put<SetUserDetailUpdate.Res>(`/user/${params.userPrivateId}`, {
-		data: params.data,
+	const res = await http.put<SetUserDetailUpdate.Res>(`/user/${params._id}`, {
+		...omit(params, '_id'),
 	})
 	return res.data
 }

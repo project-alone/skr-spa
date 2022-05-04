@@ -30,6 +30,7 @@ export const Modals: React.FC<ModalsProps> = ({ selector = '#modal-container' })
 		<>
 			{openedModals.map(({ Component, props }, index) => {
 				const onClose = () => {
+					typeof props?.onClose === 'function' && props.onClose()
 					close(Component)
 				}
 				const handleSubmit = async (...args: unknown[]) => {
@@ -43,7 +44,7 @@ export const Modals: React.FC<ModalsProps> = ({ selector = '#modal-container' })
 					open: true,
 					onClose: onClose,
 					onSubmit: handleSubmit,
-					...omit(props, 'onSubmit'),
+					...omit(props, ['onSubmit', 'onClose']),
 				}
 
 				return (

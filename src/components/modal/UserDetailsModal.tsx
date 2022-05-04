@@ -41,6 +41,7 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({ onClose, onSubmit, 
 		handleSubmit,
 		formState: { errors },
 		control,
+		reset,
 	} = useForm<AddUserFormData>({
 		mode: 'onTouched',
 		reValidateMode: 'onChange',
@@ -54,6 +55,10 @@ const UserDetailsModal: React.FC<UserDetailsModalProps> = ({ onClose, onSubmit, 
 		},
 		[onSubmit],
 	)
+
+	React.useEffect(() => {
+		reset(userInfo)
+	}, [reset, userInfo])
 
 	return (
 		<Dialog onClose={onClose} open>

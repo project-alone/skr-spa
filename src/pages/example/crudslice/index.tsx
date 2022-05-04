@@ -7,39 +7,26 @@ import {
 	PageTitleWrapper,
 	createDataGridColumns,
 } from '@components/common'
-import { shallowEqual, useAppDispatch, useAppSelector, useAsyncFn } from '@hooks/index'
+import { useCrud } from '@hooks/index'
 import { useModal } from '@lib/modal'
 import modal from '@components/modal'
-import { setLoading } from '@store/slices/ui'
-
-// fetch
-import CrudAPI from '@fetch/crud'
 
 // typs
 import type { GridCallbackDetails, GridCellParams } from '@mui/x-data-grid-pro'
-import { getUserList } from '@root/shared/store/slices/crud'
-
-type CrudFetchActions =
-	| {
-			type: 'USER_LIST'
-	  }
-	| {
-			type: 'DELETE_USER_DETAIL'
-			userPrivateId: string
-	  }
 
 type PagePrepare = Record<'page' | 'size' | 'rowCount', number>
 
 const CrudPage: React.FC = () => {
-	const dispatch = useAppDispatch()
-	const { userList, pendingList } = useAppSelector(
-		(state) => ({
-			userList: state.crud.userList,
-			pendingList: state.crud.status === 'pending',
-		}),
-		shallowEqual,
-	)
 	const { openModal } = useModal()
+	const {
+		createUser,
+		getUserList,
+		getUserDetail,
+		setUserDetailUpdate,
+		deleteUserDetail,
+		userDetail,
+		userList,
+	} = useCrud()
 	const [pagePrepare /* setPagePrepare */] = React.useState<PagePrepare>({
 		page: 1,
 		size: 10,
@@ -58,40 +45,53 @@ const CrudPage: React.FC = () => {
 		// setPagePrepare((state) => ({ ...state, size }))
 	}, [])
 
-	/**
-	 * @method handleAddUser 사용자 추가하기
-	 */
-	const handleAddUser = React.useCallback(() => {
+	/** @method handleUserDetailUpdate */
+	const handleUserDetailUpdate = React.useCallback(
+		async (param: SetUserDetailUpdate.Params) => {
+			await setUserDetailUpdate(param)
+			await getUserList()
+		},
+		[getUserList, setUserDetailUpdate],
+	)
+
+	/** @method handleDeleteUser */
+	const handleDeleteUser = React.useCallback(
+		async (_id) => {
+			await deleteUserDetail(_id)
+			await getUserList()
+		},
+		[deleteUserDetail, getUserList],
+	)
+
+	/** @method handleAddUser */
+	const handleAddUser = React.useCallback(
+		async (params: CreateUser.Params) => {
+			await createUser(params)
+			await getUserList()
+		},
+		[createUser, getUserList],
+	)
+
+	/** @method handleOpenAddUser 사용자 추가하기 모달 */
+	const handleOpenAddUser = React.useCallback(() => {
 		openModal(modal.AddUser, {
-			onSubmit: async (params: CreateUser.Params) => {
-				await CrudAPI.createUser(params)
-				// await fetch({ type: 'USER_LIST' })
-			},
+			onSubmit: handleAddUser,
 		})
-	}, [fetch, openModal])
+	}, [handleAddUser, openModal])
 
 	/**
 	 * @method handleCellDoubleClick cell을 double click 했을 떄 동작(사용자 상세보기 및 수정)
 	 */
 	const handleCellDoubleClick = React.useCallback(
 		async (params: GridCellParams) => {
-			try {
-				dispatch(setLoading(true))
-				const detail = await CrudAPI.getUserDetail(params.row._id)
-				console.log(detail)
-				openModal(modal.UserDetails, {
-					onSubmit: async (param: SetUserDetailUpdate.Params) => {
-						await CrudAPI.setUserDetailUpdate(param)
-						// await fetch({ type: 'USER_LIST' })
-					},
-					userInfo: detail,
-				})
-			} catch (error) {
-				throw new Error(`${error}`)
-			}
-			dispatch(setLoading(false))
+			await getUserDetail(params.row._id)
+			console.log('##### 2222', JSON.stringify(userDetail))
+			openModal(modal.UserDetails, {
+				onSubmit: handleUserDetailUpdate,
+				userInfo: userDetail,
+			})
 		},
-		[dispatch, fetch, openModal],
+		[getUserDetail, handleUserDetailUpdate, openModal, userDetail],
 	)
 
 	const columns = React.useMemo(
@@ -115,30 +115,26 @@ const CrudPage: React.FC = () => {
 					field: 'delete',
 					headerName: '삭제',
 					renderCell(cell) {
+						const onClick = () => handleDeleteUser(cell.row._id)
 						return (
-							<Button
-								variant="contained"
-								onClick={() => {
-									// fetch({
-									// 	type: 'DELETE_USER_DETAIL',
-									// 	userPrivateId: cell.row._id,
-									// })
-								}}>
+							<Button variant="contained" onClick={onClick}>
 								삭제
 							</Button>
 						)
 					},
 				},
 			]),
-		[fetch],
+		[handleDeleteUser],
 	)
 
-	/**
-	 * @title Effects
-	 */
+	/** @description Effects */
 	React.useEffect(() => {
-		dispatch(getUserList())
-	}, [dispatch])
+		getUserList()
+	}, [getUserList])
+
+	React.useEffect(() => {
+		console.log('#####', userDetail)
+	}, [userDetail])
 
 	return (
 		<>
@@ -156,7 +152,7 @@ const CrudPage: React.FC = () => {
 					alignItems="stretch"
 					spacing={3}>
 					<Grid item>
-						<Button variant="contained" onClick={handleAddUser}>
+						<Button variant="contained" onClick={handleOpenAddUser}>
 							사용자 추가
 						</Button>
 					</Grid>
@@ -164,7 +160,7 @@ const CrudPage: React.FC = () => {
 						<CustomDataGrid
 							pagination
 							columns={columns}
-							loading={pendingList}
+							loading={false}
 							page={pagePrepare.page}
 							pageSize={pagePrepare.size}
 							rowCount={pagePrepare.rowCount}
