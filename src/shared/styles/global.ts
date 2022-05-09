@@ -1,3 +1,8 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+    v2.0 | 20110126
+    License: none (public domain)
+*/
+
 export const CustomCssBaseline = {
 	styleOverrides: {
 		'article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section': {
@@ -76,42 +81,29 @@ export const CustomCssBaseline = {
 				src: 'url("/static/fonts/Pretendard-Thin.woff2") format("woff2"),url("/static/fonts/Pretendard-Thin.woff") format("woff"),url("/static/fonts/Pretendard-Thin.otf") format("otf")',
 			},
 		],
+		body: {
+			lineHeight: 1,
+		},
+		'ol, ul': {
+			listStyle: 'none',
+		},
+		'blockquote, q': {
+			quotes: 'none',
+		},
+		'blockquote:before, blockquote:after, q:before, q:after': {
+			content: '',
+		},
+		table: {
+			borderCollapse: 'collapse',
+			borderSpacing: 0,
+		},
+		pre: {
+			margin: 0,
+			whiteSpace: 'pre-wrap',
+			fontFamily: 'Pretendard, sans-serif',
+		},
+		a: {
+			textDecoration: 'none',
+		},
 	},
 }
-/* http://meyerweb.com/eric/tools/css/reset/ 
-    v2.0 | 20110126
-    License: none (public domain)
-*/
-
-// export default MuiCssBaseline
-/*
-    body {
-      line-height: 1;
-    }
-    ol, ul {
-      list-style: none;
-    }
-    blockquote,
-    q {
-      quotes: none;
-    }
-    blockquote:before,
-    blockquote:after,
-    q:before,
-    q:after {
-      content: "";
-      content: none;
-    }
-    table {
-      border-collapse: collapse;
-      border-spacing: 0;
-    }
-    pre {
-      margin: 0;
-      white-space: pre-wrap;
-      font-family: "Pretendard, sans-serif";
-    }
-    a {
-      text-decoration: none;
-    }
-    */
