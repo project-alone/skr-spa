@@ -1,10 +1,5 @@
-import {
-	List as MuiList,
-	ListItem as MuiListItem,
-	ListItemIcon,
-	ListItemText,
-	IconButton,
-} from '@mui/material'
+import { List as MuiList, ListItem as MuiListItem, ListItemIcon, ListItemText } from '@mui/material'
+import { IconButton } from '@components/common'
 
 // icons
 import { ReactComponent as IconChevron } from '@static/images/icons/chevron-forward.svg'
@@ -48,7 +43,7 @@ const ListItem: React.FC<ListItemProps> = ({ title, secondaryActionIcon, icon })
 	)
 }
 
-interface ListProps {
+export interface ListProps {
 	listData: {
 		type?: 'bookmark' | 'docAttach' | 'docText'
 		title: string

@@ -40,9 +40,9 @@ const ButtonSearch = styled(Button)(
 const Status404: React.FC = () => {
 	return (
 		<>
-			<Helmet>
+			{/* <Helmet>
 				<title>Status - 404</title>
-			</Helmet>
+			</Helmet> */}
 			<MainContent>
 				<Container maxWidth="md">
 					<Box textAlign="center">

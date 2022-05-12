@@ -1,6 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { styled, Paper, IconButton, Grid } from '@mui/material'
+import { styled, Paper, Grid } from '@mui/material'
+import { IconButton } from '@components/common'
 
 // types
 import { PaperProps } from '@mui/material'

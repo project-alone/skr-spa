@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-key */
-
-// core
 import React from 'react'
 import { useLocation, useRoutes } from 'react-router-dom'
 import { AliveScope } from 'react-activation'

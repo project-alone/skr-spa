@@ -51,6 +51,10 @@ declare module '@mui/material' {
 		label: true
 	}
 
+	interface ChipPropsColorOverrides {
+		ready: true
+	}
+
 	interface PaperPropsVariantOverrides {
 		default: true
 		data: true
@@ -1112,49 +1116,50 @@ export const BaseTheme = createTheme({
 				autoWidth: true,
 			},
 			styleOverrides: {
-				// root: sx({
-				// 	height: '33px',
-				// 	padding: '9px 0',
-				// 	svg: {
-				// 		width: '14px',
-				// 		height: '14px',
-				// 		marginRight: '12px',
-				// 	},
-				// 	'&.Mui-focused': {
-				// 		svg: {
-				// 			transform: 'scaleY(-1)',
-				// 		},
-				// 	},
-				// 	'&.Mui-disabled': {
-				// 		backgroundColor: colorSystem.bg.b700,
-				// 		opacity: 1,
-				// 		'.makeStyles-placeholder': {
-				// 			color: colorSystem.grey.b400,
-				// 		},
-				// 	},
-				// 	'&.MuiNativeSelect-nativeInput': {
-				// 		'&:disabled': {
-				// 			backgroundColor: colorSystem.bg.b700,
-				// 		},
-				// 	},
-				// 	'& .MuiSelect-select': {
-				// 		padding: '0px 10px 0px 12px !important',
-				// 		display: 'flex',
-				// 		alignItems: 'center',
-				// 		'&:focus': {
-				// 			backgroundColor: 'transparent',
-				// 		},
-				// 		'.MuiListItemIcon-root': {
-				// 			minWidth: '14px',
-				// 			svg: {
-				// 				marginRight: '5px',
-				// 				'& path': {
-				// 					fill: colorSystem.primary.b700,
-				// 				},
-				// 			},
-				// 		},
-				// 	},
-				// }),
+				// root 에서 select로 대체
+				select: sx({
+					height: '33px',
+					padding: '9px 0',
+					svg: {
+						width: '14px',
+						height: '14px',
+						marginRight: '12px',
+					},
+					'&.Mui-focused': {
+						svg: {
+							transform: 'scaleY(-1)',
+						},
+					},
+					'&.Mui-disabled': {
+						backgroundColor: colorSystem.bg.b700,
+						opacity: 1,
+						'.makeStyles-placeholder': {
+							color: colorSystem.grey.b400,
+						},
+					},
+					'&.MuiNativeSelect-nativeInput': {
+						'&:disabled': {
+							backgroundColor: colorSystem.bg.b700,
+						},
+					},
+					'& .MuiSelect-select': {
+						padding: '0px 10px 0px 12px !important',
+						display: 'flex',
+						alignItems: 'center',
+						'&:focus': {
+							backgroundColor: 'transparent',
+						},
+						'.MuiListItemIcon-root': {
+							minWidth: '14px',
+							svg: {
+								marginRight: '5px',
+								'& path': {
+									fill: colorSystem.primary.b700,
+								},
+							},
+						},
+					},
+				}),
 			},
 		},
 		// 	//select option list
@@ -1461,10 +1466,10 @@ export const BaseTheme = createTheme({
 		MuiChip: {
 			variants: [
 				// {
-				//   props: { focused: true },
-				//   style: {
-				//     borderColor: colorSystem.border.b700,
-				//   },
+				// 	props: { focused: true },
+				// 	style: {
+				// 		borderColor: colorSystem.border.b700,
+				// 	},
 				// },
 			],
 			styleOverrides: {
@@ -1479,6 +1484,10 @@ export const BaseTheme = createTheme({
 				label: {
 					paddingLeft: '8px',
 					paddingRight: '8px',
+				},
+				focusVisible: {
+					// focused prop 대체
+					borderColor: colorSystem.border.b700,
 				},
 			},
 		},

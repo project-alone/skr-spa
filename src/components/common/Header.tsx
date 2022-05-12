@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@mui/styles'
-import { styled, Stack, IconButton, Avatar } from '@mui/material'
+import { styled, Stack, Avatar } from '@mui/material'
+import { IconButton } from '@components/common'
 
 // icons
 import { ReactComponent as IconHelp } from '@static/images/icons/help.svg'
@@ -38,7 +39,7 @@ const UserProfile = styled(Avatar)(({ theme }) => ({
 	},
 }))
 
-const Header = () => {
+export const Header: React.FC = () => {
 	const header = headerStyle()
 
 	return (
@@ -64,5 +65,3 @@ const Header = () => {
 		</HeaderWrap>
 	)
 }
-
-export default Header

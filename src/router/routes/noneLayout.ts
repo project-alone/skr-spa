@@ -1,31 +1,30 @@
-import React from 'react'
+import { lazy, createElement } from 'react'
 import { Navigate } from 'react-router-dom'
-import { BaseLayout } from '@components/layout'
-import { withLoading } from '@root/shared/lib/utils/withLoading'
+import { DefaultLayout } from '@components/layout'
 import type { RouteObject } from 'react-router-dom'
 
 // Status
-const Status404 = withLoading(() => import('@pages/status/Status404'))
-const Status500 = withLoading(() => import('@pages/status/Status500'))
-const StatusMaintenance = withLoading(() => import('@pages/status/Maintenance'))
+const Status404 = lazy(() => import('@pages/status/Status404'))
+const Status500 = lazy(() => import('@pages/status/Status500'))
+const StatusMaintenance = lazy(() => import('@pages/status/Maintenance'))
 
 export const noneLayoutRoutes: RouteObject = {
 	path: '/',
-	element: React.createElement(BaseLayout),
+	element: createElement(DefaultLayout),
 	children: [
 		{
 			path: '',
-			element: React.createElement(Navigate, { to: '/example/home', replace: true }),
+			element: createElement(Navigate, { to: '/example/home', replace: true }),
 		},
 		{
 			path: 'status',
 			children: [
-				{ path: '', element: React.createElement(Navigate, { to: '404', replace: true }) },
-				{ path: '404', element: React.createElement(Status404) },
-				{ path: '500', element: React.createElement(Status500) },
-				{ path: 'maintenance', element: React.createElement(StatusMaintenance) },
+				{ path: '', element: createElement(Navigate, { to: '404', replace: true }) },
+				{ path: '404', element: createElement(Status404) },
+				{ path: '500', element: createElement(Status500) },
+				{ path: 'maintenance', element: createElement(StatusMaintenance) },
 			],
 		},
-		{ path: '*', element: React.createElement(Status404) },
+		{ path: '*', element: createElement(Status404) },
 	],
 }

@@ -94,25 +94,25 @@ const DefaultFormControl = styled(FormControl)(({ theme }) => ({
 		flex: '0 0 calc(100% - 120px)',
 	},
 }))
-// const LayoutStyle = styled((theme) => ({
-// 	container: {
-// 		display: 'flex',
-// 		flex: 1,
-// 		width: '100%',
-// 		// flexDirection: "row",
-// 	},
-// 	contents: {
-// 		display: 'flex',
-// 		flexDirection: 'column',
-// 		// width: "calc(100% - 65px)",
-// 	},
-// 	page: {
-// 		width: '100%',
-// 		minHeight: 'calc(100% - 57px)',
-// 		// backgroundColor: `${theme.palette.background[700]}`,
-// 		backgroundColor: '#F2F5F5',
-// 		padding: '30px 50px',
-// 	},
-// }))
+const LayoutStyled = {
+	Container: styled('div')(({ theme }) => ({
+		display: 'flex',
+		flex: 1,
+		width: '100%',
+		// flexDirection: "row",
+	})),
+	Contents: styled('div')(({ theme }) => ({
+		display: 'flex',
+		flexDirection: 'column',
+		// width: "calc(100% - 65px)",
+	})),
+	Page: styled('div')(({ theme }) => ({
+		width: '100%',
+		minHeight: 'calc(100% - 57px)',
+		// backgroundColor: `${theme.palette.background[700]}`,
+		backgroundColor: '#F2F5F5',
+		padding: '30px 50px',
+	})),
+}
 
-export { DefaultTextField, Placeholder, SelectCombo, DefaultFormControl /* LayoutStyle */ }
+export { DefaultTextField, Placeholder, SelectCombo, DefaultFormControl, LayoutStyled }

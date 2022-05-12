@@ -1,14 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {
-	styled,
-	Typography,
-	Breadcrumbs,
-	IconButton,
-	ToggleButton,
-	ButtonGroup,
-	Stack,
-} from '@mui/material'
+import { styled, Typography, Breadcrumbs, ToggleButton, ButtonGroup, Stack } from '@mui/material'
+import { IconButton } from '@components/common'
 
 // icons
 import { ReactComponent as IconBookmark } from '@static/images/icons/bookmark.svg'

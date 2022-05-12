@@ -1,9 +1,5 @@
 import { Link } from 'react-router-dom'
-import { styled, Stack, IconButton, Avatar, Typography } from '@mui/material'
-
-// icons
-import { ReactComponent as IconMenu } from '@static/images/icons/menu.svg'
-import { ReactComponent as IconBookmarks } from '@static/images/icons/bookmarks.svg'
+import { styled, Typography } from '@mui/material'
 
 const LnbWrap = styled('div')(({ theme }) => ({
 	// color: `${theme.palette.grey[400]}`,
@@ -50,27 +46,6 @@ const LnbIcon = styled('div')(({ theme }) => ({
 // 	gap: '10px',
 // }))
 
-const testMenuData = [
-	{
-		name: '전체메뉴',
-		link: '/',
-		icon: <IconMenu />,
-	},
-	{
-		name: '즐겨찾기',
-		link: '/',
-		icon: <IconBookmarks />,
-	},
-	{
-		name: '사용자',
-		link: '/user',
-	},
-	{
-		name: '직무관리',
-		link: '/task',
-	},
-]
-
 interface LnbProps {
 	menuData: {
 		// type: 'menu' | 'bookmark' | 'default'
@@ -80,7 +55,7 @@ interface LnbProps {
 	}[]
 }
 
-export const Lnb: React.FC<LnbProps> = ({ menuData = testMenuData }) => {
+export const Lnb: React.FC<LnbProps> = ({ menuData }) => {
 	return (
 		<LnbWrap>
 			<ul>

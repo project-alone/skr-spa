@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async'
 import {
 	Button,
 	Container,
@@ -14,10 +13,7 @@ import { PageTitle, PageTitleWrapper } from '@root/components/ex'
 
 const Buttons: React.FC = () => {
 	return (
-		<>
-			<Helmet>
-				<title>Buttons - Components</title>
-			</Helmet>
+		<div>
 			<PageTitleWrapper>
 				<PageTitle
 					heading="Buttons"
@@ -193,7 +189,7 @@ const Buttons: React.FC = () => {
 					</Grid>
 				</Grid>
 			</Container>
-		</>
+		</div>
 	)
 }
 

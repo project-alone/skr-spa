@@ -11,8 +11,14 @@ import { PageTit } from '@pages/publishing/guide/_parts/title/PageTit'
 import { SubTit } from '@pages/publishing/guide/_parts/title/SubTit'
 import { TableTit } from '@pages/publishing/guide/_parts/title/TableTit'
 import { SectionTit } from '@pages/publishing/guide/_parts/title/SectionTit'
-import List from '../guide/List'
-import { BtnSize, BtnIcon, BtnVariation, BtnDisabled, GroupBtn } from '../guide/Btn'
+import { ListGuide as List } from '@pages/publishing/guide/_parts/List'
+import {
+	BtnSize,
+	BtnIcon,
+	BtnVariation,
+	BtnDisabled,
+	GroupBtn,
+} from '@pages/publishing/guide/_parts/Btn'
 import {
 	InputLabelPositionTop,
 	InputLabelPositionLeft,
@@ -25,17 +31,20 @@ import {
 	DefaultRadio,
 	RadioWithLabel,
 	GroupRadio,
-} from '../guide/Form'
-import Badge from './../guide/Badge'
-
+} from '@pages/publishing/guide/_parts/Form'
+import { Badge } from '@pages/publishing/guide/_parts/Badge'
 import { GuideTitle, GuideSubTitle, GuideKeyword } from '@styles/publishingGuide'
+
+// types
+import type { TabListProps } from '@mui/lab'
 
 const Guide = () => {
 	const [value, setValue] = React.useState('1')
 
-	const handleChange = (event, newValue) => {
+	const handleChange: TabListProps['onChange'] = React.useCallback((event, newValue) => {
 		setValue(newValue)
-	}
+	}, [])
+
 	return (
 		<Box sx={{ width: '100%', typography: 'body1' }}>
 			<Typography variant="h1" mt={3}>
