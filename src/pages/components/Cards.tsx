@@ -24,7 +24,7 @@ import {
 	ExpandMore as ExpandMoreIcon,
 	MoreVert as MoreVertIcon,
 } from '@mui/icons-material'
-import { PageTitle, PageTitleWrapper } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@root/components/ex'
 import type { IconButtonProps } from '@mui/material'
 
 interface ExpandMoreProps extends IconButtonProps {

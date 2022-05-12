@@ -6,7 +6,7 @@ import {
 	Pageview as PageviewIcon,
 	Assignment as AssignmentIcon,
 } from '@mui/icons-material'
-import { PageTitle, PageTitleWrapper } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@root/components/ex'
 
 const stringToColor = (string: string) => {
 	let hash = 0

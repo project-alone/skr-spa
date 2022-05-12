@@ -5,7 +5,7 @@ import {
 	Twitter as TwitterIcon,
 	Instagram as InstagramIcon,
 } from '@mui/icons-material'
-import { LogoSign } from '@components/common'
+import { LogoSign } from '@root/components/ex'
 
 const MainContent = styled(Box)(
 	() => `

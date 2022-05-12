@@ -24,7 +24,7 @@ import { ko } from 'date-fns/locale'
 import { store, createPersistor } from '@store/index'
 
 // loading indecator
-import { Loading } from '@components/common'
+import { Loading } from '@root/components/ex'
 
 const persistor = createPersistor(store)
 

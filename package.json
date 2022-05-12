@@ -48,12 +48,14 @@
 		"redux-persist": "^6.0.0",
 		"styled-components": "^5.3.3",
 		"stylis-plugin-rtl": "^2.1.1",
+		"vite-plugin-svgr": "^2.1.0",
 		"xlsx": "^0.18.0",
 		"yup": "^0.32.11"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.0",
 		"@hookform/devtools": "^4.0.2",
+		"@mui/x-data-grid-generator": "^5.10.0",
 		"@storybook/addon-actions": "^6.5.0-alpha.36",
 		"@storybook/addon-essentials": "^6.5.0-alpha.36",
 		"@storybook/addon-interactions": "^6.5.0-alpha.36",
@@ -79,6 +81,7 @@
 		"@vitejs/plugin-react": "^1.0.7",
 		"babel-loader": "^8.2.3",
 		"cross-env": "^7.0.3",
+		"eslint": "^8.15.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-config-react-app": "^7.0.0",
 		"eslint-plugin-prettier": "^4.0.0",

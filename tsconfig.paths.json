@@ -15,7 +15,8 @@
 			"@context/*": ["src/shared/context/*"],
 			"@router/*": ["src/router/*"],
 			"@pages/*": ["src/pages/*"],
-			"@theme/*": ["src/shared/styles/theme/*"]
+			"@theme/*": ["src/shared/styles/theme/*"],
+			"@static/*": ["public/static/*"]
 		}
 	}
 }

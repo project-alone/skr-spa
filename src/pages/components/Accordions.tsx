@@ -12,7 +12,7 @@ import {
 	Typography,
 } from '@mui/material'
 import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material'
-import { PageTitle, PageTitleWrapper } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@root/components/ex'
 
 const Accordions: React.FC = () => {
 	return (

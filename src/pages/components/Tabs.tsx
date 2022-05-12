@@ -12,7 +12,7 @@ import {
 	Typography,
 	Box,
 } from '@mui/material'
-import { PageTitle, PageTitleWrapper } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@root/components/ex'
 
 interface TabPanelProps {
 	index: number

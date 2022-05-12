@@ -6,7 +6,7 @@ import {
 	PageTitle,
 	PageTitleWrapper,
 	createDataGridColumns,
-} from '@components/common'
+} from '@root/components/ex'
 import { useAppDispatch, useAsyncFn } from '@hooks/index'
 import { useModal } from '@lib/modal'
 import modal from '@components/modal'

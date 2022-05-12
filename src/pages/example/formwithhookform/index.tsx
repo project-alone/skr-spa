@@ -17,7 +17,7 @@ import {
 } from '@mui/material'
 import { DatePicker } from '@mui/lab'
 import { CheckboxGroup, RadioButtons, SelectBox } from '@components/form'
-import { PageHeader, PageTitleWrapper } from '@components/common'
+import { PageHeader, PageTitleWrapper } from '@root/components/ex'
 import { get } from 'lodash-es'
 
 interface ExampleFormData {

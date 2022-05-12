@@ -6,7 +6,7 @@ import {
 	PageTitleWrapper,
 	CustomDataGrid,
 	createDataGridColumns,
-} from '@components/common'
+} from '@root/components/ex'
 import { useAsync } from '@hooks/index'
 import { setTest } from '@fetch/test'
 import type { GridCallbackDetails, GridColumns } from '@mui/x-data-grid-pro'

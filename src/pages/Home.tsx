@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 
 import { Container, Grid } from '@mui/material'
-import { PageTitle, PageTitleWrapper } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@root/components/ex'
 
 const HomePage: React.FC = () => {
 	return (

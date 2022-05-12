@@ -8,9 +8,10 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import eslint from 'vite-plugin-eslint'
 import visualizer from 'rollup-plugin-visualizer'
 import legacy from '@vitejs/plugin-legacy'
-import babelImport from 'vite-plugin-babel-import'
 import checker from 'vite-plugin-checker'
 import mkcert from 'vite-plugin-mkcert'
+import svgr from 'vite-plugin-svgr'
+// import babelImport from 'vite-plugin-babel-import'
 
 /**
  * @see https://vitejs.dev/config/
@@ -35,16 +36,17 @@ export default defineConfig(({ mode, command }) => {
 			typescript: {
 				tsconfigPath: './tsconfig.json',
 				root: './',
-				buildMode: process.env.NODE_ENV === 'production',
+				buildMode: !isDev,
 			},
 		}),
 		// like webpack analizer
 		visualizer({
-			open: env.mode === 'development',
+			open: isDev,
 		}),
 		legacy({
 			ignoreBrowserslistConfig: true,
 		}),
+		svgr(),
 		// babelImport([
 		// 	/** example */
 		// 	{
@@ -122,9 +124,9 @@ export default defineConfig(({ mode, command }) => {
 			rollupOptions: {
 				output: {
 					manualChunks: {
+						// FIXME: moment => dayjs로 변경
 						vendor: ['lodash-es', 'moment', 'axios', 'notistack'],
 						chart: ['chart.js'],
-						'react-data-grid': ['react-data-grid'],
 					},
 				},
 			},

@@ -10,7 +10,7 @@ import {
 	Button,
 	Typography,
 } from '@mui/material'
-import { PageTitle, PageTitleWrapper } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@root/components/ex'
 import { useModal } from '@lib/modal'
 import { useAlert } from '@hooks/useAlert'
 import modal from '@components/modal'

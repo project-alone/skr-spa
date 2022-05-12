@@ -1,6 +1,6 @@
 import React from 'react'
 import loadable from '@loadable/component'
-import { SuspenseLoader } from '@components/common'
+import { SuspenseLoader } from '@root/components/ex'
 import type { DefaultComponent } from '@loadable/component'
 
 /**

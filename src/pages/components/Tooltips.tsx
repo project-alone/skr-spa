@@ -10,7 +10,7 @@ import {
 	Button,
 	Tooltip,
 } from '@mui/material'
-import { PageTitle, PageTitleWrapper } from '@components/common'
+import { PageTitle, PageTitleWrapper } from '@root/components/ex'
 
 const Tooltips: React.FC = () => {
 	return (

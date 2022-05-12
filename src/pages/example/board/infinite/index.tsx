@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Container, Grid } from '@mui/material'
-import { PageTitle, PageTitleWrapper, CustomDataGrid } from '@components/common'
+import { PageTitle, PageTitleWrapper, CustomDataGrid } from '@root/components/ex'
 import { useAsync } from '@hooks/index'
 import { setTest } from '@fetch/test'
 

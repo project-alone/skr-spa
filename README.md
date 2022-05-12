@@ -135,4 +135,16 @@ console.log(myEnv) // 'skrentacar'
 -   [ ] 타임피커 문제(외부라이브러리와 MUI가 연동이 가능한지? 검토 필요)
 -   [ ] 디자인 반영은 바로바로
 
+1. 외부망에서 작업하자(내부망 안할거임)
+2. 퍼블리셔와 프론트엔개발 간 프로세스 부재(논의 필요)
+3. 퍼블리싱과 공통 간의 병렬 업무 시 프로세스 부재(논의 필요)
+
+## 주의사항
+
+경로 설정
+
+1. [componentName]/index.tsx
+2. 용도가 다른 컴포넌트 그룹(???)
+3.
+
 [githibenterprise]: https://skr-sharedgithub.koreacentral.cloudapp.azure.com

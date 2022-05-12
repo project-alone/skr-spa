@@ -1,150 +1,24 @@
 import { createTheme, experimental_sx as sx } from '@mui/material/styles'
-// import { CustomCssBaseline } from '@styles/global'
-
-import DefaultCheckBox from '../images/icons/checkBox-default.svg'
-import DefaultThCheckBox from '../images/icons/checkBox-defaultTh.svg'
-import HoverCheckBox from '../images/icons/checkBox-hover.svg'
-import DisabledCheckBox from '../images/icons/checkBox-disabled.svg'
-import CheckedCheckBox from '../images/icons/checkBox-checked.svg'
-import CheckedDisabledCheckBox from '../images/icons/checkBox-checkedDisabled.svg'
-import DefaultRadio from '../images/icons/radio-default.svg'
-import HoverRadio from '../images/icons/radio-hover.svg'
-import DisabledRadio from '../images/icons/radio-disabled.svg'
-import CheckedRadio from '../images/icons/radio-selected.svg'
-import CheckedDisabledRadio from '../images/icons/radio-selectedDisabled.svg'
+import { globalStyle } from '@styles/global'
+import colorSystem from '@styles/theme/colorSystem'
+import fontSystem from '@styles/theme/fontSystem'
 
 import type { Theme, Color } from '@mui/material'
+import type {} from '@mui/x-data-grid-pro/themeAugmentation'
+import type { Shadows } from '@mui/material/styles/shadows'
 
-const colorSystem = {
-	ci: {
-		red: '#EA002C',
-		orange: '#F47725',
-	},
-	status: {
-		new: '#F5FFE8',
-		success: '#67C23A',
-		ready: '#F9AD3A',
-		warning: '#FFE91F',
-		danger: '#F65858',
-		cancel: '#C4C5CE',
-		done: '#178CF8',
-	},
-	fn: {
-		disabled: '#C4C5CE',
-		excel: {
-			default: '#0F8953',
-			hover: '#13784B',
-		},
-		delete: {
-			default: '#F65858',
-			hover: '#FFEBEB',
-		},
-	},
-	primary: {
-		b900: '#07857F',
-		b700: '#009A93', //main**
-		b500: '#32AEA9',
-		b300: '#5ABCB8',
-		b200: '#81C8C5',
-		b100: '#B7D8D6',
-		b050: '#DDF1F0',
-	},
-	secondary: {
-		b900: '#FCCB1C',
-		b700: '#FFD954', //main**
-		b500: '#FFE91F',
-		b300: '#FFFAEA',
-	},
-	bg: {
-		b700: '#F2F5F5', //default**
-		b500: '#FFFFFF', //white
-		b300: '#F5FCFB', //light teal
-	},
-	grey: {
-		b900: '#434C4C', //high**
-		b700: '#677272', //medium
-		b600: '#8C9695', //low
-		b400: '#B0BABA', //placeholder
-		b300: '#CCD2D2',
-		b000: '#FFFFFF',
-	},
-	border: {
-		b700: '#F3F4F4', //default**
-		b500: '#DDEBE9', //section
-		b300: '#F1F5F4', //light
-		b100: '#EEF7F4', //light green
-		grid: '#D8DDDD', //grid th
-	},
-	shadow: {
-		drop: '0px 0px 15px rgba(0, 0, 0, 0.15)',
-		section: '0px 0px 15px rgba(196, 197, 206, 0.15)',
-	},
-	white: '#FFFFFF',
-}
-const fontSystem = {
-	h1: {
-		fontSize: '1.5rem',
-		fontWeight: 400,
-	},
-	h2: {
-		fontSize: '1.125rem',
-		fontWeight: 600,
-	},
-	h3: {
-		fontSize: '1.125rem',
-		fontWeight: 500,
-	},
-	h4: {
-		fontSize: '1rem',
-		fontWeight: 500,
-	},
-	st1: {
-		fontSize: '1rem',
-		fontWeight: 400,
-	},
-	st2: {
-		fontSize: '0.875rem',
-		fontWeight: 600,
-	},
-	b1: {
-		fontSize: '0.875rem',
-		fontWeight: 400,
-	},
-	sb1: {
-		fontSize: '0.875rem',
-		fontWeight: 500,
-	},
-	b2: {
-		fontSize: '0.75rem',
-		fontWeight: 400,
-	},
-	sb2: {
-		fontSize: '0.75rem',
-		fontWeight: 600,
-	},
-	ct: {
-		fontSize: '0.75rem',
-		fontWeight: 400,
-	},
-	bt: {
-		default: {
-			fontSize: '0.875rem',
-			fontWeight: 500,
-		},
-		large: {
-			fontSize: '1rem',
-			fontWeight: 500,
-		},
-	},
-	ht: {
-		fontSize: '0.625rem',
-		fontWeight: 500,
-	},
-	label: {
-		fontSize: '0.75rem',
-		fontWeight: 500,
-	},
-}
+// svg icons
+const DefaultCheckBox = '/static/images/icons/checkBox-default.svg'
+const DefaultThCheckBox = '/static/images/icons/checkBox-defaultTh.svg'
+const HoverCheckBox = '/static/images/icons/checkBox-hover.svg'
+const DisabledCheckBox = '/static/images/icons/checkBox-disabled.svg'
+const CheckedCheckBox = '/static/images/icons/checkBox-checked.svg'
+const CheckedDisabledCheckBox = '/static/images/icons/checkBox-checkedDisabled.svg'
+const DefaultRadio = '/static/images/icons/radio-default.svg'
+const HoverRadio = '/static/images/icons/radio-hover.svg'
+const DisabledRadio = '/static/images/icons/radio-disabled.svg'
+const CheckedRadio = '/static/images/icons/radio-selected.svg'
+const CheckedDisabledRadio = '/static/images/icons/radio-selectedDisabled.svg'
 
 declare module '@mui/material/styles/createTypography' {
 	interface TypographyOptions {
@@ -163,6 +37,25 @@ declare module '@mui/material/styles/createTypography' {
 }
 
 declare module '@mui/material' {
+	interface TypographyPropsVariantOverrides {
+		st1: true
+		st2: true
+		b1: true
+		b2: true
+		sb1: true
+		sb2: true
+		ct: true
+		bt: true
+		bt_large: true
+		ht: true
+		label: true
+	}
+
+	interface PaperPropsVariantOverrides {
+		default: true
+		data: true
+		search: true
+	}
 	interface ButtonGroupPropsColorOverrides {
 		default: true
 		function: true
@@ -184,15 +77,9 @@ declare module '@mui/material' {
 		function: true
 		delete: true
 		cancel: true
+		excel: true
 	}
-	interface TypographyPropsVariantOverrides {
-		st1: true
-		st2: true
-		b1: true
-		b2: true
-		sb1: true
-		sb2: true
-	}
+
 	interface Color {
 		0?: string
 		100: string
@@ -213,20 +100,14 @@ declare module '@mui/material' {
 declare module '@mui/material/styles' {
 	interface Theme {
 		borderColor: string
-		shadows: {
-			0: string
-			1: string
-		}
+		shadows: Shadows
 	}
 
 	// allow configuration using `createTheme`
 	interface ThemeOptions {
 		borderColor: string
+		shadows?: Shadows
 	}
-
-	// interface PaletteColor {
-	// 	darker?: string
-	// }
 
 	interface SimplePaletteColorOptions {
 		bright?: string
@@ -234,6 +115,11 @@ declare module '@mui/material/styles' {
 		main: string
 		dark?: string
 		contrastText?: string
+	}
+
+	interface PaletteColor {
+		bright?: string
+		light400?: string
 	}
 
 	interface PaletteOptions {
@@ -246,16 +132,17 @@ declare module '@mui/material/styles' {
 		ready?: SimplePaletteColorOptions
 		border?: Partial<Color>
 	}
+
+	interface Palette {
+		border: Partial<Color>
+	}
 }
 
 /**
  * @description
  * Theme 객체를 작성
  */
-export const BaseTheme: Theme = createTheme({
-	// components: {
-	// 	MuiCssBaseline: CustomCssBaseline,
-	// },
+export const BaseTheme = createTheme({
 	spacing: (value: number) => value,
 	shape: {
 		borderRadius: 2,
@@ -407,6 +294,9 @@ export const BaseTheme: Theme = createTheme({
 		'',
 	],
 	components: {
+		MuiCssBaseline: {
+			styleOverrides: globalStyle,
+		},
 		// 	//Typography
 		MuiTypography: {
 			defaultProps: {
@@ -652,12 +542,13 @@ export const BaseTheme: Theme = createTheme({
 		},
 		MuiIconButton: {
 			variants: [
-				{
-					props: { variant: 'outlined' },
-					style: {
-						border: '1px solid',
-					},
-				},
+				/** FIXME: IconButton 컴포넌틑 variant props가 없어 확장 할수 없음 */
+				// {
+				// 	props: { variant: 'outlined' },
+				// 	style: {
+				// 		border: '1px solid',
+				// 	},
+				// },
 				{
 					props: { size: 'small' },
 					style: {
@@ -693,22 +584,23 @@ export const BaseTheme: Theme = createTheme({
 						},
 					},
 				},
-				{
-					props: { color: 'primary', variant: 'outlined' },
-					style: {
-						backgroundColor: colorSystem.white,
-						borderColor: colorSystem.primary.b700,
-						'&:hover, &:active': {
-							backgroundColor: colorSystem.bg.b300,
-							borderColor: colorSystem.primary.b700,
-						},
-						svg: {
-							'& path': {
-								fill: colorSystem.primary.b700,
-							},
-						},
-					},
-				},
+				/** FIXME: IconButton 컴포넌틑 variant props가 없어 확장 할수 없음 */
+				// {
+				// 	props: { color: 'primary', variant: 'outlined' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.white,
+				// 		borderColor: colorSystem.primary.b700,
+				// 		'&:hover, &:active': {
+				// 			backgroundColor: colorSystem.bg.b300,
+				// 			borderColor: colorSystem.primary.b700,
+				// 		},
+				// 		svg: {
+				// 			'& path': {
+				// 				fill: colorSystem.primary.b700,
+				// 			},
+				// 		},
+				// 	},
+				// },
 				{
 					props: { color: 'default' },
 					style: {
@@ -723,22 +615,23 @@ export const BaseTheme: Theme = createTheme({
 						},
 					},
 				},
-				{
-					props: { color: 'default', variant: 'outlined' },
-					style: {
-						backgroundColor: colorSystem.white,
-						borderColor: colorSystem.grey.b700,
-						'&:hover, &:active': {
-							backgroundColor: colorSystem.bg.b700,
-							borderColor: colorSystem.grey.b700,
-						},
-						svg: {
-							'& path': {
-								fill: colorSystem.grey.b700,
-							},
-						},
-					},
-				},
+				/** FIXME: IconButton 컴포넌틑 variant props가 없어 확장 할수 없음 */
+				// {
+				// 	props: { color: 'default', variant: 'outlined' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.white,
+				// 		borderColor: colorSystem.grey.b700,
+				// 		'&:hover, &:active': {
+				// 			backgroundColor: colorSystem.bg.b700,
+				// 			borderColor: colorSystem.grey.b700,
+				// 		},
+				// 		svg: {
+				// 			'& path': {
+				// 				fill: colorSystem.grey.b700,
+				// 			},
+				// 		},
+				// 	},
+				// },
 				{
 					props: { color: 'sub' },
 					style: {
@@ -768,22 +661,23 @@ export const BaseTheme: Theme = createTheme({
 						},
 					},
 				},
-				{
-					props: { color: 'secondary', variant: 'outlined' },
-					style: {
-						backgroundColor: colorSystem.white,
-						borderColor: colorSystem.secondary.b500,
-						'&:hover, &:active': {
-							backgroundColor: colorSystem.secondary.b300,
-							borderColor: colorSystem.secondary.b500,
-						},
-						svg: {
-							'& path': {
-								fill: colorSystem.secondary.b500,
-							},
-						},
-					},
-				},
+				/** FIXME: IconButton 컴포넌틑 variant props가 없어 확장 할수 없음 */
+				// {
+				// 	props: { color: 'secondary', variant: 'outlined' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.white,
+				// 		borderColor: colorSystem.secondary.b500,
+				// 		'&:hover, &:active': {
+				// 			backgroundColor: colorSystem.secondary.b300,
+				// 			borderColor: colorSystem.secondary.b500,
+				// 		},
+				// 		svg: {
+				// 			'& path': {
+				// 				fill: colorSystem.secondary.b500,
+				// 			},
+				// 		},
+				// 	},
+				// },
 				{
 					props: { color: 'function' },
 					style: {
@@ -798,51 +692,54 @@ export const BaseTheme: Theme = createTheme({
 						},
 					},
 				},
-				{
-					props: { color: 'function', variant: 'outlined' },
-					style: {
-						backgroundColor: colorSystem.white,
-						borderColor: colorSystem.grey.b900,
-						'&:hover,&:active': {
-							backgroundColor: colorSystem.bg.b300,
-						},
-						svg: {
-							'& path': {
-								fill: colorSystem.grey.b900,
-							},
-						},
-					},
-				},
-				{
-					props: { color: 'delete', variant: 'outlined' },
-					style: {
-						backgroundColor: colorSystem.white,
-						borderColor: colorSystem.fn.delete.default,
-						'&:hover,&:active': {
-							backgroundColor: colorSystem.fn.delete.hover,
-						},
-						svg: {
-							'& path': {
-								fill: colorSystem.fn.delete.default,
-							},
-						},
-					},
-				},
-				{
-					props: { color: 'cancel', variant: 'outlined' },
-					style: {
-						backgroundColor: colorSystem.white,
-						borderColor: colorSystem.fn.disabled,
-						'&:hover,&:active': {
-							backgroundColor: colorSystem.bg.b700,
-						},
-						svg: {
-							'& path': {
-								fill: colorSystem.primary.b200,
-							},
-						},
-					},
-				},
+				/** FIXME: IconButton 컴포넌틑 variant props가 없어 확장 할수 없음 */
+				// {
+				// 	props: { color: 'function', variant: 'outlined' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.white,
+				// 		borderColor: colorSystem.grey.b900,
+				// 		'&:hover,&:active': {
+				// 			backgroundColor: colorSystem.bg.b300,
+				// 		},
+				// 		svg: {
+				// 			'& path': {
+				// 				fill: colorSystem.grey.b900,
+				// 			},
+				// 		},
+				// 	},
+				// },
+				/** FIXME: IconButton 컴포넌틑 variant props가 없어 확장 할수 없음 */
+				// {
+				// 	props: { color: 'delete', variant: 'outlined' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.white,
+				// 		borderColor: colorSystem.fn.delete.default,
+				// 		'&:hover,&:active': {
+				// 			backgroundColor: colorSystem.fn.delete.hover,
+				// 		},
+				// 		svg: {
+				// 			'& path': {
+				// 				fill: colorSystem.fn.delete.default,
+				// 			},
+				// 		},
+				// 	},
+				// },
+				/** FIXME: IconButton 컴포넌틑 variant props가 없어 확장 할수 없음 */
+				// {
+				// 	props: { color: 'cancel', variant: 'outlined' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.white,
+				// 		borderColor: colorSystem.fn.disabled,
+				// 		'&:hover,&:active': {
+				// 			backgroundColor: colorSystem.bg.b700,
+				// 		},
+				// 		svg: {
+				// 			'& path': {
+				// 				fill: colorSystem.primary.b200,
+				// 			},
+				// 		},
+				// 	},
+				// },
 				{
 					props: { color: 'mdi' },
 					style: {
@@ -1507,13 +1404,14 @@ export const BaseTheme: Theme = createTheme({
 						fill: colorSystem.grey.b600,
 					},
 				},
-				ColumnMenuIcon: {
-					svg: {
-						'& path': {
-							fill: colorSystem.grey.b600,
-						},
-					},
-				},
+				/** FIXME: 해당필드는 존재하지 않음 */
+				// ColumnMenuIcon: {
+				// 	svg: {
+				// 		'& path': {
+				// 			fill: colorSystem.grey.b600,
+				// 		},
+				// 	},
+				// },
 				row: {
 					'&.Mui-selected': {
 						backgroundColor: colorSystem.bg.b300,
@@ -1587,71 +1485,71 @@ export const BaseTheme: Theme = createTheme({
 		MuiDivider: {
 			variants: [
 				//section
-				{
-					props: { type: 'section15' },
-					style: {
-						backgroundColor: colorSystem.border.b700,
-						margin: '15px 0',
-					},
-				},
-				{
-					props: { type: 'section20' },
-					style: {
-						backgroundColor: colorSystem.border.b700,
-						margin: '20px 0',
-					},
-				},
-				{
-					props: { type: 'section30' },
-					style: {
-						backgroundColor: colorSystem.border.b700,
-						margin: '30px 0',
-					},
-				},
-				//Function
-				{
-					props: { type: 'function15' },
-					style: {
-						backgroundColor: colorSystem.border.b100,
-						margin: '15px 0',
-					},
-				},
-				{
-					props: { type: 'function20' },
-					style: {
-						backgroundColor: colorSystem.border.b100,
-						margin: '20px 0',
-					},
-				},
-				{
-					props: { type: 'function30' },
-					style: {
-						backgroundColor: colorSystem.border.b100,
-						margin: '30px 0',
-					},
-				},
-				//Item
-				{
-					props: { type: 'item15' },
-					style: {
-						backgroundColor: colorSystem.border.b300,
-						margin: '15px 0',
-					},
-				},
-				{
-					props: { type: 'item20' },
-					style: {
-						backgroundColor: colorSystem.border.b300,
-						margin: '20px 0',
-					},
-				},
-				{
-					props: { type: 'item30' },
-					style: {
-						backgroundColor: colorSystem.border.b300,
-						margin: '30px 0',
-					},
-				},
+				// {
+				// 	props: { type: 'section15' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.border.b700,
+				// 		margin: '15px 0',
+				// 	},
+				// },
+				// {
+				// 	props: { type: 'section20' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.border.b700,
+				// 		margin: '20px 0',
+				// 	},
+				// },
+				// {
+				// 	props: { type: 'section30' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.border.b700,
+				// 		margin: '30px 0',
+				// 	},
+				// },
+				// //Function
+				// {
+				// 	props: { type: 'function15' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.border.b100,
+				// 		margin: '15px 0',
+				// 	},
+				// },
+				// {
+				// 	props: { type: 'function20' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.border.b100,
+				// 		margin: '20px 0',
+				// 	},
+				// },
+				// {
+				// 	props: { type: 'function30' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.border.b100,
+				// 		margin: '30px 0',
+				// 	},
+				// },
+				// //Item
+				// {
+				// 	props: { type: 'item15' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.border.b300,
+				// 		margin: '15px 0',
+				// 	},
+				// },
+				// {
+				// 	props: { type: 'item20' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.border.b300,
+				// 		margin: '20px 0',
+				// 	},
+				// },
+				// {
+				// 	props: { type: 'item30' },
+				// 	style: {
+				// 		backgroundColor: colorSystem.border.b300,
+				// 		margin: '30px 0',
+				// 	},
+				// },
 			],
 		},
 	},

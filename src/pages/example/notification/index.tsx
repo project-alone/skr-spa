@@ -10,7 +10,7 @@ import {
 	Grid,
 	Typography,
 } from '@mui/material'
-import { PageHeader, PageTitleWrapper } from '@components/common'
+import { PageHeader, PageTitleWrapper } from '@root/components/ex'
 import { useNotification } from '@hooks/index'
 
 const NotificationPage: React.FC = () => {
