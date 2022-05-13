@@ -16,7 +16,7 @@
 			"@router/*": ["src/router/*"],
 			"@pages/*": ["src/pages/*"],
 			"@theme/*": ["src/shared/styles/theme/*"],
-			"@static/*": ["public/static/*"]
+			"@static/*": ["src/static/*"]
 		}
 	}
 }

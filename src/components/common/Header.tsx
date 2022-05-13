@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { makeStyles } from '@mui/styles'
 import { styled, Stack, Avatar } from '@mui/material'
 import { IconButton } from '@components/common'
 
@@ -13,22 +12,22 @@ const HeaderWrap = styled('div')(({ theme }) => ({
 	height: '50px',
 	borderBottom: `1px solid ${theme.palette.border[700]}`,
 }))
-const headerStyle = makeStyles((theme) => ({
-	inner: {
+const HeaderStyled = {
+	Inner: styled('div')(() => ({
 		padding: '0 20px',
 		display: 'flex',
 		height: '100%',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-	},
-	logo: {
+	})),
+	Logo: styled('h1')(() => ({
 		margin: 0,
-	},
-	utility: {
+	})),
+	Utility: styled('div')(() => ({
 		display: 'flex',
 		gap: '10px',
-	},
-}))
+	})),
+}
 const UserProfile = styled(Avatar)(({ theme }) => ({
 	'&.MuiAvatar-root': {
 		width: '24px',
@@ -40,17 +39,15 @@ const UserProfile = styled(Avatar)(({ theme }) => ({
 }))
 
 export const Header: React.FC = () => {
-	const header = headerStyle()
-
 	return (
 		<HeaderWrap>
-			<div className={header.inner}>
-				<h1 className={header.logo}>
+			<HeaderStyled.Inner>
+				<HeaderStyled.Logo>
 					<Link to="/">
-						<img src="/images/logo.svg" alt="SK 렌터카 EV PARK" />
+						<img src="/static/images/logo.svg" alt="SK 렌터카 EV PARK" />
 					</Link>
-				</h1>
-				<div className={header.utility}>
+				</HeaderStyled.Logo>
+				<HeaderStyled.Utility>
 					<Stack direction="row" spacing={5}>
 						<IconButton color="function" size="small">
 							<IconHelp />
@@ -60,8 +57,8 @@ export const Header: React.FC = () => {
 						</IconButton>
 					</Stack>
 					<UserProfile>홍길</UserProfile>
-				</div>
-			</div>
+				</HeaderStyled.Utility>
+			</HeaderStyled.Inner>
 		</HeaderWrap>
 	)
 }

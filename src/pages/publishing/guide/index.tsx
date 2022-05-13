@@ -38,7 +38,7 @@ import { GuideTitle, GuideSubTitle, GuideKeyword } from '@styles/publishingGuide
 // types
 import type { TabListProps } from '@mui/lab'
 
-const Guide = () => {
+const GuidePage: React.FC = () => {
 	const [value, setValue] = React.useState('1')
 
 	const handleChange: TabListProps['onChange'] = React.useCallback((event, newValue) => {
@@ -146,4 +146,4 @@ const Guide = () => {
 	)
 }
 
-export default Guide
+export default GuidePage

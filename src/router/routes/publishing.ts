@@ -1,43 +1,46 @@
-{
-    // path 지정
-    path: "/sample",
-    // layout 지정
-    element: <DefaultLayout />,
-    // page 지정
-    children: [
-      { index: true, element: <Sample /> },
-      // { path: "about", element: <About /> },
-    ],
-  },
-  {
-    // path 지정
-    path: "/user",
-    // layout 지정
-    element: <DefaultLayout />,
-    // page 지정
-    children: [
-      { index: true, element: <UserManage /> },
-      // { path: "about", element: <About /> },
-    ],
-  },
-  {
-    path: "/user-inquiry",
-    element: <DefaultLayout />,
-    children: [{ index: true, element: <UserInquiry /> }],
-  },
-  {
-    path: "/task-manage",
-    element: <DefaultLayout />,
-    children: [{ index: true, element: <TaskManage /> }],
-  },
-  {
-    path: "/task-register",
-    element: <DefaultLayout />,
-    children: [{ index: true, element: <TaskRegister /> }],
-  },
-  {
-    // path 지정
-    path: "/",
-    //layout 지정
-    element: <Guide />,
-  },
+import { createElement } from 'react'
+import { DefaultLayout } from '@components/layout'
+import { withLoading } from '@lib/utils'
+// import { Navigate } from 'react-router-dom'
+
+import type { RouteObject } from 'react-router-dom'
+
+// Components
+const Sample = withLoading(() => import('@pages/publishing/sample'))
+const UserManage = withLoading(() => import('@pages/publishing/usermanage'))
+const Guide = withLoading(() => import('@pages/publishing/guide'))
+const UserInquiry = withLoading(() => import('@pages/publishing/userinquiry'))
+const TaskManage = withLoading(() => import('@pages/publishing/taskmanager'))
+const TaskRegister = withLoading(() => import('@pages/publishing/taskregister'))
+
+export const publishingRoutes: RouteObject = {
+	path: 'publishing',
+	element: createElement(DefaultLayout),
+	children: [
+		{
+			index: true,
+			element: createElement(Guide),
+		},
+		{
+			path: 'sample',
+			index: true,
+			element: createElement(Sample),
+		},
+		{
+			path: 'member',
+			element: createElement(UserManage),
+		},
+		{
+			path: 'member-inquiry',
+			element: createElement(UserInquiry),
+		},
+		{
+			path: 'task-manage',
+			element: createElement(TaskManage),
+		},
+		{
+			path: 'task-register',
+			element: createElement(TaskRegister),
+		},
+	],
+}

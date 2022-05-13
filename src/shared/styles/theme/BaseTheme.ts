@@ -3,7 +3,7 @@ import { globalStyle } from '@styles/global'
 import colorSystem from '@styles/theme/colorSystem'
 import fontSystem from '@styles/theme/fontSystem'
 
-import type { Theme, Color } from '@mui/material'
+import type { Color } from '@mui/material'
 import type {} from '@mui/x-data-grid-pro/themeAugmentation'
 import type { Shadows } from '@mui/material/styles/shadows'
 
@@ -234,7 +234,7 @@ export const BaseTheme = createTheme({
 			disabled: colorSystem.white,
 			disabledBackground: colorSystem.fn.disabled,
 			disabledOpacity: 1,
-			hoverOpacity: 1,
+			hoverOpacity: 0.1,
 		},
 		background: {
 			paper: colorSystem.white,
@@ -1473,21 +1473,20 @@ export const BaseTheme = createTheme({
 				// },
 			],
 			styleOverrides: {
-				root: sx({
+				root: {
 					height: '19px',
 					boxSizing: 'border-box',
 					borderColor: colorSystem.border.b500,
 					color: colorSystem.grey.b600,
 					fontSize: fontSystem.ht.fontSize,
 					fontWeight: fontSystem.ht.fontWeight,
-				}),
+					'&.Mui-focusVisible': {
+						borderColor: '#F3F4F4',
+					},
+				},
 				label: {
 					paddingLeft: '8px',
 					paddingRight: '8px',
-				},
-				focusVisible: {
-					// focused prop 대체
-					borderColor: colorSystem.border.b700,
 				},
 			},
 		},

@@ -7,7 +7,7 @@ const tabData = [
 	{ label: '변경이력조회', active: false },
 ]
 
-const Sample = () => {
+const SamplePage: React.FC = () => {
 	return (
 		<>
 			<Mdi tabData={tabData} />
@@ -16,4 +16,4 @@ const Sample = () => {
 	)
 }
 
-export default Sample
+export default SamplePage

@@ -17,7 +17,7 @@ import { CodeBox, FlexBox } from '@styles/publishingGuide'
 import { SelectField, DefaultSelectField } from '@components/common'
 
 // icons
-import { ReactComponent as Accessibility } from '../assets/images/icons/accessibility.svg'
+import { ReactComponent as Accessibility } from '@static/images/icons/accessibility.svg'
 
 // types
 import type { FormControlLabelProps, RadioProps, RadioGroupProps } from '@mui/material'

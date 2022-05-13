@@ -40,7 +40,7 @@ const defaultData = {
 	isIcon: false,
 }
 
-const UserInquiry: React.FC = () => {
+const UserInquiryPage: React.FC = () => {
 	return (
 		<>
 			<Mdi tabData={tabData} />
@@ -80,4 +80,4 @@ const UserInquiry: React.FC = () => {
 	)
 }
 
-export default UserInquiry
+export default UserInquiryPage

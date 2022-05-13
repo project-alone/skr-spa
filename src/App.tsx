@@ -5,7 +5,7 @@ import routes from '@root/router'
 import { ErrorBoundary } from 'react-error-boundary'
 
 // @mui style
-import { CssBaseline } from '@mui/material'
+import { Box, CssBaseline } from '@mui/material'
 
 // for test
 import { ErrorFallbackComponent, ErrorTest as ErrorOccurrence } from '@components/example/ErrorTest'
@@ -13,12 +13,12 @@ import { ErrorFallbackComponent, ErrorTest as ErrorOccurrence } from '@component
 /** @deprecated */
 const ErrorTest: React.FC<{ onRefresh: () => void; error: boolean }> = ({ onRefresh, error }) => {
 	return (
-		<>
+		<Box sx={{ position: 'fixed', top: 0, left: 0 }}>
 			<button type="button" onClick={onRefresh}>
 				effect error
 			</button>
 			{error ? <ErrorOccurrence /> : null}
-		</>
+		</Box>
 	)
 }
 

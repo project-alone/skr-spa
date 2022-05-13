@@ -34,7 +34,7 @@ const TransferStyled = {
 		width: '24px',
 	})),
 	Btn: styled(IconButton)(() => ({
-		'&:first-child': {
+		'&:first-of-type': {
 			marginBottom: '15px',
 		},
 	})),
@@ -52,7 +52,7 @@ const titleData: TitleDataItem[] = [
 	},
 ]
 
-const TaskRegister = () => {
+const TaskRegisterPage: React.FC = () => {
 	return (
 		<>
 			<Mdi tabData={tabData} />
@@ -139,4 +139,4 @@ const TaskRegister = () => {
 	)
 }
 
-export default TaskRegister
+export default TaskRegisterPage

@@ -190,17 +190,17 @@ const CustomPagination: React.FC = () => {
 		</FooterStyled.Wrap>
 	)
 }
-export function SortedDescendingIcon() {
+export const SortedDescendingIcon: React.FC = () => {
 	return <IconArrowDown className="icon" />
 }
-export function SortedAscendingIcon() {
+export const SortedAscendingIcon: React.FC = () => {
 	return <IconArrowUp className="icon" />
 }
-export function ColumnMenuIcon() {
+export const ColumnMenuIcon: React.FC = () => {
 	return <IconFilter className="icon" />
 }
 
-const MuiGridTable = () => {
+const MuiGridTable: React.FC = () => {
 	const [pageSize, setPageSize] = React.useState(5)
 	const DataGridStyle = styled(Box)(({ theme }) => ({
 		width: '100%',
@@ -226,7 +226,7 @@ const MuiGridTable = () => {
 	)
 }
 
-const TaskManage = () => {
+const TaskManagePage: React.FC = () => {
 	return (
 		<>
 			<Mdi tabData={tabData} />
@@ -266,4 +266,4 @@ const TaskManage = () => {
 	)
 }
 
-export default TaskManage
+export default TaskManagePage

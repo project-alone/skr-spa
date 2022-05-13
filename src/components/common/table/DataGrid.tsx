@@ -48,7 +48,7 @@ const columns: GridColDef[] = [
 	{ field: 'col8', headerName: 'Header', flex: 1 },
 ]
 
-interface DataGridProps extends Omit<DataGridProProps, 'rows' | 'columns'> {}
+type DataGridProps = Omit<DataGridProProps, 'rows' | 'columns'>
 
 export const DataGrid: React.FC<DataGridProps> = () => {
 	const [pageSize, setPageSize] = React.useState(5)

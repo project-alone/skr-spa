@@ -1,12 +1,13 @@
-import { lazy, createElement } from 'react'
+import { createElement } from 'react'
 import { Navigate } from 'react-router-dom'
 import { DefaultLayout } from '@components/layout'
 import type { RouteObject } from 'react-router-dom'
+import { withLoading } from '@lib/utils'
 
 // Status
-const Status404 = lazy(() => import('@pages/status/Status404'))
-const Status500 = lazy(() => import('@pages/status/Status500'))
-const StatusMaintenance = lazy(() => import('@pages/status/Maintenance'))
+const Status404 = withLoading(() => import('@pages/status/Status404'))
+const Status500 = withLoading(() => import('@pages/status/Status500'))
+const StatusMaintenance = withLoading(() => import('@pages/status/Maintenance'))
 
 export const noneLayoutRoutes: RouteObject = {
 	path: '/',

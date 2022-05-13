@@ -1,24 +1,24 @@
-import { lazy, createElement } from 'react'
+import { createElement } from 'react'
 import { DefaultLayout } from '@components/layout'
-// import { withLoading } from '@lib/utils'
+import { withLoading } from '@lib/utils'
 
 // types
-import { RouteObject } from 'react-router-dom'
+import type { RouteObject } from 'react-router-dom'
 
 // antd example
-const Home = lazy(() => import('@pages/Home'))
-const Login = lazy(() => import('@pages/example/login'))
-const Counter = lazy(() => import('@pages/example/counter'))
-const FormWithHookform = lazy(() => import('@pages/example/formwithhookform'))
-const SignUp = lazy(() => import('@pages/example/signup'))
-const TabNavigation = lazy(() => import('@pages/example/tabnavigation'))
-const Notification = lazy(() => import('@pages/example/notification'))
-const BoardPagination = lazy(() => import('@pages/example/board/pagination'))
-const BoardInfinite = lazy(() => import('@pages/example/board/infinite'))
+const Home = withLoading(() => import('@pages/Home'))
+const Login = withLoading(() => import('@pages/example/login'))
+const Counter = withLoading(() => import('@pages/example/counter'))
+const FormWithHookform = withLoading(() => import('@pages/example/formwithhookform'))
+const SignUp = withLoading(() => import('@pages/example/signup'))
+const TabNavigation = withLoading(() => import('@pages/example/tabnavigation'))
+const Notification = withLoading(() => import('@pages/example/notification'))
+const BoardPagination = withLoading(() => import('@pages/example/board/pagination'))
+const BoardInfinite = withLoading(() => import('@pages/example/board/infinite'))
 
 // CRUD Sample
-const Crud = lazy(() => import('@pages/example/crud'))
-const CrudSlice = lazy(() => import('@pages/example/crudslice'))
+const Crud = withLoading(() => import('@pages/example/crud'))
+const CrudSlice = withLoading(() => import('@pages/example/crudslice'))
 
 export const exampleRoutes: RouteObject = {
 	path: 'example',

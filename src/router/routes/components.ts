@@ -1,19 +1,20 @@
-import { lazy, createElement } from 'react'
+import { createElement } from 'react'
 import { DefaultLayout } from '@components/layout'
 import { Navigate } from 'react-router-dom'
+import { withLoading } from '@lib/utils'
 
 import type { RouteObject } from 'react-router-dom'
 
 // Components
-const Buttons = lazy(() => import('@pages/components/Buttons'))
-const Modals = lazy(() => import('@pages/components/Modals'))
-const Accordions = lazy(() => import('@pages/components/Accordions'))
-const Tabs = lazy(() => import('@pages/components/Tabs'))
-const Badges = lazy(() => import('@pages/components/Badges'))
-const Tooltips = lazy(() => import('@pages/components/Tooltips'))
-const Avatars = lazy(() => import('@pages/components/Avatars'))
-const Cards = lazy(() => import('@pages/components/Cards'))
-const Forms = lazy(() => import('@pages/components/Forms'))
+const Buttons = withLoading(() => import('@pages/components/Buttons'))
+const Modals = withLoading(() => import('@pages/components/Modals'))
+const Accordions = withLoading(() => import('@pages/components/Accordions'))
+const Tabs = withLoading(() => import('@pages/components/Tabs'))
+const Badges = withLoading(() => import('@pages/components/Badges'))
+const Tooltips = withLoading(() => import('@pages/components/Tooltips'))
+const Avatars = withLoading(() => import('@pages/components/Avatars'))
+const Cards = withLoading(() => import('@pages/components/Cards'))
+const Forms = withLoading(() => import('@pages/components/Forms'))
 
 export const componentRoutes: RouteObject = {
 	path: 'components',

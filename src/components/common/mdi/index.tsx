@@ -26,7 +26,7 @@ export const Mdi: React.FC<MdiProps> = ({ tabData }) => {
 					</MdiStyled.Button>
 				</MdiStyled.Item>
 				{tabData.map((tab, idx) => (
-					<MdiStyled.Item key={idx} active={tab.active}>
+					<MdiStyled.Item key={idx} active={tab.active ? true : false}>
 						<MdiStyled.Menu>
 							<MdiStyled.Button>
 								<IconLockClosed />

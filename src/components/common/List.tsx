@@ -61,6 +61,7 @@ export const List: React.FC<ListProps> = ({ listData }) => {
 
 				return (
 					<ListItem
+						key={idx}
 						title={title}
 						icon={<Icon />}
 						secondaryActionIcon={<SecondaryActionIcon />}

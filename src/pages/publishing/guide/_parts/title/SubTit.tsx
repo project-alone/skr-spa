@@ -1,7 +1,7 @@
 import { Grid, Typography, Button, Stack } from '@mui/material'
 import { SubTitle } from '@components/common/Title'
 
-import { CodeBox, ConditionTitle } from '@styles/publishingGuide'
+import { CodeBox } from '@styles/publishingGuide'
 
 const TitleDefault = {
 	title: '고객정보',

@@ -1,6 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { styled, Typography, Breadcrumbs, ToggleButton, ButtonGroup, Stack } from '@mui/material'
+import {
+	styled,
+	Typography,
+	Breadcrumbs,
+	ToggleButton,
+	ButtonGroup,
+	Stack,
+	ToggleButtonGroup,
+} from '@mui/material'
 import { IconButton } from '@components/common'
 
 // icons
@@ -45,9 +53,10 @@ const PageTitleStyled = {
 	),
 }
 
-interface BookmarkProps extends Pick<TitleDataItem, 'menu' | 'active'> {}
+type BookmarkProps = Required<Pick<TitleDataItem, 'menu' | 'active'>>
 
 const Bookmark: React.FC<BookmarkProps> = ({ active = false, menu }) => {
+	console.log('@@@@@', active)
 	return (
 		<PageTitleStyled.Item>
 			<Typography variant="h2" color="grey.900">
@@ -60,7 +69,7 @@ const Bookmark: React.FC<BookmarkProps> = ({ active = false, menu }) => {
 	)
 }
 
-interface CurrentProps extends Pick<TitleDataItem, 'menu'> {}
+type CurrentProps = Pick<TitleDataItem, 'menu'>
 
 const Current: React.FC<CurrentProps> = ({ menu }) => {
 	return (
@@ -72,7 +81,7 @@ const Current: React.FC<CurrentProps> = ({ menu }) => {
 	)
 }
 
-interface PlainProps extends Required<Pick<TitleDataItem, 'path' | 'menu'>> {}
+type PlainProps = Required<Pick<TitleDataItem, 'path' | 'menu'>>
 
 const Plain: React.FC<PlainProps> = ({ path, menu }) => {
 	return (
@@ -93,15 +102,12 @@ export const PageTitle: React.FC<PageTitleProps> = ({ titleData, children, ...re
 		<PageTitleStyled.Wrap>
 			<Breadcrumbs separator={<IconChevron />} aria-label="breadcrumb">
 				{titleData.map(({ menu, active, type, path }, idx) => {
-					{
-						type === 'bookmark' && <Bookmark menu={menu} active={active} />
+					const Component = {
+						bookmark: <Bookmark key={idx} menu={menu} active={!!active} />,
+						current: <Current key={idx} menu={menu} />,
+						plain: <Plain key={idx} path={path || ''} menu={menu} />,
 					}
-					{
-						type === 'current' && <Current menu={menu} />
-					}
-					{
-						;(!type || type === 'plain') && <Plain path={path || ''} menu={menu} />
-					}
+					return Component[type || 'plain']
 				})}
 			</Breadcrumbs>
 			{children}
@@ -154,7 +160,11 @@ export const SubTitle: React.FC<SubTitleProps> = ({ desc, title, toggle, tooltip
 
 	const handleToggle = React.useCallback(() => {
 		setSelected(!selected)
-	}, [])
+	}, [selected])
+
+	React.useEffect(() => {
+		console.log(selected)
+	}, [selected])
 
 	return (
 		<SubTitleStyled.Wrap>
@@ -164,18 +174,18 @@ export const SubTitle: React.FC<SubTitleProps> = ({ desc, title, toggle, tooltip
 			</SubTitleStyled.Title>
 			<Stack direction="row" spacing={5}>
 				{children}
-				<ButtonGroup variant="outlined" size="small">
-					{toggle && (
-						<IconButton color="sub">
-							<IconInfo />
-						</IconButton>
-					)}
-					{tooltip && (
-						<ToggleButton value="check" selected={selected} onChange={handleToggle}>
-							<SubTitleStyled.Toggle selected={selected} />
-						</ToggleButton>
-					)}
-				</ButtonGroup>
+				{/* <ButtonGroup variant="outlined" size="small"> */}
+				{toggle && (
+					<IconButton color="sub">
+						<IconInfo />
+					</IconButton>
+				)}
+				{tooltip && (
+					<ToggleButton value="check" selected={selected} onChange={handleToggle}>
+						<SubTitleStyled.Toggle selected={selected} />
+					</ToggleButton>
+				)}
+				{/* </ButtonGroup> */}
 			</Stack>
 		</SubTitleStyled.Wrap>
 	)

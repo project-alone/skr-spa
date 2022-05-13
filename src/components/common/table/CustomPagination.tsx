@@ -35,9 +35,12 @@ export const CustomPagination: React.FC = () => {
 	const page = useGridSelector(apiRef, gridPageSelector)
 	const pageCount = useGridSelector(apiRef, gridPageCountSelector)
 
-	const handleChangePagination = React.useCallback((event, value) => {
-		apiRef.current.setPage(value - 1)
-	}, [])
+	const handleChangePagination = React.useCallback(
+		(event, value) => {
+			apiRef.current.setPage(value - 1)
+		},
+		[apiRef],
+	)
 
 	return (
 		<FooterWrap>
