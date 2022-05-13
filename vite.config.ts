@@ -66,20 +66,21 @@ export default defineConfig(({ mode, command }) => {
 
 	// 개발 시 에만 사용되는 플러그인
 	isDev &&
-		plugins.push(
+		plugins
+			.push
 			// fake cert
-			mkcert(),
-		)
+			// mkcert(),
+			()
 
 	return {
 		server: {
 			port: parseInt(env.VITE_PORT),
-			https: isDev
-				? true
-				: {
-						key: fs.readFileSync('./.cert/key.pem'),
-						cert: fs.readFileSync('./.cert/cert.pem'),
-				  },
+			// https: isDev
+			// 	? true
+			// 	: {
+			// 			key: fs.readFileSync('./.cert/key.pem'),
+			// 			cert: fs.readFileSync('./.cert/cert.pem'),
+			// 	  },
 			// force pre-bundling
 			force: true,
 			// 프록시 인스턴스 사용

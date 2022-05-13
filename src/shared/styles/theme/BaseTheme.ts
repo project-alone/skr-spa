@@ -234,7 +234,7 @@ export const BaseTheme = createTheme({
 			disabled: colorSystem.white,
 			disabledBackground: colorSystem.fn.disabled,
 			disabledOpacity: 1,
-			hoverOpacity: 0.1,
+			// hoverOpacity: 0.1,       <== [0, 1] 에러의 주범
 		},
 		background: {
 			paper: colorSystem.white,
