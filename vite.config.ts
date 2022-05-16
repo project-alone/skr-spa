@@ -36,7 +36,7 @@ export default defineConfig(({ mode, command }) => {
 			typescript: {
 				tsconfigPath: './tsconfig.json',
 				root: './',
-				buildMode: !isDev,
+				buildMode: isDev,
 			},
 		}),
 		// like webpack analizer
@@ -65,12 +65,11 @@ export default defineConfig(({ mode, command }) => {
 	]
 
 	// 개발 시 에만 사용되는 플러그인
-	isDev &&
-		plugins
-			.push
-			// fake cert
-			// mkcert(),
-			()
+	// isDev &&
+	// 	plugins.push(
+	// 		// fake cert
+	// 		mkcert(),
+	// 	)
 
 	return {
 		server: {
