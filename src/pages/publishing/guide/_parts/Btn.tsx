@@ -5,7 +5,7 @@ import { IconButton } from '@components/common'
 import { ReactComponent as IconPencil } from '@static/images/icons/pencil.svg'
 import { ReactComponent as IconExcel } from '@static/images/icons/excel.svg'
 
-import { CodeBox } from '@styles/publishingGuide'
+import { CodeArea } from '@styles/publishingGuide'
 
 export const BtnSize: React.FC = () => {
 	return (
@@ -40,16 +40,23 @@ export const BtnSize: React.FC = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`// small
-<Button color="primary" variant="contained" size="small">Button</Button>
-// medium
-// default porperty로 size 생략해도 medium 적용됨
-<Button color="primary" variant="contained" size="medium">Button</Button>
-<Button color="primary" variant="contained">Button</Button>
-//large
-<Button color="primary" variant="contained" size="large">Button</Button>`}</pre>
-					</CodeBox>
+					<CodeArea>
+						// small
+						<Button color="primary" variant="contained" size="small">
+							Button
+						</Button>
+						// medium // default porperty로 size 생략해도 medium 적용됨
+						<Button color="primary" variant="contained" size="medium">
+							Button
+						</Button>
+						<Button color="primary" variant="contained">
+							Button
+						</Button>
+						//large
+						<Button color="primary" variant="contained" size="large">
+							Button
+						</Button>
+					</CodeArea>
 				</Grid>
 			</Grid>
 		</>
@@ -70,9 +77,11 @@ export const BtnIcon: React.FC = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`<IconButton color="primary"><IconPencil /></IconButton>`}</pre>
-					</CodeBox>
+					<CodeArea>
+						<IconButton color="primary">
+							<IconPencil />
+						</IconButton>
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Grid container spacing={5} mt={5}>
@@ -85,9 +94,11 @@ export const BtnIcon: React.FC = () => {
 					</Button>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`<Button color="primary" variant="contained" endIcon={<IconPencil />}>Button</Button>`}</pre>
-					</CodeBox>
+					<CodeArea>
+						<Button color="primary" variant="contained" endIcon={<IconPencil />}>
+							Button
+						</Button>
+					</CodeArea>
 				</Grid>
 			</Grid>
 		</>
@@ -181,17 +192,36 @@ export const BtnVariation: React.FC = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`// primary
-<IconButton color="primary" size="small"><IconPencil /></IconButton>
-<IconButton color="primary" variant="outlined" size="small"><IconPencil /></IconButton>
-<Button color="primary" variant="contained" size="small">Button</Button>
-<Button color="primary" variant="outlined" size="small">Button</Button>
-
-// primary , icon
-<Button color="primary" variant="contained" size="small" endIcon={<IconPencil />}>Button</Button>
-<Button color="primary" variant="outlined" size="small" endIcon={<IconPencil />}>Button</Button>`}</pre>
-					</CodeBox>
+					<CodeArea>
+						// primary
+						<IconButton color="primary" size="small">
+							<IconPencil />
+						</IconButton>
+						<IconButton color="primary" variant="outlined" size="small">
+							<IconPencil />
+						</IconButton>
+						<Button color="primary" variant="contained" size="small">
+							Button
+						</Button>
+						<Button color="primary" variant="outlined" size="small">
+							Button
+						</Button>
+						// primary , icon
+						<Button
+							color="primary"
+							variant="contained"
+							size="small"
+							endIcon={<IconPencil />}>
+							Button
+						</Button>
+						<Button
+							color="primary"
+							variant="outlined"
+							size="small"
+							endIcon={<IconPencil />}>
+							Button
+						</Button>
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Grid container spacing={5} mt={5}>
@@ -279,17 +309,36 @@ export const BtnVariation: React.FC = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`// default
-<IconButton color="default" size="small"><IconPencil /></IconButton>
-<IconButton color="default" variant="outlined" size="small"><IconPencil /></IconButton>
-<Button color="default" variant="contained" size="small">Button</Button>
-<Button color="default" variant="outlined" size="small">Button</Button>
-
-// default , icon
-<Button color="default" variant="contained" size="small" endIcon={<IconPencil />}>Button</Button>
-<Button color="default" variant="outlined" size="small" endIcon={<IconPencil />}>Button</Button>`}</pre>
-					</CodeBox>
+					<CodeArea>
+						// default
+						<IconButton color="default" size="small">
+							<IconPencil />
+						</IconButton>
+						<IconButton color="default" variant="outlined" size="small">
+							<IconPencil />
+						</IconButton>
+						<Button color="default" variant="contained" size="small">
+							Button
+						</Button>
+						<Button color="default" variant="outlined" size="small">
+							Button
+						</Button>
+						// default , icon
+						<Button
+							color="default"
+							variant="contained"
+							size="small"
+							endIcon={<IconPencil />}>
+							Button
+						</Button>
+						<Button
+							color="default"
+							variant="outlined"
+							size="small"
+							endIcon={<IconPencil />}>
+							Button
+						</Button>
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Grid container spacing={5} mt={5}>
@@ -342,15 +391,23 @@ export const BtnVariation: React.FC = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`// sub
-<IconButton color="sub" size="small"><IconPencil /></IconButton>
-<Button color="sub" variant="contained" size="small">Button</Button>
-
-// sub , icon
-<Button color="sub" variant="contained" size="small" endIcon={<IconPencil />}>Button</Button>
-`}</pre>
-					</CodeBox>
+					<CodeArea>
+						// sub
+						<IconButton color="sub" size="small">
+							<IconPencil />
+						</IconButton>
+						<Button color="sub" variant="contained" size="small">
+							Button
+						</Button>
+						// sub , icon
+						<Button
+							color="sub"
+							variant="contained"
+							size="small"
+							endIcon={<IconPencil />}>
+							Button
+						</Button>
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Grid container spacing={5} mt={5}>
@@ -438,17 +495,36 @@ export const BtnVariation: React.FC = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`// secondary
-<IconButton color="secondary" size="small"><IconPencil /></IconButton>
-<IconButton color="secondary" variant="outlined" size="small"><IconPencil /></IconButton>
-<Button color="secondary" variant="contained" size="small">Button</Button>
-<Button color="secondary" variant="outlined" size="small">Button</Button>
-
-// secondary , icon
-<Button color="secondary" variant="contained" size="small" endIcon={<IconPencil />}>Button</Button>
-<Button color="secondary" variant="outlined" size="small" endIcon={<IconPencil />}>Button</Button>`}</pre>
-					</CodeBox>
+					<CodeArea>
+						// secondary
+						<IconButton color="secondary" size="small">
+							<IconPencil />
+						</IconButton>
+						<IconButton color="secondary" variant="outlined" size="small">
+							<IconPencil />
+						</IconButton>
+						<Button color="secondary" variant="contained" size="small">
+							Button
+						</Button>
+						<Button color="secondary" variant="outlined" size="small">
+							Button
+						</Button>
+						// secondary , icon
+						<Button
+							color="secondary"
+							variant="contained"
+							size="small"
+							endIcon={<IconPencil />}>
+							Button
+						</Button>
+						<Button
+							color="secondary"
+							variant="outlined"
+							size="small"
+							endIcon={<IconPencil />}>
+							Button
+						</Button>
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Grid container spacing={5} mt={5}>
@@ -510,15 +586,26 @@ export const BtnVariation: React.FC = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`// function
-<IconButton color="function" size="small"><IconPencil /></IconButton>
-<IconButton color="function" variant="outlined" size="small"><IconPencil /></IconButton>
-<Button color="function" variant="outlined" size="small">Button</Button>
-
-// function , icon
-<Button color="function" variant="outlined" size="small" endIcon={<IconPencil />}>Button</Button>`}</pre>
-					</CodeBox>
+					<CodeArea>
+						// function
+						<IconButton color="function" size="small">
+							<IconPencil />
+						</IconButton>
+						<IconButton color="function" variant="outlined" size="small">
+							<IconPencil />
+						</IconButton>
+						<Button color="function" variant="outlined" size="small">
+							Button
+						</Button>
+						// function , icon
+						<Button
+							color="function"
+							variant="outlined"
+							size="small"
+							endIcon={<IconPencil />}>
+							Button
+						</Button>
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Grid container spacing={5} mt={5}>
@@ -541,13 +628,21 @@ export const BtnVariation: React.FC = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`// excel
-<Button color="excel" variant="contained" />
-// excel , icon
-<Button color="excel" variant="contained" size="small" endIcon={<IconExcel />}>Button</Button>
-<Button color="excel" variant="contained" endIcon={<IconExcel />}>Button</Button>`}</pre>
-					</CodeBox>
+					<CodeArea>
+						// excel
+						<Button color="excel" variant="contained" />
+						// excel , icon
+						<Button
+							color="excel"
+							variant="contained"
+							size="small"
+							endIcon={<IconExcel />}>
+							Button
+						</Button>
+						<Button color="excel" variant="contained" endIcon={<IconExcel />}>
+							Button
+						</Button>
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Grid container spacing={5} mt={5}>
@@ -600,14 +695,23 @@ export const BtnVariation: React.FC = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`// delete
-<IconButton color="delete" variant="outlined" size="small"><IconPencil /></IconButton>
-<Button color="delete" variant="outlined" size="small">Button</Button>
-
-// delete , icon
-<Button color="delete" variant="outlined" size="small" endIcon={<IconPencil />}>Button</Button>`}</pre>
-					</CodeBox>
+					<CodeArea>
+						// delete
+						<IconButton color="delete" variant="outlined" size="small">
+							<IconPencil />
+						</IconButton>
+						<Button color="delete" variant="outlined" size="small">
+							Button
+						</Button>
+						// delete , icon
+						<Button
+							color="delete"
+							variant="outlined"
+							size="small"
+							endIcon={<IconPencil />}>
+							Button
+						</Button>
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Grid container spacing={5} mt={5}>
@@ -660,14 +764,23 @@ export const BtnVariation: React.FC = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`// cancel
-<IconButton color="cancel" variant="outlined" size="small"><IconPencil /></IconButton>
-<Button color="cancel" variant="outlined" size="small">Button</Button>
-
-// cancel , icon
-<Button color="cancel" variant="outlined" size="small" endIcon={<IconPencil />}>Button</Button>`}</pre>
-					</CodeBox>
+					<CodeArea>
+						// cancel
+						<IconButton color="cancel" variant="outlined" size="small">
+							<IconPencil />
+						</IconButton>
+						<Button color="cancel" variant="outlined" size="small">
+							Button
+						</Button>
+						// cancel , icon
+						<Button
+							color="cancel"
+							variant="outlined"
+							size="small"
+							endIcon={<IconPencil />}>
+							Button
+						</Button>
+					</CodeArea>
 				</Grid>
 			</Grid>
 		</>
@@ -723,14 +836,24 @@ export const BtnDisabled: React.FC = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`// disabled
-<IconButton color="primary" size="small" disabled><IconPencil /></IconButton>
-<Button color="primary" variant="contained" size="small" disabled>Button</Button>
-
-// disabled , icon
-<Button color="primary" variant="contained" size="small" endIcon={<IconPencil />} disabled>Button</Button>`}</pre>
-					</CodeBox>
+					<CodeArea>
+						// disabled
+						<IconButton color="primary" size="small" disabled>
+							<IconPencil />
+						</IconButton>
+						<Button color="primary" variant="contained" size="small" disabled>
+							Button
+						</Button>
+						// disabled , icon
+						<Button
+							color="primary"
+							variant="contained"
+							size="small"
+							endIcon={<IconPencil />}
+							disabled>
+							Button
+						</Button>
+					</CodeArea>
 				</Grid>
 			</Grid>
 		</>
@@ -805,23 +928,26 @@ export const GroupBtn: React.FC = () => {
 					</Box>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`// small _ spacing 5px
-<Stack direction="row" spacing={5}>
-  <Button color="primary" variant="contained" size="small">Button</Button>
-</Stack>
-
-// medium _ spacing 8px
-<Stack direction="row" spacing={8}>
-  <Button color="primary" variant="contained">Button</Button>
-</Stack>
-
-// large _ spacing 10px
-<Stack direction="row" spacing={10}>
-  <Button color="primary" variant="contained" size="large">Button</Button>
-</Stack>
-`}</pre>
-					</CodeBox>
+					<CodeArea>
+						// small _ spacing 5px
+						<Stack direction="row" spacing={5}>
+							<Button color="primary" variant="contained" size="small">
+								Button
+							</Button>
+						</Stack>
+						// medium _ spacing 8px
+						<Stack direction="row" spacing={8}>
+							<Button color="primary" variant="contained">
+								Button
+							</Button>
+						</Stack>
+						// large _ spacing 10px
+						<Stack direction="row" spacing={10}>
+							<Button color="primary" variant="contained" size="large">
+								Button
+							</Button>
+						</Stack>
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Grid container spacing={5} mt={5}>
@@ -881,21 +1007,25 @@ export const GroupBtn: React.FC = () => {
           </ButtonGroup> */}
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>
-						<pre>{`// default
-<ButtonGroup variant="outlined" size="small">
-  <Button>Button</Button>
-  <Button>Button</Button>
-</ButtonGroup>
-<ButtonGroup color="primary" variant="outlined" size="small">
-  input Button components
-</ButtonGroup>
-
-// disabled (disabled 활성시 disableElevation, disabled porperty)
-<ButtonGroup color="primary" variant="outlined" size="small" disableElevation disabled>
-  input Button components
-</ButtonGroup>`}</pre>
-					</CodeBox>
+					<CodeArea>
+						// default
+						<ButtonGroup variant="outlined" size="small">
+							<Button>Button</Button>
+							<Button>Button</Button>
+						</ButtonGroup>
+						<ButtonGroup color="primary" variant="outlined" size="small">
+							input Button components
+						</ButtonGroup>
+						// disabled (disabled 활성시 disableElevation, disabled porperty)
+						<ButtonGroup
+							color="primary"
+							variant="outlined"
+							size="small"
+							disableElevation
+							disabled>
+							input Button components
+						</ButtonGroup>
+					</CodeArea>
 				</Grid>
 			</Grid>
 		</>

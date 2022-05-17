@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Stack, Chip } from '@mui/material'
-import { CodeBox } from '@styles/publishingGuide'
+import { CodeArea } from '@styles/publishingGuide'
 
 export const Badge: React.FC = () => {
 	return (
@@ -18,7 +18,7 @@ export const Badge: React.FC = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={6}>
-					<CodeBox>//가이드 명시</CodeBox>
+					<CodeArea>//가이드 명시</CodeArea>
 				</Grid>
 			</Grid>
 		</>

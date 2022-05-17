@@ -1,7 +1,6 @@
 import { Grid, Typography, Button, Stack } from '@mui/material'
 import { SubTitle } from '@components/common/Title'
-
-import { CodeBox } from '@styles/publishingGuide'
+import { CodeArea } from '@styles/publishingGuide'
 
 const TitleDefault = {
 	title: '고객정보',
@@ -48,6 +47,14 @@ const TitleOptionDesc = {
 	tooltip: true,
 }
 
+const Test = () => {
+	return (
+		<div className="wow">
+			<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, aliquam!</p>
+		</div>
+	)
+}
+
 export const SubTit = () => {
 	return (
 		<>
@@ -59,15 +66,9 @@ export const SubTit = () => {
 					<SubTitle {...TitleDefault} />
 				</Grid>
 				<Grid item xs={4}>
-					<CodeBox>
-						<pre>{`const TitleDefault = {
-  title: "고객정보",
-  toggle: false,
-  tooltip: false,
-};
-<SubTitle {...TitleDefault} />
-`}</pre>
-					</CodeBox>
+					<CodeArea>
+						<SubTitle title="고객정보" toggle={false} tooltip={false} />
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Typography variant="h3" pb={12}>
@@ -79,15 +80,9 @@ export const SubTit = () => {
 					<SubTitle {...TitleToggle} />
 				</Grid>
 				<Grid item xs={4}>
-					<CodeBox>
-						<pre>{`const TitleToggle = {
-  title: "고객정보",
-  toggle: true,
-  tooltip: false,
-};
-<SubTitle {...TitleToggle} />
-`}</pre>
-					</CodeBox>
+					<CodeArea>
+						<SubTitle title="고객정보" toggle={true} tooltip={false} />
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Typography variant="h3" pb={12}>
@@ -99,19 +94,13 @@ export const SubTit = () => {
 					<SubTitle {...TitleTooltip} />
 				</Grid>
 				<Grid item xs={4}>
-					<CodeBox>
-						<pre>{`const TitleTooltip = {
-  title: "고객정보",
-  toggle: false,
-  tooltip: true,
-};
-<SubTitle {...TitleTooltip} />
-`}</pre>
-					</CodeBox>
+					<CodeArea>
+						<SubTitle title="고객정보" toggle={false} tooltip={true} />
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Typography variant="h3" pb={12}>
-				Toggle &amp; Tooltip
+				Toggle & Tooltip
 			</Typography>
 
 			<Grid container spacing={2}>
@@ -119,15 +108,9 @@ export const SubTit = () => {
 					<SubTitle {...TitleOption} />
 				</Grid>
 				<Grid item xs={4}>
-					<CodeBox>
-						<pre>{`const TitleOption = {
-  title: "고객정보",
-  toggle: true,
-  tooltip: true,
-};
-<SubTitle {...TitleOption} />
-`}</pre>
-					</CodeBox>
+					<CodeArea>
+						<SubTitle title="고객정보" toggle={true} tooltip={true} />
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Typography variant="h3" pb={12}>
@@ -150,15 +133,19 @@ export const SubTit = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={4}>
-					<CodeBox>
-						<pre>{`<SubTitle {...TitleToggle}>
-  <Button color="primary" variant="outlined">Button</Button>
-</SubTitle>
+					<CodeArea>
+						<SubTitle title="고객정보" toggle={true} tooltip={false}>
+							<Button color="primary" variant="outlined">
+								Button
+							</Button>
+						</SubTitle>
 
-<SubTitle {...TitleOption}>
-  <Button color="primary" variant="outlined">Button</Button>
-</SubTitle>`}</pre>
-					</CodeBox>
+						<SubTitle title="고객정보" toggle={true} tooltip={false}>
+							<Button color="primary" variant="outlined">
+								Button
+							</Button>
+						</SubTitle>
+					</CodeArea>
 				</Grid>
 			</Grid>
 			<Typography variant="h3" pb={12}>
@@ -185,8 +172,8 @@ export const SubTit = () => {
 					</Stack>
 				</Grid>
 				<Grid item xs={4}>
-					<CodeBox>
-						<pre>{`<SubTitle {...TitleDesc} />
+					<CodeArea>
+						{`<SubTitle {...TitleDesc} />
 <SubTitle {...TitleToggleDesc} />
 <SubTitle {...TitleTooltipDesc} />
 <SubTitle {...TitleOptionDesc} />
@@ -195,8 +182,8 @@ export const SubTit = () => {
 </SubTitle>
 <SubTitle {...TitleToggleDesc}>
   <Button color="primary" variant="outlined">Button</Button>
-</SubTitle>`}</pre>
-					</CodeBox>
+</SubTitle>`}
+					</CodeArea>
 				</Grid>
 			</Grid>
 		</>

@@ -1,14 +1,10 @@
 import React from 'react'
 import { styled, Grid, Box, Stack, Button } from '@mui/material'
 import { PageTitle } from '@components/common/Title'
-import type { To } from 'react-router-dom'
+import { CodeArea } from '@styles/publishingGuide'
 
-const CodeBox = styled(Box)(({ theme }) => ({
-	backgroundColor: `${theme.palette.grey[700]}`,
-	color: `${theme.palette.grey[0]}`,
-	padding: '10px',
-	borderRadius: '4px',
-}))
+// types
+import type { To } from 'react-router-dom'
 
 export interface TitleDataItem {
 	type: 'bookmark' | 'current' | 'plain'
@@ -55,15 +51,18 @@ export const PageTit = () => {
 					</PageTitle>
 				</Grid>
 				<Grid item xs={4}>
-					<CodeBox>
-						<pre>{`<PageTitle titleData={titleData}>
-  <Stack direction="row" spacing={8}>
-    <Button color="primary" variant="contained">Button</Button>
-    <Button color="primary" variant="contained">Button</Button>
-  </Stack>
-</PageTitle>
-`}</pre>
-					</CodeBox>
+					<CodeArea>
+						<PageTitle titleData={titleData}>
+							<Stack direction="row" spacing={8}>
+								<Button color="primary" variant="contained">
+									Button
+								</Button>
+								<Button color="primary" variant="contained">
+									Button
+								</Button>
+							</Stack>
+						</PageTitle>
+					</CodeArea>
 				</Grid>
 			</Grid>
 		</>

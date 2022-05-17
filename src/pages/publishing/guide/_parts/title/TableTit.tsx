@@ -1,6 +1,6 @@
 import { Grid, Box, Typography, Button, Stack } from '@mui/material'
 import { TableTitle } from '@components/common/Title'
-import { CodeBox } from '@styles/publishingGuide'
+import { CodeArea } from '@styles/publishingGuide'
 import { ReactComponent as IconExcel } from '@static/images/icons/excel.svg'
 
 const tableTitleData = {
@@ -20,15 +20,13 @@ export const TableTit = () => {
 					</TableTitle>
 				</Grid>
 				<Grid item xs={4}>
-					<CodeBox>
-						<pre>{`const tableTitleData = {
-  title: "고객정보",
-  desc: content: "12,340",
-};
-<TableTitle {...tableTitleData}>
-  <Button color="excel" variant="contained" endIcon={<IconExcel />}>엑셀다운로드</Button>
-</TableTitle>`}</pre>
-					</CodeBox>
+					<CodeArea>
+						<TableTitle title="고객정보" desc="12,340">
+							<Button color="excel" variant="contained" endIcon={<IconExcel />}>
+								엑셀다운로드
+							</Button>
+						</TableTitle>
+					</CodeArea>
 				</Grid>
 			</Grid>
 		</>

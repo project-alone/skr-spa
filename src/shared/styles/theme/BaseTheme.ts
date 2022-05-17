@@ -8,17 +8,17 @@ import type {} from '@mui/x-data-grid-pro/themeAugmentation'
 import type { Shadows } from '@mui/material/styles/shadows'
 
 // svg icons
-const DefaultCheckBox = '/static/images/icons/checkBox-default.svg'
-const DefaultThCheckBox = '/static/images/icons/checkBox-defaultTh.svg'
-const HoverCheckBox = '/static/images/icons/checkBox-hover.svg'
-const DisabledCheckBox = '/static/images/icons/checkBox-disabled.svg'
-const CheckedCheckBox = '/static/images/icons/checkBox-checked.svg'
-const CheckedDisabledCheckBox = '/static/images/icons/checkBox-checkedDisabled.svg'
-const DefaultRadio = '/static/images/icons/radio-default.svg'
-const HoverRadio = '/static/images/icons/radio-hover.svg'
-const DisabledRadio = '/static/images/icons/radio-disabled.svg'
-const CheckedRadio = '/static/images/icons/radio-selected.svg'
-const CheckedDisabledRadio = '/static/images/icons/radio-selectedDisabled.svg'
+import DefaultThCheckBox from '@static/images/icons/checkBox-defaultTh.svg'
+import DefaultCheckBox from '@static/images/icons/checkBox-default.svg'
+import HoverCheckBox from '@static/images/icons/checkBox-hover.svg'
+import DisabledCheckBox from '@static/images/icons/checkBox-disabled.svg'
+import CheckedCheckBox from '@static/images/icons/checkBox-checked.svg'
+import CheckedDisabledCheckBox from '@static/images/icons/checkBox-checkedDisabled.svg'
+import DefaultRadio from '@static/images/icons/radio-default.svg'
+import HoverRadio from '@static/images/icons/radio-hover.svg'
+import DisabledRadio from '@static/images/icons/radio-disabled.svg'
+import CheckedRadio from '@static/images/icons/radio-selected.svg'
+import CheckedDisabledRadio from '@static/images/icons/radio-selectedDisabled.svg'
 
 declare module '@mui/material/styles/createTypography' {
 	interface TypographyOptions {
