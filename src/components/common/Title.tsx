@@ -1,14 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {
-	styled,
-	Typography,
-	Breadcrumbs,
-	ToggleButton,
-	ButtonGroup,
-	Stack,
-	ToggleButtonGroup,
-} from '@mui/material'
+import { styled, Typography, Breadcrumbs, ToggleButton, Stack } from '@mui/material'
 import { IconButton } from '@components/common'
 
 // icons
@@ -56,7 +48,6 @@ const PageTitleStyled = {
 type BookmarkProps = Required<Pick<TitleDataItem, 'menu' | 'active'>>
 
 const Bookmark: React.FC<BookmarkProps> = ({ active = false, menu }) => {
-	console.log('@@@@@', active)
 	return (
 		<PageTitleStyled.Item>
 			<Typography variant="h2" color="grey.900">
@@ -127,7 +118,7 @@ const SubTitleStyled = {
 		alignItems: 'center',
 		gap: '5px',
 		'&:before': {
-			content: "''",
+			content: 'none',
 			display: 'inline-block',
 			width: '6px',
 			height: '6px',
@@ -160,10 +151,6 @@ export const SubTitle: React.FC<SubTitleProps> = ({ desc, title, toggle, tooltip
 
 	const handleToggle = React.useCallback(() => {
 		setSelected(!selected)
-	}, [selected])
-
-	React.useEffect(() => {
-		console.log(selected)
 	}, [selected])
 
 	return (

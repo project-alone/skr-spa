@@ -13,17 +13,35 @@ import {
 import { Add as AddIcon, Inbox as InboxIcon, Mail as MailIcon } from '@mui/icons-material'
 
 export const PublishingFab: React.FC = () => {
+	const [open, setOpen] = React.useState(false)
+	const toggleDrawer = (event: React.KeyboardEvent | React.MouseEvent) => {
+		if (
+			event &&
+			event.type === 'keydown' &&
+			((event as React.KeyboardEvent).key === 'Tab' ||
+				(event as React.KeyboardEvent).key === 'Shift')
+		) {
+			return
+		}
+
+		setOpen(!open)
+	}
+
 	return (
 		<React.Fragment>
-			<Fab color="primary" aria-label="add">
+			<Fab
+				color="primary"
+				aria-label="add"
+				sx={{ position: 'fixed', right: 50, bottom: 50 }}
+				onClick={toggleDrawer}>
 				<AddIcon />
 			</Fab>
-			{/* <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+			<Drawer anchor="left" open={open} onClose={toggleDrawer}>
 				<Box
-					sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+					sx={{ width: 250 }}
 					role="presentation"
-					onClick={toggleDrawer(anchor, false)}
-					onKeyDown={toggleDrawer(anchor, false)}>
+					onClick={toggleDrawer}
+					onKeyDown={toggleDrawer}>
 					<List>
 						{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
 							<ListItem key={text} disablePadding>
@@ -50,7 +68,7 @@ export const PublishingFab: React.FC = () => {
 						))}
 					</List>
 				</Box>
-			</Drawer> */}
+			</Drawer>
 		</React.Fragment>
 	)
 }

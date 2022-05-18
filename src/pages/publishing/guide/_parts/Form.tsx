@@ -204,58 +204,58 @@ export const InputLabelPositionTop: React.FC = () => {
 				</Grid>
 				<Grid item xs={6}>
 					<CodeArea>
-						// Default
+						Default
 						<TextField label="Label Text" placeholder="Placeholder" value="Input" />
-						// Focused
+						Focused
 						<TextField
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 							focused
 						/>
-						// Required
+						Required
 						<TextField
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 							required
 						/>
-						// Read Only // porperty 사용 유의
+						Read Only porperty 사용 유의
 						<TextField
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 							InputProps={{ readOnly: true }}
 						/>
-						// Disabled
+						Disabled
 						<TextField
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 							disabled
 						/>
-						// Error
+						Error
 						<TextField
 							error
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 						/>
-						// Success
+						Success
 						<TextField
 							color="success"
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 						/>
-						// Unit
+						Unit
 						<TextField
 							error
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 						/>
-						// Icon
+						Icon
 						<TextField
 							color="success"
 							label="Label Text"
@@ -454,62 +454,62 @@ export const InputLabelPositionLeft = () => {
 				</Grid>
 				<Grid item xs={6}>
 					<CodeArea>
-						// Default
+						Default
 						<DefaultTextField
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 						/>
-						// Focused
+						Focused
 						<DefaultTextField
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 							focused
 						/>
-						// Required
+						Required
 						<DefaultTextField
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 							required
 						/>
-						// Read Only // porperty 사용 유의
+						Read Only porperty 사용 유의
 						<DefaultTextField
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 							InputProps={{ readOnly: true }}
 						/>
-						// Disabled
+						Disabled
 						<DefaultTextField
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 							disabled
 						/>
-						// Error
+						Error
 						<DefaultTextField
 							error
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 						/>
-						// Success
+						Success
 						<DefaultTextField
 							color="success"
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 						/>
-						// Unit
+						Unit
 						<DefaultTextField
 							error
 							label="Label Text"
 							placeholder="Placeholder"
 							value="Input"
 						/>
-						// Icon
+						Icon
 						<DefaultTextField
 							color="success"
 							label="Label Text"
@@ -704,9 +704,7 @@ export const InputHiddenLabel = () => {
 				</Grid>
 				<Grid item xs={6}>
 					<CodeArea>
-						// add hiddenLabel property // *<br />
-						// *<br />
-						// example
+						add hiddenLabel property example
 						<TextField hiddenLabel placeholder="Placeholder" value="Input" />
 					</CodeArea>
 				</Grid>
@@ -805,7 +803,7 @@ export const SelectLabelPositionTop = () => {
 				</Grid>
 				<Grid item xs={6}>
 					<CodeArea>
-						// Default
+						Default
 						<SelectField
 							label="Label Text" // select combo box 너비 지정
 							style={{ PaperProps: { style: { width: 444 } } }}
@@ -916,7 +914,7 @@ export const SelectLabelPositionLeft = () => {
 				</Grid>
 				<Grid item xs={6}>
 					<CodeArea>
-						// Default
+						Default
 						<DefaultSelectField
 							label="Label Text"
 							// select combo box 너비 지정
@@ -977,13 +975,13 @@ export const CheckBox = () => {
 				</Grid>
 				<Grid item xs={6}>
 					<CodeArea>
-						// Default
+						Default
 						<Checkbox inputProps={{ 'aria-label': 'Checkbox demo' }} />
-						// Checked
+						Checked
 						<Checkbox inputProps={{ 'aria-label': 'Checkbox demo' }} checked />
-						// Disabled
+						Disabled
 						<Checkbox inputProps={{ 'aria-label': 'Checkbox demo' }} disabled />
-						// Checked Disabled
+						Checked Disabled
 						<Checkbox inputProps={{ 'aria-label': 'Checkbox demo' }} disabled checked />
 					</CodeArea>
 				</Grid>
@@ -1032,14 +1030,14 @@ export const CheckBoxWithLabel = () => {
 				</Grid>
 				<Grid item xs={6}>
 					<CodeArea>
-						// InputProps={{ 'aria-label': 'Checkbox demo' }}
-						// Default
+						{/* InputProps={{ 'aria-label': 'Checkbox demo' }} */}
+						{/* Default */}
 						<FormControlLabel control={<Checkbox />} label="Label Text" />
-						// Checked
+						Checked
 						<FormControlLabel control={<Checkbox checked />} label="Label Text" />
-						// Disabled
+						Disabled
 						<FormControlLabel control={<Checkbox disabled />} label="Label Text" />
-						// Checked Disabled
+						Checked Disabled
 						<FormControlLabel
 							control={<Checkbox disabled checked />}
 							label="Label Text"

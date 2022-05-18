@@ -47,14 +47,6 @@ const TitleOptionDesc = {
 	tooltip: true,
 }
 
-const Test = () => {
-	return (
-		<div className="wow">
-			<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, aliquam!</p>
-		</div>
-	)
-}
-
 export const SubTit = () => {
 	return (
 		<>
@@ -173,16 +165,20 @@ export const SubTit = () => {
 				</Grid>
 				<Grid item xs={4}>
 					<CodeArea>
-						{`<SubTitle {...TitleDesc} />
-<SubTitle {...TitleToggleDesc} />
-<SubTitle {...TitleTooltipDesc} />
-<SubTitle {...TitleOptionDesc} />
-<SubTitle {...TitleDesc}>
-  <Button color="primary" variant="outlined">Button</Button>
-</SubTitle>
-<SubTitle {...TitleToggleDesc}>
-  <Button color="primary" variant="outlined">Button</Button>
-</SubTitle>`}
+						<SubTitle {...TitleDesc} />
+						<SubTitle {...TitleToggleDesc} />
+						<SubTitle {...TitleTooltipDesc} />
+						<SubTitle {...TitleOptionDesc} />
+						<SubTitle {...TitleDesc}>
+							<Button color="primary" variant="outlined">
+								Button
+							</Button>
+						</SubTitle>
+						<SubTitle {...TitleToggleDesc}>
+							<Button color="primary" variant="outlined">
+								Button
+							</Button>
+						</SubTitle>
 					</CodeArea>
 				</Grid>
 			</Grid>

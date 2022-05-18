@@ -1,8 +1,9 @@
 import React from 'react'
 import { useLocation, useRoutes } from 'react-router-dom'
+import { ErrorBoundary } from 'react-error-boundary'
 import { AliveScope } from 'react-activation'
 import routes from '@root/router'
-import { ErrorBoundary } from 'react-error-boundary'
+import { PublishingFab } from '@components/publishingGuide/FloatingButton'
 
 // @mui style
 import { Box, CssBaseline } from '@mui/material'
@@ -34,6 +35,7 @@ const App: React.FC = () => {
 			<ErrorTest error={error} onRefresh={setError as () => void} />
 			<CssBaseline />
 			<AliveScope>{content}</AliveScope>
+			<PublishingFab />
 		</ErrorBoundary>
 	)
 }

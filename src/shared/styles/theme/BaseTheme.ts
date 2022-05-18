@@ -152,7 +152,7 @@ export const BaseTheme = createTheme({
 		borderRadius: 2,
 	},
 	borderColor: colorSystem.border.b700,
-	// // https://mui.com/customization/palette/
+	// https://mui.com/customization/palette/
 	palette: {
 		common: {
 			white: colorSystem.white,

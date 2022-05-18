@@ -5,21 +5,17 @@ import reactElementToJSXString from 'react-element-to-jsx-string'
 import React from 'react'
 
 export const CodeArea: React.FC = ({ children }) => {
-	console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', children)
+	console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', {
+		isValidElement: React.isValidElement(children),
+		children,
+		isArray: Array.isArray(children),
+	})
 	return (
 		<SyntaxHighlighter language="typescript" style={atomOneDark}>
 			{reactElementToJSXString(<React.Fragment>{children}</React.Fragment>)}
 		</SyntaxHighlighter>
 	)
 }
-
-// export const CodeBox = styled(Box)(({ theme }) => ({
-// 	backgroundColor: `${theme.palette.grey[900]}`,
-// 	color: `${theme.palette.grey[0]}`,
-// 	padding: '15px',
-// 	borderRadius: '4px',
-// 	lineHeight: '1.68rem',
-// }))
 
 export const ConditionTitle = styled(Typography)(
 	({ theme }) => `

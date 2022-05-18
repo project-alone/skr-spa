@@ -127,17 +127,14 @@ console.log(myEnv) // 'skrentacar'
 
 ## 퍼블리싱 반영 시 주의 사항
 
--   [ ] componentsTitle.js 수정예정(toggle 기능 추가)
+-   [ ] datepicker, timepicker (기능정의 파악, input, format)
+-   [ ] components/Title.js 수정예정(toggle 기능 추가)
 -   [ ] form 에서 select 리스트의 넓이(width), 위치가 맞지 않음
--   [ ] select에서 나는 에러 [0, 1] 수정 필요
+-   [x] select에서 나는 에러 [0, 1] 수정 필요
 -   [ ] 이벤트 핸들러 가이드 작성 필요
--   [ ] 공통 css 사입 방법 수정(createglobalstyle)
+-   [x] 공통 css 삽입 방법 수정(createglobalstyle)
 -   [ ] 타임피커 문제(외부라이브러리와 MUI가 연동이 가능한지? 검토 필요)
--   [ ] 디자인 반영은 바로바로
-
-1. 외부망에서 작업하자(내부망 안할거임)
-2. 퍼블리셔와 프론트엔개발 간 프로세스 부재(논의 필요)
-3. 퍼블리싱과 공통 간의 병렬 업무 시 프로세스 부재(논의 필요)
+-   [ ] ~~디자인 반영은 바로바로~~
 
 ## 주의사항
 
@@ -148,3 +145,10 @@ console.log(myEnv) // 'skrentacar'
 3.
 
 [githibenterprise]: https://skr-sharedgithub.koreacentral.cloudapp.azure.com
+
+component
+
+1. @mui/material 컴포넌트를 직접적으로 제공하지 않기
+    - page: [route-endpoint]Page(children 없이)
+    - parts: Button, Form, DataGrid, DataGrid의 parts
+    -
