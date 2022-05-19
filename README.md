@@ -45,6 +45,13 @@ git config user.name={github에서 사용할 개발자의 별칭}  # commit 메�
 git config user.password={발급 받은 token}
 ```
 
+### git CRLF 문자 오류 관련 최초 프로젝트 폴더 내에서 수정 방법
+
+```sh
+# 마지막 변수에 경로를 입력합니다. "./" <-- 이것은 루트 하위로 전부 수정하겠다는 의미
+yarn run prettier:fix ./
+```
+
 ## npm, yarn 설정
 
 ```sh

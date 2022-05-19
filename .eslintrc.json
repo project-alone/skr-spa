@@ -33,7 +33,12 @@
 	},
 	"plugins": ["react", "react-hooks", "@typescript-eslint", "prettier", "storybook"],
 	"rules": {
-		"prettier/prettier": "error",
+		"prettier/prettier": [
+			"error",
+			{
+				"endOfLine": "auto"
+			}
+		],
 		"react/no-unescaped-entities": "off",
 		"react/react-in-jsx-scope": 0,
 		"react/prefer-stateless-function": 0,
