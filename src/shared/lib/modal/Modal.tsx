@@ -13,10 +13,16 @@ interface ModalsProps {
 	selector?: string
 }
 
-export const Modals: React.FC<ModalsProps> = ({ selector = '#modal-container' }) => {
+export const Modals: React.FC<ModalsProps> = ({ selector = 'modal-container' }) => {
 	const openedModals = React.useContext(ModalStateContext)
 	const { close } = React.useContext(ModalDispatchContext)
-	const element = document.querySelector(selector) as HTMLDivElement
+	const element =
+		document.querySelector(selector) ??
+		(() => {
+			const modalContainer = document.createElement('div')
+			modalContainer.id = selector
+			return modalContainer
+		})()
 
 	React.useEffect(() => {
 		if (openedModals.length) {

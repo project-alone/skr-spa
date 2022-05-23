@@ -1,5 +1,5 @@
 import React from 'react'
-import GlobalStyle from '@styles/global'
+import { globalStyle } from '@styles/global'
 
 export default {
 	parameters: {

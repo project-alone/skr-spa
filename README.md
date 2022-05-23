@@ -149,13 +149,17 @@ console.log(myEnv) // 'skrentacar'
 
 1. [componentName]/index.tsx
 2. 용도가 다른 컴포넌트 그룹(???)
-3.
 
 [githibenterprise]: https://skr-sharedgithub.koreacentral.cloudapp.azure.com
 
 component
 
 1. @mui/material 컴포넌트를 직접적으로 제공하지 않기
-    - page: [route-endpoint]Page(children 없이)
+    - page: [route-endpoint]Page(children 없이, React.ExoticComponent)
     - parts: Button, Form, DataGrid, DataGrid의 parts
-    -
+
+### 주의사항
+
+1. 진척도를 알수가 없다 어떻게 진행이 되는지 알고싶다.
+2. 가이드를 어떻게 작성해야 하는가?(누가, 어떻게)
+3.

@@ -37,7 +37,6 @@ const config: StorybookConfig = {
 	// 	if (config.optimizeDeps) {
 	// 		config.optimizeDeps.include = [
 	// 			...(config.optimizeDeps?.include ?? []),
-	// 			'styled-components',
 	// 			'redux-logger',
 	// 			'jest-mock',
 	// 		]
