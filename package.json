@@ -7,7 +7,8 @@
 		"build": "vite build --mode production",
 		"preview": "vite preview",
 		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook"
+		"build-storybook": "build-storybook",
+		"prettier:fix": "prettier --write"
 	},
 	"dependencies": {
 		"@hookform/error-message": "^2.0.0",
@@ -49,9 +50,10 @@
 		"@storybook/addon-essentials": "^6.5.0-alpha.36",
 		"@storybook/addon-interactions": "^6.5.0-alpha.36",
 		"@storybook/addon-links": "^6.5.0-alpha.36",
+		"@storybook/builder-vite": "^0.1.35",
 		"@storybook/builder-webpack5": "^6.4.18",
 		"@storybook/manager-webpack5": "^6.4.18",
-		"@storybook/react": "^6.5.0-alpha.36",
+		"@storybook/react": "^6.5.4",
 		"@storybook/testing-library": "^0.0.9",
 		"@types/babel-core": "^6.25.7",
 		"@types/loadable__component": "^5.13.4",

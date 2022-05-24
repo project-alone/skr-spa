@@ -1,5 +1,6 @@
 import React from 'react'
-import { globalStyle } from '@styles/global'
+import ThemeProvider from '@theme/ThemeProvider'
+import { CssBaseline } from '@mui/material'
 
 export default {
 	parameters: {
@@ -16,8 +17,10 @@ export default {
 	decorators: [
 		(Story: React.FC) => (
 			<>
-				<GlobalStyle />
-				<Story />
+				<ThemeProvider>
+					<CssBaseline />
+					<Story />
+				</ThemeProvider>
 			</>
 		),
 	],

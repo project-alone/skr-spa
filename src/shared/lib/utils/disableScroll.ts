@@ -8,7 +8,6 @@ interface Options {
 	disableWheel: boolean
 	keyboardKeys: number[]
 }
-
 class DisableScroll {
 	element: Element | null
 	lockToScrollPos: [number, number]

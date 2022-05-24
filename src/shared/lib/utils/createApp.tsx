@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-key */
-
-// core
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { collate } from 'react-collate'
@@ -57,7 +54,7 @@ export const Provider = collate<ProviderProps>()
 	))
 	.add(({ children }) => <BrowserRouter>{children}</BrowserRouter>)
 	// SibebarProvider: 'Sidebar context'의 사용 가능 범위
-	.add(({ children }) => <SidebarProvider>{children}</SidebarProvider>)
+	// .add(({ children }) => <SidebarProvider>{children}</SidebarProvider>)
 	// ModalProvider: 'modal' 사용 가능 범위
 	.add(({ children }) => <ModalProvider>{children}</ModalProvider>)
 	.add(({ maxSnack, children }) => (

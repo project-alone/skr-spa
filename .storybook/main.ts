@@ -1,26 +1,13 @@
+import { mergeConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
-import type { StorybookConfig } from '@storybook/react/types'
-import type { UserConfig } from 'vite'
+import svgr from 'vite-plugin-svgr'
+import * as path from 'path'
+import type { StorybookViteConfig } from '@storybook/builder-vite'
 
-/**
- * @type {import('path').ParsedPath}
- */
-const path = require('path')
+const toPath = (_path: string) => path.join(process.cwd(), _path)
 
-/**
- * @description
- * webpakck의 plugin 타입과 tsconfig-paths-webpack-plugin의 타입이 불일치 하여
- * 타입을 명시적으로 선언하기 어렵습니다.
- * 대체제가 없기 때문에 사용합니다.
- */
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-
-/**
- * @description
- * storybook 7.0이 2022년 3월중 release될 예정이므로 추후 업그레이드 필요
- */
-const config: StorybookConfig = {
-	stories: ['../src/stories/**/*.stories.mdx', '../src/stories/**/*.stories.@(js|jsx|ts|tsx)'],
+const config: StorybookViteConfig = {
+	stories: ['../src/stories/**/*.stories.@(ts|tsx|mdx)'],
 	addons: [
 		'@storybook/addon-links',
 		'@storybook/addon-essentials',
@@ -28,43 +15,40 @@ const config: StorybookConfig = {
 	],
 	framework: '@storybook/react',
 	core: {
-		builder: 'webpack5',
-		// builder: 'storybook-builder-vite',
+		builder: '@storybook/builder-vite',
 	},
-	// @ts-ignore
-	// async viteFinal(config: UserConfig) {
-	// 	;(config.plugins || []).push(tsconfigPaths())
-	// 	if (config.optimizeDeps) {
-	// 		config.optimizeDeps.include = [
-	// 			...(config.optimizeDeps?.include ?? []),
-	// 			'redux-logger',
-	// 			'jest-mock',
-	// 		]
-	// 	}
-
-	// 	config.define = {
-	// 		...config.define,
-	// 		global: 'window',
-	// 	}
-
-	// 	if (config.resolve) {
-	// 		config.resolve.dedupe = [...(config.resolve?.dedupe ?? []), '@storybook/client-api']
-	// 	}
-
-	// 	return config
+	// features: {
+	// 	emotionAlias: false,
 	// },
-	webpackFinal: async (config, options) => {
-		if (config.resolve) {
-			config.resolve.plugins = [
-				...(config.resolve.plugins || []),
-				new TsconfigPathsPlugin({
-					extensions: config.resolve.extensions,
-					configFile: path.resolve(__dirname, './tsconfig.json'),
-				}),
-			]
+	async viteFinal(originConfig) {
+		const config: typeof originConfig = {
+			plugins: [tsconfigPaths(), svgr()],
+			optimizeDeps: {
+				include: ['redux-logger', 'jest-mock'],
+			},
+			define: {
+				global: 'window',
+			},
+			resolve: {
+				dedupe: ['@storybook/client-api'],
+				alias: {
+					'@emotion/react': path.resolve(
+						path.join(__dirname, '../node_modules/@emotion/react'),
+					),
+					'@emotion/styled': path.resolve(
+						path.join(__dirname, '../node_modules/@emotion/styled'),
+					),
+					'@emotion/core': path.resolve(
+						path.join(__dirname, '../node_modules/@emotion/react'),
+					),
+					'emotion-theming': path.resolve(
+						path.join(__dirname, '../node_modules/@emotion/react'),
+					),
+				},
+			},
 		}
 
-		return config
+		return mergeConfig(originConfig, config)
 	},
 }
 

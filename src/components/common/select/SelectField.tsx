@@ -11,10 +11,15 @@ import type { SelectInputProps } from '@mui/material/Select/SelectInput'
 // import type { MenuItemProps } from '@mui/material'
 
 interface SelectFieldProps {
+	/** form label */
 	label: string
+	/** @mui style object */
 	style: object
+	/** 활성 / 비활성 */
 	disabled?: boolean
+	/** option list */
 	option: string[]
+	/** 아이콘 사용 여부 */
 	isIcon?: boolean
 }
 
