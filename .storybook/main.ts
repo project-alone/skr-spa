@@ -4,7 +4,7 @@ import svgr from 'vite-plugin-svgr'
 import * as path from 'path'
 import type { StorybookViteConfig } from '@storybook/builder-vite'
 
-const toPath = (_path: string) => path.join(process.cwd(), _path)
+// const toPath = (_path: string) => path.join(process.cwd(), _path)
 
 const config: StorybookViteConfig = {
 	stories: ['../src/stories/**/*.stories.@(ts|tsx|mdx)'],
