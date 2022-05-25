@@ -4,8 +4,6 @@ import svgr from 'vite-plugin-svgr'
 import * as path from 'path'
 import type { StorybookViteConfig } from '@storybook/builder-vite'
 
-// const toPath = (_path: string) => path.join(process.cwd(), _path)
-
 const config: StorybookViteConfig = {
 	stories: ['../src/stories/**/*.stories.@(ts|tsx|mdx)'],
 	addons: [
@@ -17,17 +15,11 @@ const config: StorybookViteConfig = {
 	core: {
 		builder: '@storybook/builder-vite',
 	},
-	// features: {
-	// 	emotionAlias: false,
-	// },
 	async viteFinal(originConfig) {
 		const config: typeof originConfig = {
 			plugins: [tsconfigPaths(), svgr()],
 			optimizeDeps: {
-				include: ['redux-logger', 'jest-mock'],
-			},
-			define: {
-				global: 'window',
+				include: ['redux-logger', 'jest-mock', '@emotion/react'],
 			},
 			resolve: {
 				dedupe: ['@storybook/client-api'],

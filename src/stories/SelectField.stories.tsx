@@ -12,10 +12,26 @@ export default {
 
 const Template: ComponentStory<typeof SelectField> = (args) => <SelectField {...args} />
 
-export const Normal = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Normal.args = {
+export const Default = Template.bind({})
+Default.args = {
 	label: '과일',
 	style: { width: 200 },
 	option: ['banana', 'orange', 'storawberry'],
+}
+
+export const Icon = Template.bind({})
+Icon.args = {
+	label: '과일',
+	style: { width: 200 },
+	option: ['banana', 'orange', 'storawberry'],
+	isIcon: true,
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+	label: '과일',
+	style: { width: 200 },
+	option: ['banana', 'orange', 'storawberry'],
+	isIcon: true,
+	disabled: true,
 }
