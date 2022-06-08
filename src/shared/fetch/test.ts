@@ -39,11 +39,6 @@ declare global {
 	}
 }
 
-/**
- *
- * @param { SetLoginParmas } params
- * @return {Promise<AxiosResponse<SetLogin.Res, any>>}
- */
 export async function setTest(params: SetTest.Params) {
 	// 로그인 API가 존재한다면 아래 처럼 하는 것이 맞지만...
 	const res = await http.get<SetTest.Params, SetTest.Res>('/v1/passenger', { params })
@@ -51,6 +46,7 @@ export async function setTest(params: SetTest.Params) {
 		item.airline[0].id = item._id
 		return item.airline[0]
 	})
+
 	return {
 		list: data,
 		rowCount: res.data.totalPassengers,

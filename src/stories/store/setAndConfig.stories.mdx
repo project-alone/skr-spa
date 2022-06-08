@@ -1,0 +1,95 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="store/세팅 및 초기설정" />
+
+# Using Store
+
+> 해당 프젝트는 `Redux toolkit`을 사용하고 있습니다. API 연동을 위한 작업 시 axios 연동이 필요할 수 있고,
+> 단순 연산으로 인한 `reducer` 함수만을 만들 수도 있습니다.  
+> `logical`한 부분과 전역상태 관리 측면에서 redux의 활용을 생각하여 개발해야합니다.
+
+## React에 Redux/toolkit 적용하기
+
+```typescript
+import { configureStore } from '@reduxjs/toolkit' // store 설정 fatory 함수
+import rootReducer from '@store/slices/index' // 모든 reducer
+import middlewares from '@store/middlewares' // 미리 만들어 놓은 middleware 함수
+import { createPersistedReducer, actionTypes } from '@store/persist' // redux-persist의 reducer 합성 함수, 액션 타입
+import { isDev } from '@lib/index' // 미리 만들어 놓은 환경 판단 변수(production, development, etc...)
+
+// types
+import type { Action, ThunkAction } from '@reduxjs/toolkit' // 설정 시 필요한 type들
+
+// import 경로에 혼란 방지(`@store/index` path로 필요한 것들을 import)
+export * from '@store/persist'
+
+// RootState 전체 state의 타입
+export type RootState = ReturnType<typeof store.getState>
+
+export const store = configureStore({
+	reducer: createPersistedReducer(rootReducer),
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			// 직렬화가 가능한지를 확인하는 옵션
+			serializableCheck: {
+				// 해당 action type에 대해서를 직렬화 가능여부를 확인하지 않는 리스트
+				ignoredActions: [...actionTypes],
+			},
+			// merge custom middleware
+		}).concat(...middlewares),
+	devTools: isDev,
+})
+```
+
+## 일반적인 Slice 만들기
+
+```ts
+import { createSlice } from '@reduxjs/toolkit'
+
+// types, 타입과 내부에서 쓰이는 스크립트 함수를 구분하여 import합니다.
+import type { PayloadAction } from '@reduxjs/toolkit'
+
+type Fruits = {
+	count: number
+	taste: 'best' | 'better' | 'delicious'
+	price: number
+}
+
+// state의 전체 타입을 선언합니다.
+type ExampleState = { [key: string]: Fruits }
+
+// 초기 state
+const initialState: ExampleState = {
+	banana: {
+		count: 91,
+		taste: 'best',
+		price: 1_000,
+	},
+	strawberry: {
+		count: 10,
+		taste: 'better',
+		price: -1,
+	},
+	coconut: {
+		count: 0,
+		taste: 'delicious',
+		price: 3_000,
+	},
+}
+
+// examples
+export const exampleSlice = createSlice({
+	name: 'example',
+	initialState,
+	reducers: {
+		// 가격 입력하기 reducer 함수
+		inputPrice(state, action: PayloadAction<{ name: string; price: number }>) {
+			if (state[name]) {
+				alert('해당 과일이 존재하지 않습니다.')
+			} else {
+				state[name].price = action.price
+			}
+		},
+	},
+})
+```

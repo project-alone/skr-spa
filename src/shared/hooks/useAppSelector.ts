@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux'
+
+// types
 import type { TypedUseSelectorHook } from 'react-redux'
 import type { RootState } from '@store/index'
 

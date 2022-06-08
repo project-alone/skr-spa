@@ -66,14 +66,14 @@ const GuidePage: React.FC = () => {
 					<Typo />
 					<GuideTitle mt={5}>Page Title</GuideTitle>
 					<PageTit />
-					<GuideTitle mt={5}>Sub Title</GuideTitle>
+					{/* <GuideTitle mt={5}>Sub Title</GuideTitle>
 					<SubTit />
 					<GuideTitle mt={5}>Table Title</GuideTitle>
 					<TableTit />
 					<GuideTitle mt={5}>Section Title</GuideTitle>
-					<SectionTit />
+					<SectionTit /> */}
 				</TabPanel>
-				<TabPanel value="2">
+				{/* <TabPanel value="2">
 					<Badge />
 				</TabPanel>
 				<TabPanel value="3">
@@ -132,15 +132,13 @@ const GuidePage: React.FC = () => {
 						Radio Group
 					</GuideSubTitle>
 					<GroupRadio />
-					{/* <MuiSelect /> */}
 				</TabPanel>
 				<TabPanel value="5">
 					<List />
 				</TabPanel>
 				<TabPanel value="6">
-					{/* <GridExample /> */}
 					<DataGrid sx={{ mt: 2 }} />
-				</TabPanel>
+				</TabPanel> */}
 			</TabContext>
 		</Box>
 	)

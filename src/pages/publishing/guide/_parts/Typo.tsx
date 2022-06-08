@@ -1,5 +1,12 @@
-import { Typography, Grid, Box } from '@mui/material'
+import { Typography as MuiTypography, Grid, Box } from '@mui/material'
 import { CodeArea } from '@styles/publishingGuide'
+
+//types
+import type { TypographyProps } from '@mui/material'
+
+const Typography: React.FC<TypographyProps> = ({ children }) => {
+	return <MuiTypography>{children}</MuiTypography>
+}
 
 export const Typo: React.FC = () => {
 	return (

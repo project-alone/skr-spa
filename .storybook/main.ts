@@ -5,7 +5,7 @@ import * as path from 'path'
 import type { StorybookViteConfig } from '@storybook/builder-vite'
 
 const config: StorybookViteConfig = {
-	stories: ['../src/stories/**/*.stories.@(ts|tsx|mdx)'],
+	stories: ['../src/stories/**/*.stories.mdx', '../src/stories/**/*.stories.@(ts|tsx|mdx)'],
 	addons: [
 		'@storybook/addon-links',
 		'@storybook/addon-essentials',

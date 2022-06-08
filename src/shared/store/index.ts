@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import rootReducer from '@store/slices/index'
-import { isDev } from '@lib/index'
 import middlewares from '@store/middlewares'
 import { createPersistedReducer, actionTypes } from '@store/persist'
+import { isDev } from '@lib/index'
+
+// types
 import type { Action, ThunkAction } from '@reduxjs/toolkit'
 
 // import 경로에 혼란을 줄이기 위함(`@store/index` path로 필요한 것들을 import)
@@ -10,9 +12,6 @@ export * from '@store/persist'
 
 /** RootState 전체 state의 타입 */
 export type RootState = ReturnType<typeof store.getState>
-
-/** useDispatch의 타입 */
-export type AppDispatch = typeof store.dispatch
 
 /**
  * custom thunk 생성시 사용 가능한 return 타입

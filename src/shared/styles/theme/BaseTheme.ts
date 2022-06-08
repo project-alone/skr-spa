@@ -4,7 +4,7 @@ import colorSystem from '@styles/theme/colorSystem'
 import fontSystem from '@styles/theme/fontSystem'
 
 import type { Color } from '@mui/material'
-import type {} from '@mui/x-data-grid-pro/themeAugmentation'
+import '@mui/x-data-grid-pro/themeAugmentation'
 import type { Shadows } from '@mui/material/styles/shadows'
 
 // svg icons

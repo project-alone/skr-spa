@@ -1,8 +1,8 @@
 import React from 'react'
-import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material'
+import { styled, FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material'
 
 // types
-import type { SelectProps } from '@mui/material'
+import type { SelectProps, SelectChangeEvent } from '@mui/material'
 
 interface SelectBoxProps extends SelectProps {
 	options: FormItem[]
@@ -11,7 +11,7 @@ interface SelectBoxProps extends SelectProps {
 	value: string
 	error?: boolean
 	errorMessage?: string
-	onChange: (...args: unknown[]) => void
+	onChange?: (event: SelectChangeEvent<unknown>, child: React.ReactNode) => void
 }
 
 export const SelectBox = React.forwardRef<JSX.Element, SelectBoxProps>(

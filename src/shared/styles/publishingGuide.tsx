@@ -3,16 +3,21 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import reactElementToJSXString from 'react-element-to-jsx-string'
 import React from 'react'
+import { isEmpty } from 'lodash-es'
 
 export const CodeArea: React.FC = ({ children }) => {
-	console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', {
-		isValidElement: React.isValidElement(children),
-		children,
-		isArray: Array.isArray(children),
-	})
+	// const isArray = Array.isArray(children)
+	// const isValidElement = React.isValidElement(children)
+
 	return (
-		<SyntaxHighlighter language="typescript" style={atomOneDark}>
-			{reactElementToJSXString(<React.Fragment>{children}</React.Fragment>)}
+		<SyntaxHighlighter showLineNumbers language="tsx" style={atomOneDark}>
+			{/* {typeof children === 'string' ||
+			typeof children === 'number' ||
+			typeof children === 'boolean' ||
+            isEmpty(children)
+				? children
+				: reactElementToJSXString(React.cloneElement(children))} */}
+			{reactElementToJSXString(children)}
 		</SyntaxHighlighter>
 	)
 }

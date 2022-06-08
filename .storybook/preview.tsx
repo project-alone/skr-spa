@@ -1,6 +1,6 @@
-// import React from 'react'
 import CustomThemeProvider from '@theme/ThemeProvider'
 import { CssBaseline } from '@mui/material'
+// import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 
 export const parameters = {
 	layout: 'centered',
