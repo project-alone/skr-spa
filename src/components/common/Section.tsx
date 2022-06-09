@@ -1,11 +1,20 @@
 import { IconButton, Stack } from '@components/common/ui'
-import { SubTitle } from './Title'
+import { SubTitle } from '@components/common/title/SubTitle'
 import { ReactComponent as IconSearch } from '../assets/images/icons/search.svg'
 import { SectionStyle } from '@components/common/Section.styled'
 
-export const Section = ({ className = '', variant, titleToggle, children, ...rest }) => {
+// types
+import type { PaperProps } from '@mui/material'
+import type { SubTitleProps } from '@components/common/title/SubTitle'
+
+interface SectionProps extends Omit<PaperProps, 'variant'> {
+	variant: 'default' | 'search' | 'data' | 'toggle'
+	titleToggle: SubTitleProps['titleData']
+}
+
+export const Section: React.FC<SectionProps> = ({ variant, titleToggle, children, ...rest }) => {
 	return (
-		<SectionStyle className={'section-' + variant} {...rest}>
+		<SectionStyle className={`section-${variant}`} {...rest}>
 			{variant === 'toggle' && <SubTitle titleData={titleToggle} />}
 			{children}
 			{variant === 'search' && (
@@ -17,10 +26,4 @@ export const Section = ({ className = '', variant, titleToggle, children, ...res
 			)}
 		</SectionStyle>
 	)
-}
-
-Section.propTypes = {
-	children: PropTypes.node,
-	className: PropTypes.string,
-	variant: PropTypes.oneOf(['default', 'search', 'data', 'toggle']),
 }

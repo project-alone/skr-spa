@@ -1,5 +1,5 @@
 import { styled } from '@mui/material'
-import { Box, Stack } from '@components/common/ui'
+import { Box, Stack, Typography } from '@components/common/ui'
 
 export const PageTitleWrap = styled('div')(({ theme }) => ({
 	display: 'flex',
@@ -35,12 +35,8 @@ export const SubTitleArea = styled('div')(({ theme }) => ({
 	},
 }))
 
-export const SubTitleDescription = styled('div')(({ theme }) => ({
+export const SubTitleDescription = styled(Typography)(({ theme }) => ({
 	color: `${theme.palette.grey[600]}`,
-}))
-
-export const SubTitleToggle = styled('div')(({ theme }) => ({
-	transform: 'scaleY(-1)',
 }))
 
 export const TableTitleWrap = styled('div')(({ theme }) => ({
@@ -64,11 +60,11 @@ export const TableTitleArea = styled('div')(({ theme }) => ({
 	},
 }))
 
-export const TableTitleDescription = styled('div')(({ theme }) => ({
+export const TableTitleDescription = styled(Typography)(({ theme }) => ({
 	color: `${theme.palette.grey[600]}`,
 }))
 
-export const LySectionTitle = styled(Box)({
+export const LayerSectionTitle = styled(Box)({
 	display: 'flex',
 	width: '100%',
 	justifyContent: 'space-between',
@@ -76,8 +72,8 @@ export const LySectionTitle = styled(Box)({
 	paddingBottom: '25px',
 })
 
-export const LySectionContent = styled(Stack)({
+export const LayerSectionContent = styled(Stack)({
 	gap: '5px',
-	flexDirection: 'row !important',
 	alignItems: 'flex-end',
+	flexDirection: 'row !important' as 'row',
 })

@@ -29,7 +29,21 @@ declare module '@mui/material/styles/createTypography' {
 		sb1?: React.CSSProperties
 		sb2?: React.CSSProperties
 		ct?: React.CSSProperties
-		bt?: React.CSSProperties
+		bt: React.CSSProperties
+		bt_large?: React.CSSProperties
+		ht?: React.CSSProperties
+		label?: React.CSSProperties
+	}
+
+	interface Typography {
+		st1?: React.CSSProperties
+		st2?: React.CSSProperties
+		b1?: React.CSSProperties
+		b2?: React.CSSProperties
+		sb1?: React.CSSProperties
+		sb2?: React.CSSProperties
+		ct?: React.CSSProperties
+		bt: React.CSSProperties
 		bt_large?: React.CSSProperties
 		ht?: React.CSSProperties
 		label?: React.CSSProperties
@@ -85,6 +99,7 @@ declare module '@mui/material' {
 		delete: true
 		cancel: true
 		mdi: true
+		primaryOutlined: true
 	}
 
 	interface ButtonPropsColorOverrides {
