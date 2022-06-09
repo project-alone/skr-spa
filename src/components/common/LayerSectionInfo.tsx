@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material'
+import { Grid } from '@components/common/ui'
 import { omit } from 'lodash-es'
 
 type LayerSectionInfoProps = {}

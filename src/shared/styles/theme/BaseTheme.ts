@@ -37,6 +37,18 @@ declare module '@mui/material/styles/createTypography' {
 }
 
 declare module '@mui/material' {
+	interface DividerPropsVariantOverrides {
+		section15: true
+		section20: true
+		section30: true
+		function15: true
+		function20: true
+		function30: true
+		item15: true
+		item20: true
+		item30: true
+	}
+
 	interface TypographyPropsVariantOverrides {
 		st1: true
 		st2: true
@@ -82,6 +94,7 @@ declare module '@mui/material' {
 		delete: true
 		cancel: true
 		excel: true
+		modal: true
 	}
 
 	interface Color {
@@ -1493,71 +1506,71 @@ export const BaseTheme = createTheme({
 		MuiDivider: {
 			variants: [
 				//section
-				// {
-				// 	props: { type: 'section15' },
-				// 	style: {
-				// 		backgroundColor: colorSystem.border.b700,
-				// 		margin: '15px 0',
-				// 	},
-				// },
-				// {
-				// 	props: { type: 'section20' },
-				// 	style: {
-				// 		backgroundColor: colorSystem.border.b700,
-				// 		margin: '20px 0',
-				// 	},
-				// },
-				// {
-				// 	props: { type: 'section30' },
-				// 	style: {
-				// 		backgroundColor: colorSystem.border.b700,
-				// 		margin: '30px 0',
-				// 	},
-				// },
-				// //Function
-				// {
-				// 	props: { type: 'function15' },
-				// 	style: {
-				// 		backgroundColor: colorSystem.border.b100,
-				// 		margin: '15px 0',
-				// 	},
-				// },
-				// {
-				// 	props: { type: 'function20' },
-				// 	style: {
-				// 		backgroundColor: colorSystem.border.b100,
-				// 		margin: '20px 0',
-				// 	},
-				// },
-				// {
-				// 	props: { type: 'function30' },
-				// 	style: {
-				// 		backgroundColor: colorSystem.border.b100,
-				// 		margin: '30px 0',
-				// 	},
-				// },
-				// //Item
-				// {
-				// 	props: { type: 'item15' },
-				// 	style: {
-				// 		backgroundColor: colorSystem.border.b300,
-				// 		margin: '15px 0',
-				// 	},
-				// },
-				// {
-				// 	props: { type: 'item20' },
-				// 	style: {
-				// 		backgroundColor: colorSystem.border.b300,
-				// 		margin: '20px 0',
-				// 	},
-				// },
-				// {
-				// 	props: { type: 'item30' },
-				// 	style: {
-				// 		backgroundColor: colorSystem.border.b300,
-				// 		margin: '30px 0',
-				// 	},
-				// },
+				{
+					props: { variant: 'section15' },
+					style: {
+						backgroundColor: colorSystem.border.b700,
+						margin: '15px 0',
+					},
+				},
+				{
+					props: { variant: 'section20' },
+					style: {
+						backgroundColor: colorSystem.border.b700,
+						margin: '20px 0',
+					},
+				},
+				{
+					props: { variant: 'section30' },
+					style: {
+						backgroundColor: colorSystem.border.b700,
+						margin: '30px 0',
+					},
+				},
+				//Function
+				{
+					props: { variant: 'function15' },
+					style: {
+						backgroundColor: colorSystem.border.b100,
+						margin: '15px 0',
+					},
+				},
+				{
+					props: { variant: 'function20' },
+					style: {
+						backgroundColor: colorSystem.border.b100,
+						margin: '20px 0',
+					},
+				},
+				{
+					props: { variant: 'function30' },
+					style: {
+						backgroundColor: colorSystem.border.b100,
+						margin: '30px 0',
+					},
+				},
+				//Item
+				{
+					props: { variant: 'item15' },
+					style: {
+						backgroundColor: colorSystem.border.b300,
+						margin: '15px 0',
+					},
+				},
+				{
+					props: { variant: 'item20' },
+					style: {
+						backgroundColor: colorSystem.border.b300,
+						margin: '20px 0',
+					},
+				},
+				{
+					props: { variant: 'item30' },
+					style: {
+						backgroundColor: colorSystem.border.b300,
+						margin: '30px 0',
+					},
+				},
 			],
 		},
 	},

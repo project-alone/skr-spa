@@ -7,7 +7,7 @@ interface HeaderProps {
 	userName: string
 }
 
-const Header: React.FC<HeaderProps> = ({ userName = '홍길' }) => {
+export const Header: React.FC<HeaderProps> = ({ userName = '홍길' }) => {
 	return (
 		<Wrap>
 			<Inner>
@@ -31,5 +31,3 @@ const Header: React.FC<HeaderProps> = ({ userName = '홍길' }) => {
 		</Wrap>
 	)
 }
-
-export default Header
