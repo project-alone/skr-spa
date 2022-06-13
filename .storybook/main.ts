@@ -2,6 +2,8 @@ import { mergeConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import svgr from 'vite-plugin-svgr'
 import * as path from 'path'
+
+// types
 import type { StorybookViteConfig } from '@storybook/builder-vite'
 
 const config: StorybookViteConfig = {
@@ -17,7 +19,7 @@ const config: StorybookViteConfig = {
 	},
 	async viteFinal(originConfig) {
 		const config: typeof originConfig = {
-			plugins: [tsconfigPaths(), svgr()],
+			plugins: [svgr(), tsconfigPaths()],
 			optimizeDeps: {
 				include: ['redux-logger', 'jest-mock', '@emotion/react'],
 			},
@@ -40,7 +42,9 @@ const config: StorybookViteConfig = {
 			},
 		}
 
-		return mergeConfig(originConfig, config)
+		const mergedConfig = mergeConfig(originConfig, config)
+
+		return mergedConfig
 	},
 }
 

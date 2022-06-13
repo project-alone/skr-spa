@@ -77,6 +77,10 @@ declare module '@mui/material' {
 		label: true
 	}
 
+	interface ChipPropsVariantOverrides {
+		result: true
+	}
+
 	interface ChipPropsColorOverrides {
 		ready: true
 	}

@@ -16,5 +16,6 @@ import type { IconButtonProps } from '@mui/material'
 export const GridActionsCellItemForGrid: React.VFC<
 	GridActionsCellItemProps & { color: IconButtonProps['color'] }
 > = (props) => {
+	// @ts-ignore
 	return <GridActionsCellItem {...props} />
 }

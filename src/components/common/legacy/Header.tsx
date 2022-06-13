@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Stack, IconButton } from '@components/common/ui'
-import { Wrap, Inner, Logo, Utility, UserProfile } from '@components/common/Header.styled'
+import { Wrap, Inner, Logo, Utility, UserProfile } from '@components/common/legacy/Header.styled'
 import * as Icons from '@components/common/ui/Icons'
 
 interface HeaderProps {

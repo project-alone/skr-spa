@@ -1,8 +1,12 @@
-import { FormControl as MuiFormControl } from '@mui/material'
+import { DefaultFormControl } from '@styles/common'
 
 // types
-import type { FormControlProps } from '@mui/material'
+import type { FormControlProps as MuiFormControlProps } from '@mui/material'
+
+export interface FormControlProps extends MuiFormControlProps {
+	basic?: boolean
+}
 
 export const FormControl: React.FC<FormControlProps> = ({ children, ...rest }) => {
-	return <MuiFormControl {...rest}>{children}</MuiFormControl>
+	return <DefaultFormControl {...rest}>{children}</DefaultFormControl>
 }

@@ -78,22 +78,26 @@ const SelectCombo = styled(MenuItem)(({ theme }) => ({
 		backgroundColor: `${theme.palette.background[300]}`,
 	},
 }))
-const DefaultFormControl = styled(FormControl)(({ theme }) => ({
-	'&.MuiFormControl-root': {
-		flexDirection: 'row',
-		position: 'relative',
-		alignItems: 'center',
-	},
-	'& .MuiInputLabel-root': {
-		display: 'inline',
-		Width: '120px',
-		flex: '0 0 120px',
-	},
-	'& .MuiInput-root': {
-		width: 'calc(100% - 120px)',
-		flex: '0 0 calc(100% - 120px)',
-	},
-}))
+const DefaultFormControl = styled(FormControl)<{ basic?: boolean }>(({ theme, basic }) =>
+	basic
+		? {
+				'&.MuiFormControl-root': {
+					flexDirection: 'row',
+					position: 'relative',
+					alignItems: 'center',
+				},
+				'& .MuiInputLabel-root': {
+					display: 'inline',
+					Width: '120px',
+					flex: '0 0 120px',
+				},
+				'& .MuiInput-root': {
+					width: 'calc(100% - 120px)',
+					flex: '0 0 calc(100% - 120px)',
+				},
+		  }
+		: {},
+)
 const LayoutStyled = {
 	Container: styled('div')(({ theme }) => ({
 		display: 'flex',
