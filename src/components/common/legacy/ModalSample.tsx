@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, DialogContent, DialogActions, Typography, Grid } from '@components/common/ui'
-import { ModalTitle } from '@root/components/common/ModalTitle'
-import { ModalStyled } from '@root/components/common/ModalSample.styled'
+import { ModalTitle } from '@root/components/common/legacy/ModalTitle'
+import { ModalStyled } from '@root/components/common/legacy/ModalSample.styled'
 
 /**
  * FIXME: 샘플 코드 위치를 옮겨 주세요

@@ -23,7 +23,7 @@ export const IconList: React.VFC<IconListProps> = ({ listData }) => {
 			docText: <Icons.IconDownload />,
 			basic: <Icons.IconChevron />,
 		}
-	}, [listData])
+	}, [])
 
 	const listItemIcons = React.useMemo(() => {
 		return {
@@ -32,12 +32,13 @@ export const IconList: React.VFC<IconListProps> = ({ listData }) => {
 			docText: <Icons.IconDocText />,
 			basic: <Icons.IconBookmark />,
 		}
-	}, [listData])
+	}, [])
 
 	return (
 		<List>
 			{listData.map((item, index) => (
 				<ListItem
+					key={`list-item-${index}`}
 					secondaryAction={
 						<IconButton edge="end" aria-label="chevron">
 							{actionIcons[item.type]}

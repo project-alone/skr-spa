@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { Select, FormControl, InputLabel } from '@components/common/ui'
 import { Placeholder } from '@styles/common'
 import { Options } from '@components/common/select/Options'
-import { IconArrow } from '@components/common/ui/Icons'
+import { IconChevronDown } from '@components/common/ui/Icons'
 
 // types
 import type { MenuProps, SelectProps } from '@mui/material'
@@ -63,7 +63,7 @@ export const SelectField: React.FC<SelectFieldProps> = ({
 			<Select
 				labelId={id}
 				value={selectItem}
-				IconComponent={() => <IconArrow />}
+				IconComponent={() => <IconChevronDown />}
 				displayEmpty
 				onChange={handleChange}
 				renderValue={renderValue}

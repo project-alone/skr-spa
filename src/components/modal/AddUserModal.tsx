@@ -21,7 +21,7 @@ import {
 // types
 import type { ModalProps } from '@lib/modal'
 import type { SubmitHandler } from 'react-hook-form'
-import { SelectBox } from '../form'
+import { SelectBox } from '@components/form/SelectBox'
 
 const AddUserModalScheme = yup.object({
 	id: yup.string().required('아이디를 입력해주세요.'),

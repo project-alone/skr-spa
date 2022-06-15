@@ -1,7 +1,9 @@
 import { Grid } from '@components/common/ui'
 import { omit } from 'lodash-es'
 
-type LayerSectionInfoProps = {}
+type LayerSectionInfoProps = {
+	/** nothing */
+}
 
 export const LayerSectionInfo: React.FC<LayerSectionInfoProps> = ({ children, ...rest }) => {
 	return (
