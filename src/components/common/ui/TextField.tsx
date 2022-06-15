@@ -37,6 +37,6 @@ const TextFieldStyled = styled(MuiTextField)<TextFieldProps>(({ theme, position 
 	return style[position]
 })
 
-const TextField: React.VFC<TextFieldProps> = ({ ...rest }) => {
+export const TextField: React.VFC<TextFieldProps> = ({ ...rest }) => {
 	return <TextFieldStyled {...rest} />
 }
