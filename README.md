@@ -1,4 +1,4 @@
-# SKR Front-end Boilerplate
+# SKR Front-end
 
 ## Specification
 
