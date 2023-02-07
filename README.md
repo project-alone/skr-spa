@@ -158,7 +158,7 @@ component
     - page: [route-endpoint]Page(children 없이, React.ExoticComponent(lazy return type))
     - parts: Button, Form, DataGrid, DataGrid 등등 부품이 되는 컴포넌트
 
-### 주의사항
+### 남은과제
 
 1. 진척도를 알수가 없다 어떻게 진행이 되는지 모두가 쉽게 알수있는 방법이 없을까?
 - 내부망 사용에 따른 메신저, 오피스 앱 사용등의 문제
