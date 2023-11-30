@@ -66,6 +66,7 @@
 	},
 	"eslint.lintTask.enable": true,
 	"eslint.run": "onSave",
-	"eslint.alwaysShowStatus": true
+	"eslint.alwaysShowStatus": true,
+	"liveServer.settings.port": 3001
 	// "typescript.inlayHints.parameterNames.enabled": "all"
 }

@@ -47,21 +47,6 @@ export default defineConfig(({ mode, command }) => {
 			ignoreBrowserslistConfig: true,
 		}),
 		svgr(),
-		// babelImport([
-		// 	/** example */
-		// 	{
-		// 		libraryName: 'antd',
-		// 		libraryDirectory: 'lib',
-		// 		style: (name) => {
-		// 			if (['col', 'row'].some((item) => item === name)) {
-		// 				return 'antd/lib/grid/style/index.css'
-		// 			} else {
-		// 				return `antd/lib/${name}/style/index.css`
-		// 			}
-		// 		},
-		// 		ignoreStyles: [],
-		// 	},
-		// ]),
 	]
 
 	// 개발 시 에만 사용되는 플러그인
@@ -73,7 +58,7 @@ export default defineConfig(({ mode, command }) => {
 
 	return {
 		server: {
-			port: parseInt(env.VITE_PORT),
+			// port: parseInt(env.VITE_PORT),
 			// https: isDev
 			// 	? true
 			// 	: {
@@ -84,30 +69,22 @@ export default defineConfig(({ mode, command }) => {
 			force: true,
 			// 프록시 인스턴스 사용
 			proxy: {
-				// 테스트 용
-				'/v1': {
-					target: env.VITE_PUBLIC_API_URL,
-					changeOrigin: true,
-					configure: (proxy, options) => {
-						// proxy 변수에는 'http-proxy'의 인스턴스가 전달됩니다
-					},
-				},
-
-				// 실제 사용시
-				[env.VITE_API_REPLACE_KEY]: {
-					target: env.VITE_PUBLIC_API_URL,
-					changeOrigin: true,
-					configure: (proxy, options) => {
-						// proxy 변수에는 'http-proxy'의 인스턴스가 전달됩니다
-					},
-				},
-
-				// FIXME: CRUD Test
-				'/user': {
-					target: env.VITE_TEST_API_URL,
-					secure: false,
-					changeOrigin: true,
-				},
+				// case 1. 테스트 용
+				// '/v1': {
+				// 	target: env.VITE_PUBLIC_API_URL,
+				// 	changeOrigin: true,
+				// 	configure: (proxy, options) => {
+				// 		// proxy 변수에는 'http-proxy'의 인스턴스가 전달됩니다
+				// 	},
+				// },
+				// case 2. 실제 사용시
+				// [env.VITE_API_REPLACE_KEY]: {
+				// 	target: env.VITE_PUBLIC_API_URL,
+				// 	changeOrigin: true,
+				// 	configure: (proxy, options) => {
+				// 		// proxy 변수에는 'http-proxy'의 인스턴스가 전달됩니다
+				// 	},
+				// },
 			},
 		},
 		plugins,
@@ -124,9 +101,7 @@ export default defineConfig(({ mode, command }) => {
 			rollupOptions: {
 				output: {
 					manualChunks: {
-						// FIXME: moment => dayjs로 변경
-						vendor: ['lodash-es', 'moment', 'axios', 'notistack'],
-						chart: ['chart.js'],
+						vendor: ['lodash-es', 'axios'],
 					},
 				},
 			},

@@ -17,8 +17,8 @@ export { ReactComponent as IconBookmark } from '@static/images/icons/bookmark.sv
 export { ReactComponent as IconDocAttach } from '@static/images/icons/document-attach.svg'
 export { ReactComponent as IconDocText } from '@static/images/icons/document-text.svg'
 export { ReactComponent as IconChevronDown } from '@static/images/icons/chevron-down.svg'
+export { ReactComponent as IconArrow } from '@static/images/icons/chevron-down.svg' // 위와 같음
 export { ReactComponent as IconInfo } from '@static/images/icons/information-circle.svg'
-// export { ReactComponent as IconArrow } from '@static/images/icons/chevron-down.svg'
 export { ReactComponent as IconCloseCircle } from '@static/images/icons/close-circle.svg'
 
 // export { ReactComponent as DefaultThCheckBox } from '@static/images/icons/checkBox-defaultTh.svg'

@@ -62,12 +62,12 @@ export const Provider = collate<ProviderProps>()
 	))
 	.build()
 
-const container = (id: string) => {
+const container = (id: string = 'root') => {
 	return (
 		document.getElementById(id) ??
 		(() => {
 			const container = document.createElement('div')
-			container.id = 'root'
+			container.id = id
 			document.body.appendChild(container)
 
 			return container
@@ -85,6 +85,6 @@ export const createApp = (element: React.ReactElement, containerId?: string) => 
 			maxSnack={10}>
 			{element}
 		</Provider>,
-		container(containerId || 'root'),
+		container(containerId),
 	)
 }

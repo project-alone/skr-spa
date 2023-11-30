@@ -1,7 +1,6 @@
 import React from 'react'
 import { Chip } from '@components/common/ui'
 import { IconCloseCircle } from '@components/common/ui/Icons'
-// import { ReactComponent as IconCloseCircle } from '@static/images/icons/close-circle.svg'
 
 // types
 import { ChipProps } from '@components/common/ui'
