@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button as UiButton, Typography } from '@components/common/ui'
-import { Menu, Wrap, Button, List, Item, Option } from '@components/common/Mdi.styled'
+import { Menu, Wrap, Button, List, Item, Option } from '@components/common/legacy/Mdi.styled'
 import * as Icons from '@components/common/ui/Icons'
 
 interface MdiProps {
@@ -10,7 +10,7 @@ interface MdiProps {
 	}[]
 }
 
-const Mdi: React.FC<MdiProps> = ({ tabData }) => {
+export const Mdi: React.FC<MdiProps> = ({ tabData }) => {
 	return (
 		<Wrap>
 			<List>
@@ -48,5 +48,3 @@ const Mdi: React.FC<MdiProps> = ({ tabData }) => {
 		</Wrap>
 	)
 }
-
-export default Mdi

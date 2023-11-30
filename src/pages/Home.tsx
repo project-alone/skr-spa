@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Container, Grid } from '@mui/material'
-import { PageTitle, PageTitleWrapper } from '@root/components/ex'
+import { PageTitle } from '@root/components/ex'
 
 // test
 import { IconButton } from '@components/common/ui/IconButton'

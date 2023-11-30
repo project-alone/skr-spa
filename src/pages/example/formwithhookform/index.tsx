@@ -16,7 +16,7 @@ import {
 	TextField,
 } from '@mui/material'
 import { DatePicker } from '@mui/lab'
-import { CheckboxGroup, RadioButtons, SelectBox } from '@components/form'
+// import { CheckboxGroup, RadioButtons, SelectBox } from '@components/common/form'
 import { PageHeader, PageTitleWrapper } from '@root/components/ex'
 import { get } from 'lodash-es'
 
@@ -133,7 +133,7 @@ const FormWithHookformPage: React.FC = () => {
 								{errors.term?.message || ''}
 							</FormHelperText>
 						</FormGroup>
-						<FormGroup row>
+						{/* <FormGroup row>
 							<Controller
 								control={control}
 								name="fruits"
@@ -177,7 +177,7 @@ const FormWithHookformPage: React.FC = () => {
 								variant="filled">
 								{errors.alphabet?.message || ''}
 							</FormHelperText>
-						</FormGroup>
+						</FormGroup> */}
 
 						<FormGroup>
 							<Controller

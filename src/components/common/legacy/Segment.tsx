@@ -1,5 +1,5 @@
 import React from 'react'
-import { SegmentStyle } from '@components/common/Segment.styled'
+import { SegmentStyle } from '@components/common/legacy/Segment.styled'
 
 interface SegmentProps {
 	disabled: boolean

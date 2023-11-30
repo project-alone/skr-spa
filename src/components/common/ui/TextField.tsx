@@ -8,7 +8,7 @@ type TextFieldProps = MuiTextFieldProps & {
 }
 
 const TextFieldStyled = styled(MuiTextField)<TextFieldProps>(({ theme, position }) => {
-	let style: { [key in 'left' | 'top' | 'hidden']: CSSObject } = {
+	const style: { [key in 'left' | 'top' | 'hidden']: CSSObject } = {
 		left: {
 			'&.MuiFormControl-root': {
 				flexDirection: 'row',
@@ -37,6 +37,6 @@ const TextFieldStyled = styled(MuiTextField)<TextFieldProps>(({ theme, position 
 	return style[position]
 })
 
-const TextField: React.VFC<TextFieldProps> = ({ ...rest }) => {
+export const TextField: React.VFC<TextFieldProps> = ({ ...rest }) => {
 	return <TextFieldStyled {...rest} />
 }

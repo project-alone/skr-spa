@@ -10,7 +10,7 @@ import { BrowserRouter } from 'react-router-dom'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import ThemeProvider from '@theme/ThemeProvider'
 import { ModalProvider } from '@lib/modal'
-import { SidebarProvider } from '@context/Sidebar'
+// import { SidebarProvider } from '@context/Sidebar'
 /** @see https://iamhosseindhv.com/notistack/api */
 import { SnackbarProvider } from 'notistack'
 

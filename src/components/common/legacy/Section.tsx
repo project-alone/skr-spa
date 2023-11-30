@@ -1,7 +1,7 @@
 import { IconButton, Stack } from '@components/common/ui'
 import { SubTitle } from '@components/common/title/SubTitle'
 import { ReactComponent as IconSearch } from '../assets/images/icons/search.svg'
-import { SectionStyle } from '@components/common/Section.styled'
+import { SectionStyle } from '@components/common/legacy/Section.styled'
 
 // types
 import type { PaperProps } from '@mui/material'

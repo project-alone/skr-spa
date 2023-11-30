@@ -32,7 +32,7 @@ interface LnbProps {
 	menuData: MenuItemProps[]
 }
 
-const Lnb: React.FC<LnbProps> = ({ menuData = testMenuData }) => {
+export const Lnb: React.FC<LnbProps> = ({ menuData = testMenuData }) => {
 	return (
 		<Wrap>
 			<ul>
@@ -43,5 +43,3 @@ const Lnb: React.FC<LnbProps> = ({ menuData = testMenuData }) => {
 		</Wrap>
 	)
 }
-
-export default Lnb
